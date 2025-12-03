@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Cloud, Database, Server, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import { ThemeToggle } from "@/components/ThemeToggle";
 const services = [
   { name: "Cloud Computing", href: "#cloud", icon: Cloud, description: "Infraestrutura de alta performance" },
   { name: "Backup em Nuvem", href: "#backup", icon: Database, description: "Proteção total de dados" },
@@ -81,8 +81,9 @@ export function Header() {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* Theme Toggle & CTA Button */}
+          <div className="hidden items-center gap-2 lg:flex">
+            <ThemeToggle />
             <Button variant="hero" size="default">
               Falar com Especialista
             </Button>
