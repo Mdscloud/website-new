@@ -127,6 +127,10 @@ export function Header() {
                 <a href="#cases" className="text-sm font-medium text-foreground">Cases</a>
                 <a href="#sobre" className="text-sm font-medium text-foreground">Sobre</a>
                 <a href="#contato" className="text-sm font-medium text-foreground">Contato</a>
+                <div className="flex items-center justify-between pt-2 border-t border-border">
+                  <span className="text-sm text-muted-foreground">Tema</span>
+                  <ThemeToggle />
+                </div>
                 <Button variant="hero" className="mt-2 w-full">
                   Falar com Especialista
                 </Button>
