@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
 import { Users, Award, Heart, Sparkles } from "lucide-react";
-
-const stats = [
-  { icon: Users, value: "15+", label: "Especialistas" },
-  { icon: Award, value: "15", label: "Anos de Experiência" },
-  { icon: Heart, value: "500+", label: "Clientes Satisfeitos" },
-  { icon: Sparkles, value: "99.9%", label: "Uptime Garantido" },
-];
+import { useI18n } from "@/lib/i18n";
+import teamGroup from "@/assets/team-group.jpg";
+import teamOffice1 from "@/assets/team-office-1.jpg";
 
 export function TeamSection() {
+  const { t } = useI18n();
+  
+  const stats = [
+    { icon: Users, value: "15+", label: t("team.stat.specialists") },
+    { icon: Award, value: "15", label: t("team.stat.experience") },
+    { icon: Heart, value: "500+", label: t("team.stat.clients") },
+    { icon: Sparkles, value: "99.9%", label: t("team.stat.uptime") },
+  ];
+
   return (
     <section id="sobre" className="relative py-24 lg:py-32 overflow-hidden bg-secondary/30">
       {/* Background Effects */}
@@ -27,10 +32,9 @@ export function TeamSection() {
           >
             {/* Main Image Container */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              {/* Placeholder team photo - replace with actual photo */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-secondary via-card to-secondary flex items-center justify-center">
+              <div className="aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                  src={teamGroup}
                   alt="Equipe MDS Cloud Solutions"
                   className="w-full h-full object-cover"
                 />
@@ -43,7 +47,7 @@ export function TeamSection() {
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="rounded-xl border border-border/50 bg-card/90 backdrop-blur-md p-4">
                   <p className="text-sm font-medium text-foreground">
-                    "A tecnologia conecta, mas são as pessoas que fazem a diferença."
+                    "{t("team.quote")}"
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground">
                     Equipe MDS Cloud Solutions
@@ -51,6 +55,21 @@ export function TeamSection() {
                 </div>
               </div>
             </div>
+
+            {/* Secondary image - floating */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="absolute -right-4 -bottom-8 w-40 h-28 md:w-56 md:h-40 rounded-xl overflow-hidden shadow-xl border-4 border-background hidden sm:block"
+            >
+              <img
+                src={teamOffice1}
+                alt="Escritório MDS Cloud"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
 
             {/* Floating decoration */}
             <div className="absolute -right-4 -top-4 h-24 w-24 rounded-2xl bg-primary/20 blur-xl" />
@@ -65,20 +84,16 @@ export function TeamSection() {
             transition={{ duration: 0.6 }}
           >
             <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
-              Nossa Equipe
+              {t("team.subtitle")}
             </span>
             <h2 className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-              Pessoas reais, <span className="text-gradient">resultados reais</span>
+              {t("team.title.1")} <span className="text-gradient">{t("team.title.2")}</span>
             </h2>
             <p className="mb-6 text-lg text-muted-foreground leading-relaxed">
-              Por trás de cada servidor, cada backup, cada migração, existe uma equipe 
-              apaixonada por tecnologia e comprometida com seu sucesso. Não somos apenas 
-              fornecedores — somos parceiros.
+              {t("team.description.1")}
             </p>
             <p className="mb-8 text-muted-foreground leading-relaxed">
-              Nossa equipe reúne especialistas certificados em Oracle, VMware, Microsoft 
-              e AWS. Cada membro traz anos de experiência em projetos críticos, garantindo 
-              que sua infraestrutura esteja sempre em boas mãos.
+              {t("team.description.2")}
             </p>
 
             {/* Stats Grid */}
