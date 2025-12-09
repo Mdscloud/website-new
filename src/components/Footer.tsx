@@ -1,4 +1,5 @@
-import { Cloud, Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from "lucide-react";
+import mdsLogo from "@/assets/mds-logo.png";
 
 const footerLinks = {
   solucoes: [
@@ -28,13 +29,12 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-5">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <a href="/" className="mb-6 flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                <Cloud className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <span className="font-display text-xl font-bold text-foreground">
-                MDS<span className="text-primary">Cloud</span>
-              </span>
+            <a href="/" className="mb-6 inline-block">
+              <img 
+                src={mdsLogo} 
+                alt="MDS Cloud Solutions" 
+                className="h-12 w-auto"
+              />
             </a>
             <p className="mb-6 max-w-sm text-muted-foreground">
               A nuvem de alta performance que seu negócio exige. 
