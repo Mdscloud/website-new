@@ -3,18 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Cloud, Database, Server, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { useI18n } from "@/lib/i18n";
 import mdsLogo from "@/assets/mds-logo.png";
 
-const services = [
-  { name: "Cloud Computing", href: "#cloud", icon: Cloud, description: "Infraestrutura de alta performance" },
-  { name: "Backup em Nuvem", href: "#backup", icon: Database, description: "Proteção total de dados" },
-  { name: "DBA Remoto", href: "#dba", icon: Server, description: "Gestão especializada 24x7" },
-  { name: "ERP SaaS", href: "#erp", icon: BarChart3, description: "Sistemas empresariais em nuvem" },
-];
-
 export function Header() {
+  const { t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+
+  const services = [
+    { name: t("service.cloud"), href: "#cloud", icon: Cloud, description: t("service.cloud.desc") },
+    { name: t("service.backup"), href: "#backup", icon: Database, description: t("service.backup.desc") },
+    { name: t("service.dba"), href: "#dba", icon: Server, description: t("service.dba.desc") },
+    { name: t("service.erp"), href: "#erp", icon: BarChart3, description: t("service.erp.desc") },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
@@ -32,13 +35,13 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 lg:flex">
             <a href="/" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
-              Home
+              {t("nav.home")}
             </a>
             
             {/* Services Dropdown */}
             <div className="relative" onMouseEnter={() => setIsServicesOpen(true)} onMouseLeave={() => setIsServicesOpen(false)}>
               <button className="flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary">
-                Soluções
+                {t("nav.solutions")}
                 <ChevronDown className={`h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
               </button>
               
@@ -72,26 +75,28 @@ export function Header() {
             </div>
 
             <a href="#cases" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
-              Cases
+              {t("nav.cases")}
             </a>
             <a href="#sobre" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
-              Sobre
+              {t("nav.about")}
             </a>
             <a href="#contato" className="text-sm font-medium text-foreground transition-colors hover:text-primary">
-              Contato
+              {t("nav.contact")}
             </a>
           </div>
 
-          {/* Theme Toggle & CTA Button */}
+          {/* Theme Toggle, Language & CTA Button */}
           <div className="hidden items-center gap-2 lg:flex">
+            <LanguageSelector />
             <ThemeToggle />
             <Button variant="hero" size="default">
-              Falar com Especialista
+              {t("nav.cta")}
             </Button>
           </div>
 
-          {/* Mobile Theme Toggle & Menu Button */}
+          {/* Mobile Theme Toggle, Language & Menu Button */}
           <div className="flex items-center gap-2 lg:hidden">
+            <LanguageSelector />
             <ThemeToggle />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -117,9 +122,9 @@ export function Header() {
           >
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col gap-4">
-                <a href="/" className="text-sm font-medium text-foreground">Home</a>
+                <a href="/" className="text-sm font-medium text-foreground">{t("nav.home")}</a>
                 <div className="space-y-2">
-                  <div className="text-sm font-medium text-muted-foreground">Soluções</div>
+                  <div className="text-sm font-medium text-muted-foreground">{t("nav.solutions")}</div>
                   {services.map((service) => (
                     <a key={service.name} href={service.href} className="flex items-center gap-2 pl-4 text-sm text-foreground">
                       <service.icon className="h-4 w-4 text-primary" />
@@ -127,11 +132,11 @@ export function Header() {
                     </a>
                   ))}
                 </div>
-                <a href="#cases" className="text-sm font-medium text-foreground">Cases</a>
-                <a href="#sobre" className="text-sm font-medium text-foreground">Sobre</a>
-                <a href="#contato" className="text-sm font-medium text-foreground">Contato</a>
+                <a href="#cases" className="text-sm font-medium text-foreground">{t("nav.cases")}</a>
+                <a href="#sobre" className="text-sm font-medium text-foreground">{t("nav.about")}</a>
+                <a href="#contato" className="text-sm font-medium text-foreground">{t("nav.contact")}</a>
                 <Button variant="hero" className="mt-2 w-full">
-                  Falar com Especialista
+                  {t("nav.cta")}
                 </Button>
               </div>
             </div>
