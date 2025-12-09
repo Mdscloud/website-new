@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Cloud, Database, Server, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import mdsLogo from "@/assets/mds-logo.png";
+
 const services = [
   { name: "Cloud Computing", href: "#cloud", icon: Cloud, description: "Infraestrutura de alta performance" },
   { name: "Backup em Nuvem", href: "#backup", icon: Database, description: "Proteção total de dados" },
@@ -19,13 +21,12 @@ export function Header() {
       <div className="container mx-auto px-4">
         <nav className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-              <Cloud className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <span className="font-display text-xl font-bold text-foreground">
-              MDS<span className="text-primary">Cloud</span>
-            </span>
+          <a href="/" className="flex items-center">
+            <img 
+              src={mdsLogo} 
+              alt="MDS Cloud Solutions" 
+              className="h-10 w-auto md:h-12"
+            />
           </a>
 
           {/* Desktop Navigation */}
