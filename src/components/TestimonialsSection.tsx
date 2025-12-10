@@ -35,7 +35,7 @@ const clients = [
 
 export function TestimonialsSection() {
   return (
-    <section id="cases" className="relative py-24 lg:py-32">
+    <section id="cases" className="relative py-16 lg:py-20 bg-card/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div

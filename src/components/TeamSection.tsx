@@ -14,8 +14,31 @@ export function TeamSection() {
     { icon: Sparkles, value: "99.9%", label: t("team.stat.uptime") },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section id="sobre" className="relative py-24 lg:py-32 overflow-hidden bg-secondary/30">
+    <section id="sobre" className="relative py-16 lg:py-20 overflow-hidden bg-card/20">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-20" />
       <div className="absolute left-1/4 top-0 h-80 w-80 rounded-full bg-primary/5 blur-[100px]" />
@@ -43,8 +66,8 @@ export function TeamSection() {
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               
-              {/* Badge */}
-              <div className="absolute bottom-6 left-6 right-6">
+              {/* Badge - adjusted to avoid overlap with secondary image */}
+              <div className="absolute bottom-6 left-6 right-6 sm:right-24 md:right-32 lg:right-40">
                 <div className="rounded-xl border border-border/50 bg-card/90 backdrop-blur-md p-4">
                   <p className="text-sm font-medium text-foreground">
                     "{t("team.quote")}"
@@ -80,8 +103,8 @@ export function TeamSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
               {t("team.subtitle")}
@@ -96,27 +119,35 @@ export function TeamSection() {
               {t("team.description.2")}
             </p>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            {/* Stats Grid with stagger */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid grid-cols-2 gap-4 sm:gap-6"
+            >
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="rounded-xl border border-border/50 bg-card/50 p-4 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
+                  variants={itemVariants}
+                  className="group relative overflow-hidden rounded-xl border border-border/50 bg-card/60 p-4 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
                 >
-                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <stat.icon className="h-5 w-5 text-primary" />
+                  {/* Hover gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  
+                  <div className="relative z-10">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-md">
+                      <stat.icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <div className="font-display text-2xl font-bold text-foreground transition-colors group-hover:text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </div>
-                  <div className="font-display text-2xl font-bold text-foreground">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

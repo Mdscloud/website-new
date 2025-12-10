@@ -41,19 +41,44 @@ const metrics = [
 ];
 
 export function MetricsSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section className="relative overflow-hidden py-24">
-      {/* Background */}
-      <div className="absolute inset-0 bg-card" />
+    <section className="relative overflow-hidden py-16 lg:py-20 bg-background">
+      {/* Background with grid pattern */}
+      <div className="absolute inset-0 bg-card/30" />
       <div className="absolute inset-0 bg-gradient-glow opacity-50" />
+      <div className="absolute inset-0 grid-pattern opacity-10" />
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
@@ -68,32 +93,39 @@ export function MetricsSection() {
           </p>
         </motion.div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+        {/* Metrics Grid with stagger animation */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 lg:gap-6"
+        >
           {metrics.map((metric, index) => (
             <motion.div
               key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group rounded-2xl border border-border/50 bg-background/50 p-6 text-center backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-background"
+              variants={itemVariants}
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-background/60 p-6 text-center backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-background/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
             >
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                <metric.icon className="h-6 w-6 text-primary" />
-              </div>
-              <div className="mb-1 font-display text-2xl font-bold text-foreground lg:text-3xl">
-                {metric.value}
-              </div>
-              <div className="mb-1 text-sm font-semibold text-foreground">
-                {metric.label}
-              </div>
-              <div className="text-xs text-muted-foreground">
-                {metric.description}
+              {/* Hover gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative z-10">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
+                  <metric.icon className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110" />
+                </div>
+                <div className="mb-1 font-display text-2xl font-bold text-foreground transition-colors group-hover:text-primary lg:text-3xl">
+                  {metric.value}
+                </div>
+                <div className="mb-1 text-sm font-semibold text-foreground">
+                  {metric.label}
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  {metric.description}
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -156,6 +156,10 @@
     background-image: var(--gradient-glow);
   }
 
+  .bg-gradient-radial {
+    background: radial-gradient(ellipse at center, var(--gradient-start, hsl(var(--primary) / 0.1)), var(--gradient-end, hsl(var(--background))));
+  }
+
   .card-glass {
     @apply bg-card/80 backdrop-blur-xl border border-border/50;
     box-shadow: var(--shadow-card);

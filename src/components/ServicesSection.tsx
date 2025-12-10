@@ -34,9 +34,14 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="solucoes" className="relative py-24 lg:py-32">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/30 to-background" />
+    <section id="solucoes" className="relative py-16 lg:py-20 bg-background">
+      {/* Background - Light for contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/20" />
+      <div className="absolute inset-0 bg-gradient-glow opacity-20" />
+      
+      {/* Decorative elements */}
+      <div className="absolute left-0 top-1/3 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
+      <div className="absolute right-0 bottom-1/3 h-72 w-72 rounded-full bg-accent/5 blur-[100px]" />
       
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
@@ -73,20 +78,27 @@ export function ServicesSection() {
             >
               <a
                 href={service.href}
-                className="group flex h-full flex-col rounded-2xl border border-border/50 bg-card/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-card lg:p-8"
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-6 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 lg:p-8"
               >
+                {/* Glassmorphism gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
                 {/* Icon */}
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/20">
-                  <service.icon className="h-7 w-7 text-primary" />
+                <div className="relative z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
+                  <service.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
                 {/* Content */}
-                <h3 className="mb-3 font-display text-xl font-semibold text-foreground lg:text-2xl">
-                  {service.title}
-                </h3>
-                <p className="mb-6 flex-1 text-muted-foreground">
-                  {service.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="mb-3 font-display text-xl font-semibold text-foreground transition-colors group-hover:text-primary lg:text-2xl">
+                    {service.title}
+                  </h3>
+                  <p className="mb-6 flex-1 text-muted-foreground">
+                    {service.description}
+                  </p>
+                </div>
 
                 {/* Features */}
                 <div className="mb-6 flex flex-wrap gap-2">
@@ -101,9 +113,9 @@ export function ServicesSection() {
                 </div>
 
                 {/* Link */}
-                <div className="flex items-center gap-2 text-sm font-medium text-primary transition-colors group-hover:text-primary/80">
+                <div className="relative z-10 flex items-center gap-2 text-sm font-medium text-primary transition-all group-hover:text-primary/80">
                   Saiba mais
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
                 </div>
               </a>
             </motion.div>

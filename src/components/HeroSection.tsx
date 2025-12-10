@@ -14,7 +14,7 @@ export function HeroSection() {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden pt-20 lg:pt-28">
+    <section className="relative min-h-[85vh] overflow-hidden pt-20 lg:pt-28">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
@@ -22,8 +22,10 @@ export function HeroSection() {
           alt="MDS Cloud Team" 
           className="h-full w-full object-cover"
         />
+        {/* Enhanced overlay with multiple gradients */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
       </div>
       
       {/* Grid Pattern Overlay */}
@@ -104,29 +106,8 @@ export function HeroSection() {
             ))}
           </motion.div>
         </div>
-
-        {/* Partners Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 text-center"
-        >
-          <p className="mb-8 text-sm font-medium uppercase tracking-wider text-muted-foreground">
-            {t("hero.partners")}
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            {["Oracle", "VMware", "ISO 27001", "Veeam", "Microsoft"].map((partner) => (
-              <div
-                key={partner}
-                className="flex h-12 items-center justify-center rounded-lg border border-border/50 bg-card/60 px-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
-              >
-                <span className="font-display text-sm font-semibold text-muted-foreground">{partner}</span>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
+
     </section>
   );
 }

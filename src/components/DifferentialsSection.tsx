@@ -44,9 +44,12 @@ const audiences = [
 
 export function DifferentialsSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-glow" />
+    <section className="relative py-16 lg:py-20 overflow-hidden bg-secondary/10">
+      {/* Background with radial gradient */}
+      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-background to-background" />
+      <div className="absolute inset-0 bg-gradient-glow opacity-30" />
+      
+      {/* Decorative elements */}
       <div className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
       <div className="absolute left-0 bottom-1/4 h-72 w-72 rounded-full bg-accent/5 blur-[100px]" />
 
@@ -80,16 +83,19 @@ export function DifferentialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/50 p-8 backdrop-blur-sm transition-all duration-500 hover:border-primary/30 hover:bg-card hover:shadow-xl"
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
             >
               {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              
+              {/* Glow effect */}
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
               
               <div className="relative z-10">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
-                  <item.icon className="h-7 w-7 text-primary" />
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
+                  <item.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                <h3 className="mb-3 font-display text-xl font-bold text-foreground">
+                <h3 className="mb-3 font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -125,12 +131,14 @@ export function DifferentialsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group cursor-pointer rounded-xl border border-border/50 bg-card/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-card hover:shadow-lg"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-border/50 bg-card/50 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary transition-colors duration-300 group-hover:bg-primary/10">
-                <audience.icon className="h-6 w-6 text-muted-foreground transition-colors duration-300 group-hover:text-primary" />
+              {/* Hover gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/10 group-hover:shadow-md">
+                <audience.icon className="h-6 w-6 text-muted-foreground transition-all duration-300 group-hover:scale-110 group-hover:text-primary" />
               </div>
-              <h4 className="mb-2 font-display font-semibold text-foreground">
+              <h4 className="relative z-10 mb-2 font-display font-semibold text-foreground transition-colors group-hover:text-primary">
                 {audience.title}
               </h4>
               <p className="text-sm text-muted-foreground">

@@ -11,7 +11,7 @@ const benefits = [
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32">
+    <section className="relative overflow-hidden py-16 lg:py-20 bg-card/30">
       {/* Background */}
       <div className="absolute inset-0 bg-card" />
       <div className="absolute inset-0 bg-gradient-glow" />
