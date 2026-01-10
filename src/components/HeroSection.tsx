@@ -46,48 +46,49 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0B123B] via-[#141d4d] to-[#202755]">
-      {/* 3D Background */}
-      <Suspense fallback={
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B123B] via-[#141d4d] to-[#202755]" />
-      }>
-        <HeroFuturistic />
-      </Suspense>
+    <section className="relative min-h-screen overflow-hidden bg-white dark:bg-[#0B123B]">
+      {/* 3D Background - positioned on the right */}
+      <div className="absolute right-0 top-0 w-full h-full lg:w-[60%]">
+        <Suspense fallback={
+          <div className="absolute inset-0 bg-gradient-to-l from-gray-100 to-transparent dark:from-[#141d4d]/20 dark:to-transparent" />
+        }>
+          <HeroFuturistic />
+        </Suspense>
+      </div>
       
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B123B]/90 via-[#0B123B]/60 to-transparent z-[1]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0B123B] via-transparent to-transparent z-[1]" />
+      {/* Subtle gradient overlays for light theme */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-[#0B123B] dark:via-[#0B123B]/80 dark:to-transparent z-[1]" />
       
-      {/* Animated grid pattern */}
-      <div className="absolute inset-0 z-[2] opacity-20">
+      {/* Animated grid pattern - subtle for light theme */}
+      <div className="absolute inset-0 z-[2] opacity-10 dark:opacity-20">
         <div 
           className="absolute inset-0" 
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(90, 122, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(90, 122, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(to right, rgba(32, 39, 85, 0.15) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(32, 39, 85, 0.15) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
           }}
         />
       </div>
 
-      {/* Glow effects */}
-      <div className="absolute left-1/4 top-1/3 h-96 w-96 rounded-full bg-[#5a7aff]/20 blur-[150px] z-[1] animate-pulse-slow" />
-      <div className="absolute right-1/3 bottom-1/4 h-72 w-72 rounded-full bg-[#FE8B36]/15 blur-[120px] z-[1] animate-pulse-slow animation-delay-200" />
+      {/* Glow effects - subtle for light theme */}
+      <div className="absolute left-1/4 top-1/3 h-96 w-96 rounded-full bg-[#5a7aff]/10 dark:bg-[#5a7aff]/20 blur-[150px] z-[1] animate-pulse-slow" />
+      <div className="absolute right-1/3 bottom-1/4 h-72 w-72 rounded-full bg-[#FE8B36]/10 dark:bg-[#FE8B36]/15 blur-[120px] z-[1] animate-pulse-slow animation-delay-200" />
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 pt-32 lg:pt-40">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-4xl lg:max-w-3xl lg:mr-auto lg:ml-0">
           {/* Trust Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#5a7aff]/30 bg-[#202755]/50 px-5 py-2.5 backdrop-blur-md"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#202755]/20 dark:border-[#5a7aff]/30 bg-[#202755]/5 dark:bg-[#202755]/50 px-5 py-2.5 backdrop-blur-md"
           >
             <span className="flex h-2 w-2 rounded-full bg-[#4ade80] animate-pulse" />
-            <span className="text-sm font-medium text-white/90">
+            <span className="text-sm font-medium text-[#202755] dark:text-white/90">
               {t("hero.badge")}
             </span>
           </motion.div>
@@ -103,10 +104,10 @@ export function HeroSection() {
                   className={`inline-block mr-4 ${
                     index === 1 
                       ? 'bg-gradient-to-r from-[#FE8B36] to-[#ff6b00] bg-clip-text text-transparent' 
-                      : 'text-white'
+                      : 'text-[#0B123B] dark:text-white'
                   }`}
                   style={{
-                    textShadow: index === 1 ? 'none' : '0 0 40px rgba(90, 122, 255, 0.3)',
+                    textShadow: index === 1 ? 'none' : undefined,
                   }}
                 >
                   {word}
@@ -122,12 +123,7 @@ export function HeroSection() {
             transition={{ duration: 0.8 }}
             className="mb-10 overflow-hidden"
           >
-            <p 
-              className="max-w-2xl text-lg text-white/70 md:text-xl leading-relaxed"
-              style={{
-                textShadow: '0 0 30px rgba(90, 122, 255, 0.2)',
-              }}
-            >
+            <p className="max-w-2xl text-lg text-[#202755]/70 dark:text-white/70 md:text-xl leading-relaxed">
               {t("hero.subtitle")}
             </p>
           </motion.div>
@@ -150,7 +146,7 @@ export function HeroSection() {
             </Button>
             <Button 
               variant="outline"
-              className="border-[#5a7aff]/50 bg-[#202755]/30 text-white backdrop-blur-md px-8 py-6 text-lg font-semibold hover:bg-[#5a7aff]/20 hover:border-[#5a7aff] transition-all duration-300"
+              className="border-[#202755]/30 dark:border-[#5a7aff]/50 bg-white/50 dark:bg-[#202755]/30 text-[#202755] dark:text-white backdrop-blur-md px-8 py-6 text-lg font-semibold hover:bg-[#202755]/10 dark:hover:bg-[#5a7aff]/20 hover:border-[#202755]/50 dark:hover:border-[#5a7aff] transition-all duration-300"
             >
               {t("hero.cta.secondary")}
             </Button>
@@ -165,10 +161,10 @@ export function HeroSection() {
           >
             {trustBadges.map((badge, index) => (
               <div key={index} className="flex items-center gap-3 group">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#202755]/80 backdrop-blur-md border border-[#5a7aff]/30 transition-all duration-300 group-hover:border-[#FE8B36]/50 group-hover:shadow-[0_0_20px_rgba(254,139,54,0.2)]">
-                  <badge.icon className="h-6 w-6 text-[#5a7aff] group-hover:text-[#FE8B36] transition-colors" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#202755]/5 dark:bg-[#202755]/80 backdrop-blur-md border border-[#202755]/20 dark:border-[#5a7aff]/30 transition-all duration-300 group-hover:border-[#FE8B36]/50 group-hover:shadow-[0_0_20px_rgba(254,139,54,0.2)]">
+                  <badge.icon className="h-6 w-6 text-[#202755] dark:text-[#5a7aff] group-hover:text-[#FE8B36] transition-colors" />
                 </div>
-                <span className="text-sm font-semibold text-white/90">{badge.text}</span>
+                <span className="text-sm font-semibold text-[#202755]/90 dark:text-white/90">{badge.text}</span>
               </div>
             ))}
           </motion.div>
@@ -182,12 +178,12 @@ export function HeroSection() {
         transition={{ delay: 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-white/50 uppercase tracking-wider">Scroll</span>
+        <span className="text-xs text-[#202755]/50 dark:text-white/50 uppercase tracking-wider">Scroll</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ChevronDown className="h-6 w-6 text-white/50" />
+          <ChevronDown className="h-6 w-6 text-[#202755]/50 dark:text-white/50" />
         </motion.div>
       </motion.div>
     </section>
