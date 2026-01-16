@@ -3,10 +3,9 @@ import mdsLogo from "@/assets/mds-logo.png";
 
 const footerLinks = {
   solucoes: [
-    { name: "Cloud Computing", href: "#cloud" },
-    { name: "Backup em Nuvem", href: "#backup" },
-    { name: "DBA Remoto", href: "#dba" },
-    { name: "ERP SaaS", href: "#erp" },
+    { name: "Soluções em Cloud", href: "/solucoes-cloud" },
+    { name: "Banco de Dados", href: "/banco-de-dados" },
+    { name: "Backup", href: "/backup" },
   ],
   empresa: [
     { name: "Sobre Nós", href: "#sobre" },
@@ -24,7 +23,7 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer id="contato" className="border-t border-border bg-card">
+    <footer id="contato" className="relative z-20 border-t border-border bg-card">
       <div className="container mx-auto px-4 py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-5">
           {/* Brand Column */}

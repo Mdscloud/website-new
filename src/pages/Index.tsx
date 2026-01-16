@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
-import { PartnersSection } from "@/components/PartnersSection";
+import { PartnersCarousel } from "@/components/PartnersCarousel";
 import { ServicesSection } from "@/components/ServicesSection";
 import { DifferentialsSection } from "@/components/DifferentialsSection";
 import { MetricsSection } from "@/components/MetricsSection";
@@ -13,12 +13,12 @@ import { FloatingContact } from "@/components/FloatingContact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
-      <main>
+      <main className="overflow-x-hidden">
         <HeroSection />
+        <PartnersCarousel />
         <ServicesSection />
-        <PartnersSection />
         <DifferentialsSection />
         <MetricsSection />
         <TeamSection />

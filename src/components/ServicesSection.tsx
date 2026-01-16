@@ -1,34 +1,63 @@
 import { motion } from "framer-motion";
-import { Cloud, Database, Server, BarChart3, ArrowRight } from "lucide-react";
+import { FlippingCard } from "@/components/ui/flipping-card";
 
-const services = [
+interface CardData {
+  id: string;
+  href: string;
+  front: {
+    imageSrc: string;
+    imageAlt: string;
+    title: string;
+    description: string;
+  };
+  back: {
+    description: string;
+    buttonText: string;
+  };
+}
+
+const services: CardData[] = [
   {
-    icon: Cloud,
-    title: "Cloud Computing",
-    description: "Infraestrutura de alta performance com 30.000+ IOPS, redundância total e escalabilidade sob demanda. Data centers Tier III certificados.",
-    features: ["Alta disponibilidade", "Escalabilidade automática", "SLA 99.9%"],
-    href: "#cloud",
+    id: "cloud-solutions",
+    href: "/solucoes-cloud",
+    front: {
+      imageSrc: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop",
+      imageAlt: "Soluções em Cloud",
+      title: "Soluções em Cloud",
+      description: "Infraestrutura de alta performance com 30.000+ IOPS, redundância total e escalabilidade sob demanda. Data centers Tier III certificados.",
+    },
+    back: {
+      description: "Oferecemos infraestrutura cloud completa e gerenciada com alta disponibilidade, escalabilidade automática e SLA 99.9%. Data centers Tier III certificados para garantir máxima performance e segurança para seu negócio.",
+      buttonText: "Saiba Mais",
+    },
   },
   {
-    icon: Database,
-    title: "Backup em Nuvem",
-    description: "Proteção completa de dados com backup automatizado, retenção flexível e recuperação rápida. Segurança enterprise para seus dados críticos.",
-    features: ["Backup automatizado", "Criptografia AES-256", "Recovery garantido"],
-    href: "#backup",
+    id: "database",
+    href: "/banco-de-dados",
+    front: {
+      imageSrc: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
+      imageAlt: "Banco de Dados",
+      title: "Banco de Dados",
+      description: "Gestão especializada de banco de dados 24x7. Monitoramento proativo, otimização de performance e suporte técnico dedicado.",
+    },
+    back: {
+      description: "Nossa equipe de especialistas oferece gestão completa de banco de dados com monitoramento 24x7, tuning de performance, otimização de queries e suporte para Oracle, SQL Server, PostgreSQL e MySQL.",
+      buttonText: "Saiba Mais",
+    },
   },
   {
-    icon: Server,
-    title: "DBA Remoto",
-    description: "Gestão especializada de banco de dados 24x7. Monitoramento proativo, otimização de performance e suporte técnico dedicado.",
-    features: ["Monitoramento 24x7", "Tuning de performance", "Suporte Oracle/SQL"],
-    href: "#dba",
-  },
-  {
-    icon: BarChart3,
-    title: "ERP SaaS",
-    description: "Sistemas empresariais completos em nuvem. ERP, CRM e BI integrados com infraestrutura gerenciada e atualizações automáticas.",
-    features: ["Acesso de qualquer lugar", "Integrações nativas", "Updates automáticos"],
-    href: "#erp",
+    id: "backup",
+    href: "/backup",
+    front: {
+      imageSrc: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop",
+      imageAlt: "Backup",
+      title: "Backup",
+      description: "Proteção completa de dados com backup automatizado, retenção flexível e recuperação rápida. Segurança enterprise para seus dados críticos.",
+    },
+    back: {
+      description: "Soluções de backup em nuvem com criptografia AES-256, backup automatizado, retenção flexível e recuperação rápida garantida. Proteja seus dados críticos com segurança enterprise.",
+      buttonText: "Saiba Mais",
+    },
   },
 ];
 
@@ -67,61 +96,70 @@ export function ServicesSection() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+        <div className="flex gap-6 flex-wrap justify-center lg:gap-8">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
+            <motion.a
+              key={service.id}
+              href={service.href}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="block"
             >
-              <a
-                href={service.href}
-                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-6 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 lg:p-8"
-              >
-                {/* Glassmorphism gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-primary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                
-                {/* Glow effect on hover */}
-                <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
-                {/* Icon */}
-                <div className="relative z-10 mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
-                  <service.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10">
-                  <h3 className="mb-3 font-display text-xl font-semibold text-foreground transition-colors group-hover:text-primary lg:text-2xl">
-                    {service.title}
-                  </h3>
-                  <p className="mb-6 flex-1 text-muted-foreground">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
-                    >
-                      {feature}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Link */}
-                <div className="relative z-10 flex items-center gap-2 text-sm font-medium text-primary transition-all group-hover:text-primary/80">
-                  Saiba mais
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
-                </div>
-              </a>
-            </motion.div>
+              <FlippingCard
+                width={350}
+                height={400}
+                frontContent={<ServiceCardFront data={service.front} />}
+                backContent={<ServiceCardBack data={service.back} href={service.href} />}
+              />
+            </motion.a>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+interface ServiceCardFrontProps {
+  data: CardData["front"];
+}
+
+function ServiceCardFront({ data }: ServiceCardFrontProps) {
+  return (
+    <div className="flex flex-col h-full w-full p-4">
+      <img
+        src={data.imageSrc}
+        alt={data.imageAlt}
+        className="w-full h-auto object-cover flex-grow min-h-0 rounded-md"
+      />
+      <div className="p-2">
+        <h3 className="text-base font-semibold mt-2">{data.title}</h3>
+        <p className="text-[13.5px] mt-2 text-muted-foreground">
+          {data.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+interface ServiceCardBackProps {
+  data: CardData["back"];
+  href: string;
+}
+
+function ServiceCardBack({ data, href }: ServiceCardBackProps) {
+  return (
+    <div className="flex flex-col items-center justify-center h-full w-full p-6">
+      <p className="text-[13.5px] mt-2 text-muted-foreground text-center">
+        {data.description}
+      </p>
+      <a 
+        href={href}
+        className="mt-6 bg-foreground text-background px-4 py-2 rounded-md text-[13.5px] w-min whitespace-nowrap h-8 flex items-center justify-center transition-opacity hover:opacity-90"
+      >
+        {data.buttonText}
+      </a>
+    </div>
   );
 }

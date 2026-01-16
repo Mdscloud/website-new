@@ -36,7 +36,7 @@ export function VideoTestimonialsSection() {
   const [activeVideo, setActiveVideo] = useState<number | null>(null);
 
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden bg-background">
+    <section id="depoimentos-video" className="relative py-16 lg:py-20 overflow-hidden bg-background">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="absolute right-1/4 top-1/3 h-72 w-72 rounded-full bg-primary/5 blur-[100px]" />
@@ -130,7 +130,7 @@ export function VideoTestimonialsSection() {
         >
           <p className="text-muted-foreground">
             Quer fazer parte dessa história?{" "}
-            <a href="#contato" className="text-primary font-medium hover:underline">
+            <a href="/contato" className="text-primary font-medium hover:underline">
               Fale com nossa equipe
             </a>
           </p>
