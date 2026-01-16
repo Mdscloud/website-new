@@ -1,33 +1,13 @@
-<<<<<<< HEAD
-import { useI18n } from "@/lib/i18n";
-import { HeroFuturistic } from "@/components/ui/hero-futuristic";
-=======
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Zap, Clock, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { useState, useEffect, Suspense } from "react";
->>>>>>> f304a7ebf87deb00537bfda1a682323e4ed708af
 
 export function HeroSection() {
   const { t, language } = useI18n();
   
-<<<<<<< HEAD
-  // Build title from translations
-  const buildTitle = () => {
-    if (language === "en") {
-      return "The High Performance Cloud";
-    } else if (language === "es") {
-      return "La Nube de Alto Rendimiento";
-    }
-    // Portuguese (default) - "A Nuvem de Alta Performance que seu Negócio Exige"
-    const title1 = t("hero.title.1");
-    const highlight = t("hero.title.highlight");
-    const title2 = t("hero.title.2");
-    return `${title1} ${highlight} ${title2}`.trim();
-  };
-=======
   const titleWords = [t("hero.title.1"), t("hero.title.highlight"), t("hero.title.2")];
   const [visibleWords, setVisibleWords] = useState(0);
   const [subtitleVisible, setSubtitleVisible] = useState(false);
@@ -47,7 +27,6 @@ export function HeroSection() {
     { icon: Clock, text: t("hero.badge.support") },
     { icon: Shield, text: t("hero.badge.tier") },
   ];
->>>>>>> f304a7ebf87deb00537bfda1a682323e4ed708af
 
   const glitchAnimation = {
     initial: { 
@@ -67,13 +46,6 @@ export function HeroSection() {
   };
 
   return (
-<<<<<<< HEAD
-    <section id="hero" className="relative overflow-hidden pt-16 lg:pt-20">
-      <HeroFuturistic
-        title={buildTitle()}
-        subtitle={t("hero.subtitle")}
-      />
-=======
     <section className="relative min-h-screen overflow-hidden bg-white dark:bg-[#0B123B]">
       {/* 3D Background - positioned on the right */}
       <div className="absolute right-0 top-0 w-full h-full lg:w-[60%]">
@@ -214,7 +186,6 @@ export function HeroSection() {
           <ChevronDown className="h-6 w-6 text-[#202755]/50 dark:text-white/50" />
         </motion.div>
       </motion.div>
->>>>>>> f304a7ebf87deb00537bfda1a682323e4ed708af
     </section>
   );
 }
