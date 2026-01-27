@@ -1,89 +1,18 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Car, Wheat, Factory, Hotel } from "lucide-react";
+import { ChevronDown, Car, Wheat, Factory, Hotel, Building2, Users, Award, TrendingUp, Headphones, Zap, Users2, Handshake, FileText, Phone, Mail } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 interface MegaMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onMouseEnter?: () => void;
-  variant: "produtos" | "solucoes" | "sobre" | "conteudo" | null;
+  variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | null;
 }
 
 export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuProps) {
   const { t } = useI18n();
 
   if (!variant || !isOpen) return null;
-
-  const produtosContent = {
-    title: "Produtos",
-    columns: [
-      {
-        title: "Infraestrutura",
-        items: [
-          {
-            title: "Cloud Corporativa",
-            description: "Infraestrutura própria de alta performance para sistemas críticos",
-            href: "#cloud",
-          },
-          {
-            title: "Alta Disponibilidade",
-            description: "Redundância e failover para continuidade operacional",
-            href: "#disponibilidade",
-          },
-          {
-            title: "Escalabilidade",
-            description: "Crescimento sob demanda sem perda de performance",
-            href: "#escalabilidade",
-          },
-        ],
-      },
-      {
-        title: "Banco de Dados",
-        items: [
-          {
-            title: "Administração de DBA",
-            description: "Gestão especializada 24x7 de bancos de dados",
-            href: "#dba",
-          },
-          {
-            title: "Otimização",
-            description: "Tuning contínuo e maximização de eficiência",
-            href: "#otimizacao",
-          },
-          {
-            title: "Migração",
-            description: "Migrações complexas com impacto mínimo",
-            href: "#migracao",
-          },
-        ],
-      },
-      {
-        title: "Segurança",
-        items: [
-          {
-            title: "LGPD e Compliance",
-            description: "Estrutura dedicada com DPO e práticas regulatórias",
-            href: "#lgpd",
-          },
-          {
-            title: "Backup e Criptografia",
-            description: "Proteção total de dados com múltiplas camadas",
-            href: "#backup",
-          },
-          {
-            title: "Monitoramento",
-            description: "Monitoramento contínuo e testes regulares",
-            href: "#monitoramento",
-          },
-        ],
-      },
-    ],
-    footerLinks: [
-      { title: "Ver todos os produtos", href: "#produtos" },
-      { title: "Solicitar demonstração", href: "#demo" },
-      { title: "Comparar planos", href: "#planos" },
-    ],
-  };
 
   const solucoesContent = {
     title: "Soluções",
@@ -114,19 +43,19 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
           {
             title: "Hotelaria",
             description: "Soluções especializadas para o setor hoteleiro",
-            href: "/solucoes#hotelaria",
+            href: "/hotelaria",
             icon: Hotel,
           },
           {
             title: "Automotivo",
             description: "Infraestrutura para indústria automotiva",
-            href: "/solucoes#automotivo",
+            href: "/automotivo",
             icon: Car,
           },
           {
             title: "Agronegócio",
             description: "Tecnologia para o campo e agronegócio",
-            href: "/solucoes#agro",
+            href: "/agronegocio",
             icon: Wheat,
           },
           {
@@ -140,16 +69,6 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
       {
         title: "Por Tipo",
         items: [
-          {
-            title: "ERP em Nuvem",
-            description: "Ambientes otimizados para ERPs",
-            href: "/solucoes#erp",
-          },
-          {
-            title: "CRM em Nuvem",
-            description: "Infraestrutura para CRMs",
-            href: "/solucoes#crm",
-          },
           {
             title: "Aplicações Empresariais",
             description: "Sistemas corporativos críticos",
@@ -172,39 +91,54 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
         title: "Quem Somos",
         items: [
           {
-            title: "Sobre Nós",
+            title: "Institucional",
             description: "Mais de 16 anos de experiência em nuvem corporativa",
-            href: "/sobre",
+            href: "/quem-somos#institucional",
           },
           {
-            title: "Nossa História",
-            description: "Construindo infraestrutura própria desde o zero",
-            href: "/sobre#historia",
+            title: "Sócios",
+            description: "Conheça nossos sócios e fundadores",
+            href: "/quem-somos#socios",
           },
           {
-            title: "Nossa Equipe",
+            title: "Equipe",
             description: "Especialistas experientes em infraestrutura e DBA",
-            href: "/sobre#equipe",
+            href: "/quem-somos#equipe",
           },
         ],
       },
       {
-        title: "Diferenciais",
+        title: "O Que Fazemos",
         items: [
           {
-            title: "Infraestrutura Própria",
-            description: "Data centers Tier III em Vinhedo (SP)",
-            href: "#infraestrutura",
+            title: "Cloud Builder",
+            description: "Infraestrutura própria de alta performance",
+            href: "/o-que-fazemos#cloud-builder",
           },
           {
-            title: "Performance Superior",
-            description: "Comparável ou superior a grandes nuvens públicas",
-            href: "#performance",
+            title: "DBA Time",
+            description: "Tunning e administração de bancos de dados",
+            href: "/o-que-fazemos#dba-time",
           },
           {
-            title: "Suporte Humano 24x7",
-            description: "Sem chatbots, apenas especialistas",
-            href: "#suporte",
+            title: "Suporte Técnico",
+            description: "Suporte humano 24x7 ultra rápido",
+            href: "/o-que-fazemos#suporte-tecnico",
+          },
+          {
+            title: "Backup",
+            description: "Proteção completa de dados críticos",
+            href: "/o-que-fazemos#backup",
+          },
+        ],
+      },
+      {
+        title: "Como Fazemos",
+        items: [
+          {
+            title: "Diferenciais",
+            description: "O que nos torna únicos no mercado",
+            href: "/como-fazemos#diferenciais",
           },
         ],
       },
@@ -220,45 +154,133 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
     title: "Conteúdo",
     columns: [
       {
-        title: "Recursos",
-        description: "Fique informado sobre insights da indústria, tendências e tudo sobre a MDS Cloud",
+        title: "Conteúdo",
+        description: "Acesse nossos recursos, depoimentos e informações importantes",
         items: [
-          { title: "Blog", href: "#blog" },
-          { title: "Relatórios e Guias", href: "#relatorios" },
-          { title: "Webinars", href: "#webinars" },
-          { title: "Glossário", href: "#glossario" },
+          { 
+            title: "Blog", 
+            description: "Artigos, insights e novidades sobre tecnologia e nuvem",
+            href: "/blog" 
+          },
+          { 
+            title: "Depoimentos", 
+            description: "O que nossos clientes falam sobre a MDS Cloud",
+            href: "/depoimentos" 
+          },
+          { 
+            title: "Depoimentos em Vídeo", 
+            description: "Depoimentos em vídeo de nossos clientes",
+            href: "/depoimentos-video" 
+          },
+          { 
+            title: "Políticas de Privacidade", 
+            description: "Nossas políticas e termos de privacidade",
+            href: "/politicas-privacidade" 
+          },
+        ],
+      },
+    ],
+    footerLinks: [],
+  };
+
+  const parceirosContent = {
+    title: "Parceiros",
+    columns: [
+      {
+        title: "Níveis de Parceria",
+        items: [
+          {
+            title: "Level 1 - Empresas de Software",
+            description: "Modelo comercial para empresas de software que revendem nossa solução",
+            href: "/parceiros#levels",
+            icon: Building2,
+          },
+          {
+            title: "Level 2 - Consultoria",
+            description: "Modelo para consultorias que indicam leads e oportunidades",
+            href: "/parceiros#levels",
+            icon: Users,
+          },
+          {
+            title: "Level 3 - Consultorias Premium",
+            description: "Modelo premium para consultorias estratégicas",
+            href: "/parceiros#levels",
+            icon: Award,
+          },
         ],
       },
       {
-        title: "Cases",
+        title: "Benefícios",
         items: [
-          { title: "Cases de Sucesso", href: "/#cases" },
-          { title: "Depoimentos em Vídeo", href: "/#depoimentos-video" },
-          { title: "Depoimentos em Texto", href: "/#depoimentos" },
-          { title: "Benchmarks", href: "/#benchmarks" },
+          {
+            title: "Aumento dos ganhos proporcionais",
+            description: "Comissões atrativas e crescimento junto com a MDS Cloud",
+            href: "/parceiros#benefits",
+            icon: TrendingUp,
+          },
+          {
+            title: "Suporte técnico integral",
+            description: "Suporte técnico completo para seus clientes, 24x7",
+            href: "/parceiros#benefits",
+            icon: Headphones,
+          },
+          {
+            title: "Acompanhamento do ciclo de vendas",
+            description: "Apoio completo durante todo o processo de vendas",
+            href: "/parceiros#benefits",
+            icon: Users2,
+          },
+          {
+            title: "Política de gestão de Leads",
+            description: "Sistema estruturado para gestão de leads e oportunidades",
+            href: "/parceiros#benefits",
+            icon: Zap,
+          },
         ],
       },
       {
-        title: "Ajuda",
+        title: "Processo",
         items: [
-          { title: "Central de Ajuda", href: "#ajuda" },
-          { title: "Documentação", href: "#documentacao" },
-          { title: "Status dos Serviços", href: "#status" },
+          {
+            title: "Seleção do Partner & Nível",
+            description: "Avaliamos seu perfil e definimos o nível de parceria ideal",
+            href: "/parceiros#process",
+          },
+          {
+            title: "Contrato",
+            description: "Assinatura do contrato de parceria",
+            href: "/parceiros#process",
+          },
+          {
+            title: "CRM User",
+            description: "Acesso ao nosso CRM para gestão de leads e oportunidades",
+            href: "/parceiros#process",
+          },
+          {
+            title: "Mapeamento das contas/território",
+            description: "Definimos o território e contas que você irá atuar",
+            href: "/parceiros#process",
+          },
+          {
+            title: "Atuação & Agendamentos",
+            description: "Início da atuação comercial com suporte da MDS Cloud",
+            href: "/parceiros#process",
+          },
         ],
       },
     ],
     footerLinks: [
-      { title: "Tours interativos", href: "#tours" },
-      { title: "Veja nossos preços", href: "#precos" },
-      { title: "Solicitar demonstração", href: "#demo" },
+      { title: "Falar com Comercial", href: "/parceiros#cta" },
+      { title: "Enviar Proposta", href: "/parceiros#cta" },
+      { title: "Política de Parceria", href: "/parceiros#policy" },
     ],
   };
 
   const content = {
-    produtos: produtosContent,
     solucoes: solucoesContent,
     sobre: sobreContent,
     conteudo: conteudoContent,
+    parceiros: parceirosContent,
   }[variant];
 
   return (

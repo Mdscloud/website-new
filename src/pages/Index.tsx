@@ -1,12 +1,9 @@
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
-import { PartnersCarousel } from "@/components/PartnersCarousel";
-import { ServicesSection } from "@/components/ServicesSection";
+import { Services3DSection } from "@/components/Services3DSection";
+import { AnimatedTestimonialsSection } from "@/components/AnimatedTestimonialsSection";
 import { DifferentialsSection } from "@/components/DifferentialsSection";
-import { MetricsSection } from "@/components/MetricsSection";
 import { TeamSection } from "@/components/TeamSection";
-import { VideoTestimonialsSection } from "@/components/VideoTestimonialsSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
@@ -17,13 +14,10 @@ const Index = () => {
       <Header />
       <main className="overflow-x-hidden">
         <HeroSection />
-        <PartnersCarousel />
-        <ServicesSection />
+        <Services3DSection />
+        <AnimatedTestimonialsSection />
         <DifferentialsSection />
-        <MetricsSection />
         <TeamSection />
-        <VideoTestimonialsSection />
-        <TestimonialsSection />
         <CTASection />
       </main>
       <Footer />

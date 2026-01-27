@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
+import { PartnersCarousel } from "@/components/PartnersCarousel";
 
 export function HeroSection() {
   const { t } = useI18n();
@@ -12,7 +13,7 @@ export function HeroSection() {
       <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#5a7aff]/25 via-[#5a7aff]/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4 pt-24 md:pt-32">
         <div className="mx-auto max-w-4xl text-center">
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -26,7 +27,7 @@ export function HeroSection() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-60">
             <Button 
               size="lg"
               className="bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-base font-semibold rounded-lg transition-all duration-300 group"
@@ -44,6 +45,11 @@ export function HeroSection() {
             </Button>
           </div>
         </div>
+      </div>
+
+      {/* Partners Carousel na parte inferior do hero - sem camadas extras */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+        <PartnersCarousel isInHero={true} />
       </div>
     </section>
   );

@@ -325,4 +325,57 @@
     animation: scroll 40s linear infinite;
     will-change: transform;
   }
+
+  /* Holographic Card Effect */
+  .holographic-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .holographic-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      hsl(230, 47%, 23%),
+      hsl(232, 70%, 8%),
+      rgba(0, 0, 0, 0.8),
+      hsl(230, 47%, 23%),
+      hsl(232, 70%, 8%)
+    );
+    background-size: 400% 400%;
+    background-position: var(--bg-x, 50%) var(--bg-y, 50%);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .holographic-card:hover::before {
+    opacity: 1;
+    animation: gradient-shift 1.5s ease infinite;
+  }
+
+  .holographic-card:hover .holo-glow {
+    opacity: 1;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }

@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { Shield, Lock, Server, Cloud, HardDrive, CheckCircle2, Gift, ArrowRight, Phone, Calendar, Zap, Globe, Gauge, Award, Users, Rocket, BarChart3, Clock, Settings } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
+import { PartnersCarousel } from "@/components/PartnersCarousel";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import heroImage from "@/assets/about/sobre-o-que-fazemos.jpg";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -28,6 +31,7 @@ const scaleIn = {
 };
 
 export default function CloudSolutions() {
+
   const mainFeatures = [
     {
       icon: Zap,
@@ -96,59 +100,51 @@ export default function CloudSolutions() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
       <main className="overflow-x-hidden">
-        {/* Animated Background */}
+        {/* Animated Background Grid */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background"></div>
-          
-          {/* Floating particles - adapted for light theme */}
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.1, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
         </div>
 
         <div className="relative z-10 min-h-screen">
-          {/* Hero Section */}
-          <section className="relative py-20 lg:py-32 overflow-hidden">
-            {/* Animated gradient orbs - adapted for light theme */}
+        {/* Hero Section */}
+          <section className="relative pt-20 lg:pt-32 pb-6 lg:pb-10 overflow-hidden">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${heroImage})`,
+              }}
+            />
+            
+            {/* Overlay claro para legibilidade */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+            
+            {/* Animated orbs */}
             <motion.div 
+              layout={false}
               animate={{ 
                 scale: [1, 1.2, 1],
-                rotate: [0, 90, 0],
                 opacity: [0.2, 0.4, 0.2]
               }}
-              transition={{ duration: 10, repeat: Infinity }}
-              className="absolute top-20 right-10 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[130px] pointer-events-none"
+              transition={{ duration: 8, repeat: Infinity }}
+              className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none z-0"
             ></motion.div>
             <motion.div 
+              layout={false}
               animate={{ 
                 scale: [1, 1.3, 1],
-                rotate: [0, -90, 0],
                 opacity: [0.15, 0.35, 0.15]
               }}
-              transition={{ duration: 12, repeat: Infinity, delay: 1 }}
-              className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[130px] pointer-events-none"
+              transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+              className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none z-0"
             ></motion.div>
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <motion.div
+            <motion.div
+                  layout={false}
                   initial="hidden"
                   animate="visible"
                   variants={staggerContainer}
@@ -174,12 +170,12 @@ export default function CloudSolutions() {
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg">
                       <Phone className="mr-2 h-5 w-5" />
-                      Falar com Especialista
-                    </Button>
+                  Falar com Especialista
+                </Button>
                     <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
                       <Calendar className="mr-2 h-5 w-5" />
-                      Solicitar POC de 30 dias
-                    </Button>
+                  Solicitar POC de 30 dias
+                </Button>
                   </motion.div>
                   
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
@@ -199,6 +195,7 @@ export default function CloudSolutions() {
                 </motion.div>
 
                 <motion.div
+                  layout={false}
                   initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
@@ -210,12 +207,14 @@ export default function CloudSolutions() {
                       {[1, 2, 3, 4].map((item, index) => (
                         <motion.div
                           key={item}
+                          layout={false}
                           initial={{ opacity: 0, x: 50 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.2 }}
                           className="relative"
                         >
                           <motion.div
+                            layout={false}
                             animate={{
                               boxShadow: [
                                 `0 0 20px hsl(var(--primary) / 0.2)`,
@@ -259,6 +258,7 @@ export default function CloudSolutions() {
 
                     {/* Floating stats */}
                     <motion.div
+                      layout={false}
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
                       className="absolute -top-6 -right-6 bg-card p-4 rounded-xl border border-border shadow-xl"
@@ -269,6 +269,7 @@ export default function CloudSolutions() {
                     </motion.div>
 
                     <motion.div
+                      layout={false}
                       animate={{ y: [0, 10, 0] }}
                       transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
                       className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl border border-border shadow-xl"
@@ -281,10 +282,15 @@ export default function CloudSolutions() {
                 </motion.div>
               </div>
             </div>
+            
+            {/* Partners Carousel logo abaixo do hero - bem próximo */}
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+              <PartnersCarousel isInHero={true} />
+            </div>
           </section>
 
           {/* Main Features */}
-          <section className="py-20 relative">
+          <section className="pt-16 pb-20 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial="hidden"
@@ -337,18 +343,18 @@ export default function CloudSolutions() {
                     </Card>
                   </motion.div>
                 ))}
-              </motion.div>
-            </div>
-          </section>
+            </motion.div>
+          </div>
+        </section>
 
           {/* Why Choose Section */}
           <section className="py-20 relative bg-card/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <motion.div
+            <motion.div
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+              viewport={{ once: true }}
                   variants={staggerContainer}
                 >
                   <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
@@ -372,8 +378,8 @@ export default function CloudSolutions() {
                       </motion.div>
                     ))}
                   </div>
-                </motion.div>
-                
+            </motion.div>
+
                 <motion.div
                   initial={{ opacity: 0, x: 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -534,8 +540,8 @@ export default function CloudSolutions() {
                         </CardDescription>
                       </CardHeader>
                     </Card>
-                  </motion.div>
-                ))}
+                </motion.div>
+              ))}
               </motion.div>
             </div>
           </section>
@@ -580,8 +586,8 @@ export default function CloudSolutions() {
                   </motion.div>
                 ))}
               </motion.div>
-            </div>
-          </section>
+          </div>
+        </section>
 
           {/* CTA Section */}
           <section className="py-20 relative overflow-hidden bg-card/30">
@@ -677,13 +683,13 @@ export default function CloudSolutions() {
                     Sem cartão de crédito • Setup em até 24h • Suporte incluso
                   </p>
                 </div>
-              </motion.div>
+                </motion.div>
             </div>
           </section>
-        </div>
+          </div>
       </main>
       <div className="relative z-20">
-        <Footer />
+      <Footer />
       </div>
       <FloatingContact />
     </div>

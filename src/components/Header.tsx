@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,21 +11,41 @@ import mdsLogo from "@/assets/mds-logo.png";
 export function Header() {
   const { t } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeMegaMenu, setActiveMegaMenu] = useState<"produtos" | "solucoes" | "sobre" | "conteudo" | null>(null);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "sobre" | "conteudo" | "parceiros" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          const shouldBeScrolled = scrollPosition > 50;
+          
+          // Só atualiza o estado se realmente mudou
+          if (isScrolledRef.current !== shouldBeScrolled) {
+            isScrolledRef.current = shouldBeScrolled;
+            setIsScrolled(shouldBeScrolled);
+          }
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Verifica o estado inicial
+    isScrolledRef.current = window.scrollY > 50;
+    setIsScrolled(isScrolledRef.current);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMegaMenuHover = (variant: "produtos" | "solucoes" | "sobre" | "conteudo" | null) => {
+  const handleMegaMenuHover = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | null) => {
     // Cancela qualquer timeout pendente
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -34,7 +54,7 @@ export function Header() {
     setActiveMegaMenu(variant);
   };
 
-  const handleMegaMenuLeave = (variant: "produtos" | "solucoes" | "sobre" | "conteudo") => {
+  const handleMegaMenuLeave = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros") => {
     // Delay para permitir movimento do mouse para o menu
     closeTimeoutRef.current = setTimeout(() => {
       if (activeMegaMenu === variant) {
@@ -70,31 +90,6 @@ export function Header() {
 
           {/* Desktop Navigation - MegaMenu Style */}
           <div className="hidden items-center gap-6 lg:flex">
-            {/* Produtos */}
-            <div 
-              className="relative"
-              onMouseEnter={() => handleMegaMenuHover("produtos")}
-              onMouseLeave={() => handleMegaMenuLeave("produtos")}
-            >
-              <div className="relative pb-2">
-                <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
-                  activeMegaMenu === "produtos" 
-                    ? "text-primary" 
-                    : "text-foreground hover:text-primary"
-                }`}>
-                  Produtos
-                  {activeMegaMenu === "produtos" ? (
-                    <ChevronUp className="h-3 w-3" />
-                  ) : (
-                    <ChevronDown className="h-3 w-3" />
-                  )}
-                </button>
-                {activeMegaMenu === "produtos" && (
-                  <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
-                )}
-              </div>
-            </div>
-
             {/* Soluções */}
             <div 
               className="relative"
@@ -170,6 +165,31 @@ export function Header() {
               </div>
             </div>
 
+            {/* Parceiros */}
+            <div 
+              className="relative"
+              onMouseEnter={() => handleMegaMenuHover("parceiros")}
+              onMouseLeave={() => handleMegaMenuLeave("parceiros")}
+            >
+              <div className="relative pb-2">
+                <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                  activeMegaMenu === "parceiros" 
+                    ? "text-primary" 
+                    : "text-foreground hover:text-primary"
+                }`}>
+                  Parceiros
+                  {activeMegaMenu === "parceiros" ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  )}
+                </button>
+                {activeMegaMenu === "parceiros" && (
+                  <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
+                )}
+              </div>
+            </div>
+
             {/* Contato */}
             <div className="relative">
               <div className="relative pb-2">
@@ -224,21 +244,6 @@ export function Header() {
             <div className="container mx-auto px-4 py-4">
               <div className="flex flex-col gap-4">
                 <button
-                  onClick={() => setActiveMegaMenu(activeMegaMenu === "produtos" ? null : "produtos")}
-                  className="flex items-center justify-between text-sm font-medium text-foreground"
-                >
-                  Produtos
-                  <ChevronDown className={`h-4 w-4 transition-transform ${activeMegaMenu === "produtos" ? "rotate-180" : ""}`} />
-                </button>
-                {activeMegaMenu === "produtos" && (
-                  <div className="space-y-2 pl-4">
-                    <a href="#cloud" className="block text-xs text-foreground">Cloud Corporativa</a>
-                    <a href="#dba" className="block text-xs text-foreground">Banco de Dados</a>
-                    <a href="#seguranca" className="block text-xs text-foreground">Segurança</a>
-                  </div>
-                )}
-                
-                <button
                   onClick={() => setActiveMegaMenu(activeMegaMenu === "solucoes" ? null : "solucoes")}
                   className="flex items-center justify-between text-sm font-medium text-foreground"
                 >
@@ -256,6 +261,21 @@ export function Header() {
 
                 <a href="/sobre" className="text-sm font-medium text-foreground">Sobre</a>
                 <a href="#conteudo" className="text-sm font-medium text-foreground">Conteúdo</a>
+                <button
+                  onClick={() => setActiveMegaMenu(activeMegaMenu === "parceiros" ? null : "parceiros")}
+                  className="flex items-center justify-between text-sm font-medium text-foreground"
+                >
+                  Parceiros
+                  <ChevronDown className={`h-4 w-4 transition-transform ${activeMegaMenu === "parceiros" ? "rotate-180" : ""}`} />
+                </button>
+                {activeMegaMenu === "parceiros" && (
+                  <div className="space-y-2 pl-4">
+                    <a href="/parceiros#levels" className="block text-xs text-foreground">Níveis de Parceria</a>
+                    <a href="/parceiros#benefits" className="block text-xs text-foreground">Benefícios</a>
+                    <a href="/parceiros#process" className="block text-xs text-foreground">Processo</a>
+                    <a href="/parceiros#policy" className="block text-xs text-foreground">Política</a>
+                  </div>
+                )}
                 <a href="/contato" className="text-sm font-medium text-foreground">Contato</a>
                 <Button variant="default" className="mt-2 w-full text-xs">
                   Fale com a equipe de vendas
