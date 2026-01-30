@@ -7,6 +7,7 @@ import hostHotelPhoto from "@/assets/testimonials/host-hotel.png";
 import aliarePhoto from "@/assets/testimonials/aliare.png";
 import hspotPhoto from "@/assets/testimonials/hspot.png";
 import greenAutomoveisPhoto from "@/assets/testimonials/green-automoveis.png";
+import celsoPhoto from "@/assets/testimonials/celso.jpeg";
 
 const testimonials = [
   {
@@ -57,6 +58,13 @@ const testimonials = [
     name: "Eduardo Marques",
     designation: "Gerente de TI no Grupo Green - Automóveis",
     src: greenAutomoveisPhoto,
+  },
+  {
+    quote:
+      "A MDS atendeu completamente nossos requisitos, oferecendo uma camada de proteção contra invasões ou vazamentos de dados, e garantindo nenhuma indisponibilidade de dados ao longo de cinco anos de parceria. A resposta imediata às necessidades de escalabilidade, como aumento de memória, expansão de disco ou novos servidores, reforça a qualidade do suporte. Após cinco anos de parceria, podemos afirmar com total segurança que estamos muito satisfeitos com os serviços da MDS.",
+    name: "Celso Lurk",
+    designation: "Diretor de Operações na Sight Business Intelligence",
+    src: celsoPhoto,
   },
 ];
 

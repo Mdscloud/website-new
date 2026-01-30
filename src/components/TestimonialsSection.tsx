@@ -20,6 +20,12 @@ const testimonials = [
     role: "Diretor de Operações",
     company: "Logística Express",
   },
+  {
+    quote: "A MDS atendeu completamente nossos requisitos, oferecendo uma camada de proteção contra invasões ou vazamentos de dados, e garantindo nenhuma indisponibilidade de dados ao longo de cinco anos de parceria. A resposta imediata às necessidades de escalabilidade reforça a qualidade do suporte. Após cinco anos de parceria, podemos afirmar com total segurança que estamos muito satisfeitos com os serviços da MDS.",
+    author: "Celso Lurk",
+    role: "Diretor de Operações",
+    company: "Sight Business Intelligence",
+  },
 ];
 
 const clients = [

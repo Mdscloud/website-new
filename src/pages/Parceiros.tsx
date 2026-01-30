@@ -276,24 +276,28 @@ const Parceiros = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg relative overflow-hidden group">
-                      <motion.div
-                        className="absolute inset-0 bg-white/20"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <Phone className="mr-2 h-5 w-5 relative z-10" />
-                      <span className="relative z-10">Falar com Comercial</span>
+                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg relative overflow-hidden group" asChild>
+                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                        <motion.div
+                          className="absolute inset-0 bg-white/20"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "100%" }}
+                          transition={{ duration: 0.5 }}
+                        />
+                        <Phone className="mr-2 h-5 w-5 relative z-10" />
+                        <span className="relative z-10">Falar com Comercial</span>
+                      </a>
                     </Button>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                      <Mail className="mr-2 h-5 w-5" />
-                      Enviar Proposta
+                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
+                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                        <Mail className="mr-2 h-5 w-5" />
+                        Enviar Proposta
+                      </a>
                     </Button>
                   </motion.div>
                 </motion.div>
@@ -807,24 +811,28 @@ const Parceiros = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg relative overflow-hidden group">
-                      <motion.div
-                        className="absolute inset-0 bg-white/20"
-                        initial={{ x: "-100%" }}
-                        whileHover={{ x: "100%" }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <Phone className="mr-2 h-5 w-5 relative z-10" />
-                      <span className="relative z-10">+55 11 2577.7899</span>
+                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg relative overflow-hidden group" asChild>
+                      <a href="tel:+551125777899" target="_blank" rel="noopener noreferrer">
+                        <motion.div
+                          className="absolute inset-0 bg-white/20"
+                          initial={{ x: "-100%" }}
+                          whileHover={{ x: "100%" }}
+                          transition={{ duration: 0.5 }}
+                        />
+                        <Phone className="mr-2 h-5 w-5 relative z-10" />
+                        <span className="relative z-10">+55 11 2577.7899</span>
+                      </a>
                     </Button>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                      <MessageCircle className="mr-2 h-5 w-5" />
-                      WhatsApp
+                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
+                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                        <MessageCircle className="mr-2 h-5 w-5" />
+                        WhatsApp
+                      </a>
                     </Button>
                   </motion.div>
                   <motion.div

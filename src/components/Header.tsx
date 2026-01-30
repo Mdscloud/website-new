@@ -6,15 +6,21 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { useI18n } from "@/lib/i18n";
 import { MegaMenu } from "@/components/MegaMenu";
-import mdsLogo from "@/assets/mds-logo.png";
+import { useTheme } from "next-themes";
+import logoNormal from "@/assets/logo-normal.png";
+import logoBranco from "@/assets/logo-branco.png";
 
 export function Header() {
   const { t } = useI18n();
+  const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "sobre" | "conteudo" | "parceiros" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isScrolledRef = useRef(false);
+  
+  // Seleciona o logo baseado no tema (usa logo normal como padrão durante hidratação)
+  const currentLogo = theme === "dark" ? logoBranco : logoNormal;
 
   useEffect(() => {
     let ticking = false;
@@ -82,7 +88,7 @@ export function Header() {
           {/* Logo */}
           <a href="/" className="flex items-center" onClick={() => setActiveMegaMenu(null)}>
             <img 
-              src={mdsLogo} 
+              src={currentLogo} 
               alt="MDS Cloud Solutions" 
               className="h-8 w-auto md:h-10"
             />
@@ -207,11 +213,15 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <LanguageSelector />
             <ThemeToggle />
-            <Button variant="outline" size="sm" className="text-xs">
-              Avaliação gratuita
+            <Button variant="outline" size="sm" className="text-xs" asChild>
+              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                Avaliação gratuita
+              </a>
             </Button>
-            <Button variant="default" size="sm" className="text-xs">
-              Fale com a equipe de vendas
+            <Button variant="default" size="sm" className="text-xs" asChild>
+              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                Falar com Especialista
+              </a>
             </Button>
           </div>
 
@@ -277,8 +287,10 @@ export function Header() {
                   </div>
                 )}
                 <a href="/contato" className="text-sm font-medium text-foreground">Contato</a>
-                <Button variant="default" className="mt-2 w-full text-xs">
-                  Fale com a equipe de vendas
+                <Button variant="default" className="mt-2 w-full text-xs" asChild>
+                  <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                    Falar com Especialista
+                  </a>
                 </Button>
               </div>
             </div>

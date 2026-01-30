@@ -4,18 +4,18 @@ import { HeartHandshake, Clock, Shield, Users, Building2, Laptop, Factory, Phone
 const differentials = [
   {
     icon: HeartHandshake,
-    title: "Atendimento Humanizado",
-    description: "Suporte rápido e personalizado. Você fala com pessoas reais que entendem seu negócio, não com robôs.",
+    title: "Atendimento humano, técnico e direto",
+    description: "Você fala com especialistas que conhecem sua infraestrutura, seu banco de dados e o impacto real de cada decisão no seu negócio. Nada de robôs, filas infinitas ou respostas genéricas.",
   },
   {
     icon: Clock,
-    title: "SLA Fora da Curva",
-    description: "Tempo de resposta imbatível porque nosso compromisso é com sua satisfação, não com contratos longos.",
+    title: "SLA real, com resposta em minutos",
+    description: "Plantão 24×7 com equipe própria, tempo de resposta rápido e atuação direta na causa do problema, não apenas no sintoma. Aqui, SLA não é marketing. É operação.",
   },
   {
     icon: Shield,
-    title: "Sem Cláusula de Rescisão",
-    description: "Você pode encerrar a qualquer momento. Essa liberdade nos obriga a entregar excelência todos os dias.",
+    title: "Liberdade Contratual",
+    description: "Sem cláusula de rescisão porque acreditamos na qualidade do que entregamos. Se não performar como prometido, você é livre para encerrar a qualquer momento.",
   },
 ];
 
@@ -66,11 +66,10 @@ export function DifferentialsSection() {
             Por que a MDS Cloud?
           </span>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            Compromisso que você <span className="text-gradient">sente na prática</span>
+            Nuvem especializada de <span className="text-gradient">alta performance</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Nossa maior prova de qualidade é a liberdade que damos aos nossos clientes. 
-            Se não entregarmos excelência, você simplesmente pode ir embora.
+            Equipe de especialistas focada em prover a melhor infraestrutura para seu ERP ou sistema corporativo.
           </p>
         </motion.div>
 

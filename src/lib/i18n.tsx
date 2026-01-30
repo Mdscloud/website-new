@@ -35,7 +35,7 @@ export const translations: Translations = {
   "hero.title.highlight": { pt: "Alta Performance", en: "High Performance", es: "Alto Rendimiento" },
   "hero.title.2": { pt: "que seu Negócio Exige", en: "Cloud Your Business Demands", es: "que tu Negocio Exige" },
   "hero.subtitle": { pt: "Cloud Computing, Backup em Nuvem, DBA Remoto e ERP SaaS. Infraestrutura 100% gerenciada com a estabilidade e performance que empresas de alta demanda precisam.", en: "Cloud Computing, Cloud Backup, Remote DBA and ERP SaaS. 100% managed infrastructure with the stability and performance that high-demand businesses need.", es: "Cloud Computing, Backup en la Nube, DBA Remoto y ERP SaaS. Infraestructura 100% gestionada con la estabilidad y rendimiento que las empresas de alta demanda necesitan." },
-  "hero.cta.primary": { pt: "Falar com Especialista", en: "Talk to Specialist", es: "Hablar con Especialista" },
+  "hero.cta.primary": { pt: "Solicite Cotação", en: "Request Quote", es: "Solicitar Cotización" },
   "hero.cta.secondary": { pt: "Teste Grátis 30 Dias", en: "Free 30-Day Trial", es: "Prueba Gratis 30 Días" },
   "hero.badge.iops": { pt: "30.000+ IOPS", en: "30,000+ IOPS", es: "30.000+ IOPS" },
   "hero.badge.support": { pt: "Suporte 24x7", en: "24x7 Support", es: "Soporte 24x7" },
@@ -79,8 +79,8 @@ export const translations: Translations = {
   
   // Team
   "team.subtitle": { pt: "Nossa Equipe", en: "Our Team", es: "Nuestro Equipo" },
-  "team.title.1": { pt: "Pessoas reais,", en: "Real people,", es: "Personas reales," },
-  "team.title.2": { pt: "resultados reais", en: "real results", es: "resultados reales" },
+  "team.title.1": { pt: "Time de Especialistas,", en: "Team of Specialists,", es: "Equipo de Especialistas," },
+  "team.title.2": { pt: "atendimento ultra-rápido", en: "ultra-fast service", es: "atención ultra-rápida" },
   "team.description.1": { pt: "Por trás de cada servidor, cada backup, cada migração, existe uma equipe apaixonada por tecnologia e comprometida com seu sucesso. Não somos apenas fornecedores — somos parceiros.", en: "Behind every server, every backup, every migration, there's a team passionate about technology and committed to your success. We're not just vendors — we're partners.", es: "Detrás de cada servidor, cada backup, cada migración, existe un equipo apasionado por la tecnología y comprometido con tu éxito. No somos solo proveedores — somos socios." },
   "team.description.2": { pt: "Nossa equipe reúne especialistas certificados em Oracle, VMware, Microsoft e AWS. Cada membro traz anos de experiência em projetos críticos, garantindo que sua infraestrutura esteja sempre em boas mãos.", en: "Our team brings together certified specialists in Oracle, VMware, Microsoft and AWS. Each member brings years of experience in critical projects, ensuring your infrastructure is always in good hands.", es: "Nuestro equipo reúne especialistas certificados en Oracle, VMware, Microsoft y AWS. Cada miembro aporta años de experiencia en proyectos críticos, garantizando que tu infraestructura esté siempre en buenas manos." },
   "team.quote": { pt: "A tecnologia conecta, mas são as pessoas que fazem a diferença.", en: "Technology connects, but it's people who make the difference.", es: "La tecnología conecta, pero son las personas las que hacen la diferencia." },

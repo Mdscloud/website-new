@@ -2,12 +2,31 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { PartnersCarousel } from "@/components/PartnersCarousel";
+import { useTheme } from "next-themes";
+import backgroundHeroLogo from "@/assets/background-hero.png";
+import backgroundHeroLogoBranco from "@/assets/background-hero-branco.png";
 
 export function HeroSection() {
   const { t } = useI18n();
+  const { theme } = useTheme();
+  
+  // Seleciona o logo baseado no tema (usa logo normal como padrão durante hidratação)
+  const currentBackgroundLogo = theme === "dark" ? backgroundHeroLogoBranco : backgroundHeroLogo;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Logo de background - bem sutil e centralizado */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{
+          backgroundImage: `url(${currentBackgroundLogo})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          opacity: 0.08,
+        }}
+      />
+      
       {/* Prominent blue gradient in bottom right - using brand blue #202755, more visible like the reference */}
       <div className="absolute bottom-0 right-0 w-[900px] h-[900px] bg-gradient-to-tl from-[#202755]/35 via-[#202755]/25 from-[#5a7aff]/30 to-transparent rounded-full blur-[180px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#5a7aff]/25 via-[#5a7aff]/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
@@ -31,17 +50,23 @@ export function HeroSection() {
             <Button 
               size="lg"
               className="bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-base font-semibold rounded-lg transition-all duration-300 group"
+              asChild
             >
-              {t("hero.cta.primary")}
-              <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                {t("hero.cta.primary")}
+                <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
             </Button>
             <Button 
               size="lg"
               variant="outline"
               className="border border-foreground/20 bg-background hover:bg-foreground/5 px-8 py-6 text-base font-semibold rounded-lg transition-all duration-300 group"
+              asChild
             >
-              {t("hero.cta.secondary")}
-              <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                {t("hero.cta.secondary")}
+                <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
             </Button>
           </div>
         </div>

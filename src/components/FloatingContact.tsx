@@ -8,7 +8,7 @@ const contactOptions = [
     icon: MessageCircle,
     label: "WhatsApp",
     description: "Resposta imediata",
-    href: "https://wa.me/5511999999999",
+    href: "https://wa.me/5511991664976",
     color: "bg-green-500 hover:bg-green-600",
   },
   {

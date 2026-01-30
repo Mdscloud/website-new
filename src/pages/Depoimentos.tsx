@@ -45,6 +45,13 @@ const Depoimentos = () => {
       text: "A migração foi perfeita, sem interrupções. A equipe da MDS Cloud é extremamente profissional e conhecedora.",
       rating: 5,
     },
+    {
+      name: "Celso Lurk",
+      company: "Sight Business Intelligence",
+      role: "Diretor de Operações",
+      text: "A MDS atendeu completamente nossos requisitos, oferecendo uma camada de proteção contra invasões ou vazamentos de dados, e garantindo nenhuma indisponibilidade de dados ao longo de cinco anos de parceria. A resposta imediata às necessidades de escalabilidade reforça a qualidade do suporte. Após cinco anos de parceria, podemos afirmar com total segurança que estamos muito satisfeitos com os serviços da MDS.",
+      rating: 5,
+    },
   ];
 
   return (

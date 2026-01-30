@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ParallaxScrollSecond } from "@/components/ui/parallax-scroll";
 import heroImage from "@/assets/about/hero.jpg";
 import equipeImage from "@/assets/about/equipe.jpg";
+import diegoImage from "@/assets/socios/diego.jpeg";
 // Importar todas as imagens da pasta equipe
 import equipe1 from "@/assets/about/equipe/equipe1.jpg";
 import equipe2 from "@/assets/about/equipe/equipe2.jpg";
@@ -56,22 +57,10 @@ const QuemSomos = () => {
 
   const socios = [
     {
-      name: "Sócio 1",
+      name: "Diego",
       title: "Co-Founder & CEO",
       bio: "Em breve adicionaremos informações sobre nossos sócios.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
-    },
-    {
-      name: "Sócio 2",
-      title: "Co-Founder & CTO",
-      bio: "Em breve adicionaremos informações sobre nossos sócios.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop"
-    },
-    {
-      name: "Sócio 3",
-      title: "Co-Founder & COO",
-      bio: "Em breve adicionaremos informações sobre nossos sócios.",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop"
+      image: diegoImage
     }
   ];
 
@@ -311,7 +300,7 @@ const QuemSomos = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
-                className="grid lg:grid-cols-4 gap-6"
+                className="grid lg:grid-cols-2 gap-6"
               >
                 {/* Painel de título à esquerda */}
                 <motion.div variants={fadeInUp} className="flex flex-col justify-center">

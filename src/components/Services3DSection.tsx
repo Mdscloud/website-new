@@ -1,16 +1,18 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useTheme } from "next-themes";
+import cloudImage from "@/assets/services/cloud.jpg";
+import databaseImage from "@/assets/services/database.jpg";
+import backupImage from "@/assets/services/backup.jpg";
 
 const services = [
   {
     title: "Soluções em Cloud",
     description:
       "Infraestrutura de alta performance com 30.000+ IOPS, redundância total e escalabilidade sob demanda. Data centers Tier III certificados no Brasil. Oferecemos infraestrutura cloud completa e gerenciada com alta disponibilidade, escalabilidade automática e SLA 99.9%. Performance superior, segurança robusta e suporte humano especializado 24x7.",
-    image: "/assets/imagens/services/cloud.jpg",
+    image: cloudImage,
     icon: "☁️",
     href: "/solucoes-cloud",
   },
@@ -18,7 +20,7 @@ const services = [
     title: "Banco de Dados (DBA)",
     description:
       "Gestão especializada de banco de dados 24x7. Monitoramento proativo, otimização de performance e suporte técnico dedicado. Nossa equipe de especialistas oferece gestão completa com tuning de performance, otimização de queries e suporte para Oracle, SQL Server, PostgreSQL e MySQL. Atuação preventiva e corretiva para garantir máxima disponibilidade.",
-    image: "/assets/imagens/services/banco-de-dados.jpg",
+    image: databaseImage,
     icon: "🗄️",
     href: "/banco-de-dados",
   },
@@ -26,33 +28,40 @@ const services = [
     title: "Backup em Nuvem",
     description:
       "Proteção completa de dados com backup automatizado, retenção flexível e recuperação rápida. Segurança enterprise para seus dados críticos. Soluções de backup em nuvem com criptografia AES-256, backup automatizado, múltiplas cópias e recuperação rápida garantida. Testes regulares de restauração e RTO/RPO otimizados para seu negócio.",
-    image: "/assets/imagens/services/backup.jpg",
+    image: backupImage,
     icon: "💾",
     href: "/backup",
   },
 ];
 
-export function Services3DSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+const fadeInUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+};
 
-  // Detectar se está no tema claro
-  const isLight = theme === "light" || theme === undefined;
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+export function Services3DSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section ref={containerRef} className="relative pt-24 lg:pt-32 pb-0 overflow-hidden" style={{ perspective: "1000px" }}>
-      {/* Background ESCURO fixo - mesma configuração do tema escuro, aplicado também no tema claro */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'hsl(232, 70%, 8%)' }} />
+    <section className="relative pt-24 lg:pt-32 pb-20 overflow-hidden" style={{ backgroundColor: 'hsl(232, 70%, 8%)' }}>
+      {/* Background azul escuro similar ao Níveis de Parceria */}
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(232,70%,8%)] via-[hsl(232,70%,12%)] to-[hsl(232,70%,8%)]" />
-      {/* Efeitos azuis do hero - mesma configuração */}
-      <div className="absolute bottom-0 right-0 w-[900px] h-[900px] bg-gradient-to-tl from-[#202755]/35 via-[#202755]/25 from-[#5a7aff]/30 to-transparent rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-to-tl from-[#5a7aff]/25 via-[#5a7aff]/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="container relative z-10 mx-auto px-4 max-w-7xl">
+      
+      {/* Background effects */}
+      <div className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-primary/10 blur-[120px]"></div>
+      <div className="absolute left-0 bottom-1/4 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,142 +81,81 @@ export function Services3DSection() {
           </p>
         </motion.div>
 
-        {/* Container com altura para scroll - Cada card precisa de espaço suficiente */}
-        <div
-          className="relative"
-          style={{
-            height: `${services.length * 100}vh`,
-          }}
+        {/* Cards dos serviços - três lado a lado */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="grid lg:grid-cols-3 gap-6"
         >
-          {services.map((service, index) => {
-            // Cada card ocupa espaço suficiente no scroll, com sobreposição controlada
-            // Card 0: 0.0 - 0.33 (aparece e fica visível)
-            // Card 1: 0.28 - 0.66 (aparece e fica visível)
-            // Card 2: 0.58 - 1.0 (aparece e fica visível até o final)
-            
-            const totalCards = services.length;
-            const cardWidth = 1.0 / totalCards; // ~0.33 para 3 cards
-            const overlap = 0.05; // Sobreposição entre cards
-            
-            const cardStart = index === 0 
-              ? 0 
-              : (index * cardWidth - overlap);
-            const cardPeakStart = cardStart + 0.10;
-            const cardPeakEnd = index === services.length - 1 
-              ? 0.98  // Último card fica estável até quase o final
-              : cardStart + cardWidth - 0.05;
-            const cardEnd = index === services.length - 1 
-              ? 1.0  // Último card vai até o final
-              : cardStart + cardWidth;
-
-            // Rotação 3D - suave nas bordas, estável no centro
-            const rotateX = useTransform(
-              scrollYProgress,
-              [cardStart, cardPeakStart, cardPeakEnd, cardEnd],
-              [45, 0, 0, -45]
-            );
-
-            const rotateY = useTransform(
-              scrollYProgress,
-              [cardStart, cardPeakStart, cardPeakEnd, cardEnd],
-              [-20, 0, 0, 20]
-            );
-
-            const z = useTransform(
-              scrollYProgress,
-              [cardStart, cardPeakStart, cardPeakEnd, cardEnd],
-              [-200, 0, 0, -200]
-            );
-
-            // Opacidade - aparece cedo e fica visível por mais tempo
-            // Para o último card, mantém opacidade 1 até o final
-            const opacityEnd = index === services.length - 1 ? cardEnd : cardEnd + 0.02;
-            const opacity = useTransform(
-              scrollYProgress,
-              [cardStart - 0.02, cardPeakStart, cardPeakEnd, opacityEnd],
-              [0, 1, 1, index === services.length - 1 ? 1 : 0]
-            );
-
-            // Scale - suave nas bordas, estável no centro
-            const scale = useTransform(
-              scrollYProgress,
-              [cardStart, cardPeakStart, cardPeakEnd, cardEnd],
-              [0.8, 1, 1, 0.8]
-            );
-
-            return (
-              <div
-                key={index}
-                className="sticky top-24"
-                style={{
-                  height: "100vh",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={fadeInUp}
+              className="group relative"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="relative h-[500px] rounded-xl overflow-hidden">
+                {/* Imagem de fundo */}
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                
+                {/* Overlay que sobe no hover com gradiente transparente */}
                 <motion.div
-                  style={{
-                    rotateX,
-                    rotateY,
-                    z,
-                    opacity,
-                    scale,
-                    transformStyle: "preserve-3d",
+                  className="absolute bottom-0 left-0 right-0 p-6"
+                  animate={{
+                    height: hoveredIndex === index ? '100%' : 'auto',
                   }}
-                  className="w-full max-w-5xl"
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  style={{
+                    background: hoveredIndex === index 
+                      ? 'linear-gradient(to top, rgba(17, 24, 39, 0.98) 0%, rgba(17, 24, 39, 0.95) 20%, rgba(17, 24, 39, 0.85) 40%, rgba(17, 24, 39, 0.6) 60%, rgba(17, 24, 39, 0.3) 80%, transparent 100%)'
+                      : 'linear-gradient(to top, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, transparent 100%)'
+                  }}
                 >
-                  <div className="grid lg:grid-cols-2 gap-8 bg-card border border-border rounded-2xl p-8 shadow-2xl">
-                    {/* Imagem com profundidade 3D */}
-                    <motion.div
-                      style={{
-                        transform: "translateZ(50px)",
-                      }}
-                      className="relative h-[400px] rounded-xl overflow-hidden"
-                    >
-                      <motion.img
-                        src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    </motion.div>
-
-                    {/* Conteúdo com profundidade 3D */}
-                    <motion.div
-                      style={{
-                        transform: "translateZ(50px)",
-                      }}
-                      className="space-y-4 flex flex-col justify-center"
-                    >
-                      <div className="text-5xl mb-2">{service.icon}</div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-foreground">
-                        {service.title}
-                      </h3>
-                      <p className="text-base text-muted-foreground leading-relaxed">
-                        {service.description}
-                      </p>
-                      <div className="pt-2">
-                        <Button
-                          asChild
-                          size="default"
-                          className="group w-fit"
+                  <div className="flex flex-col justify-end h-full">
+                    <div className="mb-2">
+                      <div className="text-3xl mb-2">{service.icon}</div>
+                      <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
+                    </div>
+                    
+                    {/* Descrição completa - aparece no hover */}
+                    <AnimatePresence>
+                      {hoveredIndex === index && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="mt-4"
                         >
-                          <a href={service.href}>
-                            Saiba Mais
-                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </a>
-                        </Button>
-                      </div>
-                    </motion.div>
+                          <p className="text-sm text-white/90 leading-relaxed mb-4">
+                            {service.description}
+                          </p>
+                          <Button
+                            asChild
+                            size="sm"
+                            className="bg-primary text-primary-foreground hover:bg-primary/90 group/btn"
+                          >
+                            <a href={service.href}>
+                              Saiba Mais
+                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                            </a>
+                          </Button>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
               </div>
-            );
-          })}
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

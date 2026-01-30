@@ -1,5 +1,7 @@
 import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from "lucide-react";
-import mdsLogo from "@/assets/mds-logo.png";
+import { useTheme } from "next-themes";
+import logoNormal from "@/assets/logo-normal.png";
+import logoBranco from "@/assets/logo-branco.png";
 
 const footerLinks = {
   solucoes: [
@@ -22,6 +24,11 @@ const footerLinks = {
 };
 
 export function Footer() {
+  const { theme } = useTheme();
+  
+  // Seleciona o logo baseado no tema (usa logo normal como padrão durante hidratação)
+  const currentLogo = theme === "dark" ? logoBranco : logoNormal;
+  
   return (
     <footer id="contato" className="relative z-20 border-t border-border bg-card">
       <div className="container mx-auto px-4 py-16 lg:py-20">
@@ -30,7 +37,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <a href="/" className="mb-6 inline-block">
               <img 
-                src={mdsLogo} 
+                src={currentLogo} 
                 alt="MDS Cloud Solutions" 
                 className="h-12 w-auto"
               />
@@ -117,7 +124,7 @@ export function Footer() {
             © 2024 MDS Cloud. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+            <a href="/politicas-privacidade" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Política de Privacidade
             </a>
             <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-primary">

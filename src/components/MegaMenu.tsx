@@ -79,8 +79,8 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
     ],
     footerLinks: [
       { title: "Cases de sucesso", href: "/cases" },
-      { title: "Solicitar consultoria", href: "/contato" },
-      { title: "Proof of Concept (30 dias)", href: "/contato#poc" },
+      { title: "Solicitar consultoria", href: "https://wa.me/5511991664976" },
+      { title: "Proof of Concept (30 dias)", href: "https://wa.me/5511991664976" },
     ],
   };
 
@@ -144,8 +144,8 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
       },
     ],
     footerLinks: [
-      { title: "Carreiras", href: "/contato#carreiras" },
-      { title: "Contato", href: "/contato" },
+      { title: "Carreiras", href: "https://wa.me/5511991664976" },
+      { title: "Contato", href: "https://wa.me/5511991664976" },
       { title: "Blog", href: "#blog" },
     ],
   };
@@ -270,8 +270,8 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
       },
     ],
     footerLinks: [
-      { title: "Falar com Comercial", href: "/parceiros#cta" },
-      { title: "Enviar Proposta", href: "/parceiros#cta" },
+      { title: "Falar com Comercial", href: "https://wa.me/5511991664976" },
+      { title: "Enviar Proposta", href: "https://wa.me/5511991664976" },
       { title: "Política de Parceria", href: "/parceiros#policy" },
     ],
   };
