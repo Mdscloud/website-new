@@ -6,7 +6,7 @@ export function CookieConsent() {
     const script = document.createElement("script");
     script.src = "https://cdn.goadopt.io/bundle.js";
     script.async = true;
-    script.setAttribute("data-site-id", "YOUR_SITE_ID"); // Substitua pelo seu Site ID do Adopt
+    script.setAttribute("data-site-id", "6459de6a-390d-4c47-a9bd-c2231cb83b1d");
     
     // Adiciona o script ao head
     document.head.appendChild(script);
