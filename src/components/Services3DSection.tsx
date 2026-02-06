@@ -3,9 +3,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import cloudImage from "@/assets/services/cloud.jpg";
-import databaseImage from "@/assets/services/database.jpg";
-import backupImage from "@/assets/services/backup.jpg";
+import cloudImage from "@/assets/services/solucoes-cloud.jpeg";
+import databaseImage from "@/assets/services/banco-de-dados.jpeg";
+import backupImage from "@/assets/services/backup.jpeg";
 
 const services = [
   {

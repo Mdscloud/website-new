@@ -1,42 +1,30 @@
 import { motion } from "framer-motion";
-import { Zap, Clock, Shield, Users, Server, Award } from "lucide-react";
+import { Users, Network, HardDrive, Server } from "lucide-react";
 
 const metrics = [
   {
-    icon: Zap,
-    value: "30.000+",
-    label: "IOPS",
-    description: "Performance de disco",
-  },
-  {
-    icon: Clock,
-    value: "24x7",
-    label: "Suporte",
-    description: "Equipe dedicada",
-  },
-  {
-    icon: Shield,
-    value: "99.9%",
-    label: "Uptime",
-    description: "Disponibilidade garantida",
-  },
-  {
-    icon: Server,
-    value: "Tier III",
-    label: "Data Centers",
-    description: "Infraestrutura certificada",
-  },
-  {
     icon: Users,
-    value: "500+",
+    value: "+1500",
     label: "Clientes",
     description: "Empresas confiam em nós",
   },
   {
-    icon: Award,
-    value: "15+",
-    label: "Anos",
-    description: "De experiência",
+    icon: Network,
+    value: "25GB",
+    label: "Rede",
+    description: "Velocidade de conexão",
+  },
+  {
+    icon: HardDrive,
+    value: "SSD",
+    label: "Storage",
+    description: "Alta performance",
+  },
+  {
+    icon: Server,
+    value: "DELL",
+    label: "Servidores",
+    description: "Alta tecnologia",
   },
 ];
 
@@ -99,7 +87,7 @@ export function MetricsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 lg:gap-6"
+          className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-6"
         >
           {metrics.map((metric, index) => (
             <motion.div

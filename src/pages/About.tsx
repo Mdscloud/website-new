@@ -5,6 +5,7 @@ import { MetricsSection } from "@/components/MetricsSection";
 import { VideoTestimonialsSection } from "@/components/VideoTestimonialsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CertificationsCarousel } from "@/components/CertificationsCarousel";
+import { TechnologiesCarousel } from "@/components/TechnologiesCarousel";
 import { motion } from "framer-motion";
 import { CheckCircle2, Building2, Users, Award, Shield, Zap, Calendar, Phone, ArrowRight, Gift, Clock, TrendingUp, Rocket, Globe, Server } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -123,7 +124,7 @@ const About = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>500+ Clientes</span>
+                      <span>+1500 Clientes</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -148,18 +149,22 @@ const About = () => {
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid grid-cols-2 gap-4">
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-primary mb-1">16+</div>
-                          <div className="text-xs text-muted-foreground">Anos</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-2xl font-bold text-primary mb-1">500+</div>
+                          <div className="text-2xl font-bold text-primary mb-1">+1500</div>
                           <div className="text-xs text-muted-foreground">Clientes</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold text-primary mb-1">99.9%</div>
-                          <div className="text-xs text-muted-foreground">Uptime</div>
+                          <div className="text-2xl font-bold text-primary mb-1">25GB</div>
+                          <div className="text-xs text-muted-foreground">Rede</div>
+                        </div>
+                        <div className="text-center col-span-2">
+                          <div className="text-2xl font-bold text-primary mb-1">SSD</div>
+                          <div className="text-xs text-muted-foreground">Storage Alta Performance</div>
+                        </div>
+                        <div className="text-center col-span-2">
+                          <div className="text-2xl font-bold text-primary mb-1">DELL</div>
+                          <div className="text-xs text-muted-foreground">Servidores Alta Tecnologia</div>
                         </div>
                       </div>
                     </div>
@@ -171,6 +176,30 @@ const About = () => {
 
           {/* Números de Sucesso */}
           <MetricsSection />
+
+          {/* Tecnologias */}
+          <section className="py-16 lg:py-20 relative bg-background">
+            <div className="container mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mx-auto mb-12 max-w-2xl text-center"
+              >
+                <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+                  Tecnologias
+                </Badge>
+                <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
+                  Tecnologias que <span className="text-gradient">utilizamos</span>
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Parceiros tecnológicos e plataformas que garantem a excelência da nossa infraestrutura
+                </p>
+              </motion.div>
+              <TechnologiesCarousel />
+            </div>
+          </section>
 
           {/* Quem Somos - Versão Visual */}
           <section className="py-20 relative bg-card/30">
@@ -251,7 +280,7 @@ const About = () => {
                     { year: "2008", title: "Fundação", description: "MDS Cloud é fundada com foco em infraestrutura própria", icon: Rocket },
                     { year: "2012", title: "Expansão", description: "Expansão para data centers Tier III em Vinhedo (SP)", icon: Server },
                     { year: "2015", title: "Certificações", description: "Primeiras certificações ISO e compliance", icon: Award },
-                    { year: "2020", title: "500+ Clientes", description: "Atingimos a marca de 500 empresas confiando em nós", icon: Users },
+                    { year: "2020", title: "+1500 Clientes", description: "Atingimos a marca de mais de 1500 empresas confiando em nós", icon: Users },
                     { year: "2024", title: "Liderança", description: "Maior complexo de data centers da América Latina", icon: TrendingUp },
                   ].map((milestone, index) => (
                     <motion.div

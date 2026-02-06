@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Phone, Mail, MessageSquare } from "lucide-react";
+import { MessageCircle, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const contactOptions = [
@@ -21,8 +21,8 @@ const contactOptions = [
   {
     icon: Mail,
     label: "E-mail",
-    description: "contato@mdscloud.com.br",
-    href: "mailto:contato@mdscloud.com.br",
+    description: "comercial@mdscloud.com.br",
+    href: "mailto:comercial@mdscloud.com.br",
     color: "bg-secondary hover:bg-secondary/80",
   },
 ];
@@ -43,7 +43,7 @@ export function FloatingContact() {
           >
             <div className="mb-4">
               <h4 className="font-display font-semibold text-foreground">
-                Precisa de ajuda?
+                Solicitar Orçamento
               </h4>
               <p className="text-sm text-muted-foreground">
                 Escolha como prefere falar conosco
@@ -70,16 +70,20 @@ export function FloatingContact() {
               ))}
             </div>
 
-            {/* Quick Form Link */}
+            {/* Privacy Notice */}
             <div className="mt-4 border-t border-border pt-4">
-              <a
-                href="#contato"
-                className="flex items-center justify-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
-                onClick={() => setIsOpen(false)}
-              >
-                <MessageSquare className="h-4 w-4" />
-                Solicitar Orçamento
-              </a>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Ao continuar navegando, você concorda e aceita as nossas{" "}
+                <a 
+                  href="/politicas-privacidade" 
+                  className="text-primary hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  condições e política de privacidade
+                </a>
+                .
+              </p>
             </div>
           </motion.div>
         )}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 
 const Contact = () => {
@@ -16,10 +17,19 @@ const Contact = () => {
     telefone: "",
     empresa: "",
     mensagem: "",
+    consentimentoFinalidade: false,
+    consentimentoMarketing: false,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validação: consentimento para finalidade é obrigatório
+    if (!formData.consentimentoFinalidade) {
+      alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
+      return;
+    }
+    
     // Aqui você pode adicionar a lógica de envio do formulário
     console.log("Form submitted:", formData);
     alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
@@ -29,6 +39,13 @@ const Contact = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (name: string, checked: boolean) => {
+    setFormData({
+      ...formData,
+      [name]: checked,
     });
   };
 
@@ -139,6 +156,40 @@ const Contact = () => {
                         onChange={handleChange}
                       />
                     </div>
+
+                    {/* Consentimentos LGPD */}
+                    <div className="space-y-4 rounded-lg border border-border bg-card/50 p-4">
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="consentimentoFinalidade"
+                          checked={formData.consentimentoFinalidade}
+                          onCheckedChange={(checked) => handleCheckboxChange("consentimentoFinalidade", checked as boolean)}
+                          className="mt-1"
+                        />
+                        <Label htmlFor="consentimentoFinalidade" className="text-sm leading-relaxed cursor-pointer">
+                          <span className="text-destructive">*</span> Compreendo e autorizo o tratamento dos dados para as finalidades informadas, pois tenho conhecimento de que a coleta é necessária para realização dos esclarecimentos solicitados relacionados aos serviços oferecidos.
+                        </Label>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="consentimentoMarketing"
+                          checked={formData.consentimentoMarketing}
+                          onCheckedChange={(checked) => handleCheckboxChange("consentimentoMarketing", checked as boolean)}
+                          className="mt-1"
+                        />
+                        <Label htmlFor="consentimentoMarketing" className="text-sm leading-relaxed cursor-pointer">
+                          Compreendo e autorizo o tratamento dos dados para fins de recebimento de e-mails com informações relevantes sobre serviços, produtos e/ou notícias diversas sobre compliance, privacidade, segurança da informação e gestão de riscos.
+                        </Label>
+                      </div>
+                      <p className="text-xs text-muted-foreground">
+                        Você pode retirar seu consentimento a qualquer momento. Para mais informações, consulte nossa{" "}
+                        <a href="/politicas-privacidade" className="text-primary hover:underline">
+                          Política de Privacidade
+                        </a>
+                        .
+                      </p>
+                    </div>
+
                     <Button type="submit" size="lg" className="w-full">
                       Falar com Especialista
                     </Button>

@@ -4,6 +4,12 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Shield, Building2, Users, Award, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
 import heroImage from "@/assets/about/hero.jpg";
 
 const fadeInUp = {
@@ -22,6 +28,83 @@ const staggerContainer = {
 };
 
 const PoliticasPrivacidade = () => {
+  const [formData, setFormData] = useState({
+    nome: "",
+    sobrenome: "",
+    empresa: "",
+    cargo: "",
+    site: "",
+    email: "",
+    descricao: "",
+    solicitacoes: [] as string[],
+    anexo: null as File | null,
+    consentimentoFinalidade: false,
+    consentimentoMarketing: false,
+  });
+
+  const solicitacoesLGPD = [
+    "Confirmação da existência de tratamento",
+    "Acesso aos dados",
+    "Correção de dados incompletos, inexatos ou desatualizados",
+    "Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD",
+    "Portabilidade dos dados a outro fornecedor de serviço ou produto",
+    "Eliminação dos dados pessoais tratados com o consentimento do titular",
+    "Informação das entidades públicas e privadas com as quais o controlador realizou uso compartilhado de dados",
+    "Informação sobre a possibilidade de não fornecer consentimento e sobre as consequências da negativa",
+    "Revogação do consentimento",
+    "Revisão de decisões tomadas unicamente com base em tratamento automatizado de dados pessoais",
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (value: string, checked: boolean) => {
+    if (checked) {
+      setFormData({
+        ...formData,
+        solicitacoes: [...formData.solicitacoes, value],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        solicitacoes: formData.solicitacoes.filter((s) => s !== value),
+      });
+    }
+  };
+
+  const handleConsentChange = (name: string, checked: boolean) => {
+    setFormData({
+      ...formData,
+      [name]: checked,
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData({
+        ...formData,
+        anexo: e.target.files[0],
+      });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.consentimentoFinalidade) {
+      alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
+      return;
+    }
+    
+    // Aqui você pode adicionar a lógica de envio do formulário
+    console.log("Form submitted:", formData);
+    alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+  };
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -152,39 +235,234 @@ const PoliticasPrivacidade = () => {
             </div>
           </section>
 
-          {/* Content Section */}
+          {/* Content Section - Two Column Layout */}
           <section className="py-20 relative">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                className="space-y-8"
-              >
-                {/* Sumário */}
-                <div className="mb-12 p-6 bg-card border border-border rounded-xl">
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-6">Sumário</h2>
-                  <div className="space-y-2 text-sm">
-                    <a href="#compromisso" className="block text-muted-foreground hover:text-primary transition-colors">1. Compromisso da MDS em proteger a privacidade</a>
-                    <a href="#quem-somos" className="block text-muted-foreground hover:text-primary transition-colors">2. Quem Somos?</a>
-                    <a href="#principios" className="block text-muted-foreground hover:text-primary transition-colors">3. Princípios da Lei Geral de Proteção de Dados</a>
-                    <a href="#controlador" className="block text-muted-foreground hover:text-primary transition-colors">4. Controlador de dados pessoais</a>
-                    <a href="#operadores" className="block text-muted-foreground hover:text-primary transition-colors">4.1. Operadores de dados pessoais</a>
-                    <a href="#encarregado" className="block text-muted-foreground hover:text-primary transition-colors">4.2. Encarregado de dados pessoais</a>
-                    <a href="#solucoes" className="block text-muted-foreground hover:text-primary transition-colors">5. Nossas Soluções</a>
-                    <a href="#definicoes" className="block text-muted-foreground hover:text-primary transition-colors">6. Definições</a>
-                    <a href="#coleta" className="block text-muted-foreground hover:text-primary transition-colors">7. Da Coleta de Dados Pessoais</a>
-                    <a href="#compartilhamos" className="block text-muted-foreground hover:text-primary transition-colors">8. Como Compartilhamos Informações Pessoais</a>
-                    <a href="#direitos-titulares" className="block text-muted-foreground hover:text-primary transition-colors">9. Dos Direitos dos Titulares de Dados Pessoais</a>
-                    <a href="#gestao" className="block text-muted-foreground hover:text-primary transition-colors">10. Gestão de Sugestões, Reclamações e Conflitos relacionados aos seus dados pessoais</a>
-                    <a href="#medidas" className="block text-muted-foreground hover:text-primary transition-colors">11. Medidas Técnicas, Organizacionais e de Segurança Implementadas</a>
-                    <a href="#seguranca" className="block text-muted-foreground hover:text-primary transition-colors">12. Segurança das Informações</a>
-                    <a href="#cookies" className="block text-muted-foreground hover:text-primary transition-colors">13. Utilização de Cookies</a>
-                    <a href="#violacoes" className="block text-muted-foreground hover:text-primary transition-colors">14. Violações de Dados Pessoais</a>
-                    <a href="#disposicoes" className="block text-muted-foreground hover:text-primary transition-colors">16. Disposições Finais</a>
-                  </div>
-                </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid gap-8 lg:grid-cols-[350px_1fr]">
+                {/* Left Column - Fixed Sidebar */}
+                <aside className="lg:sticky lg:top-24 h-fit space-y-6">
+                  {/* Sumário */}
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className="p-6 bg-card border border-border rounded-xl"
+                  >
+                    <h2 className="text-2xl font-display font-bold text-foreground mb-6">Sumário</h2>
+                    <div className="space-y-2 text-sm max-h-[400px] overflow-y-auto">
+                      <a href="#compromisso" className="block text-muted-foreground hover:text-primary transition-colors py-1">1. Compromisso da MDS em proteger a privacidade</a>
+                      <a href="#quem-somos" className="block text-muted-foreground hover:text-primary transition-colors py-1">2. Quem Somos?</a>
+                      <a href="#principios" className="block text-muted-foreground hover:text-primary transition-colors py-1">3. Princípios da Lei Geral de Proteção de Dados</a>
+                      <a href="#controlador" className="block text-muted-foreground hover:text-primary transition-colors py-1">4. Controlador de dados pessoais</a>
+                      <a href="#operadores" className="block text-muted-foreground hover:text-primary transition-colors py-1">4.1. Operadores de dados pessoais</a>
+                      <a href="#encarregado" className="block text-muted-foreground hover:text-primary transition-colors py-1">4.2. Encarregado de dados pessoais</a>
+                      <a href="#solucoes" className="block text-muted-foreground hover:text-primary transition-colors py-1">5. Nossas Soluções</a>
+                      <a href="#definicoes" className="block text-muted-foreground hover:text-primary transition-colors py-1">6. Definições</a>
+                      <a href="#coleta" className="block text-muted-foreground hover:text-primary transition-colors py-1">7. Da Coleta de Dados Pessoais</a>
+                      <a href="#compartilhamos" className="block text-muted-foreground hover:text-primary transition-colors py-1">8. Como Compartilhamos Informações Pessoais</a>
+                      <a href="#direitos-titulares" className="block text-muted-foreground hover:text-primary transition-colors py-1">9. Dos Direitos dos Titulares de Dados Pessoais</a>
+                      <a href="#gestao" className="block text-muted-foreground hover:text-primary transition-colors py-1">10. Gestão de Sugestões, Reclamações e Conflitos relacionados aos seus dados pessoais</a>
+                      <a href="#medidas" className="block text-muted-foreground hover:text-primary transition-colors py-1">11. Medidas Técnicas, Organizacionais e de Segurança Implementadas</a>
+                      <a href="#seguranca" className="block text-muted-foreground hover:text-primary transition-colors py-1">12. Segurança das Informações</a>
+                      <a href="#cookies" className="block text-muted-foreground hover:text-primary transition-colors py-1">13. Utilização de Cookies</a>
+                      <a href="#violacoes" className="block text-muted-foreground hover:text-primary transition-colors py-1">14. Violações de Dados Pessoais</a>
+                      <a href="#disposicoes" className="block text-muted-foreground hover:text-primary transition-colors py-1">16. Disposições Finais</a>
+                    </div>
+                  </motion.div>
+
+                  {/* Formulário */}
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInUp}
+                    className="p-6 bg-card border border-border rounded-xl"
+                  >
+                    <h2 className="text-xl font-display font-bold text-foreground mb-4">
+                      Entre em Contato
+                    </h2>
+                    <p className="text-sm text-muted-foreground mb-6">
+                      Utilize o formulário abaixo para exercer seus direitos previstos na LGPD
+                    </p>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="nome" className="text-sm">
+                          Seu nome <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="nome"
+                          name="nome"
+                          type="text"
+                          required
+                          placeholder="Nome"
+                          value={formData.nome}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="sobrenome" className="text-sm">Sobrenome</Label>
+                        <Input
+                          id="sobrenome"
+                          name="sobrenome"
+                          type="text"
+                          placeholder="Sobrenome"
+                          value={formData.sobrenome}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="empresa" className="text-sm">Nome da sua empresa</Label>
+                        <Input
+                          id="empresa"
+                          name="empresa"
+                          type="text"
+                          placeholder="Empresa"
+                          value={formData.empresa}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="cargo" className="text-sm">Seu cargo (opcional)</Label>
+                        <Input
+                          id="cargo"
+                          name="cargo"
+                          type="text"
+                          placeholder="Cargo"
+                          value={formData.cargo}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="site" className="text-sm">
+                          Site da sua organização (URL) <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="site"
+                          name="site"
+                          type="url"
+                          required
+                          placeholder="https://exemplo.com.br"
+                          value={formData.site}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-sm">
+                          Seu e-mail profissional <span className="text-destructive">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          placeholder="seu@email.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="descricao" className="text-sm">
+                          Descrição da Solicitação
+                        </Label>
+                        <Textarea
+                          id="descricao"
+                          name="descricao"
+                          placeholder="Descreva sua solicitação..."
+                          rows={4}
+                          value={formData.descricao}
+                          onChange={handleChange}
+                          className="text-sm"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-sm font-semibold text-foreground">
+                          Solicite um ou mais motivos <span className="text-destructive">*</span>
+                        </Label>
+                        <div className="space-y-2 border border-border rounded-lg p-3 bg-background/50 max-h-[200px] overflow-y-auto">
+                          {solicitacoesLGPD.map((solicitacao) => (
+                            <div key={solicitacao} className="flex items-start gap-2">
+                              <Checkbox
+                                id={solicitacao}
+                                checked={formData.solicitacoes.includes(solicitacao)}
+                                onCheckedChange={(checked) => handleCheckboxChange(solicitacao, checked as boolean)}
+                                className="mt-0.5 h-3 w-3"
+                              />
+                              <Label htmlFor={solicitacao} className="text-xs leading-relaxed cursor-pointer flex-1">
+                                {solicitacao}
+                              </Label>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-sm font-semibold text-foreground">
+                          Anexar documentos pessoais
+                        </Label>
+                        <p className="text-xs text-muted-foreground mb-2">
+                          Anexar uma cópia do seu RG ou CNH para comprovar sua identificação na solicitação.
+                        </p>
+                        <Input
+                          id="anexo"
+                          name="anexo"
+                          type="file"
+                          accept=".pdf,.jpg,.jpeg,.png"
+                          onChange={handleFileChange}
+                          className="cursor-pointer text-xs"
+                        />
+                        {formData.anexo && (
+                          <p className="text-xs text-muted-foreground">
+                            Arquivo: {formData.anexo.name}
+                          </p>
+                        )}
+                      </div>
+                      <div className="space-y-3 border-t border-border pt-4">
+                        <div className="flex items-start gap-2">
+                          <Checkbox
+                            id="consentimentoFinalidade"
+                            checked={formData.consentimentoFinalidade}
+                            onCheckedChange={(checked) => handleConsentChange("consentimentoFinalidade", checked as boolean)}
+                            className="mt-0.5 h-3 w-3"
+                          />
+                          <Label htmlFor="consentimentoFinalidade" className="text-xs leading-relaxed cursor-pointer flex-1">
+                            <span className="text-destructive">*</span> Compreendo e autorizo o tratamento dos dados para as finalidades informadas, pois tenho conhecimento de que a coleta é necessária para realização dos esclarecimentos solicitados relacionados aos serviços oferecidos.
+                          </Label>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <Checkbox
+                            id="consentimentoMarketing"
+                            checked={formData.consentimentoMarketing}
+                            onCheckedChange={(checked) => handleConsentChange("consentimentoMarketing", checked as boolean)}
+                            className="mt-0.5 h-3 w-3"
+                          />
+                          <Label htmlFor="consentimentoMarketing" className="text-xs leading-relaxed cursor-pointer flex-1">
+                            Compreendo e autorizo o tratamento dos dados para fins de recebimento de e-mails com informações relevantes sobre serviços, produtos e/ou notícias diversas sobre compliance, privacidade, segurança da informação e gestão de riscos.
+                          </Label>
+                        </div>
+                      </div>
+                      <Button type="submit" size="sm" className="w-full">
+                        Enviar
+                      </Button>
+                    </form>
+                  </motion.div>
+                </aside>
+
+                {/* Right Column - Scrollable Content */}
+                <div className="min-w-0">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                    className="space-y-8"
+                  >
 
                 {/* Conteúdo */}
                 <div className="prose prose-lg max-w-none">
@@ -1099,7 +1377,9 @@ const PoliticasPrivacidade = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </section>
         </main>
