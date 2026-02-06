@@ -88,10 +88,6 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
   if (isInHero) {
     return (
       <div className="relative pt-8 lg:pt-10 pb-0 overflow-visible w-full">
-        {/* Gradient masks for fade effect */}
-        <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background/60 via-background/20 to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background/60 via-background/20 to-transparent z-20 pointer-events-none" />
-
         {/* Carousel */}
         <div
           ref={containerRef}
@@ -141,10 +137,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
 
   // Versão normal quando não está no hero
   return (
-    <section className="relative py-6 lg:py-8 overflow-visible">
-      {/* Gradient masks for fade effect */}
-      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background/90 via-background/50 to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background/90 via-background/50 to-transparent z-20 pointer-events-none" />
+    <section className="relative py-2 lg:py-3 overflow-visible">
 
       {/* Carousel */}
       <div

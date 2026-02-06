@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import tecnologiasBackground from "@/assets/tecnologias-background.jpg";
 
 const Index = () => {
   return (
@@ -23,14 +24,26 @@ const Index = () => {
         <TeamSection />
         
         {/* Tecnologias */}
-        <section className="py-16 lg:py-20 relative bg-card/20">
-          <div className="container mx-auto px-4">
+        <section className="pt-12 pb-10 lg:pt-16 lg:pb-12 relative overflow-hidden">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${tecnologiasBackground})`,
+            }}
+          />
+          
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-background/50 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/60" />
+          
+          <div className="container relative z-10 mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mx-auto mb-6 max-w-2xl text-center"
+              className="mx-auto mb-4 max-w-2xl text-center"
             >
               <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
                 Tecnologias
