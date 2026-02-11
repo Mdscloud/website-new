@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import cloudImage from "@/assets/services/solucoes-cloud.jpeg";
 import databaseImage from "@/assets/services/banco-de-dados.jpeg";
 import backupImage from "@/assets/services/backup.jpeg";
+import securityImage from "@/assets/services/seguranca.jpeg";
 
 const services = [
   {
@@ -31,6 +32,14 @@ const services = [
     image: backupImage,
     icon: "💾",
     href: "/backup",
+  },
+  {
+    title: "Segurança em Cloud",
+    description:
+      "A Segurança em Cloud da MDS Cloud é parte fundamental da nossa infraestrutura e dos serviços oferecidos aos clientes. Desde o datacenter até o banco de dados, o ambiente é projetado para proteger aplicações críticas como ERP, CRM, PMS e bancos de dados corporativos, garantindo a confidencialidade, integridade e disponibilidade das informações.",
+    image: securityImage,
+    icon: "🔒",
+    href: "/seguranca",
   },
 ];
 
@@ -81,13 +90,13 @@ export function Services3DSection() {
           </p>
         </motion.div>
 
-        {/* Cards dos serviços - três lado a lado */}
+        {/* Cards dos serviços - quatro lado a lado */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="grid lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service, index) => (
             <motion.div

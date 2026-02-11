@@ -37,7 +37,7 @@ export function HeroSection() {
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight" style={{ fontFamily: 'Poppins, sans-serif' }}>
           <span className="italic font-normal"> A Nuvem de{" "}</span>
-            Alta Performance <span className="italic font-normal">que seu Negócio Exige</span>
+            <span className="text-primary">Alta Performance</span> <span className="italic font-normal">que seu Negócio Exige</span>
           </h1>
 
           {/* Subtitle */}
@@ -49,7 +49,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-60">
             <Button 
               size="lg"
-              className="bg-foreground text-background hover:bg-foreground/90 px-8 py-6 text-base font-semibold rounded-lg transition-all duration-300 group"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base font-semibold rounded-lg transition-all duration-300 group"
               asChild
             >
               <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">

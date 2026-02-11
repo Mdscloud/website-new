@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { HeartHandshake, Clock, Shield, Users, Building2, Laptop, Factory, Phone } from "lucide-react";
+import { HeartHandshake, Clock, Shield } from "lucide-react";
 
 const differentials = [
   {
@@ -16,29 +16,6 @@ const differentials = [
     icon: Shield,
     title: "Liberdade Contratual",
     description: "Sem cláusula de rescisão porque acreditamos na qualidade do que entregamos. Se não performar como prometido, você é livre para encerrar a qualquer momento.",
-  },
-];
-
-const audiences = [
-  {
-    icon: Laptop,
-    title: "Consultores de TI",
-    description: "Indique leads e ganhe comissões. Seja nosso parceiro em projetos de cloud.",
-  },
-  {
-    icon: Building2,
-    title: "Software Houses",
-    description: "Desenvolve sistemas? Temos a infraestrutura cloud ideal para seus clientes.",
-  },
-  {
-    icon: Factory,
-    title: "Integradores",
-    description: "Automação industrial, câmeras, IoT. Nós cuidamos da nuvem para você.",
-  },
-  {
-    icon: Phone,
-    title: "Cliente Final",
-    description: "Precisa de cloud? Fale direto conosco. Atendimento rápido e sem burocracia.",
   },
 ];
 
@@ -105,44 +82,38 @@ export function DifferentialsSection() {
           ))}
         </div>
 
-        {/* Audiences Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h3 className="mb-4 font-display text-2xl font-bold text-foreground md:text-3xl">
-            Trabalhamos com <span className="text-primary">parceiros</span> de diversos segmentos
-          </h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            A maior parte dos nossos clientes vem de indicações de parceiros. 
-            Junte-se a essa rede de sucesso.
-          </p>
-        </motion.div>
-
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {audiences.map((audience, index) => (
+        {/* Numbers Section */}
+        <div className="mb-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            { value: "+1500", label: "clientes" },
+            { value: "+ 200k", label: "IOPS" },
+            { value: "+ 25 Gbps", label: "largura de banda" },
+            { value: "DataCenter", label: "TIER III" },
+          ].map((stat, index) => (
             <motion.div
-              key={audience.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              key={stat.value}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="group relative cursor-pointer overflow-hidden rounded-xl border border-border/50 bg-card/50 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-card/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 text-center"
             >
-              {/* Hover gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-secondary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/10 group-hover:shadow-md">
-                <audience.icon className="h-6 w-6 text-muted-foreground transition-all duration-300 group-hover:scale-110 group-hover:text-primary" />
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              
+              {/* Glow effect */}
+              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
+              
+              <div className="relative z-10">
+                <div className="text-3xl md:text-4xl font-display font-bold text-primary mb-2 transition-colors group-hover:text-primary/90">
+                  {stat.value}
+                </div>
+                {stat.label && (
+                  <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+                    {stat.label}
+                  </div>
+                )}
               </div>
-              <h4 className="relative z-10 mb-2 font-display font-semibold text-foreground transition-colors group-hover:text-primary">
-                {audience.title}
-              </h4>
-              <p className="text-sm text-muted-foreground">
-                {audience.description}
-              </p>
             </motion.div>
           ))}
         </div>

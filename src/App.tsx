@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import CloudSolutions from "./pages/CloudSolutions";
 import DatabaseSolutions from "./pages/DatabaseSolutions";
 import BackupSolutions from "./pages/BackupSolutions";
+import SecuritySolutions from "./pages/SecuritySolutions";
 import HotelariaSolutions from "./pages/HotelariaSolutions";
 import AutomotivoSolutions from "./pages/AutomotivoSolutions";
 import AgronegocioSolutions from "./pages/AgronegocioSolutions";
@@ -44,6 +45,7 @@ const App = () => (
               <Route path="/solucoes-cloud" element={<CloudSolutions />} />
               <Route path="/banco-de-dados" element={<DatabaseSolutions />} />
               <Route path="/backup" element={<BackupSolutions />} />
+              <Route path="/seguranca" element={<SecuritySolutions />} />
               <Route path="/hotelaria" element={<HotelariaSolutions />} />
               <Route path="/automotivo" element={<AutomotivoSolutions />} />
               <Route path="/agronegocio" element={<AgronegocioSolutions />} />

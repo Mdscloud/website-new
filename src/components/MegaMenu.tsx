@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Car, Wheat, Factory, Hotel, Building2, Users, Award, TrendingUp, Headphones, Zap, Users2, Handshake, FileText, Phone, Mail } from "lucide-react";
+import { ChevronDown, Car, Wheat, Factory, Hotel, Building2, Users, Award, TrendingUp, Headphones, Zap, Users2, Handshake, FileText, Phone, Mail, Laptop, MapPin, Clock } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 interface MegaMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onMouseEnter?: () => void;
-  variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | null;
+  variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null;
 }
 
 export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuProps) {
@@ -34,6 +34,11 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
             title: "Backup",
             description: "Proteção completa de dados com backup automatizado, retenção flexível e recuperação rápida. Segurança enterprise para seus dados críticos.",
             href: "/backup",
+          },
+          {
+            title: "Segurança em Cloud",
+            description: "Proteção completa desde o datacenter até o banco de dados. Firewall, monitoramento 24×7, prevenção de ataques e conformidade LGPD.",
+            href: "/seguranca",
           },
         ],
       },
@@ -268,6 +273,35 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
           },
         ],
       },
+      {
+        title: "Segmentos",
+        items: [
+          {
+            title: "Consultores de TI",
+            description: "Indique leads e ganhe comissões. Seja nosso parceiro em projetos de cloud.",
+            href: "/parceiros#segmentos",
+            icon: Laptop,
+          },
+          {
+            title: "Software Houses",
+            description: "Desenvolve sistemas? Temos a infraestrutura cloud ideal para seus clientes.",
+            href: "/parceiros#segmentos",
+            icon: Building2,
+          },
+          {
+            title: "Integradores",
+            description: "Automação industrial, câmeras, IoT. Nós cuidamos da nuvem para você.",
+            href: "/parceiros#segmentos",
+            icon: Factory,
+          },
+          {
+            title: "Cliente Final",
+            description: "Precisa de cloud? Fale direto conosco. Atendimento rápido e sem burocracia.",
+            href: "/parceiros#segmentos",
+            icon: Phone,
+          },
+        ],
+      },
     ],
     footerLinks: [
       { title: "Falar com Comercial", href: "https://wa.me/5511991664976" },
@@ -276,11 +310,71 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
     ],
   };
 
+  const contatoContent = {
+    title: "Contato",
+    columns: [
+      {
+        title: "Entre em Contato",
+        items: [
+          {
+            title: "Falar com Especialista",
+            description: "Converse com nossos especialistas sobre suas necessidades",
+            href: "https://wa.me/5511991664976",
+            icon: Phone,
+          },
+          {
+            title: "Solicitar Orçamento",
+            description: "Solicite uma cotação personalizada para sua empresa",
+            href: "https://wa.me/5511991664976",
+            icon: Mail,
+          },
+          {
+            title: "Avaliação Gratuita",
+            description: "Teste nossos serviços por 30 dias sem custo",
+            href: "https://wa.me/5511991664976",
+            icon: Handshake,
+          },
+        ],
+      },
+      {
+        title: "Informações Legais",
+        items: [
+          {
+            title: "Política de Privacidade",
+            description: "Nossa declaração de privacidade e proteção de dados",
+            href: "/politicas-privacidade",
+            icon: FileText,
+          },
+          {
+            title: "Termos de Uso",
+            description: "Termos e condições de uso dos nossos serviços",
+            href: "#",
+            icon: FileText,
+          },
+        ],
+      },
+    ],
+    footerLinks: [
+      { title: "WhatsApp", href: "https://wa.me/5511991664976" },
+      { title: "E-mail", href: "mailto:comercial@mdscloud.com.br" },
+    ],
+    contactInfo: {
+      title: "Quem Somos",
+      description: "Mais de 16 anos de experiência em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos.",
+      address: "Rua Pereira Estefano, 114, Cj 801",
+      city: "São Paulo - SP",
+      phone: "+55 11 2577-7899",
+      email: "comercial@mdscloud.com.br",
+      hours: "Segunda a Sexta: 9h às 18h",
+    },
+  };
+
   const content = {
     solucoes: solucoesContent,
     sobre: sobreContent,
     conteudo: conteudoContent,
     parceiros: parceirosContent,
+    contato: contatoContent,
   }[variant];
 
   return (
@@ -315,7 +409,7 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
               </div>
 
               {/* Main content */}
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className={`grid grid-cols-1 gap-6 md:grid-cols-2 ${variant === "contato" ? "lg:grid-cols-4" : "lg:grid-cols-4"}`}>
                 {content.columns.map((column, colIndex) => (
                   <div key={colIndex} className="space-y-2.5">
                     <h3 className="text-xs font-bold text-foreground">{column.title}</h3>
@@ -352,6 +446,62 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
                     </ul>
                   </div>
                 ))}
+                
+                {/* Contact Info Column - Only for contato variant */}
+                {variant === "contato" && content.contactInfo && (
+                  <>
+                    <div className="hidden lg:block w-px bg-border/50" />
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-xs font-bold text-foreground mb-2">{content.contactInfo.title}</h3>
+                        <p className="text-[10px] leading-relaxed text-muted-foreground mb-4">
+                          {content.contactInfo.description}
+                        </p>
+                      </div>
+                      
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-2">
+                          <MapPin className="h-3.5 w-3.5 shrink-0 text-primary/70 mt-0.5" />
+                          <div className="flex-1">
+                            <div className="text-[10px] leading-relaxed text-muted-foreground">
+                              {content.contactInfo.address}
+                            </div>
+                            <div className="text-[10px] leading-relaxed text-muted-foreground">
+                              {content.contactInfo.city}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-2">
+                          <Phone className="h-3.5 w-3.5 shrink-0 text-primary/70 mt-0.5" />
+                          <a 
+                            href={`tel:${content.contactInfo.phone.replace(/\s/g, '')}`}
+                            className="text-[10px] leading-relaxed text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {content.contactInfo.phone}
+                          </a>
+                        </div>
+                        
+                        <div className="flex items-start gap-2">
+                          <Mail className="h-3.5 w-3.5 shrink-0 text-primary/70 mt-0.5" />
+                          <a 
+                            href={`mailto:${content.contactInfo.email}`}
+                            className="text-[10px] leading-relaxed text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {content.contactInfo.email}
+                          </a>
+                        </div>
+                        
+                        <div className="flex items-start gap-2">
+                          <Clock className="h-3.5 w-3.5 shrink-0 text-primary/70 mt-0.5" />
+                          <div className="text-[10px] leading-relaxed text-muted-foreground">
+                            {content.contactInfo.hours}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Footer links */}

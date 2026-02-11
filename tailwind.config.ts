@@ -76,6 +76,8 @@ export default {
         "fade-in": "fade-in 0.5s ease-out",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
         marquee: 'marquee var(--duration) linear infinite',
+        "scroll-left": "scroll-left 60s linear infinite",
+        "scroll-right": "scroll-right 60s linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -96,7 +98,15 @@ export default {
         },
         marquee: {
           from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(calc(-100% - var(--gap)))' }
+          to: { transform: 'translateX(calc(-50% - var(--gap)))' }
+        },
+        "scroll-left": {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-33.333%)' }
+        },
+        "scroll-right": {
+          from: { transform: 'translateX(-33.333%)' },
+          to: { transform: 'translateX(0)' }
         },
       },
     },

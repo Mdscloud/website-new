@@ -14,7 +14,7 @@ export function Header() {
   const { t } = useI18n();
   const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "sobre" | "conteudo" | "parceiros" | null>(null);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isScrolledRef = useRef(false);
@@ -51,7 +51,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMegaMenuHover = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | null) => {
+  const handleMegaMenuHover = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null) => {
     // Cancela qualquer timeout pendente
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -60,7 +60,7 @@ export function Header() {
     setActiveMegaMenu(variant);
   };
 
-  const handleMegaMenuLeave = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros") => {
+  const handleMegaMenuLeave = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato") => {
     // Delay para permitir movimento do mouse para o menu
     closeTimeoutRef.current = setTimeout(() => {
       if (activeMegaMenu === variant) {
@@ -197,14 +197,27 @@ export function Header() {
             </div>
 
             {/* Contato */}
-            <div className="relative">
+            <div 
+              className="relative"
+              onMouseEnter={() => handleMegaMenuHover("contato")}
+              onMouseLeave={() => handleMegaMenuLeave("contato")}
+            >
               <div className="relative pb-2">
-                <a
-                  href="/contato"
-                  className="flex items-center gap-1 text-xs font-medium text-foreground transition-colors hover:text-primary"
-                >
+                <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                  activeMegaMenu === "contato" 
+                    ? "text-primary" 
+                    : "text-foreground hover:text-primary"
+                }`}>
                   Contato
-                </a>
+                  {activeMegaMenu === "contato" ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  )}
+                </button>
+                {activeMegaMenu === "contato" && (
+                  <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
+                )}
               </div>
             </div>
           </div>

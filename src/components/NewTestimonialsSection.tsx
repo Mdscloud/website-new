@@ -11,7 +11,7 @@ import greenAutomoveisPhoto from "@/assets/testimonials/green-automoveis.png";
 const testimonials = [
   {
     author: {
-      name: "Carlos Pereira",
+      name: "Carlo Pereira",
       handle: "Diretor de Tecnologia na Átrio Hotéis",
       avatar: atrioPhoto,
     },

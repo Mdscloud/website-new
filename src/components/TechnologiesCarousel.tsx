@@ -1,4 +1,3 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
 import oracleLogo from '@/assets/tecnologias/oracle.png';
 import ascentyLogo from '@/assets/tecnologias/ascenty.png';
 import dellLogo from '@/assets/tecnologias/dell.png';
@@ -18,16 +17,6 @@ interface Technology {
   name: string;
   image?: string;
 }
-
-// Function to shuffle array randomly
-const shuffleArray = <T,>(array: T[]): T[] => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
 
 // All technologies
 const allTechnologies: Technology[] = [
@@ -52,76 +41,63 @@ interface TechnologiesCarouselProps {
 }
 
 export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselProps) {
-  const [isPaused, setIsPaused] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>(0);
-  const scrollPositionRef = useRef<number>(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  // Shuffle technologies randomly and duplicate for seamless loop
-  const duplicatedTechnologies = useMemo(() => {
-    const shuffled = shuffleArray(allTechnologies);
-    return [...shuffled, ...shuffled];
-  }, []);
-
-  // Smooth animation that doesn't reset on pause
-  useEffect(() => {
-    if (!carouselRef.current) return;
-
-    const animate = () => {
-      if (!isPaused && carouselRef.current) {
-        scrollPositionRef.current += 0.5; // Adjust speed here
-        const maxScroll = carouselRef.current.scrollWidth / 2;
-        if (scrollPositionRef.current >= maxScroll) {
-          scrollPositionRef.current = 0;
-        }
-        carouselRef.current.style.transform = `translateX(-${scrollPositionRef.current}px)`;
-      }
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationRef.current);
-  }, [isPaused]);
+  // Duplicate technologies for seamless loop (3x for smooth animation)
+  const duplicatedTechnologies = [...allTechnologies, ...allTechnologies, ...allTechnologies];
+  
+  // Split into two rows - shuffle each row differently
+  const row1 = [...allTechnologies, ...allTechnologies, ...allTechnologies];
+  const row2 = [...allTechnologies].reverse().concat([...allTechnologies].reverse(), [...allTechnologies].reverse());
 
   // Se estiver no hero, retorna apenas o carrossel sem wrapper section
   if (isInHero) {
     return (
       <div className="relative pt-8 lg:pt-10 pb-0 overflow-visible w-full">
-        {/* Carousel */}
-        <div
-          ref={containerRef}
-          className="relative py-4 overflow-visible"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div className="px-4 md:px-8 overflow-visible">
-            <div
-              ref={carouselRef}
-              className="flex gap-6 md:gap-8 lg:gap-10"
-              style={{
-                width: 'max-content',
-              }}
-            >
-              {duplicatedTechnologies.map((tech, index) => (
+        <div className="space-y-4">
+          {/* Row 1 - Scroll Left */}
+          <div className="overflow-hidden">
+            <div className="flex gap-3 md:gap-4 animate-scroll-left">
+              {row1.map((tech, index) => (
                 <div
-                  key={`${tech.name}-${index}`}
-                  className="group relative flex h-20 w-40 shrink-0 items-center justify-center md:h-24 md:w-48 py-4 px-3"
+                  key={`row1-${tech.name}-${index}`}
+                  className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
                 >
-                  {/* Technology card */}
-                  <div className="relative flex h-full w-full items-center justify-center rounded-lg border border-border/20 bg-card/30 p-4 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/40 group-hover:bg-card/50 group-hover:shadow-lg group-hover:shadow-primary/10 group-hover:scale-110 group-hover:-translate-y-1 group-hover:z-50">
-                    {/* Glow effect on hover */}
-                    <div className="absolute inset-0 rounded-lg bg-primary/0 transition-all duration-300 group-hover:bg-primary/5" />
-                    
+                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
                     {tech.image ? (
                       <img
                         src={tech.image}
                         alt={tech.name}
-                        className="relative z-10 h-full w-full object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                        className="h-full w-full object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
                         loading="lazy"
                       />
                     ) : (
-                      <span className="relative z-10 text-sm md:text-base font-semibold text-foreground/70 transition-all duration-300 group-hover:text-foreground group-hover:text-primary">
+                      <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                        {tech.name}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2 - Scroll Right */}
+          <div className="overflow-hidden">
+            <div className="flex gap-3 md:gap-4 animate-scroll-right">
+              {row2.map((tech, index) => (
+                <div
+                  key={`row2-${tech.name}-${index}`}
+                  className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
+                >
+                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                    {tech.image ? (
+                      <img
+                        src={tech.image}
+                        alt={tech.name}
+                        className="h-full w-full object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
                         {tech.name}
                       </span>
                     )}
@@ -137,42 +113,53 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
 
   // Versão normal quando não está no hero
   return (
-    <section className="relative py-2 lg:py-3 overflow-visible">
-
-      {/* Carousel */}
-      <div
-        ref={containerRef}
-        className="relative py-4 overflow-visible"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        <div className="px-4 md:px-8 overflow-visible">
-          <div
-            ref={carouselRef}
-            className="flex gap-6 md:gap-8 lg:gap-10"
-            style={{
-              width: 'max-content',
-            }}
-          >
-            {duplicatedTechnologies.map((tech, index) => (
+    <div className="relative py-2 lg:py-3 overflow-hidden">
+      <div className="space-y-4">
+        {/* Row 1 - Scroll Left */}
+        <div className="overflow-hidden">
+          <div className="flex gap-3 md:gap-4 animate-scroll-left">
+            {row1.map((tech, index) => (
               <div
-                key={`${tech.name}-${index}`}
-                className="group relative flex h-20 w-40 shrink-0 items-center justify-center md:h-24 md:w-48 py-4 px-3"
+                key={`row1-${tech.name}-${index}`}
+                className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
               >
-                {/* Technology card */}
-                <div className="relative flex h-full w-full items-center justify-center rounded-lg border border-border/20 bg-card/30 p-4 backdrop-blur-sm transition-all duration-300 group-hover:border-primary/40 group-hover:bg-card/50 group-hover:shadow-lg group-hover:shadow-primary/10 group-hover:scale-110 group-hover:-translate-y-1 group-hover:z-50">
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 rounded-lg bg-primary/0 transition-all duration-300 group-hover:bg-primary/5" />
-                  
+                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
                   {tech.image ? (
                     <img
                       src={tech.image}
                       alt={tech.name}
-                      className="relative z-10 h-full w-full object-contain opacity-50 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                      className="h-full w-full object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
                       loading="lazy"
                     />
                   ) : (
-                    <span className="relative z-10 text-sm md:text-base font-semibold text-foreground/70 transition-all duration-300 group-hover:text-foreground group-hover:text-primary">
+                    <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                      {tech.name}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 - Scroll Right */}
+        <div className="overflow-hidden">
+          <div className="flex gap-3 md:gap-4 animate-scroll-right">
+            {row2.map((tech, index) => (
+              <div
+                key={`row2-${tech.name}-${index}`}
+                className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
+              >
+                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                  {tech.image ? (
+                    <img
+                      src={tech.image}
+                      alt={tech.name}
+                      className="h-full w-full object-contain opacity-70 transition-all duration-300 group-hover:opacity-100"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
                       {tech.name}
                     </span>
                   )}
@@ -182,6 +169,6 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

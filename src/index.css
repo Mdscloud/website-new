@@ -370,6 +370,24 @@
     opacity: 1;
   }
 
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% / 3));
+    }
+  }
+
+  @keyframes scroll-right {
+    from {
+      transform: translateX(calc(-100% / 3));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
   @keyframes gradient-shift {
     0%, 100% {
       background-position: 0% 50%;
