@@ -34,7 +34,7 @@ export const translations: Translations = {
   "hero.title.1": { pt: "A Nuvem de", en: "The", es: "La Nube de" },
   "hero.title.highlight": { pt: "Alta Performance", en: "High Performance", es: "Alto Rendimiento" },
   "hero.title.2": { pt: "que seu Negócio Exige", en: "Cloud Your Business Demands", es: "que tu Negocio Exige" },
-  "hero.subtitle": { pt: "Cloud Computing, Backup em Nuvem, DBA Remoto e ERP SaaS. Infraestrutura 100% gerenciada com a estabilidade e performance que empresas de alta demanda precisam.", en: "Cloud Computing, Cloud Backup, Remote DBA and ERP SaaS. 100% managed infrastructure with the stability and performance that high-demand businesses need.", es: "Cloud Computing, Backup en la Nube, DBA Remoto y ERP SaaS. Infraestructura 100% gestionada con la estabilidad y rendimiento que las empresas de alta demanda necesitan." },
+  "hero.subtitle": { pt: "Cloud Computing, Backup em Nuvem, DBA Remoto e ERP SaaS. Infraestrutura 100% gerenciada com a estabilidade e performance que sistemas críticos de alta demanda precisam.", en: "Cloud Computing, Cloud Backup, Remote DBA and ERP SaaS. 100% managed infrastructure with the stability and performance that high-demand critical systems need.", es: "Cloud Computing, Backup en la Nube, DBA Remoto y ERP SaaS. Infraestructura 100% gestionada con la estabilidad y rendimiento que los sistemas críticos de alta demanda necesitan." },
   "hero.cta.primary": { pt: "Solicite Cotação", en: "Request Quote", es: "Solicitar Cotización" },
   "hero.cta.secondary": { pt: "Teste Grátis 30 Dias", en: "Free 30-Day Trial", es: "Prueba Gratis 30 Días" },
   "hero.badge.iops": { pt: "30.000+ IOPS", en: "30,000+ IOPS", es: "30.000+ IOPS" },

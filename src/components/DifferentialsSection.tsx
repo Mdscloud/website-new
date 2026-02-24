@@ -59,10 +59,10 @@ export function DifferentialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
+              className="group relative overflow-hidden rounded-2xl border border-border/30 bg-white p-8 transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
             >
               {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               
               {/* Glow effect */}
               <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
@@ -71,7 +71,7 @@ export function DifferentialsSection() {
                 <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
                   <item.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
                 </div>
-                <h3 className="mb-3 font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary">
+                <h3 className="mb-3 font-display text-xl font-bold text-gray-900 dark:text-gray-900 transition-colors group-hover:text-primary">
                   {item.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
@@ -88,7 +88,7 @@ export function DifferentialsSection() {
             { value: "+1500", label: "clientes" },
             { value: "+ 200k", label: "IOPS" },
             { value: "+ 25 Gbps", label: "largura de banda" },
-            { value: "DataCenter", label: "TIER III" },
+            { value: "TIER III", label: "DataCenter" },
           ].map((stat, index) => (
             <motion.div
               key={stat.value}
