@@ -664,24 +664,12 @@ const About = () => {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg" asChild>
+                  <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <ArrowRight className="mr-2 h-5 w-5" />
-                      Começar Teste Grátis
+                      <Zap className="h-5 w-5" />
+                      Solicitar POC de até 30 dias
                     </a>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground text-lg px-8" asChild>
-                    <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Agendar Demonstração
-                    </a>
-                  </Button>
-                </div>
-                
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Sem cartão de crédito • Setup em até 24h • Suporte incluso
-                  </p>
                 </div>
               </motion.div>
             </div>

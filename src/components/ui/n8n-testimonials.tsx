@@ -125,7 +125,7 @@ export function N8nTestimonials({
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group relative flex-shrink-0 w-[85vw] md:w-[320px] lg:w-[380px]"
+        className="group relative flex-shrink-0 w-[85vw] md:w-[320px] lg:w-[380px] pt-6 pb-6"
       >
         <div className="relative h-full rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden">
           {/* Dynamic gradient overlay that follows mouse - similar to n8n.io */}
@@ -212,7 +212,7 @@ export function N8nTestimonials({
   }
 
   return (
-    <section className="relative py-16 lg:py-24 bg-background overflow-hidden">
+    <section className="relative py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -220,7 +220,7 @@ export function N8nTestimonials({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mx-auto mb-16 max-w-2xl text-center"
+          className="mx-auto mb-10 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
             Cases de Sucesso
@@ -233,7 +233,7 @@ export function N8nTestimonials({
           </p>
         </motion.div>
 
-        {/* Testimonials Carousel */}
+        {/* Testimonials Carousel - padding vertical para o hover não ser cortado; espaçamento total título→cards igual à seção Soluções (mb-16) */}
         <div 
           className="relative"
           onMouseEnter={() => setIsHovered(true)}
@@ -242,7 +242,7 @@ export function N8nTestimonials({
           <div
             ref={scrollContainerRef}
             onWheel={handleWheel}
-            className="flex gap-6 lg:gap-8 overflow-x-auto scrollbar-hide"
+            className="flex gap-6 lg:gap-8 overflow-x-auto scrollbar-hide py-6"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',

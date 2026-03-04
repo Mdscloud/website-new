@@ -2,12 +2,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
-import { Cloud, Database, Headphones, HardDrive, Server, Zap, Shield, Clock, CheckCircle2, TrendingUp, Users, Building2 } from "lucide-react";
+import { Cloud, Database, Server, Zap, Shield, Clock, Users, ArrowRight, Check, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import SpatialProductShowcase from "@/components/ui/spatial-product-showcase";
-import HolographicCard from "@/components/ui/holographic-card";
-import heroImage from "@/assets/about/sobre-o-que-fazemos.jpg";
+import { Button } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import TextRevealMotion from "@/components/ui/text-reveal-motion";
+import heroImage from "@/assets/background-cloud-builder.jpg";
+import cloudImage from "@/assets/about/cloud.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -36,281 +37,292 @@ const OQueFazemos = () => {
 
       <div className="relative z-10">
         <main className="min-h-screen overflow-x-hidden">
-          {/* Hero Section */}
-          <section className="relative py-24 lg:py-40 overflow-hidden">
-            {/* Background Image */}
+          {/* Hero Section - Cloud Builder (estilo print: split + métricas embaixo) */}
+          <section className="relative py-24 lg:py-32 overflow-hidden min-h-[90vh] flex flex-col">
+            {/* Background: imagem + overlay azul escuro (estilo print) */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${heroImage})` }}
+            />
+            {/* Overlay azul índigo escuro - unifica o fundo e destaca o conteúdo */}
+            <div 
+              className="absolute inset-0 pointer-events-none"
               style={{
-                backgroundImage: `url(${heroImage})`,
+                background: 'linear-gradient(135deg, hsla(232, 55%, 9%, 0.88) 0%, hsla(232, 60%, 7%, 0.92) 50%, hsla(232, 55%, 8%, 0.9) 100%)',
               }}
             />
-            
-            {/* Overlay para transparência e legibilidade */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
-            
-            {/* Animated orbs */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/30 pointer-events-none" />
+            {/* Padrão sutil tipo circuit */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.06)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.06)_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none opacity-60" />
+            {/* Orbs de luz */}
             <motion.div 
               layout={false}
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.4, 0.2]
-              }}
+              animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
               transition={{ duration: 8, repeat: Infinity }}
-              className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
-            ></motion.div>
+              className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[100px] pointer-events-none"
+            />
             <motion.div 
               layout={false}
-              animate={{ 
-                scale: [1, 1.3, 1],
-                opacity: [0.15, 0.35, 0.15]
-              }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.1, 0.25, 0.1] }}
               transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-              className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none"
-            ></motion.div>
+              className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-accent/20 rounded-full blur-[80px] pointer-events-none"
+            />
 
-            {/* Floating particles */}
-            {[Cloud, Database, Server].map((Icon, index) => (
-              <motion.div
-                key={index}
-                layout={false}
-                className="absolute pointer-events-none"
-                style={{
-                  left: `${15 + index * 30}%`,
-                  top: `${20 + index * 25}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, 10, -10, 0],
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{
-                  duration: 4 + index * 0.5,
-                  repeat: Infinity,
-                  delay: index * 0.4,
-                  ease: [0.4, 0, 0.6, 1]
-                }}
-              >
-                <Icon className="h-8 w-8 text-primary/20" />
-              </motion.div>
-            ))}
-
-            {/* Floating stats badges */}
-            <motion.div
-              layout={false}
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: [0.4, 0, 0.6, 1] }}
-              className="absolute top-32 right-10 bg-card/90 backdrop-blur-md p-4 rounded-xl border border-border shadow-xl hidden lg:block z-10"
-            >
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5 text-primary" />
-                <div>
-                  <p className="text-sm font-bold text-foreground">+1200</p>
-                  <p className="text-xs text-muted-foreground">Clientes</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              layout={false}
-              animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: [0.4, 0, 0.6, 1], delay: 0.5 }}
-              className="absolute bottom-32 left-10 bg-card/90 backdrop-blur-md p-4 rounded-xl border border-border shadow-xl hidden lg:block z-10"
-            >
-              <div className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-accent" />
-                <div>
-                  <p className="text-sm font-bold text-foreground">+5000</p>
-                  <p className="text-xs text-muted-foreground">Servidores</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 flex-1 flex flex-col max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={staggerContainer}
-                className="text-center"
+                className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center flex-1 pt-8 pb-8"
               >
-                <motion.div variants={fadeInUp}>
-                  <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
-                    <Zap className="h-4 w-4 mr-2 inline" />
-                    O Que Fazemos
-                  </Badge>
-                </motion.div>
-                
-                <motion.h1 
+                {/* Coluna esquerda: texto + CTAs */}
+                <div className="text-left">
+                  <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-6">
+                    <Badge className="bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 px-4 py-2 gap-2">
+                      <Cloud className="h-4 w-4" />
+                      Cloud Builder
+                    </Badge>
+                  </motion.div>
+                  <motion.h1 
+                    variants={fadeInUp}
+                    className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-foreground mb-6 leading-tight"
+                  >
+                    Infraestrutura própria para ambientes críticos
+                  </motion.h1>
+                  <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+                    Arquitetamos e operamos nuvem corporativa de <strong className="text-foreground font-semibold">alta performance</strong> com controle total da infraestrutura, garantindo previsibilidade, <strong className="text-foreground font-semibold">segurança</strong> e desempenho superior para ERPs, CRMs e sistemas empresariais críticos.
+                  </motion.p>
+                  <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+                    <Button size="lg" className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                        Solicitar Arquitetura Técnica
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button size="lg" variant="outline" className="gap-2 border-2 border-border bg-background/50 hover:bg-background/80" asChild>
+                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                        Falar com Especialista
+                      </a>
+                    </Button>
+                  </motion.div>
+                </div>
+
+                {/* Coluna direita: ilustração cloud + elementos */}
+                <motion.div 
                   variants={fadeInUp}
-                  className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
+                  className="relative flex items-center justify-center min-h-[280px] lg:min-h-[360px]"
                 >
-                  Soluções Completas<br />de Tecnologia
-                </motion.h1>
-                
-                <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Entregamos soluções completas de tecnologia voltadas para o operacional crítico das empresas
-                </motion.p>
+                  <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+                    <motion.div
+                      animate={{ y: [0, -12, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                      className="relative z-10 w-4/5 h-4/5 flex items-center justify-center"
+                    >
+                      <img 
+                        src={cloudImage} 
+                        alt="Cloud infrastructure" 
+                        className="w-full h-full object-contain drop-shadow-2xl"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 rounded-full border border-primary/20 bg-primary/5 blur-2xl scale-110" />
+                    {[Server, Database, Shield].map((Icon, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 0.6, scale: 1 }}
+                        transition={{ delay: 0.3 + i * 0.1 }}
+                        className="absolute w-10 h-10 rounded-lg bg-card/80 border border-border flex items-center justify-center backdrop-blur-sm"
+                        style={{
+                          top: i === 0 ? "10%" : i === 1 ? "70%" : "40%",
+                          left: i === 0 ? "5%" : i === 1 ? "75%" : "80%",
+                        }}
+                      >
+                        <Icon className="h-5 w-5 text-primary" />
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Métricas na base do hero (como no print) */}
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={staggerContainer}
+                className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-8 border-t border-border/50"
+              >
+                {[
+                  { icon: Server, value: "+5000", label: "Servidores gerenciados" },
+                  { icon: Shield, value: "", label: "Controle total da infraestrutura" },
+                  { icon: Clock, value: "", label: "SLA em minutos" },
+                ].map((item) => (
+                  <motion.div
+                    key={item.label}
+                    variants={fadeInUp}
+                    className="flex items-center gap-4 text-foreground"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
+                      <item.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      {item.value && <span className="text-2xl font-bold block">{item.value}</span>}
+                      <span className="text-sm text-muted-foreground">{item.label}</span>
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
             </div>
           </section>
 
           {/* Cloud Builder Section */}
           <section id="cloud-builder" className="py-20 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Spatial Product Showcase */}
-              <SpatialProductShowcase />
-            </div>
-          </section>
-
-          {/* DBA Time Section */}
-          <section id="dba-time" className="py-20 relative overflow-hidden">
-            {/* Dark Blue Background with Gradient */}
-            <div className="absolute inset-0" style={{ backgroundColor: 'hsl(232, 70%, 8%)' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10"></div>
-            </div>
-            
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
-              >
-                {/* Left Column - Title and Description */}
-                <div>
-                  <div className="flex items-center gap-3 mb-8">
-                    <Database className="h-8 w-8 text-white" />
-                    <h2 className="text-3xl lg:text-4xl font-display font-bold text-white">
-                      DBA Time
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+              {/* Bloco 1 — O Conceito (revelação com Framer Motion, sem GSAP — evita 504) */}
+              <section className="bg-white rounded-2xl p-8 md:p-12 lg:p-16 [color-scheme:light]">
+                <div className="max-w-4xl space-y-8">
+                  <TextRevealMotion
+                    blockColor="hsl(230, 47%, 23%)"
+                    animateOnScroll={true}
+                    delay={0.1}
+                    duration={0.7}
+                  >
+                    <h2 className="text-3xl lg:text-4xl font-display font-bold text-[hsl(230,60%,16%)]">
+                      Não revendemos cloud. Nós construímos.
                     </h2>
-                  </div>
-                  
-                  <div className="space-y-4 text-gray-300 leading-relaxed">
-                    <p>
-                      Serviços avançados de administração, performance, otimização e segurança de bancos de dados. Acompanhamos desde a arquitetura até o tuning contínuo, prevenindo falhas e maximizando eficiência. Planejamos e executamos migrações complexas com impacto mínimo nas operações, além de ambientes com redundância e failover que garantem continuidade real.
+                  </TextRevealMotion>
+                  <TextRevealMotion
+                    blockColor="hsl(230, 47%, 23%)"
+                    animateOnScroll={true}
+                    delay={0.25}
+                    duration={0.6}
+                  >
+                    <p className="text-lg text-zinc-600 leading-relaxed font-body">
+                      Diferente de provedores que operam sobre grandes nuvens públicas, a MDS Cloud possui infraestrutura própria em data centers Tier III no Brasil. Isso nos permite controlar performance, latência, segurança e custos — sem dependência de terceiros.
                     </p>
-                  </div>
+                  </TextRevealMotion>
                 </div>
+              </section>
 
-                {/* Right Column - Holographic Card */}
-                <div>
-                  <HolographicCard className="p-6 bg-gradient-to-br from-[hsl(232,70%,8%)] via-[hsl(232,70%,6%)] to-black border-white/30">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center border border-white/30">
-                        <Zap className="h-5 w-5 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Tunning de banco de dados</h3>
-                    </div>
-                    <p className="text-base text-gray-200 leading-relaxed drop-shadow-md">
-                      Oferecemos um serviço especializado de administração, suporte e otimização de bancos de dados, garantindo performance consistente, alta disponibilidade, segurança dos dados e confiabilidade operacional. Nosso time de DBAs atua de forma preventiva e corretiva, acompanhando toda a rotina operacional, tuning, manutenção e evolução dos ambientes.
-                    </p>
-                  </HolographicCard>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Suporte Técnico Section */}
-          <section id="suporte-tecnico" className="py-20 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Bloco 2 — Diferenciais Técnicos */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                className="mb-12"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={staggerContainer}
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <Headphones className="h-8 w-8 text-primary" />
-                  <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
-                    Suporte Técnico
-                  </h2>
+                <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-10">
+                  Diferenciais Técnicos
+                </motion.h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    { title: "Infraestrutura Própria", desc: "Servidores Dell, storages SSD/NVMe e rede de alta capacidade sob gestão total da MDS.", Icon: Server },
+                    { title: "Alta Performance Real", desc: "Ambientes projetados para cargas críticas com baixa latência e alta IOPS.", Icon: Zap },
+                    { title: "Escalabilidade Inteligente", desc: "Expansão sob demanda com previsibilidade de custo.", Icon: Layers },
+                    { title: "Operação Especializada", desc: "Infraestrutura integrada ao time de DBAs e suporte técnico 24x7.", Icon: Users },
+                  ].map((item) => (
+                    <motion.div key={item.title} variants={fadeInUp}>
+                      <Card className="h-full border border-border hover:border-primary/30 transition-colors">
+                        <CardHeader>
+                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                            <item.Icon className="h-6 w-6 text-primary" />
+                          </div>
+                          <CardTitle className="text-foreground">{item.title}</CardTitle>
+                          <CardDescription className="text-muted-foreground">{item.desc}</CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </motion.div>
+                  ))}
                 </div>
-                
-                <div className="space-y-4 text-muted-foreground leading-relaxed max-w-4xl mb-8">
-                  <p>
-                    Equipe humana em tempo integral, com especialistas que conhecem seu ambiente técnico e estão prontos para resolver qualquer necessidade rapidamente — sem intermediários, sem chatbots automáticos. Essa combinação única torna a MDS Cloud uma plataforma com serviços genuinamente tailor-made para demandas empresariais críticas, sem dependência de estruturas padronizadas e rígidas.
-                  </p>
+              </motion.div>
+
+              {/* Bloco 3 — Para quem é + Métricas (badges e stats próximos) */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={staggerContainer}
+                className="space-y-8"
+              >
+                <div>
+                  <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
+                    Ideal para
+                  </motion.h2>
+                  <div className="flex flex-wrap gap-2 md:gap-3">
+                    {[
+                      "ERPs de missão crítica",
+                      "CRMs corporativos",
+                      "Sistemas financeiros",
+                      "PMS hoteleiros",
+                      "Aplicações industriais",
+                    ].map((item) => (
+                      <motion.span
+                        key={item}
+                        variants={fadeInUp}
+                        className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-2 text-sm font-medium text-foreground shadow-sm"
+                      >
+                        <Check className="h-4 w-4 text-primary shrink-0" />
+                        {item}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6">
-                  <HolographicCard className="p-6 bg-gradient-to-br from-[hsl(232,70%,8%)] via-[hsl(232,70%,6%)] to-black border-white/30">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center border border-white/30">
-                        <Zap className="h-5 w-5 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Ultra rápido</h3>
-                    </div>
-                    <p className="text-base text-gray-200 leading-relaxed drop-shadow-md">
-                      Resposta imediata com SLA medido em minutos, não em promessas. Nossa equipe está sempre pronta para resolver qualquer necessidade rapidamente.
-                    </p>
-                  </HolographicCard>
-
-                  <HolographicCard className="p-6 bg-gradient-to-br from-[hsl(232,70%,8%)] via-[hsl(232,70%,6%)] to-black border-white/30">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center border border-white/30">
-                        <CheckCircle2 className="h-5 w-5 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">Humano</h3>
-                    </div>
-                    <p className="text-base text-gray-200 leading-relaxed drop-shadow-md">
-                      Sem chatbots, sem scripts automatizados. Você fala diretamente com especialistas que conhecem seu ambiente técnico e estão prontos para ajudar.
-                    </p>
-                  </HolographicCard>
-
-                  <HolographicCard className="p-6 bg-gradient-to-br from-[hsl(232,70%,8%)] via-[hsl(232,70%,6%)] to-black border-white/30">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center border border-white/30">
-                        <Clock className="h-5 w-5 text-white" />
-                      </div>
-                      <h3 className="text-xl font-semibold text-white drop-shadow-lg">100% disponível</h3>
-                    </div>
-                    <p className="text-base text-gray-200 leading-relaxed drop-shadow-md">
-                      Suporte técnico especializado 24×7, com equipe de plantão sempre disponível para garantir continuidade dos seus sistemas críticos.
-                    </p>
-                  </HolographicCard>
-                </div>
+                {/* Bloco 4 — Métricas (próximo aos badges) */}
+                <motion.div
+                  variants={staggerContainer}
+                  className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                {[
+                  { value: "+5000", label: "Servidores gerenciados", Icon: Server },
+                  { value: "+1200", label: "Clientes ativos", Icon: Users },
+                  { value: "16", label: "Anos de operação", Icon: Clock },
+                  { value: "SLA", label: "Em minuto", Icon: Shield },
+                ].map((item) => (
+                  <motion.div
+                    key={item.label}
+                    variants={fadeInUp}
+                    className="rounded-xl border border-border bg-card/50 p-6 text-center"
+                  >
+                    <item.Icon className="h-8 w-8 text-primary mx-auto mb-3" />
+                    <p className="text-2xl lg:text-3xl font-bold text-foreground">{item.value}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{item.label}</p>
+                  </motion.div>
+                ))}
+              </motion.div>
               </motion.div>
             </div>
           </section>
 
-          {/* Backup Section */}
-          <section id="backup" className="py-20 relative overflow-hidden">
-            {/* Dark Blue Background with Gradient */}
+          {/* DBA Time — teaser com link para a página dedicada */}
+          <section id="dba-time" className="py-20 relative overflow-hidden">
             <div className="absolute inset-0" style={{ backgroundColor: 'hsl(232, 70%, 8%)' }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10" />
             </div>
-            
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
-                variants={fadeInUp}
-                className="mb-12"
+                variants={staggerContainer}
+                className="max-w-3xl"
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <HardDrive className="h-8 w-8 text-white" />
+                <motion.div variants={fadeInUp} className="flex items-center gap-3 mb-6">
+                  <Database className="h-8 w-8 text-primary" />
                   <h2 className="text-3xl lg:text-4xl font-display font-bold text-white">
-                    Backup
+                    DBA Time
                   </h2>
-                </div>
-                
-                <Card className="border border-white/30 bg-white/10 backdrop-blur-xl hover:bg-white/15 transition-all shadow-xl">
-                  <CardHeader>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center border border-white/30">
-                        <Shield className="h-5 w-5 text-white" />
-                      </div>
-                      <CardTitle className="text-white">Proteção completa de dados</CardTitle>
-                    </div>
-                    <CardDescription className="text-base text-white/90">
-                      Segurança enterprise para seus dados críticos. Backup automatizado, retenção flexível e recuperação rápida garantidos. Soluções de backup em nuvem com criptografia AES-256, backup automatizado, múltiplas cópias e recuperação rápida garantida. Testes regulares de restauração e RTO/RPO otimizados para seu negócio.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
+                </motion.div>
+                <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed mb-8">
+                  Serviços avançados de administração, performance, otimização e segurança de bancos de dados. Tuning, migrações, alta disponibilidade e especialidades em Oracle, SQL Server, PostgreSQL e MySQL.
+                </motion.p>
+                <motion.div variants={fadeInUp}>
+                  <Button size="lg" className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                    <a href="/o-que-fazemos/dba-time">
+                      Saiba mais sobre DBA Time
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </motion.div>
               </motion.div>
             </div>
           </section>

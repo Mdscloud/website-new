@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
-import { Video, Building2, Users, Award, TrendingUp, Play } from "lucide-react";
+import { Video, Building2, Users, Award, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import heroImage from "@/assets/about/hero.jpg";
@@ -25,22 +25,19 @@ const staggerContainer = {
 const DepoimentosVideo = () => {
   const videos = [
     {
-      title: "Depoimento - Empresa ABC",
-      company: "Empresa ABC",
-      description: "Conheça a experiência da Empresa ABC com a MDS Cloud",
-      thumbnail: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop",
+      title: "Depoimento em vídeo",
+      description: "Depoimento de cliente MDS Cloud",
+      embedId: "vrJ0iGCqki0",
     },
     {
-      title: "Depoimento - Tech Solutions",
-      company: "Tech Solutions",
-      description: "Veja como a Tech Solutions transformou sua infraestrutura",
-      thumbnail: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop",
+      title: "Depoimento em vídeo",
+      description: "Depoimento de cliente MDS Cloud",
+      embedId: "vgMLsY7JndE",
     },
     {
-      title: "Depoimento - Inovação Digital",
-      company: "Inovação Digital",
-      description: "A migração perfeita da Inovação Digital para a nuvem",
-      thumbnail: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop",
+      title: "Depoimento em vídeo",
+      description: "Depoimento de cliente MDS Cloud",
+      embedId: "Lbu86lpVj9w",
     },
   ];
 
@@ -188,16 +185,13 @@ const DepoimentosVideo = () => {
                   <motion.div key={index} variants={fadeInUp}>
                     <Card className="h-full border border-border hover:border-primary/50 transition-all hover:shadow-lg overflow-hidden">
                       <div className="relative aspect-video bg-muted">
-                        <img 
-                          src={video.thumbnail} 
-                          alt={video.title}
-                          className="w-full h-full object-cover"
+                        <iframe
+                          src={`https://www.youtube.com/embed/${video.embedId}`}
+                          title={video.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                          className="absolute inset-0 w-full h-full"
                         />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors cursor-pointer">
-                          <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center">
-                            <Play className="h-8 w-8 text-white ml-1" />
-                          </div>
-                        </div>
                       </div>
                       <CardHeader>
                         <CardTitle className="text-foreground mb-2">{video.title}</CardTitle>

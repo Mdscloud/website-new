@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import { I18nProvider } from "@/lib/i18n";
 import { CookieConsent } from "@/components/CookieConsent";
+import { WhatsAppConsentProvider } from "@/components/WhatsAppConsentProvider";
 import Index from "./pages/Index";
 import CloudSolutions from "./pages/CloudSolutions";
 import DatabaseSolutions from "./pages/DatabaseSolutions";
@@ -17,9 +18,11 @@ import AgronegocioSolutions from "./pages/AgronegocioSolutions";
 import IndustrialSolutions from "./pages/IndustrialSolutions";
 import QuemSomos from "./pages/QuemSomos";
 import OQueFazemos from "./pages/OQueFazemos";
+import DbaTime from "./pages/DbaTime";
 import ComoFazemos from "./pages/ComoFazemos";
 import Parceiros from "./pages/Parceiros";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Depoimentos from "./pages/Depoimentos";
 import DepoimentosVideo from "./pages/DepoimentosVideo";
 import PoliticasPrivacidade from "./pages/PoliticasPrivacidade";
@@ -34,6 +37,7 @@ const App = () => (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <I18nProvider>
         <TooltipProvider>
+          <WhatsAppConsentProvider>
           <CookieConsent />
           <Toaster />
           <Sonner />
@@ -52,9 +56,11 @@ const App = () => (
               <Route path="/industrial" element={<IndustrialSolutions />} />
               <Route path="/quem-somos" element={<QuemSomos />} />
               <Route path="/o-que-fazemos" element={<OQueFazemos />} />
+              <Route path="/o-que-fazemos/dba-time" element={<DbaTime />} />
               <Route path="/como-fazemos" element={<ComoFazemos />} />
               <Route path="/parceiros" element={<Parceiros />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/depoimentos" element={<Depoimentos />} />
               <Route path="/depoimentos-video" element={<DepoimentosVideo />} />
               <Route path="/politicas-privacidade" element={<PoliticasPrivacidade />} />
@@ -62,6 +68,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
+          </WhatsAppConsentProvider>
         </TooltipProvider>
       </I18nProvider>
     </ThemeProvider>

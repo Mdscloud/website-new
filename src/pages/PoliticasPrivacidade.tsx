@@ -270,8 +270,19 @@ const PoliticasPrivacidade = () => {
                       <a href="#disposicoes" className="block text-muted-foreground hover:text-primary transition-colors py-1">16. Disposições Finais</a>
                     </div>
                   </motion.div>
+                </aside>
 
-                  {/* Formulário */}
+                {/* Right Column - Form + Scrollable Content */}
+                <div className="min-w-0">
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeInUp}
+                    className="space-y-8"
+                  >
+
+                  {/* Formulário - no topo da coluna direita */}
                   <motion.div
                     initial="hidden"
                     whileInView="visible"
@@ -288,11 +299,11 @@ const PoliticasPrivacidade = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="space-y-2">
-                        <Label htmlFor="nome" className="text-sm">
+                        <Label htmlFor="politicas-nome" className="text-sm">
                           Seu nome <span className="text-destructive">*</span>
                         </Label>
                         <Input
-                          id="nome"
+                          id="politicas-nome"
                           name="nome"
                           type="text"
                           required
@@ -303,9 +314,9 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="sobrenome" className="text-sm">Sobrenome</Label>
+                        <Label htmlFor="politicas-sobrenome" className="text-sm">Sobrenome</Label>
                         <Input
-                          id="sobrenome"
+                          id="politicas-sobrenome"
                           name="sobrenome"
                           type="text"
                           placeholder="Sobrenome"
@@ -315,9 +326,9 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="empresa" className="text-sm">Nome da sua empresa</Label>
+                        <Label htmlFor="politicas-empresa" className="text-sm">Nome da sua empresa</Label>
                         <Input
-                          id="empresa"
+                          id="politicas-empresa"
                           name="empresa"
                           type="text"
                           placeholder="Empresa"
@@ -327,9 +338,9 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="cargo" className="text-sm">Seu cargo (opcional)</Label>
+                        <Label htmlFor="politicas-cargo" className="text-sm">Seu cargo (opcional)</Label>
                         <Input
-                          id="cargo"
+                          id="politicas-cargo"
                           name="cargo"
                           type="text"
                           placeholder="Cargo"
@@ -339,11 +350,11 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="site" className="text-sm">
+                        <Label htmlFor="politicas-site" className="text-sm">
                           Site da sua organização (URL) <span className="text-destructive">*</span>
                         </Label>
                         <Input
-                          id="site"
+                          id="politicas-site"
                           name="site"
                           type="url"
                           required
@@ -354,11 +365,11 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-sm">
+                        <Label htmlFor="politicas-email" className="text-sm">
                           Seu e-mail profissional <span className="text-destructive">*</span>
                         </Label>
                         <Input
-                          id="email"
+                          id="politicas-email"
                           name="email"
                           type="email"
                           required
@@ -369,11 +380,11 @@ const PoliticasPrivacidade = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="descricao" className="text-sm">
+                        <Label htmlFor="politicas-descricao" className="text-sm">
                           Descrição da Solicitação
                         </Label>
                         <Textarea
-                          id="descricao"
+                          id="politicas-descricao"
                           name="descricao"
                           placeholder="Descreva sua solicitação..."
                           rows={4}
@@ -390,12 +401,12 @@ const PoliticasPrivacidade = () => {
                           {solicitacoesLGPD.map((solicitacao) => (
                             <div key={solicitacao} className="flex items-start gap-2">
                               <Checkbox
-                                id={solicitacao}
+                                id={`politicas-${solicitacao}`}
                                 checked={formData.solicitacoes.includes(solicitacao)}
                                 onCheckedChange={(checked) => handleCheckboxChange(solicitacao, checked as boolean)}
                                 className="mt-0.5 h-3 w-3"
                               />
-                              <Label htmlFor={solicitacao} className="text-xs leading-relaxed cursor-pointer flex-1">
+                              <Label htmlFor={`politicas-${solicitacao}`} className="text-xs leading-relaxed cursor-pointer flex-1">
                                 {solicitacao}
                               </Label>
                             </div>
@@ -410,7 +421,7 @@ const PoliticasPrivacidade = () => {
                           Anexar uma cópia do seu RG ou CNH para comprovar sua identificação na solicitação.
                         </p>
                         <Input
-                          id="anexo"
+                          id="politicas-anexo"
                           name="anexo"
                           type="file"
                           accept=".pdf,.jpg,.jpeg,.png"
@@ -426,23 +437,23 @@ const PoliticasPrivacidade = () => {
                       <div className="space-y-3 border-t border-border pt-4">
                         <div className="flex items-start gap-2">
                           <Checkbox
-                            id="consentimentoFinalidade"
+                            id="politicas-consentimentoFinalidade"
                             checked={formData.consentimentoFinalidade}
                             onCheckedChange={(checked) => handleConsentChange("consentimentoFinalidade", checked as boolean)}
                             className="mt-0.5 h-3 w-3"
                           />
-                          <Label htmlFor="consentimentoFinalidade" className="text-xs leading-relaxed cursor-pointer flex-1">
+                          <Label htmlFor="politicas-consentimentoFinalidade" className="text-xs leading-relaxed cursor-pointer flex-1">
                             <span className="text-destructive">*</span> Compreendo e autorizo o tratamento dos dados para as finalidades informadas, pois tenho conhecimento de que a coleta é necessária para realização dos esclarecimentos solicitados relacionados aos serviços oferecidos.
                           </Label>
                         </div>
                         <div className="flex items-start gap-2">
                           <Checkbox
-                            id="consentimentoMarketing"
+                            id="politicas-consentimentoMarketing"
                             checked={formData.consentimentoMarketing}
                             onCheckedChange={(checked) => handleConsentChange("consentimentoMarketing", checked as boolean)}
                             className="mt-0.5 h-3 w-3"
                           />
-                          <Label htmlFor="consentimentoMarketing" className="text-xs leading-relaxed cursor-pointer flex-1">
+                          <Label htmlFor="politicas-consentimentoMarketing" className="text-xs leading-relaxed cursor-pointer flex-1">
                             Compreendo e autorizo o tratamento dos dados para fins de recebimento de e-mails com informações relevantes sobre serviços, produtos e/ou notícias diversas sobre compliance, privacidade, segurança da informação e gestão de riscos.
                           </Label>
                         </div>
@@ -452,17 +463,6 @@ const PoliticasPrivacidade = () => {
                       </Button>
                     </form>
                   </motion.div>
-                </aside>
-
-                {/* Right Column - Scrollable Content */}
-                <div className="min-w-0">
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={fadeInUp}
-                    className="space-y-8"
-                  >
 
                 {/* Conteúdo */}
                 <div className="prose prose-lg max-w-none">

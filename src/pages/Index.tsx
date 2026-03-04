@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import tecnologiasBackground from "@/assets/tecnologias-background.jpg";
+import backgroundTecnologias from "@/assets/background-tecnologias.png";
 
 const Index = () => {
   return (
@@ -29,7 +29,7 @@ const Index = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url(${tecnologiasBackground})`,
+              backgroundImage: `url(${backgroundTecnologias})`,
             }}
           />
           
@@ -89,13 +89,13 @@ const Index = () => {
               transition={{ duration: 0.6 }}
               className="mx-auto mb-4 max-w-2xl text-center"
             >
-              <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+              <Badge className="mb-4 bg-white/10 text-white border-white/20">
                 Tecnologias
               </Badge>
-              <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                Tecnologias que <span className="text-gradient">utilizamos</span>
+              <h2 className="mb-4 font-display text-3xl font-bold text-white md:text-4xl">
+                Tecnologias que <span className="text-primary">utilizamos</span>
               </h2>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-white/80">
                 Parceiros tecnológicos e plataformas que garantem a excelência da nossa infraestrutura
               </p>
             </motion.div>

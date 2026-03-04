@@ -14,7 +14,7 @@ export function Header() {
   const { t } = useI18n();
   const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null>(null);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<"solucoes" | "segmentos" | "sobre" | "conteudo" | "parceiros" | "contato" | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isScrolledRef = useRef(false);
@@ -51,7 +51,7 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMegaMenuHover = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null) => {
+  const handleMegaMenuHover = (variant: "solucoes" | "segmentos" | "sobre" | "conteudo" | "parceiros" | "contato" | null) => {
     // Cancela qualquer timeout pendente
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -60,7 +60,7 @@ export function Header() {
     setActiveMegaMenu(variant);
   };
 
-  const handleMegaMenuLeave = (variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato") => {
+  const handleMegaMenuLeave = (variant: "solucoes" | "segmentos" | "sobre" | "conteudo" | "parceiros" | "contato") => {
     // Delay para permitir movimento do mouse para o menu
     closeTimeoutRef.current = setTimeout(() => {
       if (activeMegaMenu === variant) {
@@ -121,26 +121,51 @@ export function Header() {
               </div>
             </div>
 
-            {/* Sobre */}
+            {/* Segmentos */}
             <div 
               className="relative"
-              onMouseEnter={() => handleMegaMenuHover("sobre")}
-              onMouseLeave={() => handleMegaMenuLeave("sobre")}
+              onMouseEnter={() => handleMegaMenuHover("segmentos")}
+              onMouseLeave={() => handleMegaMenuLeave("segmentos")}
             >
               <div className="relative pb-2">
                 <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
-                  activeMegaMenu === "sobre" 
+                  activeMegaMenu === "segmentos" 
                     ? "text-primary" 
                     : "text-foreground hover:text-primary"
                 }`}>
-                  Sobre
-                  {activeMegaMenu === "sobre" ? (
+                  Segmentos
+                  {activeMegaMenu === "segmentos" ? (
                     <ChevronUp className="h-3 w-3" />
                   ) : (
                     <ChevronDown className="h-3 w-3" />
                   )}
                 </button>
-                {activeMegaMenu === "sobre" && (
+                {activeMegaMenu === "segmentos" && (
+                  <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
+                )}
+              </div>
+            </div>
+
+            {/* Parceiros */}
+            <div 
+              className="relative"
+              onMouseEnter={() => handleMegaMenuHover("parceiros")}
+              onMouseLeave={() => handleMegaMenuLeave("parceiros")}
+            >
+              <div className="relative pb-2">
+                <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+                  activeMegaMenu === "parceiros" 
+                    ? "text-primary" 
+                    : "text-foreground hover:text-primary"
+                }`}>
+                  Parceiros
+                  {activeMegaMenu === "parceiros" ? (
+                    <ChevronUp className="h-3 w-3" />
+                  ) : (
+                    <ChevronDown className="h-3 w-3" />
+                  )}
+                </button>
+                {activeMegaMenu === "parceiros" && (
                   <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
                 )}
               </div>
@@ -171,26 +196,26 @@ export function Header() {
               </div>
             </div>
 
-            {/* Parceiros */}
+            {/* Quem Somos */}
             <div 
               className="relative"
-              onMouseEnter={() => handleMegaMenuHover("parceiros")}
-              onMouseLeave={() => handleMegaMenuLeave("parceiros")}
+              onMouseEnter={() => handleMegaMenuHover("sobre")}
+              onMouseLeave={() => handleMegaMenuLeave("sobre")}
             >
               <div className="relative pb-2">
                 <button className={`flex items-center gap-1 text-xs font-medium transition-colors ${
-                  activeMegaMenu === "parceiros" 
+                  activeMegaMenu === "sobre" 
                     ? "text-primary" 
                     : "text-foreground hover:text-primary"
                 }`}>
-                  Parceiros
-                  {activeMegaMenu === "parceiros" ? (
+                  Quem Somos
+                  {activeMegaMenu === "sobre" ? (
                     <ChevronUp className="h-3 w-3" />
                   ) : (
                     <ChevronDown className="h-3 w-3" />
                   )}
                 </button>
-                {activeMegaMenu === "parceiros" && (
+                {activeMegaMenu === "sobre" && (
                   <div className="absolute left-0 top-full h-0.5 w-full bg-primary" />
                 )}
               </div>
@@ -226,14 +251,9 @@ export function Header() {
           <div className="hidden items-center gap-3 lg:flex">
             <LanguageSelector />
             <ThemeToggle />
-            <Button variant="outline" size="sm" className="text-xs" asChild>
-              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                Avaliação gratuita
-              </a>
-            </Button>
             <Button variant="default" size="sm" className="text-xs" asChild>
               <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                Falar com Especialista
+                {t("nav.cta")}
               </a>
             </Button>
           </div>
@@ -275,15 +295,29 @@ export function Header() {
                 </button>
                 {activeMegaMenu === "solucoes" && (
                   <div className="space-y-2 pl-4">
-                    <a href="#hotelaria" className="block text-xs text-foreground">Hotelaria</a>
-                    <a href="#automotivo" className="block text-xs text-foreground">Automotivo</a>
-                    <a href="#agro" className="block text-xs text-foreground">Agronegócio</a>
-                    <a href="#industrial" className="block text-xs text-foreground">Industrial</a>
+                    <a href="/solucoes-cloud" className="block text-xs text-foreground">Soluções em Cloud</a>
+                    <a href="/banco-de-dados" className="block text-xs text-foreground">Banco de Dados</a>
+                    <a href="/backup" className="block text-xs text-foreground">Backup</a>
+                    <a href="/seguranca" className="block text-xs text-foreground">Segurança em Cloud</a>
                   </div>
                 )}
 
-                <a href="/sobre" className="text-sm font-medium text-foreground">Sobre</a>
-                <a href="#conteudo" className="text-sm font-medium text-foreground">Conteúdo</a>
+                <button
+                  onClick={() => setActiveMegaMenu(activeMegaMenu === "segmentos" ? null : "segmentos")}
+                  className="flex items-center justify-between text-sm font-medium text-foreground"
+                >
+                  Segmentos
+                  <ChevronDown className={`h-4 w-4 transition-transform ${activeMegaMenu === "segmentos" ? "rotate-180" : ""}`} />
+                </button>
+                {activeMegaMenu === "segmentos" && (
+                  <div className="space-y-2 pl-4">
+                    <a href="/hotelaria" className="block text-xs text-foreground">Hotelaria</a>
+                    <a href="/agronegocio" className="block text-xs text-foreground">Agronegócio</a>
+                    <a href="/automotivo" className="block text-xs text-foreground">Automotivo</a>
+                    <a href="/industrial" className="block text-xs text-foreground">Industrial</a>
+                  </div>
+                )}
+
                 <button
                   onClick={() => setActiveMegaMenu(activeMegaMenu === "parceiros" ? null : "parceiros")}
                   className="flex items-center justify-between text-sm font-medium text-foreground"
@@ -299,10 +333,13 @@ export function Header() {
                     <a href="/parceiros#policy" className="block text-xs text-foreground">Política</a>
                   </div>
                 )}
+
+                <a href="#conteudo" className="text-sm font-medium text-foreground">Conteúdo</a>
+                <a href="/quem-somos" className="text-sm font-medium text-foreground">Quem Somos</a>
                 <a href="/contato" className="text-sm font-medium text-foreground">Contato</a>
                 <Button variant="default" className="mt-2 w-full text-xs" asChild>
                   <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                    Falar com Especialista
+                    {t("nav.cta")}
                   </a>
                 </Button>
               </div>

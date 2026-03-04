@@ -1,122 +1,258 @@
-import { motion } from "framer-motion";
-import { HeartHandshake, Clock, Shield } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { Rocket, Zap, Lock, ArrowRight } from "lucide-react";
+import backgroundPorqueMds from "@/assets/background-porque-a-mds.png";
+import { Button } from "@/components/ui/button";
+import { GlowCard } from "@/components/ui/spotlight-card";
+import { BorderRotate } from "@/components/ui/animated-gradient-border";
 
-const differentials = [
+const featureCards = [
   {
-    icon: HeartHandshake,
-    title: "Atendimento humano, técnico e direto",
-    description: "Você fala com especialistas que conhecem sua infraestrutura, seu banco de dados e o impacto real de cada decisão no seu negócio. Nada de robôs, filas infinitas ou respostas genéricas.",
+    icon: Rocket,
+    title: "Performance real",
+    description: (
+      <>
+        Storage SSD/NVMe de alta <strong>IOPS</strong> e rede dedicada eliminando lentidão em ERP e banco de dados.
+      </>
+    ),
+    href: "/solucoes-cloud",
   },
   {
-    icon: Clock,
-    title: "SLA real, com resposta em minutos",
-    description: "Plantão 24×7 com equipe própria, tempo de resposta rápido e atuação direta na causa do problema, não apenas no sintoma. Aqui, SLA não é marketing. É operação.",
+    icon: Zap,
+    title: "SLA operacional",
+    description:
+      "Equipe própria 24x7 com atuação direta na causa do problema – não apenas abertura de chamados.",
+    href: "/contato",
   },
   {
-    icon: Shield,
-    title: "Liberdade Contratual",
-    description: "Sem cláusula de rescisão porque acreditamos na qualidade do que entregamos. Se não performar como prometido, você é livre para encerrar a qualquer momento.",
+    icon: Lock,
+    title: "Liberdade e transparência",
+    description:
+      "Sem lock-in contratual. Permanência baseada em performance e resultado entregue.",
+    href: "/sobre",
   },
 ];
 
+const stats = [
+  { value: "+1.500", label: "clientes ativos" },
+  { value: "+200k", label: "IOPS em produção" },
+  { value: "+25 Gbps", label: "backbone redundante" },
+  { value: "Tier III", label: "Data Centers", labelSuffix: "BRL" },
+];
+
+const STATS_GLOW_DURATION_MS = 6000;
+
 export function DifferentialsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "-8%", "-15%"]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const rings = section.querySelectorAll<HTMLElement>(".stats-glow-ring");
+    if (rings.length === 0) return;
+
+    let start: number | null = null;
+    const tick = (time: number) => {
+      if (start === null) start = time;
+      const elapsed = time - start;
+      const angle = (elapsed / STATS_GLOW_DURATION_MS) * 360 % 360;
+      rings.forEach((el) => el.style.setProperty("--stats-glow-angle", `${angle}deg`));
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
   return (
-    <section className="relative py-16 lg:py-20 overflow-hidden bg-secondary/10">
-      {/* Background with radial gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-background to-background" />
-      <div className="absolute inset-0 bg-gradient-glow opacity-30" />
-      
-      {/* Decorative elements */}
-      <div className="absolute right-0 top-1/4 h-96 w-96 rounded-full bg-primary/5 blur-[120px]" />
-      <div className="absolute left-0 bottom-1/4 h-72 w-72 rounded-full bg-accent/5 blur-[100px]" />
+    <section ref={sectionRef} className="relative py-20 lg:py-28 overflow-hidden">
+      {/* Background image com parallax */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${backgroundPorqueMds})`,
+          y: backgroundY,
+          scale: 1.05,
+        }}
+      />
+      {/* Dark overlay for readability - mais leve para a imagem aparecer */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, hsl(232 50% 12% / 0.55) 0%, hsl(232 50% 8% / 0.65) 40%, hsl(232 50% 10% / 0.6) 100%)",
+        }}
+      />
+      {/* Reforço laranja/azul no fundo */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_30%,hsl(26_99%_55%_/_0.12)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_70%,hsl(230_70%_50%_/_0.08)_0%,transparent_55%)]" />
 
       <div className="container relative z-10 mx-auto px-4">
-        {/* Section Header */}
+        {/* Main title & subtitle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mx-auto mb-16 max-w-3xl text-center"
+          className="mx-auto mb-8 max-w-3xl text-center"
         >
-          <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
-            Por que a MDS Cloud?
-          </span>
-          <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            Nuvem especializada de <span className="text-gradient">alta performance</span>
+          <h2 className="mb-4 font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl leading-tight">
+            Infraestrutura Cloud criada para sistemas que{" "}
+            <span className="text-primary">não podem parar</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Equipe de especialistas focada em prover a melhor infraestrutura para seu ERP ou sistema corporativo.
+          <p className="text-lg text-white/80">
+            Performance, disponibilidade e suporte especializado para ERP,
+            bancos de dados e aplicações corporativas críticas.
           </p>
         </motion.div>
 
-        {/* Differentials Grid */}
-        <div className="mb-20 grid gap-6 md:grid-cols-3">
-          {differentials.map((item, index) => (
+        {/* Feature cards – fundo escuro + borda glow sutil azul-laranja com borda animada */}
+        <div className="mb-10 grid gap-5 md:grid-cols-3 pt-6 pb-12 max-w-5xl mx-auto">
+          {featureCards.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/30 bg-white p-8 transition-all duration-500 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2"
+              className="w-full max-w-[360px] mx-auto relative"
             >
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/3 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              
-              {/* Glow effect */}
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
-              
-              <div className="relative z-10">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
-                  <item.icon className="h-7 w-7 text-primary transition-transform duration-300 group-hover:scale-110" />
-                </div>
-                <h3 className="mb-3 font-display text-xl font-bold text-gray-900 dark:text-gray-900 transition-colors group-hover:text-primary">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+              <BorderRotate
+                animationMode="auto-rotate"
+                animationSpeed={6}
+                gradientColors={{
+                  primary: "transparent",
+                  secondary: "transparent",
+                  accent: "transparent",
+                }}
+                backgroundColor="transparent"
+                borderRadius={16}
+                borderWidth={2}
+                className="p-[1px] gradient-border-stats"
+              >
+                <div className="stats-glow-ring" aria-hidden="true" />
+                <GlowCard
+                  glowColor="mds"
+                  glowOnly
+                  transparent
+                  customSize
+                  className="w-full min-h-[260px] p-5 grid-rows-1"
+                >
+                  <div className="flex flex-col relative z-10 col-span-2">
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary ring-1 ring-primary/30">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mb-2 font-display text-lg font-bold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mb-4 text-sm leading-relaxed text-white/80 flex-1">
+                      {item.description}
+                    </p>
+                    <a
+                      href={item.href}
+                      className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/90 transition-colors underline underline-offset-2"
+                    >
+                      Saiba mais
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  </div>
+                </GlowCard>
+              </BorderRotate>
             </motion.div>
           ))}
         </div>
 
-        {/* Numbers Section */}
-        <div className="mb-20 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            { value: "+1500", label: "clientes" },
-            { value: "+ 200k", label: "IOPS" },
-            { value: "+ 25 Gbps", label: "largura de banda" },
-            { value: "TIER III", label: "DataCenter" },
-          ].map((stat, index) => (
+        {/* Stats subtitle */}
+        <motion.h3
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-10 text-center text-xl font-normal text-white md:text-2xl"
+        >
+          Empresas que operam sistemas críticos confiam na MDS Cloud
+        </motion.h3>
+
+        {/* Stats cards – mesmo efeito de borda animada que os feature cards, tamanho mantido */}
+        <div className="mb-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
             <motion.div
-              key={stat.value}
-              initial={{ opacity: 0, y: 30 }}
+              key={stat.label + (stat.labelSuffix ?? "")}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-8 backdrop-blur-md transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 text-center"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="relative w-full"
             >
-              {/* Gradient overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              
-              {/* Glow effect */}
-              <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/0 to-accent/0 opacity-0 blur transition-opacity duration-500 group-hover:opacity-20" />
-              
-              <div className="relative z-10">
-                <div className="text-3xl md:text-4xl font-display font-bold text-primary mb-2 transition-colors group-hover:text-primary/90">
-                  {stat.value}
-                </div>
-                {stat.label && (
-                  <div className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-                    {stat.label}
+              <BorderRotate
+                animationMode="auto-rotate"
+                animationSpeed={6}
+                gradientColors={{
+                  primary: "transparent",
+                  secondary: "transparent",
+                  accent: "transparent",
+                }}
+                backgroundColor="transparent"
+                borderRadius={14}
+                borderWidth={2}
+                className="p-[1px] w-full gradient-border-stats"
+              >
+                <div className="stats-glow-ring" aria-hidden="true" />
+                <GlowCard
+                  glowColor="mds"
+                  glowOnly
+                  transparent
+                  customSize
+                  className="w-full p-6 grid-rows-1 min-h-0"
+                >
+                  <div className="flex flex-col relative z-10 col-span-2 items-center text-center">
+                    <div className="font-display text-2xl font-bold text-primary md:text-3xl flex flex-wrap items-center justify-center gap-1.5">
+                      {stat.value}
+                      {"labelSuffix" in stat && stat.labelSuffix && (
+                        <span className="inline-flex items-center rounded bg-emerald-600 px-2 py-0.5 text-sm font-semibold text-white">
+                          {stat.labelSuffix}
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1 text-sm font-medium text-white/80">
+                      {stat.label}
+                    </div>
                   </div>
-                )}
-              </div>
+                </GlowCard>
+              </BorderRotate>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center gap-6 text-center"
+        >
+          <Button
+            variant="heroShiny"
+            size="lg"
+            className="px-8 py-6 text-base gap-2"
+            asChild
+          >
+            <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+              <Zap className="h-5 w-5" />
+              Solicitar análise gratuita de performance
+            </a>
+          </Button>
+          <p className="text-sm text-white/60">
+            Sem fidelidade • Ativação rápida • Especialistas 24x7
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Car, Wheat, Factory, Hotel, Building2, Users, Award, TrendingUp, Headphones, Zap, Users2, Handshake, FileText, Phone, Mail, Laptop, MapPin, Clock } from "lucide-react";
+import { ChevronDown, Building2, Users, Award, TrendingUp, Headphones, Zap, Users2, Handshake, FileText, Phone, Mail, Laptop, MapPin, Clock, Factory, Car, Sprout } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 interface MegaMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onMouseEnter?: () => void;
-  variant: "solucoes" | "sobre" | "conteudo" | "parceiros" | "contato" | null;
+  variant: "solucoes" | "segmentos" | "sobre" | "conteudo" | "parceiros" | "contato" | null;
 }
 
 export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuProps) {
@@ -42,55 +42,49 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
           },
         ],
       },
+    ],
+    footerLinks: [],
+  };
+
+  const segmentosContent = {
+    title: "Segmentos",
+    columns: [
       {
-        title: "Vertical",
+        title: "Segmentos",
+        description: "Soluções em nuvem para o seu segmento",
         items: [
           {
             title: "Hotelaria",
-            description: "Soluções especializadas para o setor hoteleiro",
+            description: "Infraestrutura e sistemas para redes hoteleiras",
             href: "/hotelaria",
-            icon: Hotel,
+            icon: Building2,
+          },
+          {
+            title: "Agronegócio",
+            description: "Cloud para gestão e operação do agronegócio",
+            href: "/agronegocio",
+            icon: Sprout,
           },
           {
             title: "Automotivo",
-            description: "Infraestrutura para indústria automotiva",
+            description: "Soluções para concessionárias e indústria automotiva",
             href: "/automotivo",
             icon: Car,
           },
           {
-            title: "Agronegócio",
-            description: "Tecnologia para o campo e agronegócio",
-            href: "/agronegocio",
-            icon: Wheat,
-          },
-          {
             title: "Industrial",
-            description: "Sistemas críticos para indústria e saúde",
-            href: "/solucoes#industrial",
+            description: "Infraestrutura para indústria e manufatura",
+            href: "/industrial",
             icon: Factory,
           },
         ],
       },
-      {
-        title: "Por Tipo",
-        items: [
-          {
-            title: "Aplicações Empresariais",
-            description: "Sistemas corporativos críticos",
-            href: "/solucoes#aplicacoes",
-          },
-        ],
-      },
     ],
-    footerLinks: [
-      { title: "Cases de sucesso", href: "/cases" },
-      { title: "Solicitar consultoria", href: "https://wa.me/5511991664976" },
-      { title: "Proof of Concept (30 dias)", href: "https://wa.me/5511991664976" },
-    ],
+    footerLinks: [],
   };
 
   const sobreContent = {
-    title: "Sobre",
+    title: "Quem Somos",
     columns: [
       {
         title: "Quem Somos",
@@ -101,8 +95,8 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
             href: "/quem-somos#institucional",
           },
           {
-            title: "Sócios",
-            description: "Conheça nossos sócios e fundadores",
+            title: "Liderança",
+            description: "Conheça nossa liderança e fundadores",
             href: "/quem-somos#socios",
           },
           {
@@ -123,17 +117,7 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
           {
             title: "DBA Time",
             description: "Tunning e administração de bancos de dados",
-            href: "/o-que-fazemos#dba-time",
-          },
-          {
-            title: "Suporte Técnico",
-            description: "Suporte humano 24x7 ultra rápido",
-            href: "/o-que-fazemos#suporte-tecnico",
-          },
-          {
-            title: "Backup",
-            description: "Proteção completa de dados críticos",
-            href: "/o-que-fazemos#backup",
+            href: "/o-que-fazemos/dba-time",
           },
         ],
       },
@@ -148,11 +132,7 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
         ],
       },
     ],
-    footerLinks: [
-      { title: "Carreiras", href: "https://wa.me/5511991664976" },
-      { title: "Contato", href: "https://wa.me/5511991664976" },
-      { title: "Blog", href: "#blog" },
-    ],
+    footerLinks: [],
   };
 
   const conteudoContent = {
@@ -176,11 +156,6 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
             title: "Depoimentos em Vídeo", 
             description: "Depoimentos em vídeo de nossos clientes",
             href: "/depoimentos-video" 
-          },
-          { 
-            title: "Políticas de Privacidade", 
-            description: "Nossas políticas e termos de privacidade",
-            href: "/politicas-privacidade" 
           },
         ],
       },
@@ -274,7 +249,7 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
         ],
       },
       {
-        title: "Segmentos",
+        title: "Tipos de Parceiros",
         items: [
           {
             title: "Consultores de TI",
@@ -294,20 +269,10 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
             href: "/parceiros#segmentos",
             icon: Factory,
           },
-          {
-            title: "Cliente Final",
-            description: "Precisa de cloud? Fale direto conosco. Atendimento rápido e sem burocracia.",
-            href: "/parceiros#segmentos",
-            icon: Phone,
-          },
         ],
       },
     ],
-    footerLinks: [
-      { title: "Falar com Comercial", href: "https://wa.me/5511991664976" },
-      { title: "Enviar Proposta", href: "https://wa.me/5511991664976" },
-      { title: "Política de Parceria", href: "/parceiros#policy" },
-    ],
+    footerLinks: [],
   };
 
   const contatoContent = {
@@ -337,11 +302,17 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
         ],
       },
       {
-        title: "Informações Legais",
+        title: "Privacidade & Termos",
         items: [
           {
             title: "Política de Privacidade",
             description: "Nossa declaração de privacidade e proteção de dados",
+            href: "/politicas-privacidade",
+            icon: FileText,
+          },
+          {
+            title: "Segurança e LGPD",
+            description: "Segurança da informação e conformidade LGPD",
             href: "/politicas-privacidade",
             icon: FileText,
           },
@@ -354,23 +325,12 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
         ],
       },
     ],
-    footerLinks: [
-      { title: "WhatsApp", href: "https://wa.me/5511991664976" },
-      { title: "E-mail", href: "mailto:comercial@mdscloud.com.br" },
-    ],
-    contactInfo: {
-      title: "Quem Somos",
-      description: "Mais de 16 anos de experiência em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos.",
-      address: "Rua Pereira Estefano, 114, Cj 801",
-      city: "São Paulo - SP",
-      phone: "+55 11 2577-7899",
-      email: "comercial@mdscloud.com.br",
-      hours: "Segunda a Sexta: 9h às 18h",
-    },
+    footerLinks: [],
   };
 
   const content = {
     solucoes: solucoesContent,
+    segmentos: segmentosContent,
     sobre: sobreContent,
     conteudo: conteudoContent,
     parceiros: parceirosContent,
@@ -505,7 +465,7 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
               </div>
 
               {/* Footer links */}
-              {content.footerLinks && (
+              {content.footerLinks?.length > 0 && (
                 <div className="mt-6 flex flex-wrap gap-5 border-t border-border pt-4">
                   {content.footerLinks.map((link, index) => (
                     <a

@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const benefits = [
   "Setup gratuito e migração assistida",
   "30 dias de teste sem compromisso",
   "Suporte técnico 24x7 incluso",
-  "Sem fidelidade ou multas",
+  "Contrato sem fidelidade ou multas",
 ];
 
 export function CTASection() {
@@ -31,14 +31,13 @@ export function CTASection() {
 
           {/* Headline */}
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            Comece com a Nuvem de
+            Migre sem risco para uma cloud de
             <br />
-            <span className="text-gradient">Alta Performance</span>
+            <span className="text-gradient">alta performance</span>
           </h2>
           
           <p className="mb-8 text-lg text-muted-foreground">
-            Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode 
-            transformar a infraestrutura da sua empresa.
+            Veja sua aplicação rodando com mais performance, estabilidade e suporte especializado, sem compromisso.
           </p>
 
           {/* Benefits */}
@@ -52,24 +51,14 @@ export function CTASection() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button variant="hero" size="xl" asChild>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start">
+            <Button variant="heroShiny" size="xl" className="px-8 py-6 text-base gap-2" asChild>
               <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                Começar Teste Grátis
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                Agendar Demonstração
+                <Zap className="h-5 w-5" />
+                Solicitar POC de até 30 dias
               </a>
             </Button>
           </div>
-
-          {/* Trust Note */}
-          <p className="mt-6 text-sm text-muted-foreground">
-            Setup em até 24h • Suporte incluso
-          </p>
         </motion.div>
       </div>
     </section>

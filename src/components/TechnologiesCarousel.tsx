@@ -61,7 +61,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                   key={`row1-${tech.name}-${index}`}
                   className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
                 >
-                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-white border border-gray-200/70 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105 shadow-sm">
                     {tech.image ? (
                       <img
                         src={tech.image}
@@ -70,7 +70,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                         loading="lazy"
                       />
                     ) : (
-                      <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                      <span className="text-xs md:text-sm font-semibold text-gray-700 transition-all duration-300 group-hover:text-gray-900">
                         {tech.name}
                       </span>
                     )}
@@ -88,7 +88,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                   key={`row2-${tech.name}-${index}`}
                   className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
                 >
-                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                  <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-white border border-gray-200/70 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105 shadow-sm">
                     {tech.image ? (
                       <img
                         src={tech.image}
@@ -97,7 +97,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                         loading="lazy"
                       />
                     ) : (
-                      <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                      <span className="text-xs md:text-sm font-semibold text-gray-700 transition-all duration-300 group-hover:text-gray-900">
                         {tech.name}
                       </span>
                     )}
@@ -123,7 +123,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                 key={`row1-${tech.name}-${index}`}
                 className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
               >
-                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-white border border-gray-200/70 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105 shadow-sm">
                   {tech.image ? (
                     <img
                       src={tech.image}
@@ -132,7 +132,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                       loading="lazy"
                     />
                   ) : (
-                    <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                    <span className="text-xs md:text-sm font-semibold text-gray-700 transition-all duration-300 group-hover:text-gray-900">
                       {tech.name}
                     </span>
                   )}
@@ -150,7 +150,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                 key={`row2-${tech.name}-${index}`}
                 className="group relative flex h-20 w-20 shrink-0 items-center justify-center md:h-24 md:w-24"
               >
-                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-card border border-border/10 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105">
+                <div className="relative flex h-full w-full items-center justify-center rounded-xl bg-white border border-gray-200/70 p-4 transition-all duration-300 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:scale-105 shadow-sm">
                   {tech.image ? (
                     <img
                       src={tech.image}
@@ -159,7 +159,7 @@ export function TechnologiesCarousel({ isInHero = false }: TechnologiesCarouselP
                       loading="lazy"
                     />
                   ) : (
-                    <span className="text-xs md:text-sm font-semibold text-foreground/80 transition-all duration-300 group-hover:text-foreground">
+                    <span className="text-xs md:text-sm font-semibold text-gray-700 transition-all duration-300 group-hover:text-gray-900">
                       {tech.name}
                     </span>
                   )}

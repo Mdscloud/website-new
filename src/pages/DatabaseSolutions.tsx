@@ -49,23 +49,16 @@ export default function DatabaseSolutions() {
     },
     {
       icon: Database,
-      title: 'Suporte ao Ciclo Completo',
-      description: 'Gestão completa da rotina operacional do banco de dados',
+      title: 'Gestão Completa do Banco de Dados',
+      description: 'Gestão completa do banco de dados sob demanda',
       detail: 'Desde planejamento até manutenção, evolução e migrações complexas',
     }
   ];
 
-  const benefits = [
-    'Time de especialistas com experiência prática',
-    'Tuning de banco de dados contínuo',
-    'Performance consistente',
-    'Alta disponibilidade',
-    'Segurança dos dados',
-    'Confiabilidade operacional',
-    'Suporte ao ciclo completo do banco de dados',
-    'Atuação preventiva e corretiva',
-    'Acompanhamento de toda rotina operacional',
-    'Migrações complexas com impacto mínimo'
+  const whyChooseBlocks = [
+    { title: 'Performance', items: ['Tuning contínuo', 'Otimização de queries', 'Análise preventiva'] },
+    { title: 'Disponibilidade', items: ['Monitoramento ativo', 'Atuação preventiva', 'Alta resiliência'] },
+    { title: 'Segurança', items: ['Compliance', 'Backup strategy', 'Controle de acesso'] },
   ];
 
   const supportedDatabases = [
@@ -75,20 +68,13 @@ export default function DatabaseSolutions() {
     { name: 'MySQL', icon: '🔷', description: 'Suporte completo para MySQL e MariaDB' }
   ];
 
-  const capabilities = [
-    { icon: Code2, title: 'Arquitetura e Planejamento', description: 'Projetos de banco de dados desenhados sob medida para suas necessidades' },
-    { icon: TrendingUp, title: 'Otimização Contínua', description: 'Tuning regular para manter performance máxima ao longo do tempo' },
-    { icon: Shield, title: 'Ambientes Redundantes', description: 'Failover automático e replicação para garantir continuidade' },
-    { icon: Zap, title: 'Migrações Complexas', description: 'Planejamento e execução de migrações com impacto mínimo nas operações' }
-  ];
-
   const differentials = [
-    { icon: Users, title: 'Time de Especialistas', description: 'DBAs experientes com conhecimento profundo em sistemas críticos' },
-    { icon: AlertTriangle, title: 'Atuação Preventiva', description: 'Monitoramento proativo para prevenir problemas antes que ocorram' },
-    { icon: Settings, title: 'Tuning Contínuo', description: 'Otimização regular de performance para manter eficiência máxima' },
-    { icon: Zap, title: 'Migrações Complexas', description: 'Planejamento e execução de migrações com impacto mínimo' },
-    { icon: Shield, title: 'Ambientes Redundantes', description: 'Failover automático e replicação para garantir continuidade' },
-    { icon: Clock, title: 'Suporte 24×7', description: 'Equipe humana especializada disponível a qualquer momento' }
+    { icon: Users, title: 'Time Sênior de DBAs', description: 'DBAs experientes com foco em sistemas críticos' },
+    { icon: Activity, title: 'Monitoramento Preventivo', description: 'Monitoramento proativo para evitar problemas antes que ocorram' },
+    { icon: Settings, title: 'Tuning Contínuo', description: 'Otimização contínua de performance' },
+    { icon: AlertTriangle, title: 'Atuação Proativa', description: 'Identificação e correção de riscos antes de impactos' },
+    { icon: Clock, title: 'Suporte 24x7 Especializado', description: 'Equipe DBA disponível a qualquer momento' },
+    { icon: Zap, title: 'Migrações Complexas Assistidas', description: 'Planejamento e execução de migrações com impacto controlado' }
   ];
 
   return (
@@ -189,27 +175,24 @@ export default function DatabaseSolutions() {
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground leading-tight"
                   >
-                    Serviço Especializado de Administração DBA
+                    Administração Especializada de Bancos de Dados
                   </motion.h1>
                   
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Administração, suporte e otimização de bancos de dados, garantindo performance consistente, alta disponibilidade e segurança dos dados.
+                    DBAs dedicados para garantir performance, alta disponibilidade e operação contínua dos seus sistemas críticos.
                   </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
-                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
+                    <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Phone className="mr-2 h-5 w-5" />
-                        Falar com Especialista
-                      </a>
-                    </Button>
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
-                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Calendar className="mr-2 h-5 w-5" />
-                        Solicitar POC de 30 dias
+                        <Zap className="h-5 w-5" />
+                        Solicitar POC de até 30 dias
                       </a>
                     </Button>
                   </motion.div>
+                  <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
+                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                  </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
@@ -392,19 +375,58 @@ export default function DatabaseSolutions() {
                     Oferecemos um serviço especializado de administração, suporte e otimização de bancos de dados, garantindo performance consistente, alta disponibilidade e segurança dos dados.
                   </motion.p>
                   
-                  <div className="space-y-3">
-                    {benefits.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        variants={fadeInUp}
-                        className="flex items-center gap-3 group cursor-pointer"
-                      >
-                        <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                          <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
-                        </div>
-                        <span className="text-sm text-foreground group-hover:text-primary transition-colors">{item}</span>
-                      </motion.div>
-                    ))}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+                    <motion.div variants={fadeInUp}>
+                      <h3 className="text-lg font-semibold text-foreground mb-3">{whyChooseBlocks[0].title}</h3>
+                      <div className="space-y-3">
+                        {whyChooseBlocks[0].items.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            variants={fadeInUp}
+                            className="flex items-center gap-3 group cursor-pointer"
+                          >
+                            <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                              <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
+                            </div>
+                            <span className="text-sm text-foreground group-hover:text-primary transition-colors">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                    <motion.div variants={fadeInUp}>
+                      <h3 className="text-lg font-semibold text-foreground mb-3">{whyChooseBlocks[2].title}</h3>
+                      <div className="space-y-3">
+                        {whyChooseBlocks[2].items.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            variants={fadeInUp}
+                            className="flex items-center gap-3 group cursor-pointer"
+                          >
+                            <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                              <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
+                            </div>
+                            <span className="text-sm text-foreground group-hover:text-primary transition-colors">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+                    <motion.div variants={fadeInUp} className="col-span-2">
+                      <h3 className="text-lg font-semibold text-foreground mb-3">{whyChooseBlocks[1].title}</h3>
+                      <div className="space-y-3">
+                        {whyChooseBlocks[1].items.map((item, index) => (
+                          <motion.div
+                            key={index}
+                            variants={fadeInUp}
+                            className="flex items-center gap-3 group cursor-pointer"
+                          >
+                            <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                              <CheckCircle2 className="h-4 w-4 text-primary-foreground" />
+                            </div>
+                            <span className="text-sm text-foreground group-hover:text-primary transition-colors">{item}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
                   </div>
                 </motion.div>
                 
@@ -560,49 +582,6 @@ export default function DatabaseSolutions() {
             </div>
           </section>
 
-          {/* Capabilities */}
-          <section className="py-20 relative bg-card/30">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className="text-center mb-16"
-              >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Nossas Capacidades</h2>
-              </motion.div>
-              
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-                className="grid md:grid-cols-2 gap-6"
-              >
-                {capabilities.map((capability, index) => (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    whileHover={{ x: 10 }}
-                    className="relative p-6 rounded-xl bg-card/60 border border-border hover:border-primary/50 transition-all duration-300 group backdrop-blur-sm"
-                  >
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-16 bg-gradient-to-b from-primary to-accent rounded-r-full"></div>
-                    <div className="flex items-start gap-4 ml-2">
-                      <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <capability.icon className="h-6 w-6 text-primary-foreground" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2 text-lg">{capability.title}</h3>
-                        <p className="text-sm text-muted-foreground">{capability.description}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          </section>
-
           {/* Differentials */}
           <section className="py-20 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -673,12 +652,8 @@ export default function DatabaseSolutions() {
                 variants={staggerContainer}
                 className="text-center mb-12"
               >
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full mb-8 shadow-lg">
-                  <Gift className="h-5 w-5" />
-                  <span className="font-semibold">Oferta Especial</span>
-                </motion.div>
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Comece com a Nuvem de Alta Performance
+                  Garanta Performance e Estabilidade para seu Banco de Dados
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-xl text-muted-foreground mb-8">
                   Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
@@ -697,7 +672,7 @@ export default function DatabaseSolutions() {
                     { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
                     { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
                     { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -725,25 +700,13 @@ export default function DatabaseSolutions() {
                   transition={{ delay: 0.5 }}
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg" asChild>
+                  <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <ArrowRight className="mr-2 h-5 w-5" />
-                      Começar Teste Grátis
-                    </a>
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground text-lg px-8" asChild>
-                    <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Agendar Demonstração
+                      <Zap className="h-5 w-5" />
+                      Solicitar POC de até 30 dias
                     </a>
                   </Button>
                 </motion.div>
-                
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Sem cartão de crédito • Setup em até 24h • Suporte incluso
-                  </p>
-                </div>
               </motion.div>
             </div>
           </section>

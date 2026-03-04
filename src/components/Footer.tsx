@@ -16,10 +16,9 @@ const footerLinks = {
     { name: "Carreiras", href: "#" },
   ],
   suporte: [
-    { name: "Central de Ajuda", href: "#" },
-    { name: "Documentação", href: "#" },
-    { name: "Status dos Serviços", href: "#" },
-    { name: "SLA", href: "#" },
+    { name: "Política de Privacidade", href: "/politicas-privacidade" },
+    { name: "Termos de Uso", href: "/politicas-privacidade" },
+    { name: "Segurança & LGPD", href: "/politicas-privacidade" },
   ],
 };
 
@@ -65,13 +64,13 @@ export function Footer() {
 
             {/* Social Links */}
             <div className="mt-6 flex gap-4">
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="https://www.linkedin.com/company/mds-cloud/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="https://www.instagram.com/mds_cloud/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="https://www.youtube.com/@MDSCLOUD/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="YouTube">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
@@ -105,10 +104,11 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-display font-semibold text-foreground">Suporte</h4>
+            <h4 className="mb-4 font-display font-semibold uppercase text-xs tracking-wide text-muted-foreground">Segurança & LGPD</h4>
             <ul className="space-y-3">
               {footerLinks.suporte.map((link) => (
-                <li key={link.name}>
+                <li key={link.name} className="flex items-center gap-2">
+                  <span className="text-primary font-medium">&gt;</span>
                   <a href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">
                     {link.name}
                   </a>

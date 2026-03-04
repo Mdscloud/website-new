@@ -17,7 +17,7 @@ export const translations: Translations = {
   "nav.cases": { pt: "Cases", en: "Cases", es: "Casos" },
   "nav.about": { pt: "Sobre", en: "About", es: "Nosotros" },
   "nav.contact": { pt: "Contato", en: "Contact", es: "Contacto" },
-  "nav.cta": { pt: "Falar com Especialista", en: "Talk to Specialist", es: "Hablar con Especialista" },
+  "nav.cta": { pt: "Avaliação Gratuita", en: "Free Evaluation", es: "Evaluación Gratuita" },
   
   // Services
   "service.cloud": { pt: "Cloud Computing", en: "Cloud Computing", es: "Cloud Computing" },
@@ -34,8 +34,8 @@ export const translations: Translations = {
   "hero.title.1": { pt: "A Nuvem de", en: "The", es: "La Nube de" },
   "hero.title.highlight": { pt: "Alta Performance", en: "High Performance", es: "Alto Rendimiento" },
   "hero.title.2": { pt: "que seu Negócio Exige", en: "Cloud Your Business Demands", es: "que tu Negocio Exige" },
-  "hero.subtitle": { pt: "Cloud Computing, Backup em Nuvem, DBA Remoto e ERP SaaS. Infraestrutura 100% gerenciada com a estabilidade e performance que sistemas críticos de alta demanda precisam.", en: "Cloud Computing, Cloud Backup, Remote DBA and ERP SaaS. 100% managed infrastructure with the stability and performance that high-demand critical systems need.", es: "Cloud Computing, Backup en la Nube, DBA Remoto y ERP SaaS. Infraestructura 100% gestionada con la estabilidad y rendimiento que los sistemas críticos de alta demanda necesitan." },
-  "hero.cta.primary": { pt: "Solicite Cotação", en: "Request Quote", es: "Solicitar Cotización" },
+  "hero.subtitle": { pt: "Cloud para ERP, bancos de dados e sistemas críticos.", en: "Cloud for ERP, databases and critical systems.", es: "Cloud para ERP, bases de datos y sistemas críticos." },
+  "hero.cta.primary": { pt: "Falar com especialista", en: "Talk to an expert", es: "Hablar con un especialista" },
   "hero.cta.secondary": { pt: "Teste Grátis 30 Dias", en: "Free 30-Day Trial", es: "Prueba Gratis 30 Días" },
   "hero.badge.iops": { pt: "30.000+ IOPS", en: "30,000+ IOPS", es: "30.000+ IOPS" },
   "hero.badge.support": { pt: "Suporte 24x7", en: "24x7 Support", es: "Soporte 24x7" },
@@ -83,7 +83,7 @@ export const translations: Translations = {
   "team.title.2": { pt: "atendimento ultra-rápido", en: "ultra-fast service", es: "atención ultra-rápida" },
   "team.description.1": { pt: "Por trás de cada servidor, cada backup, cada migração, existe uma equipe apaixonada por tecnologia e comprometida com seu sucesso. Não somos apenas fornecedores — somos parceiros.", en: "Behind every server, every backup, every migration, there's a team passionate about technology and committed to your success. We're not just vendors — we're partners.", es: "Detrás de cada servidor, cada backup, cada migración, existe un equipo apasionado por la tecnología y comprometido con tu éxito. No somos solo proveedores — somos socios." },
   "team.description.2": { pt: "Nossa equipe reúne especialistas certificados em Oracle, VMware, Microsoft e AWS. Cada membro traz anos de experiência em projetos críticos, garantindo que sua infraestrutura esteja sempre em boas mãos.", en: "Our team brings together certified specialists in Oracle, VMware, Microsoft and AWS. Each member brings years of experience in critical projects, ensuring your infrastructure is always in good hands.", es: "Nuestro equipo reúne especialistas certificados en Oracle, VMware, Microsoft y AWS. Cada miembro aporta años de experiencia en proyectos críticos, garantizando que tu infraestructura esté siempre en buenas manos." },
-  "team.quote": { pt: "A tecnologia conecta, mas são as pessoas que fazem a diferença.", en: "Technology connects, but it's people who make the difference.", es: "La tecnología conecta, pero son las personas las que hacen la diferencia." },
+  "team.quote": { pt: "Infraestrutura crítica exige especialistas de ponta.", en: "Critical infrastructure requires top specialists.", es: "La infraestructura crítica exige especialistas de primer nivel." },
   "team.stat.specialists": { pt: "Especialistas", en: "Specialists", es: "Especialistas" },
   "team.stat.experience": { pt: "Anos de Experiência", en: "Years of Experience", es: "Años de Experiencia" },
   "team.stat.clients": { pt: "Clientes Satisfeitos", en: "Satisfied Clients", es: "Clientes Satisfechos" },

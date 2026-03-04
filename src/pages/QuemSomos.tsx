@@ -3,13 +3,17 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion, AnimatePresence } from "framer-motion";
-import { Building2, Users, Award, Shield, Zap, Users2, Briefcase, TrendingUp, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
+import { Building2, Users, Award, Shield, Zap, Users2, Briefcase, TrendingUp, ArrowRight, Check, Cloud, Linkedin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ParallaxScrollSecond } from "@/components/ui/parallax-scroll";
 import heroImage from "@/assets/about/hero.jpg";
 import equipeImage from "@/assets/about/equipe.jpg";
 import diegoImage from "@/assets/socios/diego.jpeg";
+import gustavoImage from "@/assets/socios/gustavo.jpeg";
+import brunoImage from "@/assets/socios/bruno.jpeg";
+import felipeImage from "@/assets/socios/felipe.jpeg";
 // Importar todas as imagens da pasta equipe
 import equipe1 from "@/assets/about/equipe/equipe1.jpg";
 import equipe2 from "@/assets/about/equipe/equipe2.jpg";
@@ -57,10 +61,32 @@ const QuemSomos = () => {
 
   const socios = [
     {
-      name: "Diego",
-      title: "Co-Founder & CEO",
-      bio: "Em breve adicionaremos informações sobre nossos sócios.",
-      image: diegoImage
+      name: "Diego Costa",
+      title: "Sócio • Diretor de Infraestrutura",
+      bio: "Responsável pela arquitetura e evolução da infraestrutura cloud da MDS. Lidera a estratégia técnica, datacenters, redes, virtualização e alta disponibilidade, garantindo performance e estabilidade para ambientes críticos.",
+      image: diegoImage,
+      linkedin: "https://www.linkedin.com/in/diego-costa-e-silva-0a153628/"
+    },
+    {
+      name: "Gustavo Viude",
+      title: "Sócio • Diretor Comercial",
+      bio: "Responsável pela estratégia comercial e expansão da MDS Cloud. Atua na construção de parcerias estratégicas, relacionamento com clientes e desenvolvimento de soluções alinhadas às necessidades de mercado.",
+      image: gustavoImage,
+      linkedin: "https://www.linkedin.com/in/gustavo-viude-a0188a14/"
+    },
+    {
+      name: "Bruno Schwambach",
+      title: "Sócio • Diretor de Banco de Dados",
+      bio: "Especialista em bancos corporativos, lidera o time de DBAs da MDS. Responsável por performance, tuning, segurança e alta disponibilidade em Oracle, SQL Server, PostgreSQL e MySQL.",
+      image: brunoImage,
+      linkedin: "https://www.linkedin.com/in/bruno-schwambach-60794756/"
+    },
+    {
+      name: "Felipe Melo",
+      title: "Diretor de Marketing",
+      bio: "Responsável pelo posicionamento estratégico da marca, geração de demanda e comunicação institucional da MDS Cloud, fortalecendo o ecossistema de parceiros e clientes.",
+      image: felipeImage,
+      linkedin: "https://www.linkedin.com/in/fbmelo/"
     }
   ];
 
@@ -184,11 +210,11 @@ const QuemSomos = () => {
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                 >
-                  Mais do que um provedor<br />de infraestrutura
+                  Infraestrutura própria. Alta performance. Segurança real.
                 </motion.h1>
                 
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Especialistas em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos
+                  Há mais de 16 anos construindo infraestrutura cloud corporativa no Brasil para sistemas críticos que não podem parar.
                 </motion.p>
               </motion.div>
             </div>
@@ -213,19 +239,25 @@ const QuemSomos = () => {
                     </h2>
                   </div>
                   
-                  <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    <p>
-                      A MDS Cloud é mais do que um provedor de infraestrutura — somos especialistas em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos, como ERPs e CRMs, e na gestão de bancos de dados de alta complexidade. Atuamos como parceiros estratégicos de empresas que não toleram falhas, interrupções ou lentidão, porque entendemos que seus sistemas são o coração operacional dos seus negócios.
-                    </p>
-                    <p>
-                      Fundada há mais de 16 anos, a MDS Cloud vem construindo, do zero, sua própria infraestrutura em nuvem sob controle total, diferente dos modelos que simplesmente revendem capacidade de grandes nuvens públicas. Essa escolha estratégica nos permite oferecer performance superior, segurança robusta, previsibilidade de custos e suporte humano especializado — tudo com excelência local.
-                    </p>
-                    <p>
-                      Nossa presença física está consolidada no maior complexo de data centers da América Latina em Vinhedo (SP), com plataforma certificada e equipamentos de alta confiabilidade — o que nos permite garantir resultados que vão além das promessas genéricas de "uptime".
-                    </p>
-                    <p className="font-semibold text-foreground">
-                      Somos a nuvem que foi feita para resolver problemas reais de negócios com expertise técnica, proximidade e foco absoluto no cliente.
-                    </p>
+                  <div className="space-y-6 text-muted-foreground leading-relaxed">
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">Quem somos</h3>
+                      <p>
+                        Somos especialistas em infraestrutura cloud corporativa com foco absoluto em sistemas críticos como ERP, CRM, PMS e bancos de dados de alta complexidade.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">Nossa diferença</h3>
+                      <p>
+                        Diferente de provedores que revendem capacidade de grandes nuvens públicas, construímos e operamos nossa própria infraestrutura, garantindo performance, previsibilidade e controle total.
+                      </p>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">Nosso compromisso</h3>
+                      <p>
+                        Atuamos como parceiros estratégicos de empresas que não toleram falhas, lentidão ou indisponibilidade.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -284,7 +316,144 @@ const QuemSomos = () => {
             </div>
           </section>
 
-          {/* Sócios Section */}
+          {/* Destaque central - Somos a nuvem... */}
+          <section className="py-16 relative bg-muted/30">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeInUp}
+                className="text-center max-w-4xl mx-auto"
+              >
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 mb-6">
+                  <Cloud className="h-7 w-7 text-primary" />
+                </div>
+                <p className="text-xl lg:text-2xl font-display font-semibold text-foreground leading-relaxed border-l-4 border-primary pl-6 py-2 text-left">
+                  Somos a nuvem feita para resolver problemas reais de negócios com expertise técnica, proximidade e foco absoluto no cliente.
+                </p>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Nossa trajetória - Timeline */}
+          <section className="py-20 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="mb-12"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <Briefcase className="h-8 w-8 text-primary" />
+                  <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
+                    Nossa trajetória
+                  </h2>
+                </div>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="relative"
+              >
+                {/* Desktop: timeline horizontal */}
+                <div className="hidden lg:block">
+                  <div className="flex justify-between items-start gap-4">
+                    {[
+                      { year: "2009", label: "Fundação" },
+                      { year: "2012", label: "Estruturação da primeira infraestrutura própria" },
+                      { year: "2016", label: "Consolidação em Datacenters Ascenty" },
+                      { year: "2020", label: "Expansão nacional" },
+                      { year: "2024", label: "Infraestrutura otimizada para ERP e bancos críticos" },
+                    ].map((item, index) => (
+                      <motion.div
+                        key={item.year}
+                        variants={fadeInUp}
+                        className="flex flex-col items-center flex-1 min-w-0"
+                      >
+                        <div className="w-14 h-14 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center mb-4">
+                          <span className="text-sm font-bold text-primary">{item.year}</span>
+                        </div>
+                        <div className="h-0.5 w-full bg-border max-w-[80%] mx-auto mb-4" />
+                        <p className="text-sm text-muted-foreground text-center leading-snug">{item.label}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+                {/* Mobile: timeline vertical */}
+                <div className="lg:hidden space-y-6">
+                  {[
+                    { year: "2009", label: "Fundação" },
+                    { year: "2012", label: "Estruturação da primeira infraestrutura própria" },
+                    { year: "2016", label: "Consolidação em Datacenters Ascenty" },
+                    { year: "2020", label: "Expansão nacional" },
+                    { year: "2024", label: "Infraestrutura otimizada para ERP e bancos críticos" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item.year}
+                      variants={fadeInUp}
+                      className="flex gap-4 items-start"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center shrink-0">
+                        <span className="text-xs font-bold text-primary">{item.year}</span>
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <p className="text-muted-foreground">{item.label}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Por que a MDS é diferente? */}
+          <section className="py-20 relative bg-muted/20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={staggerContainer}
+                className="mb-12"
+              >
+                <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-6">
+                  Por que a MDS é diferente?
+                </h2>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {[
+                  "Infraestrutura própria",
+                  "Foco em sistemas críticos",
+                  "Suporte humano 24x7",
+                  "Especialistas em Banco de Dados",
+                  "Preços previsíveis em reais",
+                  "Sem lock-in contratual",
+                ].map((item) => (
+                  <motion.div
+                    key={item}
+                    variants={fadeInUp}
+                    className="flex items-center gap-3 rounded-xl border border-border bg-card/50 p-4 hover:border-primary/30 transition-colors"
+                  >
+                    <Check className="h-6 w-6 text-primary shrink-0" />
+                    <span className="font-medium text-foreground">{item}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Liderança Section */}
           <section id="socios" className="py-20 relative overflow-hidden">
             {/* Background azul escuro similar ao Níveis de Parceria */}
             <div className="absolute inset-0" style={{ backgroundColor: 'hsl(232, 70%, 8%)' }} />
@@ -300,17 +469,17 @@ const QuemSomos = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
-                className="grid lg:grid-cols-2 gap-6"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
               >
-                {/* Painel de título à esquerda */}
-                <motion.div variants={fadeInUp} className="flex flex-col justify-center">
-                  <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
-                    Nossos<br />Sócios
+                {/* Painel de título - largura total */}
+                <motion.div variants={fadeInUp} className="flex flex-row flex-wrap items-center gap-3 col-span-2 lg:col-span-4">
+                  <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+                    Liderança
                   </h2>
-                  <ArrowRight className="h-8 w-8 text-white/50" />
+                  <ArrowRight className="h-8 w-8 text-white/50 shrink-0" />
                 </motion.div>
 
-                {/* Cards dos sócios */}
+                {/* Cards dos sócios - 4 na mesma linha */}
                 {socios.map((socio, index) => (
                   <motion.div
                     key={index}
@@ -319,7 +488,7 @@ const QuemSomos = () => {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    <div className="relative h-[500px] rounded-xl overflow-hidden">
+                    <div className="relative h-[320px] lg:h-[380px] rounded-xl overflow-hidden">
                       {/* Imagem de fundo */}
                       <img 
                         src={socio.image} 
@@ -329,7 +498,7 @@ const QuemSomos = () => {
                       
                       {/* Overlay que sobe no hover com gradiente transparente */}
                       <motion.div
-                        className="absolute bottom-0 left-0 right-0 p-6"
+                        className="absolute bottom-0 left-0 right-0 p-4"
                         animate={{
                           height: hoveredIndex === index ? '100%' : 'auto',
                         }}
@@ -341,9 +510,22 @@ const QuemSomos = () => {
                         }}
                       >
                         <div className="flex flex-col justify-end h-full">
-                          <div className="mb-2">
-                            <h3 className="text-xl font-bold text-white mb-1">{socio.name}</h3>
-                            <p className="text-sm text-white/80">{socio.title}</p>
+                          <div className="mb-1">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <h3 className="text-base lg:text-lg font-bold text-white mb-0.5">{socio.name}</h3>
+                              {socio.linkedin && (
+                                <a
+                                  href={socio.linkedin}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-primary text-white/80 hover:text-white transition-colors"
+                                  aria-label={`LinkedIn de ${socio.name}`}
+                                >
+                                  <Linkedin className="h-4 w-4" />
+                                </a>
+                              )}
+                            </div>
+                            <p className="text-xs text-white/80">{socio.title}</p>
                           </div>
                           
                           {/* Biografia - aparece no hover */}
@@ -354,9 +536,9 @@ const QuemSomos = () => {
                                 animate={{ opacity: 1, height: 'auto' }}
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.3, delay: 0.1 }}
-                                className="mt-4"
+                                className="mt-3"
                               >
-                                <p className="text-sm text-white/90 leading-relaxed">
+                                <p className="text-xs text-white/90 leading-relaxed">
                                   {socio.bio}
                                 </p>
                               </motion.div>
@@ -454,6 +636,40 @@ const QuemSomos = () => {
           <section className="py-4 relative bg-muted/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <ParallaxScrollSecond images={equipeImages} />
+            </div>
+          </section>
+
+          {/* CTA Final - Conheça nossas soluções */}
+          <section className="py-20 relative overflow-hidden bg-card/30">
+            <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-transparent pointer-events-none" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+            <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+              >
+                <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
+                  Conheça nossas soluções de alta performance
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Fale com nossos especialistas e descubra como a MDS Cloud pode levar sua infraestrutura ao próximo nível.
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <Button variant="heroShiny" size="xl" asChild>
+                    <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
+                      Falar com especialista
+                      <ArrowRight className="h-5 w-5 ml-2 inline" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="xl" asChild>
+                    <a href="/solucoes-cloud">
+                      Ver soluções
+                    </a>
+                  </Button>
+                </div>
+              </motion.div>
             </div>
           </section>
         </main>

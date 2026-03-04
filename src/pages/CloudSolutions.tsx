@@ -1,14 +1,17 @@
-import { motion } from "framer-motion";
-import { memo } from "react";
-import { Shield, Lock, Server, Cloud, HardDrive, CheckCircle2, Gift, ArrowRight, Phone, Calendar, Zap, Globe, Gauge, Award, Users, Rocket, BarChart3, Clock, Settings } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { memo, useRef } from "react";
+import { Shield, Lock, Server, Cloud, HardDrive, CheckCircle2, Gift, ArrowRight, Phone, Calendar, Zap, Globe, Gauge, Award, Users, Rocket, BarChart3, Clock, Settings, Building2, ClipboardList, FileCheck, TrendingUp, Headphones } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { PartnersCarousel } from "@/components/PartnersCarousel";
+import { GlowCard } from "@/components/ui/spotlight-card";
+import { BorderRotate } from "@/components/ui/animated-gradient-border";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/about/sobre-o-que-fazemos.jpg";
+import backgroundOQueEMds from "@/assets/background-porque-a-mds.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -96,6 +99,28 @@ export default function CloudSolutions() {
     { icon: CheckCircle2, title: 'Sem Lock-in', description: 'Sem multas rescisórias, sem dependência de terceiros, sem camadas ocultas' }
   ];
 
+  const oQueEMdsSectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: oQueEMdsSectionRef,
+    offset: ["start end", "end start"],
+  });
+  const oQueEMdsBackgroundY = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "-8%", "-15%"]);
+
+  const oQueEMdsCards = [
+    { icon: Building2, title: 'Infraestrutura própria', description: 'Data centers próprios no Brasil, Tier III, sem dependência de hyperscalers.' },
+    { icon: HardDrive, title: 'Storage SSD alta IOPS', description: 'Discos de alta performance para cargas de trabalho exigentes e baixa latência.' },
+    { icon: Gauge, title: 'Rede baixa latência', description: 'Rede dedicada e backbone redundante para aplicações críticas.' },
+    { icon: Settings, title: 'Ambiente gerenciado', description: 'Gestão e monitoramento 24x7 por especialistas MDS Cloud.' },
+  ];
+
+  const migrationSteps = [
+    { step: 1, icon: ClipboardList, title: 'Análise do ambiente' },
+    { step: 2, icon: FileCheck, title: 'Planejamento técnico' },
+    { step: 3, icon: Rocket, title: 'Migração assistida' },
+    { step: 4, icon: TrendingUp, title: 'Otimização' },
+    { step: 5, icon: Headphones, title: 'Operação 24x7' },
+  ];
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -160,27 +185,25 @@ export default function CloudSolutions() {
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground leading-tight"
                   >
-                    Infraestrutura de Alta Performance
+                    Cloud de Alta Performance para Sistemas Críticos
                   </motion.h1>
                   
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Infraestrutura própria em Data Centers Ascenty Tier III, projetada para entregar alto desempenho, estabilidade e alta disponibilidade para sistemas críticos.
+                    Infraestrutura dedicada para ERPs, bancos de dados e
+                    aplicações corporativas que não podem parar.
                   </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
-                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
+                    <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Phone className="mr-2 h-5 w-5" />
-                        Falar com Especialista
-                      </a>
-                    </Button>
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
-                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Calendar className="mr-2 h-5 w-5" />
-                        Solicitar POC de 30 dias
+                        <Zap className="h-5 w-5" />
+                        Solicitar POC de até 30 dias
                       </a>
                     </Button>
                   </motion.div>
+                  <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
+                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                  </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
@@ -303,7 +326,7 @@ export default function CloudSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Infraestrutura de Alta Performance</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Cloud de Alta Performance para Sistemas Críticos</h2>
                 <p className="text-lg text-muted-foreground">Trabalhamos com ambientes preparados para ERPs, CRMs e aplicações corporativas</p>
               </motion.div>
               
@@ -349,7 +372,169 @@ export default function CloudSolutions() {
                 ))}
             </motion.div>
           </div>
-        </section>
+          </section>
+
+          {/* Use Cases */}
+          <section className="py-20 relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="text-center mb-16"
+              >
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Para quais ambientes nossa Cloud é ideal</h2>
+                <p className="text-lg text-muted-foreground">Nossa infraestrutura é perfeita para sistemas que exigem máxima performance e disponibilidade</p>
+              </motion.div>
+              
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="grid md:grid-cols-3 gap-8"
+              >
+                {useCases.map((useCase, index) => (
+                  <motion.div
+                    key={index}
+                    variants={scaleIn}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all overflow-hidden backdrop-blur-sm h-full">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                      
+                      <CardHeader className="text-center relative">
+                        <div className="relative w-20 h-20 mx-auto mb-6">
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-full blur-2xl opacity-60"></div>
+                          <div className="relative w-full h-full bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+                            <useCase.icon className="h-10 w-10 text-primary-foreground" />
+                          </div>
+                        </div>
+                        <CardTitle className="text-xl text-foreground mb-3">{useCase.title}</CardTitle>
+                        <CardDescription className="text-muted-foreground">
+                          {useCase.description}
+                        </CardDescription>
+                      </CardHeader>
+                    </Card>
+                </motion.div>
+              ))}
+              </motion.div>
+            </div>
+          </section>
+
+          {/* O que é a MDS Cloud? */}
+          <section
+            ref={oQueEMdsSectionRef}
+            className="relative py-20 lg:py-28 overflow-hidden"
+          >
+            {/* Background image com parallax */}
+            <motion.div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${backgroundOQueEMds})`,
+                y: oQueEMdsBackgroundY,
+                scale: 1.05,
+              }}
+            />
+            {/* Overlay para legibilidade */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_100%_60%_at_50%_30%,hsl(var(--primary)/0.12)_0%,transparent_55%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_70%,hsl(var(--accent)/0.08)_0%,transparent_55%)]" />
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Headline + copy */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className="text-center mb-12 lg:mb-16"
+              >
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
+                  O que é a MDS Cloud?
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground font-medium mb-2">
+                  Não somos cloud pública.
+                </p>
+                <p className="text-lg md:text-xl text-muted-foreground font-medium mb-6">
+                  Não somos hosting tradicional.
+                </p>
+                <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto leading-relaxed">
+                  A MDS Cloud é uma infraestrutura dedicada,
+                  <br className="hidden sm:block" />
+                  projetada especificamente para aplicações críticas.
+                </p>
+              </motion.div>
+
+              {/* Cards – mesmo estilo da página inicial (borda glow laranja/azul) + hover que cresce */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={staggerContainer}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto overflow-visible"
+              >
+                {oQueEMdsCards.map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    variants={fadeInUp}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.03, transition: { duration: 0.25 } }}
+                    className="relative w-full"
+                  >
+                    <BorderRotate
+                      animationMode="auto-rotate"
+                      animationSpeed={6}
+                      gradientColors={{
+                        primary: "transparent",
+                        secondary: "transparent",
+                        accent: "transparent",
+                      }}
+                      backgroundColor="transparent"
+                      borderRadius={16}
+                      borderWidth={2}
+                      className="p-[1px] gradient-border-stats h-full"
+                    >
+                      <div className="stats-glow-ring" aria-hidden="true" />
+                      <GlowCard
+                        glowColor="mds"
+                        glowOnly
+                        transparent
+                        customSize
+                        className="w-full min-h-[260px] p-5 grid-rows-1 h-full"
+                      >
+                        <div className="flex flex-col relative z-10 col-span-2">
+                          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/20 text-primary ring-1 ring-primary/30">
+                            <item.icon className="h-5 w-5" />
+                          </div>
+                          <h3 className="mb-2 font-display text-lg font-bold text-white">
+                            {item.title}
+                          </h3>
+                          <p className="mb-4 text-sm leading-relaxed text-white/80 flex-1">
+                            {item.description}
+                          </p>
+                          <a
+                            href="#diferenciais"
+                            className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/90 transition-colors underline underline-offset-2"
+                          >
+                            Saiba mais
+                            <ArrowRight className="h-4 w-4" />
+                          </a>
+                        </div>
+                      </GlowCard>
+                    </BorderRotate>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
 
           {/* Why Choose Section */}
           <section className="py-20 relative bg-card/30">
@@ -498,60 +683,8 @@ export default function CloudSolutions() {
             </div>
           </section>
 
-          {/* Use Cases */}
-          <section className="py-20 relative">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                className="text-center mb-16"
-              >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Casos de Uso Ideal</h2>
-                <p className="text-lg text-muted-foreground">Nossa infraestrutura é perfeita para sistemas que exigem máxima performance e disponibilidade</p>
-              </motion.div>
-              
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={staggerContainer}
-                className="grid md:grid-cols-3 gap-8"
-              >
-                {useCases.map((useCase, index) => (
-                  <motion.div
-                    key={index}
-                    variants={scaleIn}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative group"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all overflow-hidden backdrop-blur-sm h-full">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-5 transition-opacity"></div>
-                      
-                      <CardHeader className="text-center relative">
-                        <div className="relative w-20 h-20 mx-auto mb-6">
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-full blur-2xl opacity-60"></div>
-                          <div className="relative w-full h-full bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
-                            <useCase.icon className="h-10 w-10 text-primary-foreground" />
-                          </div>
-                        </div>
-                        <CardTitle className="text-xl text-foreground mb-3">{useCase.title}</CardTitle>
-                        <CardDescription className="text-muted-foreground">
-                          {useCase.description}
-                        </CardDescription>
-                      </CardHeader>
-                    </Card>
-                </motion.div>
-              ))}
-              </motion.div>
-            </div>
-          </section>
-
           {/* Differentials */}
-          <section className="py-20 relative bg-card/30">
+          <section id="diferenciais" className="py-20 relative bg-card/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial="hidden"
@@ -593,6 +726,83 @@ export default function CloudSolutions() {
           </div>
         </section>
 
+          {/* Como funciona a migração */}
+          <section className="py-20 relative overflow-hidden">
+            {/* Background: grid + radial gradient for depth */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.04)_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,hsl(var(--primary)/0.08)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_80%,hsl(var(--accent)/0.06)_0%,transparent_50%)]" />
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={fadeInUp}
+                className="text-center mb-12"
+              >
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                  Como funciona a migração
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Da análise ao suporte contínuo, cada etapa é pensada para sua tranquilidade.
+                </p>
+              </motion.div>
+
+              {/* Stepper: horizontal row on desktop, vertical on mobile */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-60px" }}
+                variants={staggerContainer}
+                className="flex flex-col lg:flex-row gap-4 lg:gap-3 items-stretch"
+              >
+                {migrationSteps.map((item, index) => (
+                  <motion.div
+                    key={item.step}
+                    variants={fadeInUp}
+                    className="relative flex-1 min-w-0 flex flex-col"
+                  >
+                    <BorderRotate
+                      animationMode="auto-rotate"
+                      animationSpeed={6}
+                      gradientColors={{
+                        primary: "transparent",
+                        secondary: "transparent",
+                        accent: "transparent",
+                      }}
+                      backgroundColor="transparent"
+                      borderRadius={12}
+                      borderWidth={2}
+                      className="p-[1px] gradient-border-stats h-full relative z-10"
+                    >
+                      <div className="stats-glow-ring" aria-hidden="true" />
+                      <GlowCard
+                        glowColor="mds"
+                        glowOnly
+                        transparent
+                        customSize
+                        className="w-full min-h-0 p-4 grid-rows-1 h-full flex flex-col items-center text-center"
+                      >
+                        <div className="flex flex-col items-center gap-3 relative z-10 w-full">
+                          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/20 text-primary font-bold text-sm ring-2 ring-primary/40 shrink-0">
+                            {item.step}
+                          </div>
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary ring-1 ring-primary/30 shrink-0 mx-auto">
+                            <item.icon className="h-4 w-4" />
+                          </div>
+                          <h3 className="font-display text-sm font-bold text-foreground leading-tight">
+                            {item.title}
+                          </h3>
+                        </div>
+                      </GlowCard>
+                    </BorderRotate>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+
           {/* CTA Section */}
           <section className="py-20 relative overflow-hidden bg-card/30">
             <motion.div
@@ -620,10 +830,6 @@ export default function CloudSolutions() {
                 variants={staggerContainer}
                 className="text-center mb-12"
               >
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full mb-8 shadow-lg">
-                  <Gift className="h-5 w-5" />
-                  <span className="font-semibold">Oferta Especial</span>
-                </motion.div>
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
                   Comece com a Nuvem de Alta Performance
                 </motion.h2>
@@ -644,7 +850,7 @@ export default function CloudSolutions() {
                     { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
                     { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
                     { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -672,25 +878,13 @@ export default function CloudSolutions() {
                   transition={{ delay: 0.5 }}
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg" asChild>
+                  <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <ArrowRight className="mr-2 h-5 w-5" />
-                      Começar Teste Grátis
-                    </a>
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground text-lg px-8" asChild>
-                    <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Agendar Demonstração
+                      <Zap className="h-5 w-5" />
+                      Solicitar POC de até 30 dias
                     </a>
                   </Button>
                 </motion.div>
-                
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Sem cartão de crédito • Setup em até 24h • Suporte incluso
-                  </p>
-                </div>
                 </motion.div>
             </div>
           </section>

@@ -23,6 +23,8 @@ const buttonVariants = cva(
           "text-primary underline-offset-4 hover:underline",
         hero:
           "bg-primary text-primary-foreground font-semibold btn-glow hover:scale-[1.02] hover:shadow-[0_6px_30px_hsl(187_92%_50%/0.5)]",
+        heroShiny:
+          "btn-hero-shiny rounded-xl font-bold [&_svg]:text-gray-900",
         heroOutline:
           "border-2 border-primary/50 bg-primary/5 text-foreground hover:bg-primary/10 hover:border-primary backdrop-blur-sm",
         floating:

@@ -37,26 +37,26 @@ export default function BackupSolutions() {
   const features = [
     {
       icon: RotateCcw,
-      title: 'Backup Automatizado',
-      description: 'Rotinas de backup configuradas e executadas automaticamente',
+      title: 'Backup Automatizado e Validado',
+      description: 'Rotinas automatizadas com validação de integridade',
       detail: 'Agendamento flexível, múltiplos pontos de restauração e verificação automática de integridade',
     },
     {
       icon: Lock,
-      title: 'Criptografia AES-256',
-      description: 'Segurança enterprise para seus dados críticos',
+      title: 'Criptografia Enterprise AES-256',
+      description: 'Segurança de nível enterprise para seus dados críticos',
       detail: 'Dados criptografados em trânsito e em repouso, garantindo máxima proteção',
     },
     {
       icon: Shield,
-      title: 'Recovery Garantido',
-      description: 'Recuperação rápida e confiável quando você mais precisa',
-      detail: 'Testes regulares de restauração e RTO/RPO otimizados para seu negócio',
+      title: 'Recuperação Testada e Garantida',
+      description: 'Testes regulares de restauração e RTO/RPO otimizados',
+      detail: 'Recuperação rápida e confiável quando você mais precisa',
     },
     {
       icon: Database,
-      title: 'Retenção Flexível',
-      description: 'Políticas de retenção adaptadas às suas necessidades',
+      title: 'Políticas Inteligentes de Retenção',
+      description: 'Retenção flexível e versionamento adaptados ao seu negócio',
       detail: 'Múltiplas cópias, retenção de longo prazo e versionamento completo',
     }
   ];
@@ -77,18 +77,21 @@ export default function BackupSolutions() {
       title: 'Backup Incremental',
       description: 'Backups eficientes que capturam apenas alterações desde o último backup',
       badge: 'Otimizado para velocidade',
+      microcopy: 'Menor consumo de storage',
     },
     {
       icon: HardDrive,
       title: 'Backup Completo',
       description: 'Cópias completas periódicas para garantir recuperação total',
       badge: 'Máxima segurança',
+      microcopy: 'Máxima segurança',
     },
     {
       icon: BarChart3,
       title: 'Backup Diferencial',
       description: 'Balanceamento entre eficiência e rapidez de restauração',
       badge: 'Equilíbrio ideal',
+      microcopy: 'Equilíbrio entre custo e segurança',
     }
   ];
 
@@ -96,16 +99,18 @@ export default function BackupSolutions() {
     { icon: Lock, title: 'Criptografia End-to-End', description: 'Dados protegidos desde a origem até o armazenamento' },
     { icon: Shield, title: 'Controle de Acessos', description: 'Políticas rigorosas de acesso e auditoria completa' },
     { icon: Server, title: 'Armazenamento Redundante', description: 'Múltiplas cópias em diferentes localizações geográficas' },
-    { icon: Clock, title: 'Recuperação Rápida', description: 'RTO otimizado para minimizar tempo de indisponibilidade' }
+    { icon: Clock, title: 'Recuperação Rápida', description: 'RTO otimizado para minimizar tempo de indisponibilidade' },
+    { icon: Lock, title: 'Imutabilidade contra Ransomware', description: 'Proteção contra alteração ou exclusão maliciosa dos backups' },
+    { icon: Shield, title: 'Backup Imutável', description: 'Proteção contra exclusão ou criptografia maliciosa dos dados.' }
   ];
 
   const differentials = [
-    { icon: RotateCcw, title: 'Suporte Total ao Ciclo', description: 'Acompanhamento completo da rotina de backup, desde configuração até recuperação' },
-    { icon: Lock, title: 'Criptografia AES-256', description: 'Segurança enterprise com criptografia de nível militar' },
-    { icon: Shield, title: 'Recovery Garantido', description: 'Testes regulares de restauração garantem que seus dados podem ser recuperados' },
-    { icon: Database, title: 'Retenção Flexível', description: 'Políticas de retenção adaptadas às necessidades regulatórias do seu negócio' },
-    { icon: AlertCircle, title: 'Monitoramento Contínuo', description: 'Acompanhamento 24×7 com alertas proativos e relatórios detalhados' },
-    { icon: Server, title: 'Armazenamento Redundante', description: 'Múltiplas cópias em diferentes localizações geográficas' }
+    { icon: RotateCcw, title: 'Suporte Total ao Ciclo', description: 'Acompanhamento completo da rotina de backup, desde configuração até recuperação, garantindo continuidade operacional' },
+    { icon: Lock, title: 'Criptografia AES-256', description: 'Segurança enterprise com criptografia de nível militar para proteção dos dados críticos' },
+    { icon: Shield, title: 'Recovery Garantido', description: 'Testes regulares de restauração garantem que seus dados podem ser recuperados quando você precisar' },
+    { icon: Database, title: 'Retenção Flexível', description: 'Políticas de retenção adaptadas às necessidades regulatórias e à continuidade do seu negócio' },
+    { icon: AlertCircle, title: 'Monitoramento Contínuo', description: 'Acompanhamento 24×7 com alertas proativos e relatórios detalhados para garantir operação ininterrupta' },
+    { icon: Server, title: 'Redundância Geográfica', description: 'Múltiplas cópias em diferentes localizações garantem disponibilidade e continuidade mesmo em cenários de falha' }
   ];
 
   return (
@@ -169,27 +174,24 @@ export default function BackupSolutions() {
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                   >
-                    Proteção completa de dados com backup automatizado
+                    Proteção e Recuperação Garantida para Sistemas Críticos
                   </motion.h1>
                   
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Segurança enterprise para seus dados críticos. Backup automatizado, retenção flexível e recuperação rápida garantidos.
+                    Backup corporativo automatizado com criptografia, múltiplas localidades e recuperação rápida para garantir a continuidade do seu negócio.
                   </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
-                    <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
+                    <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Phone className="mr-2 h-5 w-5" />
-                        Falar com Especialista
-                      </a>
-                    </Button>
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
-                      <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        <Calendar className="mr-2 h-5 w-5" />
-                        Solicitar POC de 30 dias
+                        <Zap className="h-5 w-5" />
+                        Solicitar POC de até 30 dias
                       </a>
                     </Button>
                   </motion.div>
+                  <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
+                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                  </motion.p>
                   
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
@@ -337,7 +339,7 @@ export default function BackupSolutions() {
                   variants={staggerContainer}
                 >
                   <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                    Por que escolher nosso Serviço de Backup?
+                    Por que escolher nosso Backup?
                   </motion.h2>
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
                     Nossa infraestrutura incorpora políticas de backup, criptografia, monitoramento e testes contínuos, com equipe dedicada à proteção e à conformidade regulatória.
@@ -369,13 +371,16 @@ export default function BackupSolutions() {
                   <div className="relative bg-card/80 rounded-3xl p-8 border border-border backdrop-blur-sm">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl"></div>
                     <div className="relative">
-                      <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-foreground font-semibold">Backup Infrastructure</h3>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-foreground font-semibold">Backup Geograficamente Distribuído</h3>
                         <Badge className="bg-green-500/20 text-green-600 border-green-500/50">
                           <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
                           Online
                         </Badge>
                       </div>
+                      <p className="text-muted-foreground text-sm mb-6">
+                        Seus dados são protegidos simultaneamente em múltiplos data centers internacionais, garantindo resiliência contra falhas locais, ataques ou desastres.
+                      </p>
                       
                       <div className="space-y-4">
                         <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl border border-border">
@@ -454,9 +459,10 @@ export default function BackupSolutions() {
                         <CardTitle className="text-xl text-foreground">{type.title}</CardTitle>
                       </CardHeader>
                       <CardContent className="text-center relative">
-                        <p className="text-muted-foreground mb-6">
+                        <p className="text-muted-foreground mb-4">
                           {type.description}
                         </p>
+                        <p className="text-sm font-medium text-primary mb-4">{type.microcopy}</p>
                         <Badge className="bg-gradient-to-r from-primary to-accent text-primary-foreground border-0">
                           {type.badge}
                         </Badge>
@@ -487,7 +493,7 @@ export default function BackupSolutions() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={staggerContainer}
-                className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {securityFeatures.map((item, index) => (
                   <motion.div key={index} variants={fadeInUp}>
@@ -518,8 +524,8 @@ export default function BackupSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Nossos Diferenciais</h2>
-                <p className="text-lg text-muted-foreground">O que torna nosso serviço único no mercado</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Backup pensado para ambientes corporativos críticos</h2>
+                <p className="text-lg text-muted-foreground">Continuidade operacional com suporte completo ao ciclo de backup</p>
               </motion.div>
               
               <motion.div
@@ -581,12 +587,8 @@ export default function BackupSolutions() {
                 variants={staggerContainer}
                 className="text-center mb-12"
               >
-                <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full mb-8 shadow-lg">
-                  <Gift className="h-5 w-5" />
-                  <span className="font-semibold">Oferta Especial</span>
-                </motion.div>
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Comece com a Nuvem de Alta Performance
+                  Proteja seus dados críticos hoje
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-xl text-muted-foreground mb-8">
                   Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
@@ -605,7 +607,7 @@ export default function BackupSolutions() {
                     { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
                     { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
                     { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -633,25 +635,13 @@ export default function BackupSolutions() {
                   transition={{ delay: 0.5 }}
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 text-lg px-8 shadow-lg" asChild>
+                  <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <ArrowRight className="mr-2 h-5 w-5" />
-                      Começar Teste Grátis
-                    </a>
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground text-lg px-8" asChild>
-                    <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      <Calendar className="mr-2 h-5 w-5" />
-                      Agendar Demonstração
+                      <Zap className="h-5 w-5" />
+                      Solicitar POC de até 30 dias
                     </a>
                   </Button>
                 </motion.div>
-                
-                <div className="mt-6 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Sem cartão de crédito • Setup em até 24h • Suporte incluso
-                  </p>
-                </div>
               </motion.div>
             </div>
           </section>

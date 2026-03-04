@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { FileText, Calendar, User, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { blogPosts } from "@/data/blogPosts";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -22,30 +24,6 @@ const staggerContainer = {
 };
 
 const Blog = () => {
-  const posts = [
-    {
-      title: "Como escolher a melhor solução de cloud para sua empresa",
-      excerpt: "Guia completo para entender as principais opções de infraestrutura em nuvem e como escolher a melhor para seu negócio.",
-      date: "15 Jan 2024",
-      author: "Equipe MDS Cloud",
-      category: "Infraestrutura",
-    },
-    {
-      title: "Backup em nuvem: por que é essencial para sua empresa",
-      excerpt: "Entenda a importância de ter um backup robusto e como isso pode salvar seu negócio em caso de incidentes.",
-      date: "10 Jan 2024",
-      author: "Equipe MDS Cloud",
-      category: "Segurança",
-    },
-    {
-      title: "Otimização de banco de dados: dicas práticas",
-      excerpt: "Aprenda técnicas práticas para melhorar a performance dos seus bancos de dados e reduzir custos.",
-      date: "5 Jan 2024",
-      author: "Equipe MDS Cloud",
-      category: "Performance",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -97,35 +75,44 @@ const Blog = () => {
                 variants={staggerContainer}
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
-                {posts.map((post, index) => (
-                  <motion.div key={index} variants={fadeInUp}>
-                    <Card className="h-full border border-border hover:border-primary/50 transition-all hover:shadow-lg">
-                      <CardHeader>
-                        <div className="flex items-center gap-2 mb-3">
-                          <Badge variant="outline" className="text-xs">
-                            {post.category}
-                          </Badge>
+                {blogPosts.map((post, index) => (
+                  <motion.div key={post.slug} variants={fadeInUp}>
+                    <Card className="h-full border border-border hover:border-primary/50 transition-all hover:shadow-lg overflow-hidden">
+                      <Link to={`/blog/${post.slug}`} className="block">
+                        <div className="aspect-video w-full overflow-hidden bg-muted">
+                          <img
+                            src={post.image}
+                            alt=""
+                            className="h-full w-full object-cover"
+                          />
                         </div>
-                        <CardTitle className="text-foreground mb-3">{post.title}</CardTitle>
-                        <CardDescription className="text-base leading-relaxed mb-4">
-                          {post.excerpt}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex items-center justify-between text-sm text-muted-foreground">
-                          <div className="flex items-center gap-4">
-                            <Calendar className="h-4 w-4" />
-                            <span>{post.date}</span>
+                        <CardHeader>
+                          <div className="flex items-center gap-2 mb-3">
+                            <Badge variant="outline" className="text-xs">
+                              {post.category}
+                            </Badge>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <User className="h-4 w-4" />
-                            <span>{post.author}</span>
+                          <CardTitle className="text-foreground mb-3">{post.title}</CardTitle>
+                          <CardDescription className="text-base leading-relaxed mb-4">
+                            {post.excerpt}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex items-center justify-between text-sm text-muted-foreground">
+                            <div className="flex items-center gap-4">
+                              <Calendar className="h-4 w-4" />
+                              <span>{post.date}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <User className="h-4 w-4" />
+                              <span>{post.author}</span>
+                            </div>
                           </div>
-                        </div>
-                        <button className="mt-4 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium">
-                          Ler mais <ArrowRight className="h-4 w-4" />
-                        </button>
-                      </CardContent>
+                          <span className="mt-4 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium">
+                            Ler mais <ArrowRight className="h-4 w-4" />
+                          </span>
+                        </CardContent>
+                      </Link>
                     </Card>
                   </motion.div>
                 ))}

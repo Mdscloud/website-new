@@ -14,7 +14,6 @@ const services = [
     description:
       "Infraestrutura de alta performance com 30.000+ IOPS, redundância total e escalabilidade sob demanda. Data centers Tier III certificados no Brasil. Oferecemos infraestrutura cloud completa e gerenciada com alta disponibilidade, escalabilidade automática e SLA 99.9%. Performance superior, segurança robusta e suporte humano especializado 24x7.",
     image: cloudImage,
-    icon: "☁️",
     href: "/solucoes-cloud",
   },
   {
@@ -22,7 +21,6 @@ const services = [
     description:
       "Gestão especializada de banco de dados 24x7. Monitoramento proativo, otimização de performance e suporte técnico dedicado. Nossa equipe de especialistas oferece gestão completa com tuning de performance, otimização de queries e suporte para Oracle, SQL Server, PostgreSQL e MySQL. Atuação preventiva e corretiva para garantir máxima disponibilidade.",
     image: databaseImage,
-    icon: "🗄️",
     href: "/banco-de-dados",
   },
   {
@@ -30,7 +28,6 @@ const services = [
     description:
       "Proteção completa de dados com backup automatizado, retenção flexível e recuperação rápida. Segurança enterprise para seus dados críticos. Soluções de backup em nuvem com criptografia AES-256, backup automatizado, múltiplas cópias e recuperação rápida garantida. Testes regulares de restauração e RTO/RPO otimizados para seu negócio.",
     image: backupImage,
-    icon: "💾",
     href: "/backup",
   },
   {
@@ -38,7 +35,6 @@ const services = [
     description:
       "A Segurança em Cloud da MDS Cloud é parte fundamental da nossa infraestrutura e dos serviços oferecidos aos clientes. Desde o datacenter até o banco de dados, o ambiente é projetado para proteger aplicações críticas como ERP, CRM, PMS e bancos de dados corporativos, garantindo a confidencialidade, integridade e disponibilidade das informações.",
     image: securityImage,
-    icon: "🔒",
     href: "/seguranca",
   },
 ];
@@ -90,28 +86,29 @@ export function Services3DSection() {
           </p>
         </motion.div>
 
-        {/* Cards dos serviços - quatro lado a lado */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              variants={fadeInUp}
-              className="group relative"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-            >
-              <div className="relative h-[500px] rounded-xl overflow-hidden">
-                {/* Imagem de fundo */}
+        {/* Cards dos serviços - quatro lado a lado; linha laranja contínua na base conectando visualmente */}
+        <div className="relative">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-3 items-stretch"
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="group relative flex flex-col min-h-0"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <div className="relative flex-1 min-h-[420px] lg:min-h-[500px] rounded-xl overflow-hidden border border-white/5 bg-card/50 shadow-lg shadow-black/20">
+                  {/* Imagem de fundo */}
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 
                 {/* Overlay que sobe no hover com gradiente transparente */}
@@ -129,7 +126,6 @@ export function Services3DSection() {
                 >
                   <div className="flex flex-col justify-end h-full">
                     <div className="mb-2">
-                      <div className="text-3xl mb-2">{service.icon}</div>
                       <h3 className="text-xl font-bold text-white mb-1">{service.title}</h3>
                     </div>
                     
@@ -165,6 +161,17 @@ export function Services3DSection() {
             </motion.div>
           ))}
         </motion.div>
+
+          {/* Linha laranja contínua na base - impressão de que as linhas dos cards se conectam */}
+          <div
+            className="h-1 -mt-1 rounded-full w-full"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, hsl(var(--primary)) 2%, hsl(var(--primary)) 98%, transparent 100%)',
+              boxShadow: '0 0 16px hsl(var(--primary) / 0.5), 0 0 32px hsl(var(--primary) / 0.3)',
+            }}
+            aria-hidden
+          />
+        </div>
       </div>
     </section>
   );
