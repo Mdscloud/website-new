@@ -52,7 +52,7 @@ const BlogPost = () => {
                   <img
                     src={post.image}
                     alt=""
-                    className="h-full w-full object-cover"
+                    className={`h-full w-full object-cover ${post.imagePosition === "top" ? "object-top" : post.imagePosition === "bottom" ? "object-bottom" : "object-center"}`}
                   />
                 </div>
 

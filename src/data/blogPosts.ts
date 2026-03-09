@@ -1,6 +1,6 @@
 import imgCloudHoteis from "@/assets/artigo1.jpg";
 import imgInfraestruturaErp from "@/assets/artigo2.jpg";
-import imgHotelariaDigital from "@/assets/about/hero.jpg";
+import imgHotelariaDigital from "@/assets/artigo3.jpg";
 
 export type BodyBlock =
   | { type: "paragraph"; content: string }
@@ -18,6 +18,8 @@ export interface BlogPostData {
   image: string;
   externalUrl: string;
   source: string;
+  /** Posição do enquadramento da imagem (top = prioriza parte superior, ex.: rosto) */
+  imagePosition?: "top" | "center" | "bottom";
   /** Conteúdo completo da matéria (quando disponível) */
   body?: BodyBlock[];
 }
@@ -145,6 +147,7 @@ export const blogPosts: BlogPostData[] = [
     externalUrl:
       "https://tiinside.com.br/03/12/2025/mds-cloud-aposta-em-infraestrutura-propria-para-liderar-hospedagem-de-sistemas-erp/",
     source: "TI INSIDE Online",
+    imagePosition: "top",
     body: [
       {
         type: "paragraph",
@@ -253,6 +256,125 @@ export const blogPosts: BlogPostData[] = [
     externalUrl:
       "https://revistahoteis.com.br/cloud-de-alta-performance-se-torna-pilar-da-nova-hotelaria-digital/",
     source: "Revista Hotéis",
+    body: [
+      {
+        type: "paragraph",
+        content:
+          "A cloud virou o sistema mais importante do hotel, pois envolve a infraestrutura de alta performance por trás de PMS, reservas e faturamento.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A transformação digital da hotelaria colocou os sistemas de gestão no centro da operação. PMS, ERPs, motores de reservas e integrações com OTAs hoje definem não apenas a eficiência interna dos hotéis, mas também a experiência do hóspede. Nesse cenário, a cloud deixou de ser apenas um recurso de TI e passou a ser um ativo estratégico. Segundo Bruno Schwambach, Diretor de Tecnologia e Bancos de Dados da MDS Cloud, operar sistemas críticos em uma infraestrutura inadequada é um dos principais gargalos do setor.",
+      },
+      {
+        type: "quote",
+        content:
+          "PMS e ERP são aplicações de alta demanda. Elas precisam de baixa latência, alto IOPS e estabilidade. Uma cloud genérica não foi desenhada para isso.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A MDS Cloud opera uma infraestrutura própria em datacenters Tier III no Brasil, utilizando servidores Dell PowerEdge, storages 100% SSD e redes de 10 a 25 Gb, garantindo alta performance, alta disponibilidade e segurança para ambientes de missão crítica. Além da infraestrutura, a empresa mantém equipes de DBAs e especialistas em operação 24×7, focados em sistemas hoteleiros.",
+      },
+      {
+        type: "quote",
+        content:
+          "Alta disponibilidade não é um luxo — é proteção direta da receita do hotel. Se o PMS parar, o hotel para.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A questão da segurança também ganhou peso nos últimos anos, com o aumento de ataques e a vigência da LGPD – Lei Geral de Proteção de Dados. Ambientes hoteleiros lidam com dados pessoais, financeiros e históricos de hospedagem, exigindo criptografia, backups protegidos e monitoramento contínuo. Para a MDS Cloud, o futuro da hotelaria passa por clouds especializadas.",
+      },
+      {
+        type: "quote",
+        content:
+          "O hotel não precisa se preocupar com tecnologia. Ele precisa de uma infraestrutura que simplesmente funcione, para que possa focar no que realmente importa: o hóspede.",
+      },
+      { type: "heading", content: "A cloud como base da nova hotelaria digital" },
+      {
+        type: "paragraph",
+        content:
+          "A infraestrutura de alta performance vem redefinindo a operação dos hotéis e a experiência do hóspede. A hotelaria vive hoje um paradoxo silencioso: enquanto o hóspede busca experiências cada vez mais fluidas, rápidas e digitais, os bastidores da operação se tornaram mais complexos do que nunca. Sistemas de PMS, ERPs, motores de reservas, canais de venda, governança, faturamento e integração com OTAs passaram a operar em tempo real, com volumes crescentes de dados e transações.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Nesse novo cenário, a infraestrutura de TI deixou de ser um item operacional e passou a ser um ativo estratégico.",
+      },
+      {
+        type: "quote",
+        content:
+          "Hoje, a performance do PMS é tão importante quanto a recepção do hotel. Se o sistema não responde, o hóspede sente imediatamente.",
+      },
+      { type: "heading", content: "PMS e ERP: o coração digital do hotel" },
+      {
+        type: "paragraph",
+        content:
+          "Diferente de aplicações administrativas tradicionais, os sistemas hoteleiros operam sob carga constante e picos extremos — especialmente em horários de check-in, check-out, fechamento de caixa e auditoria noturna.",
+      },
+      {
+        type: "quote",
+        content:
+          "Estamos falando de bancos de dados que processam reservas, pagamentos, tarifas, integrações com canais externos e controle de apartamentos em tempo real. Isso exige uma infraestrutura preparada para alto volume de I/O e baixa latência. É por isso que muitos hotéis, ao migrar para clouds genéricas, acabam enfrentando lentidão, travamentos e instabilidade.",
+      },
+      { type: "heading", content: "O que define uma cloud de alta performance" },
+      {
+        type: "paragraph",
+        content:
+          "Segundo a MDS Cloud uma infraestrutura adequada para hotelaria precisa ir além da simples virtualização. Ela deve ser construída sobre quatro pilares estratégicos: infraestrutura de alto desempenho, capaz de sustentar sistemas críticos sem lentidão; redes rápidas e estáveis, que garantem resposta imediata dos sistemas; servidores corporativos preparados para operação contínua; arquiteturas redundantes, que asseguram disponibilidade permanente. Mas performance não é apenas tecnologia. Conhecimento técnico, experiência prática no setor hoteleiro e convivência diária com PMS, ERPs e integrações são essenciais para extrair o máximo desempenho da nuvem. É isso que permite ajustes finos, antecipação de problemas e otimização real da operação.",
+      },
+      {
+        type: "quote",
+        content:
+          "Não basta ter nuvem. É preciso ter uma nuvem desenhada para bancos de dados e aplicações críticas.",
+      },
+      { type: "heading", content: "Alta disponibilidade como proteção de receita" },
+      {
+        type: "paragraph",
+        content:
+          "Na hotelaria, indisponibilidade significa perda direta de faturamento e impacto na experiência do hóspede. Por isso, arquiteturas modernas utilizam replicação, failover automático e monitoramento contínuo.",
+      },
+      {
+        type: "quote",
+        content:
+          "Alta disponibilidade não é um recurso técnico. É um mecanismo de proteção do negócio. Um hotel que fica sem PMS simplesmente para de operar.",
+      },
+      { type: "heading", content: "Segurança e LGPD no centro da operação" },
+      {
+        type: "paragraph",
+        content:
+          "Outro ponto crítico é a segurança da informação. Os sistemas hoteleiros armazenam dados pessoais, documentos e informações financeiras de hóspedes, exigindo conformidade com a LGPD. A MDS Cloud trabalha com criptografia, firewalls corporativos, backups protegidos contra ransomware e monitoramento ativo.",
+      },
+      {
+        type: "quote",
+        content:
+          "O risco hoje não é apenas a lentidão. É o vazamento de dados e o dano à reputação do hotel.",
+      },
+      { type: "heading", content: "Cloud especializada: um novo modelo para a hotelaria" },
+      {
+        type: "paragraph",
+        content:
+          "Enquanto grandes nuvens públicas oferecem escala, muitas não entregam a especialização necessária para sistemas hoteleiros. A proposta da MDS Cloud é diferente: uma infraestrutura focada em ERP, PMS e bancos de dados críticos, com suporte humano 24×7 e equipes de DBAs.",
+      },
+      {
+        type: "quote",
+        content:
+          "Hotelaria exige previsibilidade, performance real e atendimento próximo. É isso que uma cloud especializada entrega.",
+      },
+      { type: "heading", content: "A tecnologia por trás da experiência" },
+      {
+        type: "paragraph",
+        content:
+          "Para o hóspede, a cloud é invisível. Mas ela está presente em cada etapa da jornada: da reserva ao check-out, do pagamento à governança.",
+      },
+      {
+        type: "quote",
+        content:
+          "Quando a tecnologia funciona bem, ela desaparece. E o que fica é a experiência. É isso que os hotéis precisam hoje.",
+      },
+    ],
   },
 ];
 
