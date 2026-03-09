@@ -67,6 +67,8 @@ src/
 
 ## Deploy
 
+O projeto usa **apenas npm** (`package-lock.json`). Para evitar o erro "multiple lock files detected" em plataformas como Digital Ocean, não faça commit de `bun.lockb`, `yarn.lock` ou `pnpm-lock.yaml` — eles estão no `.gitignore`. Use sempre `npm install` e `npm run build` no ambiente de deploy.
+
 A build de produção é gerada com:
 
 ```bash
