@@ -368,15 +368,15 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
                 </span>
               </div>
 
-              {/* Main content */}
-              <div className={`grid grid-cols-1 gap-6 md:grid-cols-2 ${variant === "contato" ? "lg:grid-cols-4" : "lg:grid-cols-4"}`}>
-                {content.columns.map((column, colIndex) => (
-                  <div key={colIndex} className="space-y-2.5">
+              {/* Main content: Soluções, Segmentos e Conteúdo em linha; demais em grid de colunas */}
+              {(variant === "solucoes" || variant === "segmentos" || variant === "conteudo") ? (
+                content.columns.map((column, colIndex) => (
+                  <div key={colIndex} className="space-y-3">
                     <h3 className="text-xs font-bold text-foreground">{column.title}</h3>
                     {column.description && (
-                      <p className="mb-2 text-[10px] leading-relaxed text-muted-foreground">{column.description}</p>
+                      <p className="mb-3 text-[10px] leading-relaxed text-muted-foreground">{column.description}</p>
                     )}
-                    <ul className="space-y-1.5">
+                    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                       {column.items.map((item, itemIndex) => {
                         const Icon = item.icon;
                         return (
@@ -384,28 +384,66 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
                             <a
                               href={item.href}
                               onClick={onClose}
-                              className="group flex items-start gap-2 rounded-md p-1.5 transition-colors hover:bg-muted/30"
+                              className="group flex flex-col gap-1 rounded-md p-3 transition-colors hover:bg-muted/30"
                             >
                               {Icon && (
-                                <Icon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary/70 group-hover:text-primary" />
+                                <Icon className="h-4 w-4 shrink-0 text-primary/70 group-hover:text-primary" />
                               )}
-                              <div className="flex-1">
-                                <div className="text-xs font-semibold leading-tight text-foreground group-hover:text-primary">
-                                  {item.title}
-                                </div>
-                                {item.description && (
-                                  <div className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground">
-                                    {item.description}
-                                  </div>
-                                )}
+                              <div className="text-xs font-semibold leading-tight text-foreground group-hover:text-primary">
+                                {item.title}
                               </div>
+                              {item.description && (
+                                <div className="text-[10px] leading-relaxed text-muted-foreground line-clamp-3">
+                                  {item.description}
+                                </div>
+                              )}
                             </a>
                           </li>
                         );
                       })}
                     </ul>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div className={`grid grid-cols-1 gap-6 md:grid-cols-2 ${variant === "contato" ? "lg:grid-cols-4" : "lg:grid-cols-4"}`}>
+                  {content.columns.map((column, colIndex) => (
+                    <div key={colIndex} className="space-y-2.5">
+                      <h3 className="text-xs font-bold text-foreground">{column.title}</h3>
+                      {column.description && (
+                        <p className="mb-2 text-[10px] leading-relaxed text-muted-foreground">{column.description}</p>
+                      )}
+                      <ul className="space-y-1.5">
+                        {column.items.map((item, itemIndex) => {
+                          const Icon = item.icon;
+                          return (
+                            <li key={itemIndex}>
+                              <a
+                                href={item.href}
+                                onClick={onClose}
+                                className="group flex items-start gap-2 rounded-md p-1.5 transition-colors hover:bg-muted/30"
+                              >
+                                {Icon && (
+                                  <Icon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary/70 group-hover:text-primary" />
+                                )}
+                                <div className="flex-1">
+                                  <div className="text-xs font-semibold leading-tight text-foreground group-hover:text-primary">
+                                    {item.title}
+                                  </div>
+                                  {item.description && (
+                                    <div className="mt-0.5 text-[10px] leading-relaxed text-muted-foreground">
+                                      {item.description}
+                                    </div>
+                                  )}
+                                </div>
+                              </a>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
                 
                 {/* Contact Info Column - Only for contato variant */}
                 {variant === "contato" && content.contactInfo && (
@@ -462,7 +500,6 @@ export function MegaMenu({ isOpen, onClose, onMouseEnter, variant }: MegaMenuPro
                     </div>
                   </>
                 )}
-              </div>
 
               {/* Footer links */}
               {content.footerLinks?.length > 0 && (

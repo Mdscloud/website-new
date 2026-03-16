@@ -7,7 +7,7 @@ import { Handshake, Users, TrendingUp, Award, CheckCircle2, Phone, Mail, Message
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import partnersImage from "@/assets/partners.jpg";
+import backgroundParceiros from "@/assets/background-parceiros.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -145,7 +145,7 @@ const Parceiros = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background overflow-x-hidden overflow-y-visible">
       <Header />
       {/* Animated Background Grid */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -153,15 +153,15 @@ const Parceiros = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
       </div>
 
-      <div className="relative z-10">
-        <main className="min-h-screen overflow-x-hidden">
+      <div className="relative z-10 overflow-y-visible">
+        <main className="min-h-screen overflow-x-hidden overflow-y-visible">
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
             {/* Background Image */}
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${partnersImage})`,
+                backgroundImage: `url(${backgroundParceiros})`,
               }}
             />
             
@@ -293,7 +293,7 @@ const Parceiros = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
+                    <Button size="lg" variant="outline" className="border-2 border-accent bg-accent/20 text-accent hover:bg-accent hover:text-accent-foreground shadow-md font-semibold" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Mail className="mr-2 h-5 w-5" />
                         Enviar Proposta
@@ -618,7 +618,7 @@ const Parceiros = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${partnersImage})`,
+                backgroundImage: `url(${backgroundParceiros})`,
               }}
             />
             

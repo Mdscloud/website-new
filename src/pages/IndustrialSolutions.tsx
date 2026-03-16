@@ -6,6 +6,7 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import backgroundIndustrial from "@/assets/segmentos/background-industrial.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -65,6 +66,13 @@ export default function IndustrialSolutions() {
         <div className="relative z-10 min-h-screen">
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${backgroundIndustrial})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
             {/* Animated orbs */}
             <motion.div 
               layout={false}
@@ -85,7 +93,7 @@ export default function IndustrialSolutions() {
               className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none"
             ></motion.div>
 
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <motion.div
                   layout={false}
