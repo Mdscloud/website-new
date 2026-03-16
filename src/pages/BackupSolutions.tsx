@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { HardDrive, Shield, Clock, RotateCcw, Lock, CheckCircle2, ArrowRight, Zap, Database, Server, Calendar, Phone, Globe, Network, Layers, BarChart3, Gift, AlertCircle } from "lucide-react";
 import { Header } from "@/components/Header";
+import backgroundBackup from "@/assets/background-backup.png";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { Button } from "@/components/ui/button";
@@ -130,13 +131,13 @@ export default function BackupSolutions() {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: 'url(/assets/imagens/services/backup.jpg)',
+                backgroundImage: `url(${backgroundBackup})`,
               }}
             />
             
-            {/* Overlay para transparência e legibilidade */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
+            {/* Overlay para transparência e legibilidade (mais suave para valorizar o background) */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
             
             {/* Animated orbs */}
             <motion.div 
@@ -216,28 +217,8 @@ export default function BackupSolutions() {
                   className="hidden lg:block relative"
                 >
                   <div className="relative">
-                    {/* Floating cards animation */}
-                    <motion.div
-                      animate={{ y: [0, -20, 0] }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="absolute top-10 -left-10 bg-card p-6 rounded-2xl border border-border shadow-xl backdrop-blur-sm"
-                    >
-                      <Lock className="h-8 w-8 text-primary mb-2" />
-                      <p className="text-foreground text-sm font-semibold">AES-256</p>
-                      <p className="text-muted-foreground text-xs">Criptografado</p>
-                    </motion.div>
-
-                    <motion.div
-                      animate={{ y: [0, 20, 0] }}
-                      transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-                      className="absolute bottom-10 -right-10 bg-card p-6 rounded-2xl border border-border shadow-xl backdrop-blur-sm"
-                    >
-                      <CheckCircle2 className="h-8 w-8 text-green-500 mb-2" />
-                      <p className="text-foreground text-sm font-semibold">99.9% Uptime</p>
-                      <p className="text-muted-foreground text-xs">Garantido</p>
-                    </motion.div>
-
-                    <div className="relative bg-card rounded-3xl p-8 border border-border shadow-2xl backdrop-blur-sm">
+                    {/* Card principal (atrás dos balões) */}
+                    <div className="relative z-0 bg-card rounded-3xl p-8 border border-border shadow-2xl backdrop-blur-sm">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
                           <span className="text-muted-foreground text-sm">Status do Backup</span>
@@ -271,6 +252,25 @@ export default function BackupSolutions() {
                         </div>
                       </div>
                     </div>
+                    {/* Balões na frente do card (z-10) */}
+                    <motion.div
+                      animate={{ y: [0, -20, 0] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                      className="absolute top-10 -left-10 z-10 bg-card p-6 rounded-2xl border border-border shadow-xl backdrop-blur-sm pointer-events-none"
+                    >
+                      <Lock className="h-8 w-8 text-primary mb-2" />
+                      <p className="text-foreground text-sm font-semibold">AES-256</p>
+                      <p className="text-muted-foreground text-xs">Criptografado</p>
+                    </motion.div>
+                    <motion.div
+                      animate={{ y: [0, 20, 0] }}
+                      transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                      className="absolute bottom-10 -right-10 z-10 bg-card p-6 rounded-2xl border border-border shadow-xl backdrop-blur-sm pointer-events-none"
+                    >
+                      <CheckCircle2 className="h-8 w-8 text-green-500 mb-2" />
+                      <p className="text-foreground text-sm font-semibold">99.9% Uptime</p>
+                      <p className="text-muted-foreground text-xs">Garantido</p>
+                    </motion.div>
                   </div>
                 </motion.div>
               </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Shield, Zap, Users, Clock, CheckCircle2, Award, TrendingUp, Server, Building2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import heroImage from "@/assets/about/hero.jpg";
+import backgroundParceiros from "@/assets/background-parceiros.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -83,7 +83,7 @@ const ComoFazemos = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${heroImage})`,
+                backgroundImage: `url(${backgroundParceiros})`,
               }}
             />
             

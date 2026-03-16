@@ -5,14 +5,11 @@ import mysqlLogo from '@/assets/tecnologias/mysql.png';
 import mongodbLogo from '@/assets/tecnologias/mongodb.svg.png';
 import aixLogo from '@/assets/tecnologias/aix.png';
 import windowsLogo from '@/assets/tecnologias/windows.png';
-import solarisLogo from '@/assets/tecnologias/solaris.png';
 import linuxLogo from '@/assets/tecnologias/linux.png';
 import vmwareLogo from '@/assets/tecnologias/vmware.png';
 import sqlServerLogo from '@/assets/tecnologias/microsoft-sql-server.png';
 import postgresqlLogo from '@/assets/tecnologias/postgresql.png';
 import db2Logo from '@/assets/tecnologias/ibm-db2.png';
-import informixLogo from '@/assets/tecnologias/informix.png';
-
 interface Technology {
   name: string;
   image?: string;
@@ -27,13 +24,11 @@ const allTechnologies: Technology[] = [
   { name: 'MongoDB', image: mongodbLogo },
   { name: 'AIX', image: aixLogo },
   { name: 'Windows', image: windowsLogo },
-  { name: 'Solaris', image: solarisLogo },
   { name: 'Linux', image: linuxLogo },
   { name: 'VMware', image: vmwareLogo },
   { name: 'SQL Server', image: sqlServerLogo },
   { name: 'PostgreSQL', image: postgresqlLogo },
   { name: 'DB2', image: db2Logo },
-  { name: 'Informix', image: informixLogo },
 ];
 
 interface TechnologiesCarouselProps {

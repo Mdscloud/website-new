@@ -145,16 +145,16 @@ const Parceiros = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden overflow-y-visible">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
-      {/* Animated Background Grid */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
-      </div>
+      <main className="overflow-x-hidden">
+        {/* Animated Background Grid */}
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
+        </div>
 
-      <div className="relative z-10 overflow-y-visible">
-        <main className="min-h-screen overflow-x-hidden overflow-y-visible">
+        <div className="relative z-10 min-h-screen">
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
             {/* Background Image */}
@@ -848,8 +848,8 @@ const Parceiros = () => {
               </motion.div>
             </div>
           </section>
-        </main>
-      </div>
+        </div>
+      </main>
       <Footer />
       <FloatingContact />
     </div>

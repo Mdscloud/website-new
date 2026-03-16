@@ -8,12 +8,15 @@ const footerLinks = {
     { name: "Soluções em Cloud", href: "/solucoes-cloud" },
     { name: "Banco de Dados", href: "/banco-de-dados" },
     { name: "Backup", href: "/backup" },
+    { name: "Segurança em Cloud", href: "/seguranca" },
   ],
   empresa: [
-    { name: "Sobre Nós", href: "#sobre" },
-    { name: "Cases de Sucesso", href: "#cases" },
-    { name: "Blog", href: "#" },
-    { name: "Carreiras", href: "#" },
+    { name: "Quem Somos", href: "/quem-somos" },
+    { name: "O Que Fazemos", href: "/o-que-fazemos" },
+    { name: "Como Fazemos", href: "/como-fazemos" },
+    { name: "Blog", href: "/blog" },
+    { name: "Parceiros", href: "/parceiros" },
+    { name: "Contato", href: "/contato" },
   ],
   suporte: [
     { name: "Política de Privacidade", href: "/politicas-privacidade" },
@@ -127,7 +130,7 @@ export function Footer() {
             <a href="/politicas-privacidade" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Política de Privacidade
             </a>
-            <a href="#" className="text-sm text-muted-foreground transition-colors hover:text-primary">
+            <a href="/politicas-privacidade" className="text-sm text-muted-foreground transition-colors hover:text-primary">
               Termos de Uso
             </a>
           </div>
