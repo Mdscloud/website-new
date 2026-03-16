@@ -34,7 +34,7 @@ export const translations: Translations = {
   "hero.title.1": { pt: "A Nuvem de", en: "The", es: "La Nube de" },
   "hero.title.highlight": { pt: "Alta Performance", en: "High Performance", es: "Alto Rendimiento" },
   "hero.title.2": { pt: "que seu Negócio Exige", en: "Cloud Your Business Demands", es: "que tu Negocio Exige" },
-  "hero.subtitle": { pt: "Cloud para ERP, bancos de dados e sistemas críticos.", en: "Cloud for ERP, databases and critical systems.", es: "Cloud para ERP, bases de datos y sistemas críticos." },
+  "hero.subtitle": { pt: "Cloud para ERP, bancos de dados e sistemas críticos. Infraestrutura 100% gerenciada com a estabilidade e performance que empresas de alta demanda precisam.", en: "Cloud for ERP, databases and critical systems. 100% managed infrastructure with the stability and performance that high-demand companies need.", es: "Cloud para ERP, bases de datos y sistemas críticos. Infraestructura 100% gestionada con la estabilidad y el rendimiento que las empresas de alta demanda necesitan." },
   "hero.cta.primary": { pt: "Falar com especialista", en: "Talk to an expert", es: "Hablar con un especialista" },
   "hero.cta.secondary": { pt: "Teste Grátis 30 Dias", en: "Free 30-Day Trial", es: "Prueba Gratis 30 Días" },
   "hero.badge.iops": { pt: "30.000+ IOPS", en: "30,000+ IOPS", es: "30.000+ IOPS" },
