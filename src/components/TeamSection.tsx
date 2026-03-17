@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
-import teamGroup from "@/assets/team-group.jpg";
 import teamOffice1 from "@/assets/team-office-1.jpg";
 
 export function TeamSection() {
@@ -26,7 +25,7 @@ export function TeamSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <div className="aspect-[4/3]">
                 <img
-                  src={teamGroup}
+                  src={teamOffice1}
                   alt="Equipe MDS Cloud Solutions"
                   className="w-full h-full object-cover"
                 />
@@ -35,8 +34,8 @@ export function TeamSection() {
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               
-              {/* Badge - adjusted to avoid overlap with secondary image */}
-              <div className="absolute bottom-6 left-6 right-6 sm:right-24 md:right-32 lg:right-40">
+              {/* Badge */}
+              <div className="absolute bottom-6 left-6 right-6">
                 <div className="rounded-xl border border-border/50 bg-card/90 backdrop-blur-md p-4">
                   <p className="text-sm font-medium text-foreground">
                     "{t("team.quote")}"
@@ -47,21 +46,6 @@ export function TeamSection() {
                 </div>
               </div>
             </div>
-
-            {/* Secondary image - floating */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute -right-4 -bottom-8 w-40 h-28 md:w-56 md:h-40 rounded-xl overflow-hidden shadow-xl border-4 border-background hidden sm:block"
-            >
-              <img
-                src={teamOffice1}
-                alt="Escritório MDS Cloud"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
 
             {/* Floating decoration */}
             <div className="absolute -right-4 -top-4 h-24 w-24 rounded-2xl bg-primary/20 blur-xl" />
