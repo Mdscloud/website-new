@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
-import heroImage from "@/assets/about/hero.jpg";
+import backgroundTemporario from "@/assets/background-temporario.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -122,7 +122,7 @@ const PoliticasPrivacidade = () => {
             <div 
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
-                backgroundImage: `url(${heroImage})`,
+                backgroundImage: `url(${backgroundTemporario})`,
               }}
             />
             

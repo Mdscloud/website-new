@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ParallaxScrollSecond } from "@/components/ui/parallax-scroll";
 import equipeImage from "@/assets/about/equipe.jpg";
+import backgroundTemporario from "@/assets/background-temporario.png";
 import diegoImage from "@/assets/socios/diego.jpeg";
 import gustavoImage from "@/assets/socios/gustavo.jpeg";
 import brunoImage from "@/assets/socios/bruno.jpeg";
@@ -104,6 +105,13 @@ const QuemSomos = () => {
         <main className="min-h-screen overflow-x-hidden">
           {/* Hero Section */}
           <section className="relative py-24 lg:py-40 overflow-hidden">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${backgroundTemporario})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
             {/* Animated orbs */}
             <motion.div 
               layout={false}

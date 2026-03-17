@@ -55,7 +55,7 @@ export function Footer() {
                 <Phone className="h-4 w-4" />
                 (11) 4004-4004
               </a>
-              <a href="mailto:contato@mdscloud.com.br" className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary">
+              <a href="mailto:contato@mdscloud.com.br" className="flex items-center gap-3 text-sm text-muted-foreground visited:text-muted-foreground transition-colors hover:text-primary">
                 <Mail className="h-4 w-4" />
                 contato@mdscloud.com.br
               </a>
@@ -73,7 +73,7 @@ export function Footer() {
               <a href="https://www.instagram.com/mds_cloud/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://www.youtube.com/@MDSCLOUD/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="YouTube">
+              <a href="https://www.youtube.com/@MDSCloudSolutions" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground" aria-label="YouTube">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>

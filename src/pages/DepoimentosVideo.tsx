@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Video, Building2, Users, Award, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import backgroundTemporario from "@/assets/background-temporario.png";
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -52,6 +54,13 @@ const DepoimentosVideo = () => {
         <main className="min-h-screen overflow-x-hidden">
           {/* Hero Section */}
           <section className="relative py-24 lg:py-40 overflow-hidden">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${backgroundTemporario})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
             {/* Animated orbs */}
             <motion.div 
               layout={false}
