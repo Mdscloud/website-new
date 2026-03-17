@@ -3,6 +3,7 @@ import { Shield, Lock, Database, Server, Cloud, CheckCircle2, Gift, ArrowRight, 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
+import backgroundBancoDeDados from "@/assets/background-banco-de-dados.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -137,6 +138,16 @@ export default function DatabaseSolutions() {
         <div className="relative z-10 min-h-screen">
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
+            {/* Background Image */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${backgroundBancoDeDados})`,
+              }}
+            />
+            {/* Overlay para transparência e legibilidade */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/60" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
             {/* Animated gradient orbs - adapted for light theme with green/emerald accent */}
             <motion.div 
               animate={{ 
