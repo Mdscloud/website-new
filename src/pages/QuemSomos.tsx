@@ -50,7 +50,7 @@ const staggerContainer = {
 };
 
 const QuemSomos = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   // Array com todas as imagens da equipe
   const equipeImages = [
@@ -89,6 +89,9 @@ const QuemSomos = () => {
       linkedin: "https://www.linkedin.com/in/fbmelo/"
     }
   ];
+
+  const sociosFundadores = socios.filter((p) => p.title.startsWith("Sócio"));
+  const diretoria = socios.filter((p) => !p.title.startsWith("Sócio"));
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -464,47 +467,50 @@ const QuemSomos = () => {
             <div className="absolute left-0 bottom-1/4 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"></div>
             
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Título */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={fadeInUp}
+                className="flex flex-row flex-wrap items-center gap-3 mb-8 lg:mb-10"
+              >
+                <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
+                  Liderança
+                </h2>
+                <ArrowRight className="h-8 w-8 text-white/50 shrink-0" />
+              </motion.div>
+
+              {/* Grid Sócios (3 cards) */}
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
-                className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
               >
-                {/* Painel de título - largura total */}
-                <motion.div variants={fadeInUp} className="flex flex-row flex-wrap items-center gap-3 col-span-2 lg:col-span-4">
-                  <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-                    Liderança
-                  </h2>
-                  <ArrowRight className="h-8 w-8 text-white/50 shrink-0" />
-                </motion.div>
-
-                {/* Cards dos sócios - 4 na mesma linha */}
-                {socios.map((socio, index) => (
+                {sociosFundadores.map((socio) => (
                   <motion.div
-                    key={index}
+                    key={socio.name}
                     variants={fadeInUp}
                     className="group relative"
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    onMouseEnter={() => setHoveredKey(socio.name)}
+                    onMouseLeave={() => setHoveredKey(null)}
                   >
                     <div className="relative h-[320px] lg:h-[380px] rounded-xl overflow-hidden">
-                      {/* Imagem de fundo */}
                       <img 
                         src={socio.image} 
                         alt={socio.name}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
-                      
-                      {/* Overlay que sobe no hover com gradiente transparente */}
                       <motion.div
                         className="absolute bottom-0 left-0 right-0 p-4"
                         animate={{
-                          height: hoveredIndex === index ? '100%' : 'auto',
+                          height: hoveredKey === socio.name ? '100%' : 'auto',
                         }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                         style={{
-                          background: hoveredIndex === index 
+                          background: hoveredKey === socio.name 
                             ? 'linear-gradient(to top, rgba(17, 24, 39, 0.98) 0%, rgba(17, 24, 39, 0.95) 20%, rgba(17, 24, 39, 0.85) 40%, rgba(17, 24, 39, 0.6) 60%, rgba(17, 24, 39, 0.3) 80%, transparent 100%)'
                             : 'linear-gradient(to top, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, transparent 100%)'
                         }}
@@ -527,10 +533,8 @@ const QuemSomos = () => {
                             </div>
                             <p className="text-xs text-white/80">{socio.title}</p>
                           </div>
-                          
-                          {/* Biografia - aparece no hover */}
                           <AnimatePresence>
-                            {hoveredIndex === index && (
+                            {hoveredKey === socio.name && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
@@ -550,6 +554,82 @@ const QuemSomos = () => {
                   </motion.div>
                 ))}
               </motion.div>
+
+              {/* Separador e Diretoria (Felipe centralizado) */}
+              <div className="mt-12 lg:mt-16">
+                <p className="text-white/70 text-sm font-semibold uppercase tracking-wider text-center mb-6">
+                  Diretoria
+                </p>
+                <div className="flex justify-center">
+                  {diretoria.map((socio) => (
+                    <motion.div
+                      key={socio.name}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true }}
+                      variants={fadeInUp}
+                      className="group relative w-full max-w-[320px] lg:max-w-[380px]"
+                      onMouseEnter={() => setHoveredKey(socio.name)}
+                      onMouseLeave={() => setHoveredKey(null)}
+                    >
+                      <div className="relative h-[320px] lg:h-[380px] rounded-xl overflow-hidden">
+                        <img 
+                          src={socio.image} 
+                          alt={socio.name}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <motion.div
+                          className="absolute bottom-0 left-0 right-0 p-4"
+                          animate={{
+                            height: hoveredKey === socio.name ? '100%' : 'auto',
+                          }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          style={{
+                            background: hoveredKey === socio.name 
+                              ? 'linear-gradient(to top, rgba(17, 24, 39, 0.98) 0%, rgba(17, 24, 39, 0.95) 20%, rgba(17, 24, 39, 0.85) 40%, rgba(17, 24, 39, 0.6) 60%, rgba(17, 24, 39, 0.3) 80%, transparent 100%)'
+                              : 'linear-gradient(to top, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.9) 50%, transparent 100%)'
+                          }}
+                        >
+                          <div className="flex flex-col justify-end h-full">
+                            <div className="mb-1">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <h3 className="text-base lg:text-lg font-bold text-white mb-0.5">{socio.name}</h3>
+                                {socio.linkedin && (
+                                  <a
+                                    href={socio.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-primary text-white/80 hover:text-white transition-colors"
+                                    aria-label={`LinkedIn de ${socio.name}`}
+                                  >
+                                    <Linkedin className="h-4 w-4" />
+                                  </a>
+                                )}
+                              </div>
+                              <p className="text-xs text-white/80">{socio.title}</p>
+                            </div>
+                            <AnimatePresence>
+                              {hoveredKey === socio.name && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: 'auto' }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.3, delay: 0.1 }}
+                                  className="mt-3"
+                                >
+                                  <p className="text-xs text-white/90 leading-relaxed">
+                                    {socio.bio}
+                                  </p>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
