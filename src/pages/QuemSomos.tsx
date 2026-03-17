@@ -32,7 +32,6 @@ import equipe14 from "@/assets/about/equipe/equipe14.jpg";
 import equipe15 from "@/assets/about/equipe/equipe15.jpg";
 import equipe16 from "@/assets/about/equipe/equipe16.jpg";
 import equipe17 from "@/assets/about/equipe/equipe17.jpg";
-import equipe18 from "@/assets/about/equipe/equipe18.jpg";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -56,7 +55,7 @@ const QuemSomos = () => {
   const equipeImages = [
     equipe1, equipe2, equipe3, equipe4, equipe5, equipe6,
     equipe7, equipe8, equipe9, equipe10, equipe11, equipe12,
-    equipe13, equipe14, equipe15, equipe16, equipe17, equipe18
+    equipe13, equipe14, equipe15, equipe16, equipe17
   ];
 
   const socios = [
@@ -285,30 +284,6 @@ const QuemSomos = () => {
                     />
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent pointer-events-none"></div>
-                  </motion.div>
-
-                  {/* Imagem miniatura - sobreposta com efeito flutuante */}
-                  <motion.div
-                    initial={{ opacity: 0, x: 50, y: 50 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true }}
-                    animate={{ 
-                      y: [0, -10, 0],
-                    }}
-                    transition={{ 
-                      opacity: { duration: 0.8, delay: 0.3 },
-                      x: { duration: 0.8, delay: 0.3 },
-                      y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                    className="absolute -bottom-8 -left-8 lg:-left-12 w-64 h-48 rounded-xl overflow-hidden shadow-2xl border-4 border-background z-10"
-                  >
-                    <img 
-                      src={heroImage} 
-                      alt="Hero MDS Cloud" 
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Decorative border glow */}
-                    <div className="absolute inset-0 ring-4 ring-primary/20 rounded-xl pointer-events-none"></div>
                   </motion.div>
 
                   {/* Decorative element */}
