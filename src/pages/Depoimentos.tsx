@@ -2,10 +2,12 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
-import { MessageSquare, Building2, Users, Award, TrendingUp, Quote } from "lucide-react";
+import { MessageSquare, Building2, Users, Award, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import backgroundTemporario from "@/assets/background-temporario.png";
+import { homeTestimonials } from "@/components/NewTestimonialsSection";
+import { useRef, useState } from "react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -22,38 +24,94 @@ const staggerContainer = {
   }
 };
 
-const Depoimentos = () => {
-  const depoimentos = [
-    {
-      name: "João Silva",
-      company: "Empresa ABC",
-      role: "CTO",
-      text: "A MDS Cloud transformou nossa infraestrutura. A performance melhorou significativamente e o suporte é excepcional.",
-      rating: 5,
-    },
-    {
-      name: "Maria Santos",
-      company: "Tech Solutions",
-      role: "Diretora de TI",
-      text: "O suporte técnico 24x7 da MDS Cloud é realmente humano e eficiente. Resolvem nossos problemas em minutos.",
-      rating: 5,
-    },
-    {
-      name: "Carlos Oliveira",
-      company: "Inovação Digital",
-      role: "CEO",
-      text: "A migração foi perfeita, sem interrupções. A equipe da MDS Cloud é extremamente profissional e conhecedora.",
-      rating: 5,
-    },
-    {
-      name: "Celso Lurk",
-      company: "Sight Business Intelligence",
-      role: "Diretor de Operações",
-      text: "A MDS atendeu completamente nossos requisitos, oferecendo uma camada de proteção contra invasões ou vazamentos de dados, e garantindo nenhuma indisponibilidade de dados ao longo de cinco anos de parceria. A resposta imediata às necessidades de escalabilidade reforça a qualidade do suporte. Após cinco anos de parceria, podemos afirmar com total segurança que estamos muito satisfeitos com os serviços da MDS.",
-      rating: 5,
-    },
-  ];
+function DepoimentoCard({
+  testimonial,
+}: {
+  testimonial: (typeof homeTestimonials)[number];
+}) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    setMousePosition({ x, y });
+  };
+
+  return (
+    <div ref={cardRef} onMouseMove={handleMouseMove} className="group relative h-full">
+      <div className="relative h-full min-h-[340px] flex flex-col rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1 overflow-hidden">
+        {/* Dynamic gradient overlay that follows mouse (mesmo padrão da home) */}
+        <div
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, hsl(var(--primary) / 0.15) 0%, hsl(var(--accent) / 0.1) 40%, transparent 70%)`,
+          }}
+        />
+        <div
+          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(ellipse 80% 60% at ${mousePosition.x}% ${mousePosition.y}%, hsl(var(--primary) / 0.1) 0%, transparent 60%)`,
+          }}
+        />
+
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Company Logo */}
+          {testimonial.companyLogo ? (
+            <div className="mb-4 shrink-0">
+              <img
+                src={testimonial.companyLogo}
+                alt={testimonial.companyName}
+                className="h-6 md:h-8 object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+          ) : (
+            <div className="mb-4 shrink-0">
+              <h3 className="text-lg font-bold text-foreground opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                {testimonial.companyName}
+              </h3>
+            </div>
+          )}
+
+          {/* Headline */}
+          <h4 className="text-lg md:text-xl font-bold text-foreground mb-3 leading-tight shrink-0">
+            {testimonial.headline}
+          </h4>
+
+          {/* Quote - ocupa o espaço restante para igualar altura dos cards */}
+          <blockquote className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed flex-1 min-h-0">
+            "{testimonial.quote}"
+          </blockquote>
+
+          {/* Author */}
+          <div className="flex items-center gap-3 shrink-0 mt-auto">
+            <Avatar className="h-10 w-10 border-2 border-border/50">
+              <AvatarImage
+                src={testimonial.author.avatar}
+                alt={testimonial.author.name}
+                className="object-cover"
+              />
+            </Avatar>
+            <div>
+              <div className="font-semibold text-foreground text-sm">
+                {testimonial.author.name}
+              </div>
+              <div className="text-xs text-muted-foreground">
+                {testimonial.author.role}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const Depoimentos = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -187,29 +245,15 @@ const Depoimentos = () => {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-100px" }}
                 variants={staggerContainer}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-3"
               >
-                {depoimentos.map((depoimento, index) => (
-                  <motion.div key={index} variants={fadeInUp}>
-                    <Card className="h-full border border-border hover:border-primary/50 transition-all hover:shadow-lg">
-                      <CardHeader>
-                        <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                        <CardDescription className="text-base leading-relaxed mb-4">
-                          "{depoimento.text}"
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="flex items-center gap-3">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                            <Users className="h-6 w-6 text-primary" />
-                          </div>
-                          <div>
-                            <p className="font-semibold text-foreground">{depoimento.name}</p>
-                            <p className="text-sm text-muted-foreground">{depoimento.role} - {depoimento.company}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
+                {homeTestimonials.map((testimonial) => (
+                  <motion.div
+                    key={`${testimonial.companyName}-${testimonial.author.name}`}
+                    variants={fadeInUp}
+                    className="h-full"
+                  >
+                    <DepoimentoCard testimonial={testimonial} />
                   </motion.div>
                 ))}
               </motion.div>

@@ -16,7 +16,7 @@ import aliareLogo from "@/assets/testimonials/aliare.png";
 import hspotLogo from "@/assets/testimonials/hspot.png";
 import greenAutomoveisLogo from "@/assets/testimonials/green-automoveis.png";
 
-const testimonials = [
+export const homeTestimonials = [
   {
     companyLogo: atrioLogo,
     companyName: "Átrio Hotéis",
@@ -88,7 +88,7 @@ const testimonials = [
 export function NewTestimonialsSection() {
   return (
     <N8nTestimonials
-      testimonials={testimonials}
+      testimonials={homeTestimonials}
       autoPlay={true}
       speed={30}
     />
