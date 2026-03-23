@@ -82,7 +82,7 @@ const QuemSomos = () => {
     },
     {
       name: "Felipe Melo",
-      title: "Diretor de Marketing",
+      title: "Diretor Comercial e Marketing",
       bio: "Responsável pelo posicionamento estratégico da marca, geração de demanda e comunicação institucional da MDS Cloud, fortalecendo o ecossistema de parceiros e clientes.",
       image: felipeImage,
       linkedin: "https://www.linkedin.com/in/fbmelo/"
