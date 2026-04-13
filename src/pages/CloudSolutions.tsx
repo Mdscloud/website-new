@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import heroImage from "@/assets/about/sobre-o-que-fazemos.jpg";
 import backgroundOQueEMds from "@/assets/background-porque-a-mds.png";
+import { useI18n } from "@/lib/i18n";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -34,69 +35,70 @@ const scaleIn = {
 };
 
 export default function CloudSolutions() {
+  const { t } = useI18n();
 
   const mainFeatures = [
     {
       icon: Zap,
-      title: 'Alta Performance',
+      title: t("cloud.feat.perf.title"),
       stat: '+50%',
-      statLabel: 'de aceleração média',
-      description: 'Infraestrutura otimizada com storages SSD de alta performance e processamento de última geração',
+      statLabel: t("cloud.feat.perf.stat"),
+      description: t("cloud.feat.perf.desc"),
     },
     {
       icon: Shield,
-      title: 'Alta Disponibilidade',
+      title: t("cloud.feat.avail.title"),
       stat: '99.8%',
-      statLabel: 'de uptime garantido',
-      description: 'Data centers Tier III, maior complexo da América Latina, com redundância total e failover automático',
+      statLabel: t("cloud.feat.avail.stat"),
+      description: t("cloud.feat.avail.desc"),
     },
     {
       icon: Lock,
-      title: 'Alta Segurança',
+      title: t("cloud.feat.sec.title"),
       stat: 'Multi',
-      statLabel: 'camadas de proteção',
-      description: 'Múltiplas camadas de proteção, controle de acessos, criptografia e monitoramento contínuo',
+      statLabel: t("cloud.feat.sec.stat"),
+      description: t("cloud.feat.sec.desc"),
     }
   ];
 
   const benefits = [
-    'Infraestrutura própria, no Brasil, Tier 3',
-    'Atendimento humano, único, ultra rápido',
-    'Sem lock-in ou multa rescisória',
-    'Preços em reais (sem câmbio)',
-    'Alta performance',
-    'Baixa latência',
-    'Alto poder de processamento',
-    'Storages SSD de alta performance',
-    'Escalabilidade sob demanda',
-    'Controle total do ambiente'
+    t("cloud.ben.1"),
+    t("cloud.ben.2"),
+    t("cloud.ben.3"),
+    t("cloud.ben.4"),
+    t("cloud.ben.5"),
+    t("cloud.ben.6"),
+    t("cloud.ben.7"),
+    t("cloud.ben.8"),
+    t("cloud.ben.9"),
+    t("cloud.ben.10"),
   ];
 
   const useCases = [
     {
       icon: BarChart3,
-      title: 'ERPs e CRMs',
-      description: 'Ambientes otimizados para sistemas empresariais críticos',
+      title: t("cloud.uc.erp.title"),
+      description: t("cloud.uc.erp.desc"),
     },
     {
       icon: Rocket,
-      title: 'Aplicações Corporativas',
-      description: 'Infraestrutura preparada para aplicações de alta demanda',
+      title: t("cloud.uc.apps.title"),
+      description: t("cloud.uc.apps.desc"),
     },
     {
       icon: Shield,
-      title: 'Sistemas Críticos',
-      description: 'Performance e disponibilidade para sistemas que não podem parar',
+      title: t("cloud.uc.crit.title"),
+      description: t("cloud.uc.crit.desc"),
     }
   ];
 
   const differentials = [
-    { icon: Server, title: 'Infraestrutura Própria', description: 'Rede dedicada de alta capacidade, servidores Dell de última geração e storages SSD otimizados' },
-    { icon: Shield, title: 'Alta Disponibilidade', description: 'Projetos com failover automático, replicação de dados e arquitetura resiliente' },
-    { icon: Users, title: 'SLA Real 24×7', description: 'Equipe humana de plantão com conhecimento profundo dos ambientes dos clientes' },
-    { icon: Zap, title: 'Migração Ágil', description: 'Projetos de migração realizados com planejamento técnico, muitas vezes concluídos em até 24 horas' },
-    { icon: Clock, title: 'POC de 30 Dias', description: 'Ambiente de teste completo, gratuito e sem compromisso, para medir performance antes da contratação' },
-    { icon: CheckCircle2, title: 'Sem Lock-in', description: 'Sem multas rescisórias, sem dependência de terceiros, sem camadas ocultas' }
+    { icon: Server, title: t("cloud.diff.1.title"), description: t("cloud.diff.1.desc") },
+    { icon: Shield, title: t("cloud.diff.2.title"), description: t("cloud.diff.2.desc") },
+    { icon: Users, title: t("cloud.diff.3.title"), description: t("cloud.diff.3.desc") },
+    { icon: Zap, title: t("cloud.diff.4.title"), description: t("cloud.diff.4.desc") },
+    { icon: Clock, title: t("cloud.diff.5.title"), description: t("cloud.diff.5.desc") },
+    { icon: CheckCircle2, title: t("cloud.diff.6.title"), description: t("cloud.diff.6.desc") }
   ];
 
   const oQueEMdsSectionRef = useRef<HTMLElement>(null);
@@ -107,18 +109,18 @@ export default function CloudSolutions() {
   const oQueEMdsBackgroundY = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "-8%", "-15%"]);
 
   const oQueEMdsCards = [
-    { icon: Building2, title: 'Infraestrutura própria', description: 'Data centers próprios no Brasil, Tier III, sem dependência de hyperscalers.' },
-    { icon: HardDrive, title: 'Storage SSD alta IOPS', description: 'Discos de alta performance para cargas de trabalho exigentes e baixa latência.' },
-    { icon: Gauge, title: 'Rede baixa latência', description: 'Rede dedicada e backbone redundante para aplicações críticas.' },
-    { icon: Settings, title: 'Ambiente gerenciado', description: 'Gestão e monitoramento 24x7 por especialistas MDS Cloud.' },
+    { icon: Building2, title: t("cloud.card.infra.title"), description: t("cloud.card.infra.desc") },
+    { icon: HardDrive, title: t("cloud.card.storage.title"), description: t("cloud.card.storage.desc") },
+    { icon: Gauge, title: t("cloud.card.network.title"), description: t("cloud.card.network.desc") },
+    { icon: Settings, title: t("cloud.card.managed.title"), description: t("cloud.card.managed.desc") },
   ];
 
   const migrationSteps = [
-    { step: 1, icon: ClipboardList, title: 'Análise do ambiente' },
-    { step: 2, icon: FileCheck, title: 'Planejamento técnico' },
-    { step: 3, icon: Rocket, title: 'Migração assistida' },
-    { step: 4, icon: TrendingUp, title: 'Otimização' },
-    { step: 5, icon: Headphones, title: 'Operação 24x7' },
+    { step: 1, icon: ClipboardList, title: t("cloud.mig.1") },
+    { step: 2, icon: FileCheck, title: t("cloud.mig.2") },
+    { step: 3, icon: Rocket, title: t("cloud.mig.3") },
+    { step: 4, icon: TrendingUp, title: t("cloud.mig.4") },
+    { step: 5, icon: Headphones, title: t("cloud.mig.5") },
   ];
 
   return (
@@ -135,30 +137,30 @@ export default function CloudSolutions() {
         {/* Hero Section */}
           <section className="relative pt-20 lg:pt-32 pb-6 lg:pb-10 overflow-hidden">
             {/* Background Image */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${heroImage})`,
               }}
             />
-            
+
             {/* Overlay claro para legibilidade */}
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-            
+
             {/* Animated orbs */}
-            <motion.div 
+            <motion.div
               layout={false}
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.2, 0.4, 0.2]
               }}
               transition={{ duration: 8, repeat: Infinity }}
               className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none z-0"
             ></motion.div>
-            <motion.div 
+            <motion.div
               layout={false}
-              animate={{ 
+              animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.15, 0.35, 0.15]
               }}
@@ -177,34 +179,33 @@ export default function CloudSolutions() {
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                       <Cloud className="h-4 w-4 mr-2 inline" />
-                      Soluções em Cloud
+                      {t("cloud.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground leading-tight"
                   >
-                    Cloud de Alta Performance para Sistemas Críticos
+                    {t("cloud.hero.title")}
                   </motion.h1>
-                  
+
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Infraestrutura dedicada para ERPs, bancos de dados e
-                    aplicações corporativas que não podem parar.
+                    {t("cloud.hero.subtitle")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Zap className="h-5 w-5" />
-                        Solicitar POC de até 30 dias
+                        {t("common.hero.cta")}
                       </a>
                     </Button>
                   </motion.div>
                   <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
-                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                    {t("common.hero.footnote")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -309,7 +310,7 @@ export default function CloudSolutions() {
                 </motion.div>
               </div>
             </div>
-            
+
             {/* Partners Carousel logo abaixo do hero - bem próximo */}
             <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
               <PartnersCarousel isInHero={true} />
@@ -326,10 +327,10 @@ export default function CloudSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Cloud de Alta Performance para Sistemas Críticos</h2>
-                <p className="text-lg text-muted-foreground">Trabalhamos com ambientes preparados para ERPs, CRMs e aplicações corporativas</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("cloud.hero.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("cloud.features.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -346,7 +347,7 @@ export default function CloudSolutions() {
                   >
                     <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full group">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                      
+
                       <CardHeader className="relative">
                         <div className="relative w-16 h-16 mb-6">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
@@ -354,14 +355,14 @@ export default function CloudSolutions() {
                             <feature.icon className="h-8 w-8 text-primary" />
                           </div>
                         </div>
-                        
+
                         <div className="mb-4">
                           <div className="text-5xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-1">
                             {feature.stat}
                           </div>
                           <div className="text-sm text-muted-foreground">{feature.statLabel}</div>
                         </div>
-                        
+
                         <CardTitle className="text-foreground mb-2">{feature.title}</CardTitle>
                         <CardDescription className="text-muted-foreground">
                           {feature.description}
@@ -384,10 +385,10 @@ export default function CloudSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Para quais ambientes nossa Cloud é ideal</h2>
-                <p className="text-lg text-muted-foreground">Nossa infraestrutura é perfeita para sistemas que exigem máxima performance e disponibilidade</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("cloud.uc.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("cloud.uc.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -406,7 +407,7 @@ export default function CloudSolutions() {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all overflow-hidden backdrop-blur-sm h-full">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-5 transition-opacity"></div>
-                      
+
                       <CardHeader className="text-center relative">
                         <div className="relative w-20 h-20 mx-auto mb-6">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-full blur-2xl opacity-60"></div>
@@ -455,18 +456,16 @@ export default function CloudSolutions() {
                 className="text-center mb-12 lg:mb-16"
               >
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
-                  O que é a MDS Cloud?
+                  {t("cloud.what.title")}
                 </h2>
                 <p className="text-lg md:text-xl text-muted-foreground font-medium mb-2">
-                  Não somos cloud pública.
+                  {t("cloud.what.p1")}
                 </p>
                 <p className="text-lg md:text-xl text-muted-foreground font-medium mb-6">
-                  Não somos hosting tradicional.
+                  {t("cloud.what.p2")}
                 </p>
                 <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto leading-relaxed">
-                  A MDS Cloud é uma infraestrutura dedicada,
-                  <br className="hidden sm:block" />
-                  projetada especificamente para aplicações críticas.
+                  {t("cloud.what.p3")}
                 </p>
               </motion.div>
 
@@ -524,7 +523,7 @@ export default function CloudSolutions() {
                             href="#diferenciais"
                             className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/90 transition-colors underline underline-offset-2"
                           >
-                            Saiba mais
+                            {t("services.learnmore")}
                             <ArrowRight className="h-4 w-4" />
                           </a>
                         </div>
@@ -547,12 +546,12 @@ export default function CloudSolutions() {
                   variants={staggerContainer}
                 >
                   <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                    Por que escolher nossa Infraestrutura Cloud?
+                    {t("cloud.why.title")}
                   </motion.h2>
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Infraestrutura própria, totalmente administrada, com foco em ERPs, CRMs e aplicações empresariais que exigem baixa latência, alta performance e escalabilidade sob demanda.
+                    {t("cloud.why.subtitle")}
                   </motion.p>
-                  
+
                   <div className="grid md:grid-cols-2 gap-4">
                     {benefits.map((item, index) => (
                       <motion.div
@@ -578,7 +577,7 @@ export default function CloudSolutions() {
                 >
                   <div className="relative bg-card/80 rounded-3xl p-8 border border-border backdrop-blur-sm overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5"></div>
-                    
+
                     <div className="relative">
                       <div className="flex items-center justify-between mb-8">
                         <h3 className="text-foreground font-semibold text-xl">Data Center Infrastructure</h3>
@@ -586,7 +585,7 @@ export default function CloudSolutions() {
                           Tier III
                         </Badge>
                       </div>
-                      
+
                       <div className="space-y-6">
                         {/* CPU Usage */}
                         <div>
@@ -693,9 +692,9 @@ export default function CloudSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Nossos Diferenciais</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("common.diff.title")}</h2>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -742,10 +741,10 @@ export default function CloudSolutions() {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                  Como funciona a migração
+                  {t("cloud.mig.title")}
                 </h2>
                 <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Da análise ao suporte contínuo, cada etapa é pensada para sua tranquilidade.
+                  {t("cloud.mig.subtitle")}
                 </p>
               </motion.div>
 
@@ -831,13 +830,13 @@ export default function CloudSolutions() {
                 className="text-center mb-12"
               >
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Comece com a Nuvem de Alta Performance
+                  {t("cloud.cta.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-xl text-muted-foreground mb-8">
-                  Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
+                  {t("common.poc.subtitle")}
                 </motion.p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -847,10 +846,10 @@ export default function CloudSolutions() {
               >
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   {[
-                    { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
-                    { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
-                    { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: t("common.cta.setup.title"), description: t("common.cta.setup.desc") },
+                    { title: t("common.cta.trial.title"), description: t("common.cta.trial.desc") },
+                    { title: t("common.cta.support.title"), description: t("common.cta.support.desc") },
+                    { title: t("common.cta.nolock.title"), description: t("common.cta.nolock.desc") }
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -870,7 +869,7 @@ export default function CloudSolutions() {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -881,7 +880,7 @@ export default function CloudSolutions() {
                   <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Zap className="h-5 w-5" />
-                      Solicitar POC de até 30 dias
+                      {t("common.hero.cta")}
                     </a>
                   </Button>
                 </motion.div>

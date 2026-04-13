@@ -7,6 +7,7 @@ import backgroundBancoDeDados from "@/assets/background-banco-de-dados.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useI18n } from "@/lib/i18n";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -29,53 +30,55 @@ const scaleIn = {
 };
 
 export default function DatabaseSolutions() {
+  const { t } = useI18n();
+
   const services = [
     {
       icon: Settings,
-      title: 'Tuning de Banco de Dados',
-      description: 'Otimização contínua de performance e ajuste fino de configurações',
-      detail: 'Análise profunda de queries, índices e estruturas para maximizar eficiência',
+      title: t("db.svc.1.title"),
+      description: t("db.svc.1.desc"),
+      detail: t("db.svc.1.detail"),
     },
     {
       icon: Shield,
-      title: 'Segurança e Compliance',
-      description: 'Proteção de dados com políticas de segurança e conformidade',
-      detail: 'Implementação de controles de acesso, auditoria e políticas de backup',
+      title: t("db.svc.2.title"),
+      description: t("db.svc.2.desc"),
+      detail: t("db.svc.2.detail"),
     },
     {
       icon: Activity,
-      title: 'Monitoramento 24×7',
-      description: 'Acompanhamento proativo de performance e disponibilidade',
-      detail: 'Alertas em tempo real, análise de tendências e prevenção de problemas',
+      title: t("db.svc.3.title"),
+      description: t("db.svc.3.desc"),
+      detail: t("db.svc.3.detail"),
     },
     {
       icon: Database,
-      title: 'Gestão Completa do Banco de Dados',
-      description: 'Gestão completa do banco de dados sob demanda',
-      detail: 'Desde planejamento até manutenção, evolução e migrações complexas',
+      title: t("db.svc.4.title"),
+      description: t("db.svc.4.desc"),
+      detail: t("db.svc.4.detail"),
     }
   ];
 
   const whyChooseBlocks = [
-    { title: 'Performance', items: ['Tuning contínuo', 'Otimização de queries', 'Análise preventiva'] },
-    { title: 'Disponibilidade', items: ['Monitoramento ativo', 'Atuação preventiva', 'Alta resiliência'] },
-    { title: 'Segurança', items: ['Compliance', 'Backup strategy', 'Controle de acesso'] },
+    { title: t("db.why.perf"), items: [t("db.why.perf.1"), t("db.why.perf.2"), t("db.why.perf.3")] },
+    { title: t("db.why.avail"), items: [t("db.why.avail.1"), t("db.why.avail.2"), t("db.why.avail.3")] },
+    { title: t("db.why.sec"), items: [t("db.why.sec.1"), t("db.why.sec.2"), t("db.why.sec.3")] },
   ];
 
   const supportedDatabases = [
-    { name: 'Oracle', icon: '🔷', description: 'Suporte completo para Oracle Database com otimização avançada' },
-    { name: 'SQL Server', icon: '🔷', description: 'Administração especializada em Microsoft SQL Server' },
-    { name: 'PostgreSQL', icon: '🔷', description: 'Gestão e otimização de ambientes PostgreSQL' },
-    { name: 'MySQL', icon: '🔷', description: 'Suporte completo para MySQL e MariaDB' }
+    { name: 'Oracle', icon: '🔷', description: t("db.oracle.desc") },
+    { name: 'SQL Server', icon: '🔷', description: t("db.sqlserver.desc") },
+    { name: 'PostgreSQL', icon: '🔷', description: t("db.postgres.desc") },
+    { name: 'MySQL', icon: '🔷', description: t("db.mysql.desc") }
   ];
 
   const differentials = [
-    { icon: Users, title: 'Time Sênior de DBAs', description: 'DBAs experientes com foco em sistemas críticos' },
-    { icon: Activity, title: 'Monitoramento Preventivo', description: 'Monitoramento proativo para evitar problemas antes que ocorram' },
-    { icon: Settings, title: 'Tuning Contínuo', description: 'Otimização contínua de performance' },
-    { icon: AlertTriangle, title: 'Atuação Proativa', description: 'Identificação e correção de riscos antes de impactos' },
-    { icon: Clock, title: 'Suporte 24x7 Especializado', description: 'Equipe DBA disponível a qualquer momento' },
-    { icon: Zap, title: 'Migrações Complexas Assistidas', description: 'Planejamento e execução de migrações com impacto controlado' }
+    { icon: Users, title: t("db.dif.1.title"), description: t("db.dif.1.desc") },
+    { icon: Activity, title: t("db.dif.2.title"), description: t("db.dif.2.desc") },
+    { icon: Settings, title: t("db.dif.3.title"), description: t("db.dif.3.desc") },
+    { icon: AlertTriangle, title: t("db.dif.4.title"), description: t("db.dif.4.desc") },
+    { icon: Clock, title: t("db.dif.5.title"), description: t("db.dif.5.desc") },
+    { icon: Zap, title: t("db.dif.6.title"), description: t("db.dif.6.desc") }
   ];
 
   return (
@@ -86,7 +89,7 @@ export default function DatabaseSolutions() {
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary)/0.03)_1px,transparent_1px)] bg-[size:2.5rem_2.5rem]"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background"></div>
-          
+
           {/* Animated code lines - adapted for light theme */}
           {[...Array(15)].map((_, i) => (
             <motion.div
@@ -139,7 +142,7 @@ export default function DatabaseSolutions() {
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
             {/* Background Image */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${backgroundBancoDeDados})`,
@@ -149,8 +152,8 @@ export default function DatabaseSolutions() {
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/60" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
             {/* Animated gradient orbs - adapted for light theme with green/emerald accent */}
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.3, 1],
                 rotate: [0, 180, 0],
                 opacity: [0.1, 0.2, 0.1]
@@ -158,8 +161,8 @@ export default function DatabaseSolutions() {
               transition={{ duration: 12, repeat: Infinity }}
               className="absolute top-10 right-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[140px] pointer-events-none"
             ></motion.div>
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.4, 1],
                 rotate: [0, -180, 0],
                 opacity: [0.08, 0.18, 0.08]
@@ -178,33 +181,33 @@ export default function DatabaseSolutions() {
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                       <Database className="h-4 w-4 mr-2 inline" />
-                      Banco de Dados
+                      {t("db.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground leading-tight"
                   >
-                    Administração Especializada de Bancos de Dados
+                    {t("db.hero.title")}
                   </motion.h1>
-                  
+
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    DBAs dedicados para garantir performance, alta disponibilidade e operação contínua dos seus sistemas críticos.
+                    {t("db.hero.subtitle")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Zap className="h-5 w-5" />
-                        Solicitar POC de até 30 dias
+                        {t("common.hero.cta")}
                       </a>
                     </Button>
                   </motion.div>
                   <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
-                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                    {t("common.hero.footnote")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -329,10 +332,10 @@ export default function DatabaseSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Serviços de Administração DBA</h2>
-                <p className="text-lg text-muted-foreground">Nosso time de DBAs atua de forma preventiva e corretiva, acompanhando toda a rotina operacional</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("db.services.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("db.services.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -344,7 +347,7 @@ export default function DatabaseSolutions() {
                   <motion.div key={index} variants={fadeInUp}>
                     <Card className="group relative bg-card/60 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden h-full backdrop-blur-sm">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                      
+
                       <CardHeader className="relative">
                         <div className="relative w-14 h-14 mb-4">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl blur-lg"></div>
@@ -380,12 +383,12 @@ export default function DatabaseSolutions() {
                   variants={staggerContainer}
                 >
                   <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                    Por que escolher nosso Serviço DBA?
+                    {t("db.why.title")}
                   </motion.h2>
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Oferecemos um serviço especializado de administração, suporte e otimização de bancos de dados, garantindo performance consistente, alta disponibilidade e segurança dos dados.
+                    {t("db.why.subtitle")}
                   </motion.p>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
                     <motion.div variants={fadeInUp}>
                       <h3 className="text-lg font-semibold text-foreground mb-3">{whyChooseBlocks[0].title}</h3>
@@ -440,7 +443,7 @@ export default function DatabaseSolutions() {
                     </motion.div>
                   </div>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, x: 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -450,10 +453,10 @@ export default function DatabaseSolutions() {
                 >
                   <div className="relative bg-card/80 rounded-3xl p-8 border border-border backdrop-blur-sm">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl"></div>
-                    
+
                     <div className="relative">
                       <h3 className="text-foreground font-semibold text-xl mb-6">Database Management</h3>
-                      
+
                       {/* Query Analysis */}
                       <div className="space-y-4 mb-6">
                         <div className="bg-muted/50 rounded-xl p-4 border border-border">
@@ -556,10 +559,10 @@ export default function DatabaseSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Bancos de Dados Suportados</h2>
-                <p className="text-lg text-muted-foreground">Suporte especializado para as principais plataformas de banco de dados</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("db.supported.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("db.supported.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -576,7 +579,7 @@ export default function DatabaseSolutions() {
                   >
                     <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all duration-300 overflow-hidden backdrop-blur-sm h-full group">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                      
+
                       <CardHeader className="text-center relative">
                         <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
                           {db.icon}
@@ -603,9 +606,9 @@ export default function DatabaseSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Nossos Diferenciais</h2>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("common.diff.title")}</h2>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -664,13 +667,13 @@ export default function DatabaseSolutions() {
                 className="text-center mb-12"
               >
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Garanta Performance e Estabilidade para seu Banco de Dados
+                  {t("db.cta.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-xl text-muted-foreground mb-8">
-                  Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
+                  {t("common.poc.subtitle")}
                 </motion.p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -680,10 +683,10 @@ export default function DatabaseSolutions() {
               >
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   {[
-                    { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
-                    { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
-                    { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: t("common.cta.setup.title"), description: t("common.cta.setup.desc") },
+                    { title: t("common.cta.trial.title"), description: t("common.cta.trial.desc") },
+                    { title: t("common.cta.support.title"), description: t("common.cta.support.desc") },
+                    { title: t("common.cta.nolock.title"), description: t("common.cta.nolock.desc") }
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -703,7 +706,7 @@ export default function DatabaseSolutions() {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -714,7 +717,7 @@ export default function DatabaseSolutions() {
                   <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Zap className="h-5 w-5" />
-                      Solicitar POC de até 30 dias
+                      {t("common.hero.cta")}
                     </a>
                   </Button>
                 </motion.div>

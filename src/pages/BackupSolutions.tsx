@@ -7,6 +7,7 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useI18n } from "@/lib/i18n";
 
 // Animation variants
 const fadeInUp = {
@@ -35,83 +36,85 @@ const scaleIn = {
 };
 
 export default function BackupSolutions() {
+  const { t } = useI18n();
+
   const features = [
     {
       icon: RotateCcw,
-      title: 'Backup Automatizado e Validado',
-      description: 'Rotinas automatizadas com validação de integridade',
-      detail: 'Agendamento flexível, múltiplos pontos de restauração e verificação automática de integridade',
+      title: t("backup.feat.1.title"),
+      description: t("backup.feat.1.desc"),
+      detail: t("backup.feat.1.detail"),
     },
     {
       icon: Lock,
-      title: 'Criptografia Enterprise AES-256',
-      description: 'Segurança de nível enterprise para seus dados críticos',
-      detail: 'Dados criptografados em trânsito e em repouso, garantindo máxima proteção',
+      title: t("backup.feat.2.title"),
+      description: t("backup.feat.2.desc"),
+      detail: t("backup.feat.2.detail"),
     },
     {
       icon: Shield,
-      title: 'Recuperação Testada e Garantida',
-      description: 'Testes regulares de restauração e RTO/RPO otimizados',
-      detail: 'Recuperação rápida e confiável quando você mais precisa',
+      title: t("backup.feat.3.title"),
+      description: t("backup.feat.3.desc"),
+      detail: t("backup.feat.3.detail"),
     },
     {
       icon: Database,
-      title: 'Políticas Inteligentes de Retenção',
-      description: 'Retenção flexível e versionamento adaptados ao seu negócio',
-      detail: 'Múltiplas cópias, retenção de longo prazo e versionamento completo',
+      title: t("backup.feat.4.title"),
+      description: t("backup.feat.4.desc"),
+      detail: t("backup.feat.4.detail"),
     }
   ];
 
   const benefits = [
-    'Suporte total ao ciclo/rotina de backup',
-    'Backup automatizado',
-    'Criptografia AES-256',
-    'Recovery garantido',
-    'Retenção flexível',
-    'Monitoramento contínuo',
-    'Armazenamento em múltiplas localizações'
+    t("backup.ben.1"),
+    t("backup.ben.2"),
+    t("backup.ben.3"),
+    t("backup.ben.4"),
+    t("backup.ben.5"),
+    t("backup.ben.6"),
+    t("backup.ben.7"),
   ];
 
   const backupTypes = [
     {
       icon: Layers,
-      title: 'Backup Incremental',
-      description: 'Backups eficientes que capturam apenas alterações desde o último backup',
-      badge: 'Otimizado para velocidade',
-      microcopy: 'Menor consumo de storage',
+      title: t("backup.type.inc.title"),
+      description: t("backup.type.inc.desc"),
+      badge: t("backup.type.inc.badge"),
+      microcopy: t("backup.type.inc.micro"),
     },
     {
       icon: HardDrive,
-      title: 'Backup Completo',
-      description: 'Cópias completas periódicas para garantir recuperação total',
-      badge: 'Máxima segurança',
-      microcopy: 'Máxima segurança',
+      title: t("backup.type.full.title"),
+      description: t("backup.type.full.desc"),
+      badge: t("backup.type.full.badge"),
+      microcopy: t("backup.type.full.micro"),
     },
     {
       icon: BarChart3,
-      title: 'Backup Diferencial',
-      description: 'Balanceamento entre eficiência e rapidez de restauração',
-      badge: 'Equilíbrio ideal',
-      microcopy: 'Equilíbrio entre custo e segurança',
+      title: t("backup.type.diff.title"),
+      description: t("backup.type.diff.desc"),
+      badge: t("backup.type.diff.badge"),
+      microcopy: t("backup.type.diff.micro"),
     }
   ];
 
   const securityFeatures = [
-    { icon: Lock, title: 'Criptografia End-to-End', description: 'Dados protegidos desde a origem até o armazenamento' },
-    { icon: Shield, title: 'Controle de Acessos', description: 'Políticas rigorosas de acesso e auditoria completa' },
-    { icon: Server, title: 'Armazenamento Redundante', description: 'Múltiplas cópias em diferentes localizações geográficas' },
-    { icon: Clock, title: 'Recuperação Rápida', description: 'RTO otimizado para minimizar tempo de indisponibilidade' },
-    { icon: Lock, title: 'Imutabilidade contra Ransomware', description: 'Proteção contra alteração ou exclusão maliciosa dos backups' },
-    { icon: Shield, title: 'Backup Imutável', description: 'Proteção contra exclusão ou criptografia maliciosa dos dados.' }
+    { icon: Lock, title: t("backup.sec.e2e.title"), description: t("backup.sec.e2e.desc") },
+    { icon: Shield, title: t("backup.sec.ac.title"), description: t("backup.sec.ac.desc") },
+    { icon: Server, title: t("backup.sec.red.title"), description: t("backup.sec.red.desc") },
+    { icon: Clock, title: t("backup.sec.rto.title"), description: t("backup.sec.rto.desc") },
+    { icon: Lock, title: t("backup.sec.imm.title"), description: t("backup.sec.imm.desc") },
+    { icon: Shield, title: t("backup.sec.bimm.title"), description: t("backup.sec.bimm.desc") },
   ];
 
   const differentials = [
-    { icon: RotateCcw, title: 'Suporte Total ao Ciclo', description: 'Acompanhamento completo da rotina de backup, desde configuração até recuperação, garantindo continuidade operacional' },
-    { icon: Lock, title: 'Criptografia AES-256', description: 'Segurança enterprise com criptografia de nível militar para proteção dos dados críticos' },
-    { icon: Shield, title: 'Recovery Garantido', description: 'Testes regulares de restauração garantem que seus dados podem ser recuperados quando você precisar' },
-    { icon: Database, title: 'Retenção Flexível', description: 'Políticas de retenção adaptadas às necessidades regulatórias e à continuidade do seu negócio' },
-    { icon: AlertCircle, title: 'Monitoramento Contínuo', description: 'Acompanhamento 24×7 com alertas proativos e relatórios detalhados para garantir operação ininterrupta' },
-    { icon: Server, title: 'Redundância Geográfica', description: 'Múltiplas cópias em diferentes localizações garantem disponibilidade e continuidade mesmo em cenários de falha' }
+    { icon: RotateCcw, title: t("backup.dif.1.title"), description: t("backup.dif.1.desc") },
+    { icon: Lock, title: t("backup.dif.2.title"), description: t("backup.dif.2.desc") },
+    { icon: Shield, title: t("backup.dif.3.title"), description: t("backup.dif.3.desc") },
+    { icon: Database, title: t("backup.dif.4.title"), description: t("backup.dif.4.desc") },
+    { icon: AlertCircle, title: t("backup.dif.5.title"), description: t("backup.dif.5.desc") },
+    { icon: Server, title: t("backup.dif.6.title"), description: t("backup.dif.6.desc") },
   ];
 
   return (
@@ -128,28 +131,28 @@ export default function BackupSolutions() {
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
             {/* Background Image */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${backgroundBackup})`,
               }}
             />
-            
+
             {/* Overlay para transparência e legibilidade (mais suave para valorizar o background) */}
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/50 to-background/60" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/35 via-transparent to-background/35" />
-            
+
             {/* Animated orbs */}
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.2, 0.4, 0.2]
               }}
               transition={{ duration: 8, repeat: Infinity }}
               className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
             ></motion.div>
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.15, 0.35, 0.15]
               }}
@@ -167,45 +170,45 @@ export default function BackupSolutions() {
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-accent text-accent-foreground hover:bg-accent/90 border-0 px-4 py-2">
                       <Zap className="h-4 w-4 mr-2 inline" />
-                      Backup em Nuvem
+                      {t("backup.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                   >
-                    Proteção e Recuperação Garantida para Sistemas Críticos
+                    {t("backup.hero.title")}
                   </motion.h1>
-                  
+
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Backup corporativo automatizado com criptografia, múltiplas localidades e recuperação rápida para garantir a continuidade do seu negócio.
+                    {t("backup.hero.subtitle")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Zap className="h-5 w-5" />
-                        Solicitar POC de até 30 dias
+                        {t("common.hero.cta")}
                       </a>
                     </Button>
                   </motion.div>
                   <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
-                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                    {t("common.hero.footnote")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Setup em 24h</span>
+                      <span>{t("backup.hero.b1")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Suporte 24x7</span>
+                      <span>{t("hero.badge.support")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Sem fidelidade</span>
+                      <span>{t("backup.hero.b2")}</span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -221,12 +224,12 @@ export default function BackupSolutions() {
                     <div className="relative z-0 bg-card rounded-3xl p-8 border border-border shadow-2xl backdrop-blur-sm">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground text-sm">Status do Backup</span>
+                          <span className="text-muted-foreground text-sm">{t("backup.card.status")}</span>
                           <Badge className="bg-green-500/20 text-green-600 border-green-500/50">Ativo</Badge>
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">Progresso</span>
+                            <span className="text-muted-foreground">{t("backup.card.progress")}</span>
                             <span className="text-foreground">87%</span>
                           </div>
                           <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -242,12 +245,12 @@ export default function BackupSolutions() {
                           <div className="bg-muted/50 rounded-xl p-4 border border-border">
                             <Database className="h-6 w-6 text-primary mb-2" />
                             <p className="text-foreground text-lg font-semibold">2.4 TB</p>
-                            <p className="text-muted-foreground text-xs">Armazenado</p>
+                            <p className="text-muted-foreground text-xs">{t("backup.card.stored")}</p>
                           </div>
                           <div className="bg-muted/50 rounded-xl p-4 border border-border">
                             <Clock className="h-6 w-6 text-accent mb-2" />
                             <p className="text-foreground text-lg font-semibold">12 min</p>
-                            <p className="text-muted-foreground text-xs">Último backup</p>
+                            <p className="text-muted-foreground text-xs">{t("backup.card.last")}</p>
                           </div>
                         </div>
                       </div>
@@ -287,10 +290,10 @@ export default function BackupSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Proteção Completa</h2>
-                <p className="text-lg text-muted-foreground">Soluções de backup em nuvem com segurança enterprise e recuperação garantida</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("backup.features.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("backup.features.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -303,7 +306,7 @@ export default function BackupSolutions() {
                     <Card className="group relative bg-card/60 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden h-full backdrop-blur-sm">
                       {/* Glow effect on hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-accent/0 group-hover:from-primary/5 group-hover:via-transparent group-hover:to-accent/5 transition-all duration-500"></div>
-                      
+
                       <CardHeader className="relative">
                         <div className="relative w-14 h-14 mb-4">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-xl blur-lg"></div>
@@ -339,12 +342,12 @@ export default function BackupSolutions() {
                   variants={staggerContainer}
                 >
                   <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                    Por que escolher nosso Backup?
+                    {t("backup.why.title")}
                   </motion.h2>
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Nossa infraestrutura incorpora políticas de backup, criptografia, monitoramento e testes contínuos, com equipe dedicada à proteção e à conformidade regulatória.
+                    {t("backup.why.subtitle")}
                   </motion.p>
-                  
+
                   <div className="space-y-4">
                     {benefits.map((item, index) => (
                       <motion.div
@@ -360,7 +363,7 @@ export default function BackupSolutions() {
                     ))}
                   </div>
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, x: 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -372,39 +375,39 @@ export default function BackupSolutions() {
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-3xl"></div>
                     <div className="relative">
                       <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-foreground font-semibold">Backup Geograficamente Distribuído</h3>
+                        <h3 className="text-foreground font-semibold">{t("backup.geo.title")}</h3>
                         <Badge className="bg-green-500/20 text-green-600 border-green-500/50">
                           <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
                           Online
                         </Badge>
                       </div>
                       <p className="text-muted-foreground text-sm mb-6">
-                        Seus dados são protegidos simultaneamente em múltiplos data centers internacionais, garantindo resiliência contra falhas locais, ataques ou desastres.
+                        {t("backup.geo.desc")}
                       </p>
-                      
+
                       <div className="space-y-4">
                         <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl border border-border">
                           <Server className="h-8 w-8 text-primary" />
                           <div className="flex-1">
-                            <p className="text-foreground text-sm font-semibold">Servidor Principal</p>
+                            <p className="text-foreground text-sm font-semibold">{t("backup.geo.primary")}</p>
                             <p className="text-muted-foreground text-xs">São Paulo, Brasil</p>
                           </div>
                           <div className="text-green-600 text-xs">Active</div>
                         </div>
-                        
+
                         <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl border border-border">
                           <Globe className="h-8 w-8 text-accent" />
                           <div className="flex-1">
-                            <p className="text-foreground text-sm font-semibold">Backup Secundário</p>
+                            <p className="text-foreground text-sm font-semibold">{t("backup.geo.secondary")}</p>
                             <p className="text-muted-foreground text-xs">Virginia, USA</p>
                           </div>
                           <div className="text-green-600 text-xs">Active</div>
                         </div>
-                        
+
                         <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-xl border border-border">
                           <Network className="h-8 w-8 text-primary" />
                           <div className="flex-1">
-                            <p className="text-foreground text-sm font-semibold">Backup Terciário</p>
+                            <p className="text-foreground text-sm font-semibold">{t("backup.geo.tertiary")}</p>
                             <p className="text-muted-foreground text-xs">Frankfurt, Alemanha</p>
                           </div>
                           <div className="text-green-600 text-xs">Active</div>
@@ -427,10 +430,10 @@ export default function BackupSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Tipos de Backup</h2>
-                <p className="text-lg text-muted-foreground">Estratégias flexíveis adaptadas às necessidades do seu negócio</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("backup.types.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("backup.types.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -448,7 +451,7 @@ export default function BackupSolutions() {
                     <Card className="relative bg-card/60 border-border/50 hover:border-primary/50 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full group">
                       {/* Animated gradient border on hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
-                      
+
                       <CardHeader className="text-center relative">
                         <div className="relative w-20 h-20 mx-auto mb-6">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
@@ -484,10 +487,10 @@ export default function BackupSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Segurança Enterprise</h2>
-                <p className="text-lg text-muted-foreground">Múltiplas camadas de proteção para garantir a integridade dos seus dados</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("backup.sec.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("backup.sec.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -524,10 +527,10 @@ export default function BackupSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Backup pensado para ambientes corporativos críticos</h2>
-                <p className="text-lg text-muted-foreground">Continuidade operacional com suporte completo ao ciclo de backup</p>
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">{t("backup.diff.title")}</h2>
+                <p className="text-lg text-muted-foreground">{t("backup.diff.subtitle")}</p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -588,13 +591,13 @@ export default function BackupSolutions() {
                 className="text-center mb-12"
               >
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Proteja seus dados críticos hoje
+                  {t("backup.cta.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-xl text-muted-foreground mb-8">
-                  Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
+                  {t("common.poc.subtitle")}
                 </motion.p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -604,10 +607,10 @@ export default function BackupSolutions() {
               >
                 <div className="grid md:grid-cols-2 gap-8 mb-8">
                   {[
-                    { title: 'Setup gratuito e migração assistida', description: 'Nossa equipe cuida de toda a configuração inicial' },
-                    { title: '30 dias de teste sem compromisso', description: 'Teste todos os recursos sem limitações' },
-                    { title: 'Suporte técnico 24x7 incluso', description: 'Equipe especializada sempre disponível' },
-                    { title: 'Contrato sem fidelidade ou multas', description: 'Cancele a qualquer momento sem custos' }
+                    { title: t("common.cta.setup.title"), description: t("common.cta.setup.desc") },
+                    { title: t("common.cta.trial.title"), description: t("common.cta.trial.desc") },
+                    { title: t("common.cta.support.title"), description: t("common.cta.support.desc") },
+                    { title: t("common.cta.nolock.title"), description: t("common.cta.nolock.desc") },
                   ].map((item, index) => (
                     <motion.div
                       key={index}
@@ -627,7 +630,7 @@ export default function BackupSolutions() {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
@@ -638,7 +641,7 @@ export default function BackupSolutions() {
                   <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Zap className="h-5 w-5" />
-                      Solicitar POC de até 30 dias
+                      {t("common.hero.cta")}
                     </a>
                   </Button>
                 </motion.div>

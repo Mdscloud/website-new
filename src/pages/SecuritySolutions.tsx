@@ -7,6 +7,7 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useI18n } from "@/lib/i18n";
 import securityImage from "@/assets/services/seguranca.jpeg";
 
 // Animation variants
@@ -36,75 +37,77 @@ const scaleIn = {
 };
 
 export default function SecuritySolutions() {
+  const { t } = useI18n();
+
   const features = [
     {
       icon: Settings,
-      title: 'Governança',
-      description: 'Políticas, controles e gestão de riscos',
-      detail: 'Políticas de segurança documentadas, definição de responsabilidades e alinhamento aos objetivos do negócio',
+      title: t("sec.feat.1.title"),
+      description: t("sec.feat.1.desc"),
+      detail: t("sec.feat.1.detail"),
     },
     {
       icon: Eye,
-      title: 'Operação',
-      description: 'Monitoramento 24×7 e resposta a incidentes',
-      detail: 'Vigilância contínua, rotinas de resposta e gestão proativa de eventos de segurança',
+      title: t("sec.feat.2.title"),
+      description: t("sec.feat.2.desc"),
+      detail: t("sec.feat.2.detail"),
     },
     {
       icon: Server,
-      title: 'Infraestrutura Física',
-      description: 'Datacenter e hardware de ponta',
-      detail: 'Ambiente certificado e equipamentos enterprise; detalhes na seção abaixo',
+      title: t("sec.feat.3.title"),
+      description: t("sec.feat.3.desc"),
+      detail: t("sec.feat.3.detail"),
     },
     {
       icon: BarChart3,
-      title: 'Compliance',
-      description: 'LGPD, auditoria e documentação',
-      detail: 'Conformidade regulatória, trilhas de auditoria e suporte a certificações',
+      title: t("sec.feat.4.title"),
+      description: t("sec.feat.4.desc"),
+      detail: t("sec.feat.4.detail"),
     }
   ];
 
   const benefits = [
-    'Redução de riscos operacionais',
-    'Continuidade do ERP e Banco de Dados',
-    'Mitigação contra ransomware',
-    'Resposta rápida a incidentes',
-    'Governança alinhada à LGPD'
+    t("sec.ben.1"),
+    t("sec.ben.2"),
+    t("sec.ben.3"),
+    t("sec.ben.4"),
+    t("sec.ben.5"),
   ];
 
   const securityLayers = [
     {
       icon: Globe,
-      title: 'Datacenter Tier III (Ascenty)',
-      description: 'Infraestrutura em datacenters certificados Ascenty no Brasil, com alta disponibilidade, segurança física e resiliência',
-      badge: 'Certificação Tier III',
+      title: t("sec.layer.1.title"),
+      description: t("sec.layer.1.desc"),
+      badge: t("sec.layer.1.badge"),
     },
     {
       icon: HardDrive,
-      title: 'Hardware Enterprise (Dell + SSD)',
-      description: 'Servidores Dell e storages SSD de alta performance para cargas críticas, com desempenho e confiabilidade enterprise',
-      badge: 'Equipamentos de ponta',
+      title: t("sec.layer.2.title"),
+      description: t("sec.layer.2.desc"),
+      badge: t("sec.layer.2.badge"),
     },
     {
       icon: Network,
-      title: 'Segmentação e isolamento de ambientes',
-      description: 'Rede segmentada e isolamento lógico entre ambientes, reduzindo a superfície de ataque e contendo incidentes',
-      badge: 'Isolamento lógico',
+      title: t("sec.layer.3.title"),
+      description: t("sec.layer.3.desc"),
+      badge: t("sec.layer.3.badge"),
     }
   ];
 
   const complianceFeatures = [
-    { icon: BarChart3, title: 'Logs e auditoria rastreáveis', description: 'Registro completo de eventos e trilhas de auditoria para conformidade e análise forense' },
-    { icon: Lock, title: 'Controle de acesso baseado em privilégio mínimo', description: 'Acessos restritos ao necessário, reduzindo riscos e alinhado a boas práticas' },
-    { icon: Shield, title: 'Políticas documentadas', description: 'Políticas de segurança e procedimentos formalizados e disponíveis para auditoria' },
-    { icon: CheckCircle2, title: 'Suporte a auditorias', description: 'Estrutura e evidências para suportar auditorias internas e externas' }
+    { icon: BarChart3, title: t("sec.comp.1.title"), description: t("sec.comp.1.desc") },
+    { icon: Lock, title: t("sec.comp.2.title"), description: t("sec.comp.2.desc") },
+    { icon: Shield, title: t("sec.comp.3.title"), description: t("sec.comp.3.desc") },
+    { icon: CheckCircle2, title: t("sec.comp.4.title"), description: t("sec.comp.4.desc") }
   ];
 
   const differentials = [
-    { icon: Server, title: 'Infraestrutura própria (não revenda)', description: 'Operamos nossa própria infraestrutura em datacenters Ascenty, sem revenda de terceiros' },
-    { icon: Users, title: 'Equipe técnica interna', description: 'Time próprio de especialistas em segurança e operação, sem terceirização crítica' },
-    { icon: Database, title: 'Ambiente desenhado para ERP e Banco', description: 'Infraestrutura pensada para cargas de ERP, banco de dados e sistemas críticos' },
-    { icon: Shield, title: 'Suporte humano especializado', description: 'Atendimento por pessoas especializadas, com conhecimento do seu ambiente' },
-    { icon: Clock, title: 'SLA real com atendimento em minutos', description: 'Compromissos formais de tempo de resposta e resolução, com atendimento em minutos' }
+    { icon: Server, title: t("sec.dif.1.title"), description: t("sec.dif.1.desc") },
+    { icon: Users, title: t("sec.dif.2.title"), description: t("sec.dif.2.desc") },
+    { icon: Database, title: t("sec.dif.3.title"), description: t("sec.dif.3.desc") },
+    { icon: Shield, title: t("sec.dif.4.title"), description: t("sec.dif.4.desc") },
+    { icon: Clock, title: t("sec.dif.5.title"), description: t("sec.dif.5.desc") }
   ];
 
   return (
@@ -121,28 +124,28 @@ export default function SecuritySolutions() {
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
             {/* Background Image */}
-            <div 
+            <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${securityImage})`,
               }}
             />
-            
+
             {/* Overlay para transparência e legibilidade */}
             <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/75 to-background/85" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-transparent to-background/50" />
-            
+
             {/* Animated orbs */}
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.2, 1],
                 opacity: [0.2, 0.4, 0.2]
               }}
               transition={{ duration: 8, repeat: Infinity }}
               className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
             ></motion.div>
-            <motion.div 
-              animate={{ 
+            <motion.div
+              animate={{
                 scale: [1, 1.3, 1],
                 opacity: [0.15, 0.35, 0.15]
               }}
@@ -159,39 +162,39 @@ export default function SecuritySolutions() {
                 >
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 px-4 py-2">
-                      Segurança em Cloud
+                      {t("sec.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="mb-6 font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl leading-tight text-left"
                   >
-                    Segurança Corporativa para Ambientes Críticos em Cloud
+                    {t("sec.hero.title")}
                   </motion.h1>
-                  
-                  <motion.p 
+
+                  <motion.p
                     variants={fadeInUp}
                     className="mb-8 text-lg md:text-xl text-muted-foreground leading-relaxed text-left"
                   >
-                    Proteção multicamadas, monitoramento 24x7 e conformidade com LGPD para garantir a continuidade e a integridade dos seus sistemas críticos.
+                    {t("sec.hero.subtitle")}
                   </motion.p>
 
-                  <motion.div 
+                  <motion.div
                     variants={fadeInUp}
                     className="flex flex-col sm:flex-row items-start gap-4 mb-8"
                   >
                     <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Zap className="h-5 w-5" />
-                        Solicitar POC de até 30 dias
+                        {t("common.hero.cta")}
                       </a>
                     </Button>
                   </motion.div>
                   <motion.p variants={fadeInUp} className="text-sm text-muted-foreground mb-8">
-                    Sem fidelidade • Ativação rápida • Especialistas 24x7
+                    {t("common.hero.footnote")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -199,11 +202,11 @@ export default function SecuritySolutions() {
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                      <span>Monitoramento 24×7</span>
+                      <span>{t("sec.hero.b1")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                      <span>Conformidade LGPD</span>
+                      <span>{t("sec.hero.b2")}</span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -222,8 +225,8 @@ export default function SecuritySolutions() {
                       className="absolute top-10 -left-10 bg-card p-6 rounded-2xl border border-border shadow-xl backdrop-blur-sm"
                     >
                       <Shield className="h-8 w-8 text-primary mb-2" />
-                      <p className="text-foreground text-sm font-semibold">Firewall Ativo</p>
-                      <p className="text-muted-foreground text-xs">Proteção em tempo real</p>
+                      <p className="text-foreground text-sm font-semibold">{t("sec.card.fw.title")}</p>
+                      <p className="text-muted-foreground text-xs">{t("sec.card.fw.desc")}</p>
                     </motion.div>
 
                     <motion.div
@@ -240,7 +243,7 @@ export default function SecuritySolutions() {
                     <div className="relative bg-card rounded-3xl p-8 border border-border shadow-2xl backdrop-blur-sm">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground text-sm">Status da Segurança</span>
+                          <span className="text-muted-foreground text-sm">{t("sec.card.status")}</span>
                           <Badge className="bg-green-500/20 text-green-600 border-green-500/50">
                             <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse" />
                             Ativo
@@ -248,7 +251,7 @@ export default function SecuritySolutions() {
                         </div>
                         <div className="space-y-2">
                           <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">Proteção</span>
+                            <span className="text-muted-foreground">{t("sec.card.protection")}</span>
                             <span className="text-foreground">100%</span>
                           </div>
                           <div className="h-2 bg-muted rounded-full overflow-hidden">
@@ -292,13 +295,13 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                    Nossas Soluções
+                    {t("sec.features.badge")}
                   </Badge>
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Camadas de <span className="text-gradient">Segurança</span>
+                    {t("sec.features.title")}
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Quatro eixos com propósitos distintos: governança, operação, infraestrutura física e compliance
+                    {t("sec.features.subtitle")}
                   </p>
                 </motion.div>
 
@@ -340,10 +343,10 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Segurança na Infraestrutura Física e <span className="text-gradient">Lógica</span>
+                    {t("sec.infra.title.1")} <span className="text-gradient">{t("sec.infra.title.2")}</span>
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Três pilares que sustentam a segurança dos seus sistemas: datacenter certificado, hardware enterprise e segmentação de ambientes.
+                    {t("sec.infra.subtitle")}
                   </p>
                 </motion.div>
 
@@ -384,7 +387,7 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Resultados que sua <span className="text-gradient">empresa ganha</span>
+                    {t("sec.benefits.title.1")} <span className="text-gradient">{t("sec.benefits.title.2")}</span>
                   </h2>
                 </motion.div>
 
@@ -416,13 +419,13 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                    Conformidade
+                    {t("sec.comp.badge")}
                   </Badge>
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Segurança alinhada à LGPD e boas práticas de <span className="text-gradient">governança</span>
+                    {t("sec.comp.title.1")} <span className="text-gradient">{t("sec.comp.title.2")}</span>
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Governança clara, controles rastreáveis e estrutura preparada para auditorias e conformidade regulatória.
+                    {t("sec.comp.subtitle")}
                   </p>
                 </motion.div>
 
@@ -460,10 +463,10 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                    Diferenciais
+                    {t("sec.diff.badge")}
                   </Badge>
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    O que diferencia a <span className="text-gradient">MDS Cloud</span>
+                    {t("sec.diff.title")} <span className="text-gradient">MDS Cloud</span>
                   </h2>
                 </motion.div>
 
@@ -502,10 +505,10 @@ export default function SecuritySolutions() {
               >
                 <motion.div variants={fadeInUp} className="text-center mb-16">
                   <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Segurança integrada às suas <span className="text-gradient">soluções</span>
+                    {t("sec.cross.title")}
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Veja como a segurança se conecta ao Cloud, Banco de Dados e Backup.
+                    {t("sec.cross.subtitle")}
                   </p>
                 </motion.div>
 
@@ -518,11 +521,11 @@ export default function SecuritySolutions() {
                             <Server className="h-6 w-6 text-primary" />
                           </div>
                           <CardTitle className="text-xl flex items-center justify-between">
-                            Segurança para ERP
+                            {t("sec.cross.erp.title")}
                             <ArrowRight className="h-5 w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                           </CardTitle>
                           <CardDescription className="text-base">
-                            Infraestrutura cloud segura para ERP e sistemas corporativos
+                            {t("sec.cross.erp.desc")}
                           </CardDescription>
                         </CardHeader>
                       </Card>
@@ -536,11 +539,11 @@ export default function SecuritySolutions() {
                             <Database className="h-6 w-6 text-primary" />
                           </div>
                           <CardTitle className="text-xl flex items-center justify-between">
-                            Segurança para Banco de Dados
+                            {t("sec.cross.db.title")}
                             <ArrowRight className="h-5 w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                           </CardTitle>
                           <CardDescription className="text-base">
-                            Proteção e alta disponibilidade para seus dados críticos
+                            {t("sec.cross.db.desc")}
                           </CardDescription>
                         </CardHeader>
                       </Card>
@@ -554,11 +557,11 @@ export default function SecuritySolutions() {
                             <Shield className="h-6 w-6 text-primary" />
                           </div>
                           <CardTitle className="text-xl flex items-center justify-between">
-                            Backup Imutável contra Ransomware
+                            {t("sec.cross.backup.title")}
                             <ArrowRight className="h-5 w-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                           </CardTitle>
                           <CardDescription className="text-base">
-                            Proteção contra exclusão ou criptografia maliciosa dos dados
+                            {t("sec.cross.backup.desc")}
                           </CardDescription>
                         </CardHeader>
                       </Card>
@@ -597,13 +600,13 @@ export default function SecuritySolutions() {
                 className="text-center mb-12"
               >
                 <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Proteja seus sistemas críticos hoje
+                  {t("sec.cta.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                  Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode proteger a infraestrutura da sua empresa.
+                  {t("sec.cta.subtitle")}
                 </motion.p>
               </motion.div>
-              
+
               <motion.div
                 initial="hidden"
                 whileInView="visible"
@@ -615,7 +618,7 @@ export default function SecuritySolutions() {
                   <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Zap className="h-5 w-5" />
-                      Solicitar POC de até 30 dias
+                      {t("common.hero.cta")}
                     </a>
                   </Button>
                 </motion.div>
