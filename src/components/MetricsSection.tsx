@@ -1,34 +1,37 @@
 import { motion } from "framer-motion";
 import { Users, Network, HardDrive, Server } from "lucide-react";
-
-const metrics = [
-  {
-    icon: Users,
-    value: "+1500",
-    label: "Clientes",
-    description: "Empresas confiam em nós",
-  },
-  {
-    icon: Network,
-    value: "25GB",
-    label: "Rede",
-    description: "Velocidade de conexão",
-  },
-  {
-    icon: HardDrive,
-    value: "SSD",
-    label: "Storage",
-    description: "Alta performance",
-  },
-  {
-    icon: Server,
-    value: "DELL",
-    label: "Servidores",
-    description: "Alta tecnologia",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export function MetricsSection() {
+  const { t } = useI18n();
+
+  const metrics = [
+    {
+      icon: Users,
+      value: "+1500",
+      label: t("metrics.clients.label"),
+      description: t("metrics.clients.desc"),
+    },
+    {
+      icon: Network,
+      value: "25GB",
+      label: t("metrics.network.label"),
+      description: t("metrics.network.desc"),
+    },
+    {
+      icon: HardDrive,
+      value: "SSD",
+      label: t("metrics.storage.label"),
+      description: t("metrics.storage.desc"),
+    },
+    {
+      icon: Server,
+      value: "DELL",
+      label: t("metrics.servers.label"),
+      description: t("metrics.servers.desc"),
+    },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -59,7 +62,7 @@ export function MetricsSection() {
       <div className="absolute inset-0 bg-card/30" />
       <div className="absolute inset-0 bg-gradient-glow opacity-50" />
       <div className="absolute inset-0 grid-pattern opacity-10" />
-      
+
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -70,14 +73,14 @@ export function MetricsSection() {
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-primary">
-            Por que escolher a MDS Cloud
+            {t("metrics.section.sub")}
           </span>
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-            Performance que você pode
-            <span className="text-gradient"> medir</span>
+            {t("metrics.title.1")}
+            <span className="text-gradient"> {t("metrics.title.2")}</span>
           </h2>
           <p className="text-muted-foreground">
-            Números reais de uma infraestrutura projetada para empresas de alta demanda.
+            {t("metrics.section.desc")}
           </p>
         </motion.div>
 
@@ -91,7 +94,7 @@ export function MetricsSection() {
         >
           {metrics.map((metric, index) => (
             <motion.div
-              key={metric.label}
+              key={index}
               variants={itemVariants}
               className="group relative overflow-hidden rounded-2xl border border-border/50 bg-background/60 p-6 text-center backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-background/80 hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1"
             >

@@ -5,44 +5,12 @@ import backgroundPorqueMds from "@/assets/background-porque-a-mds.png";
 import { Button } from "@/components/ui/button";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { BorderRotate } from "@/components/ui/animated-gradient-border";
-
-const featureCards = [
-  {
-    icon: Rocket,
-    title: "Performance real",
-    description: (
-      <>
-        Storage SSD/NVMe de alta <strong>IOPS</strong> e rede dedicada eliminando lentidão em ERP e banco de dados.
-      </>
-    ),
-    href: "/solucoes-cloud",
-  },
-  {
-    icon: Zap,
-    title: "SLA operacional",
-    description:
-      "Equipe própria 24x7 com atuação direta na causa do problema – não apenas abertura de chamados.",
-    href: "/contato",
-  },
-  {
-    icon: Lock,
-    title: "Liberdade e transparência",
-    description:
-      "Sem lock-in contratual. Permanência baseada em performance e resultado entregue.",
-    href: "/sobre",
-  },
-];
-
-const stats = [
-  { value: "+1.500", label: "clientes ativos" },
-  { value: "+200k", label: "IOPS em produção" },
-  { value: "+25 Gbps", label: "backbone redundante" },
-  { value: "Tier III", label: "Data Centers", labelSuffix: "BRL" },
-];
+import { useI18n } from "@/lib/i18n";
 
 const STATS_GLOW_DURATION_MS = 6000;
 
 export function DifferentialsSection() {
+  const { t } = useI18n();
   const sectionRef = useRef<HTMLElement>(null);
   const rafRef = useRef<number | null>(null);
   const { scrollYProgress } = useScroll({
@@ -50,6 +18,34 @@ export function DifferentialsSection() {
     offset: ["start end", "end start"],
   });
   const backgroundY = useTransform(scrollYProgress, [0, 0.5, 1], ["0%", "-8%", "-15%"]);
+
+  const featureCards = [
+    {
+      icon: Rocket,
+      title: t("diff.perf.title"),
+      description: t("diff.perf.desc"),
+      href: "/solucoes-cloud",
+    },
+    {
+      icon: Zap,
+      title: t("diff.sla.op.title"),
+      description: t("diff.sla.op.desc"),
+      href: "/contato",
+    },
+    {
+      icon: Lock,
+      title: t("diff.freedom.title"),
+      description: t("diff.freedom.desc"),
+      href: "/sobre",
+    },
+  ];
+
+  const stats = [
+    { value: "+1.500", label: t("diff.stat.clients") },
+    { value: "+200k", label: t("diff.stat.iops") },
+    { value: "+25 Gbps", label: t("diff.stat.backbone") },
+    { value: "Tier III", label: t("diff.stat.dc"), labelSuffix: "BRL" },
+  ];
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -105,12 +101,11 @@ export function DifferentialsSection() {
           className="mx-auto mb-8 max-w-3xl text-center"
         >
           <h2 className="mb-4 font-display text-3xl font-bold text-white md:text-4xl lg:text-5xl leading-tight">
-            Infraestrutura Cloud criada para sistemas que{" "}
-            <span className="text-primary">não podem parar</span>
+            {t("diff.section.title.1")}{" "}
+            <span className="text-primary">{t("diff.section.title.2")}</span>
           </h2>
           <p className="text-lg text-white/80">
-            Performance, disponibilidade e suporte especializado para ERP,
-            bancos de dados e aplicações corporativas críticas.
+            {t("diff.section.desc")}
           </p>
         </motion.div>
 
@@ -160,7 +155,7 @@ export function DifferentialsSection() {
                       href={item.href}
                       className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/90 transition-colors underline underline-offset-2"
                     >
-                      Saiba mais
+                      {t("services.learnmore")}
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </div>
@@ -177,7 +172,7 @@ export function DifferentialsSection() {
           viewport={{ once: true }}
           className="mb-10 text-center text-xl font-normal text-white md:text-2xl"
         >
-          Empresas que operam sistemas críticos confiam na MDS Cloud
+          {t("diff.stats.label")}
         </motion.h3>
 
         {/* Stats cards – mesmo efeito de borda animada que os feature cards, tamanho mantido */}
@@ -246,11 +241,11 @@ export function DifferentialsSection() {
           >
             <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
               <Zap className="h-5 w-5" />
-              Solicitar análise gratuita de performance
+              {t("diff.cta.button")}
             </a>
           </Button>
           <p className="text-sm text-white/60">
-            Sem fidelidade • Ativação rápida • Especialistas 24x7
+            {t("diff.cta.footnote")}
           </p>
         </motion.div>
       </div>

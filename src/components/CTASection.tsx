@@ -1,22 +1,25 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const benefits = [
-  "Setup gratuito e migração assistida",
-  "30 dias de teste sem compromisso",
-  "Suporte técnico 24x7 incluso",
-  "Contrato sem fidelidade ou multas",
-];
+import { useI18n } from "@/lib/i18n";
 
 export function CTASection() {
+  const { t } = useI18n();
+
+  const benefits = [
+    t("cta.benefit.1"),
+    t("cta.benefit.2"),
+    t("cta.benefit.3"),
+    t("cta.benefit.4"),
+  ];
+
   return (
     <section className="relative overflow-hidden py-16 lg:py-20 bg-card/30">
       {/* Background */}
       <div className="absolute inset-0 bg-card" />
       <div className="absolute inset-0 bg-gradient-glow" />
       <div className="absolute inset-0 grid-pattern opacity-20" />
-      
+
       {/* Glow Effect */}
       <div className="absolute left-1/2 top-0 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-primary/5 blur-[100px]" />
 
@@ -31,13 +34,13 @@ export function CTASection() {
 
           {/* Headline */}
           <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-            Migre sem risco para uma cloud de
+            {t("cta.section.title.1")}
             <br />
-            <span className="text-gradient">alta performance</span>
+            <span className="text-gradient">{t("cta.section.title.2")}</span>
           </h2>
-          
+
           <p className="mb-8 text-lg text-muted-foreground">
-            Veja sua aplicação rodando com mais performance, estabilidade e suporte especializado, sem compromisso.
+            {t("cta.section.desc")}
           </p>
 
           {/* Benefits */}
@@ -55,7 +58,7 @@ export function CTASection() {
             <Button variant="heroShiny" size="xl" className="px-8 py-6 text-base gap-2" asChild>
               <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                 <Zap className="h-5 w-5" />
-                Solicitar POC de até 30 dias
+                {t("cta.section.button")}
               </a>
             </Button>
           </div>

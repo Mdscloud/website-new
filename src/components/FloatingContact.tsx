@@ -2,33 +2,35 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const contactOptions = [
-  {
-    icon: MessageCircle,
-    label: "WhatsApp",
-    description: "Resposta imediata",
-    href: "https://wa.me/5511991664976",
-    color: "bg-green-500 hover:bg-green-600",
-  },
-  {
-    icon: Phone,
-    label: "Ligar Agora",
-    description: "(11) 2577-7899",
-    href: "tel:+551125777899",
-    color: "bg-accent hover:bg-accent/90",
-  },
-  {
-    icon: Mail,
-    label: "E-mail",
-    description: "comercial@mdscloud.com.br",
-    href: "mailto:comercial@mdscloud.com.br",
-    color: "bg-secondary hover:bg-secondary/80",
-  },
-];
+import { useI18n } from "@/lib/i18n";
 
 export function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useI18n();
+
+  const contactOptions = [
+    {
+      icon: MessageCircle,
+      label: t("float.whatsapp"),
+      description: t("float.whatsapp.desc"),
+      href: "https://wa.me/5511991664976",
+      color: "bg-green-500 hover:bg-green-600",
+    },
+    {
+      icon: Phone,
+      label: t("float.call"),
+      description: "(11) 2577-7899",
+      href: "tel:+551125777899",
+      color: "bg-accent hover:bg-accent/90",
+    },
+    {
+      icon: Mail,
+      label: t("float.email"),
+      description: "comercial@mdscloud.com.br",
+      href: "mailto:comercial@mdscloud.com.br",
+      color: "bg-secondary hover:bg-secondary/80",
+    },
+  ];
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -43,10 +45,10 @@ export function FloatingContact() {
           >
             <div className="mb-4">
               <h4 className="font-display font-semibold text-foreground">
-                Solicitar Orçamento
+                {t("float.title")}
               </h4>
               <p className="text-sm text-muted-foreground">
-                Escolha como prefere falar conosco
+                {t("float.subtitle")}
               </p>
             </div>
 
@@ -73,14 +75,14 @@ export function FloatingContact() {
             {/* Privacy Notice */}
             <div className="mt-4 border-t border-border pt-4">
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Ao continuar navegando, você concorda e aceita as nossas{" "}
-                <a 
-                  href="/politicas-privacidade" 
+                {t("float.privacy")}{" "}
+                <a
+                  href="/politicas-privacidade"
                   className="text-primary hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  condições e política de privacidade
+                  {t("float.privacy.link")}
                 </a>
                 .
               </p>
@@ -119,7 +121,7 @@ export function FloatingContact() {
             </motion.div>
           )}
         </AnimatePresence>
-        
+
         {/* Pulse Animation */}
         {!isOpen && (
           <span className="absolute -right-1 -top-1 flex h-3 w-3">
