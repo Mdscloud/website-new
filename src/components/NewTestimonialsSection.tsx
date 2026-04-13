@@ -8,6 +8,8 @@ import celsoPhoto from "@/assets/testimonials/celso.jpeg";
 import hspotPhoto from "@/assets/testimonials/hspot.png";
 import greenAutomoveisPhoto from "@/assets/testimonials/green-automoveis.png";
 import ciaramaLogo from "@/assets/testimonials/ciarama.jpg";
+import toyomasterLogo from "@/assets/testimonials/toyomaster.jpg";
+import graoDeOuroLogo from "@/assets/testimonials/grao-de-ouro.png";
 
 // Import company logos if available
 import atrioLogo from "@/assets/testimonials/atrio.png";
@@ -82,6 +84,28 @@ export const homeTestimonials = [
       name: "Eduardo Marques",
       role: "Gerente de TI no Grupo Green - Automóveis",
       avatar: greenAutomoveisPhoto,
+    },
+  },
+  {
+    companyLogo: toyomasterLogo,
+    companyName: "Toyomaster",
+    headline: "Como a Toyomaster encontrou na MDS Cloud um parceiro de verdade",
+    quote: "A MDS Cloud virou praticamente parte do nosso time! Hoje eles cuidam dos nossos servidores em nuvem, do banco de dados e do firewall — e fazem isso com maestria. Sempre que precisamos, o atendimento é super-rápido e eficiente. Inclusive, já nos salvaram várias vezes quando a internet resolveu tirar férias sem avisar. É muito bom trabalhar com uma equipe parceira de verdade, que resolve, orienta e está sempre pronta para ajudar. Estamos muito satisfeitos e tranquilos sabendo que estamos em boas mãos!",
+    author: {
+      name: "Nadson Sergio",
+      role: "Gestor de TI na Toyomaster",
+      avatar: toyomasterLogo,
+    },
+  },
+  {
+    companyLogo: graoDeOuroLogo,
+    companyName: "Grão de Ouro",
+    headline: "Como o Grão de Ouro é atendido com dedicação e tempo recorde pela MDS Cloud",
+    quote: "Sempre fomos muito bem atendidos. A equipe de suporte nos atende sempre com muita dedicação e tempo recorde. Em especial, destaco o Diego, que sempre nos atende prontamente.",
+    author: {
+      name: "Otávio Diniz",
+      role: "Gerente de TI no Grão de Ouro",
+      avatar: graoDeOuroLogo,
     },
   },
   {
