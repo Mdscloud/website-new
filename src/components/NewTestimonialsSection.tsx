@@ -7,6 +7,7 @@ import aliarePhoto from "@/assets/testimonials/aliare.png";
 import celsoPhoto from "@/assets/testimonials/celso.jpeg";
 import hspotPhoto from "@/assets/testimonials/hspot.png";
 import greenAutomoveisPhoto from "@/assets/testimonials/green-automoveis.png";
+import ciaramaLogo from "@/assets/testimonials/ciarama.jpg";
 
 // Import company logos if available
 import atrioLogo from "@/assets/testimonials/atrio.png";
@@ -81,6 +82,17 @@ export const homeTestimonials = [
       name: "Eduardo Marques",
       role: "Gerente de TI no Grupo Green - Automóveis",
       avatar: greenAutomoveisPhoto,
+    },
+  },
+  {
+    companyLogo: ciaramaLogo,
+    companyName: "Ciarama",
+    headline: "Como a Ciarama elevou seu padrão de infraestrutura com a MDS Cloud",
+    quote: "A MDS Cloud elevou nosso padrão de infraestrutura. Saímos de um cenário mais reativo para um ambiente em nuvem com maior disponibilidade, controle e segurança. O trabalho de dimensionamento e o suporte próximo reduziram riscos operacionais e trouxeram mais estabilidade para sistemas críticos. O resultado é uma TI mais eficiente, com capacidade de escalar e manter a operação com confiança.",
+    author: {
+      name: "Rainer Pedrozo",
+      role: "Gerente Corporativo de TI na Ciarama",
+      avatar: ciaramaLogo,
     },
   },
 ];
