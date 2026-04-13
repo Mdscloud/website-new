@@ -51,9 +51,9 @@ export function Footer() {
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <a href="tel:+551140044004" className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary">
+              <a href="tel:+551125777899" className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary">
                 <Phone className="h-4 w-4" />
-                (11) 4004-4004
+                (11) 2577-7899
               </a>
               <a href="mailto:contato@mdscloud.com.br" className="flex items-center gap-3 text-sm text-muted-foreground visited:text-muted-foreground transition-colors hover:text-primary">
                 <Mail className="h-4 w-4" />

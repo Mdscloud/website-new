@@ -14,8 +14,8 @@ const contactOptions = [
   {
     icon: Phone,
     label: "Ligar Agora",
-    description: "(11) 4004-4004",
-    href: "tel:+551140044004",
+    description: "(11) 2577-7899",
+    href: "tel:+551125777899",
     color: "bg-accent hover:bg-accent/90",
   },
   {
