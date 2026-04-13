@@ -10,6 +10,11 @@ import greenAutomoveisPhoto from "@/assets/testimonials/green-automoveis.png";
 import ciaramaLogo from "@/assets/testimonials/ciarama.jpg";
 import toyomasterLogo from "@/assets/testimonials/toyomaster.jpg";
 import graoDeOuroLogo from "@/assets/testimonials/grao-de-ouro.png";
+import redemaqLogo from "@/assets/testimonials/redemaq.png";
+import mearimLogo from "@/assets/testimonials/mearim.png";
+import andretaLogo from "@/assets/testimonials/andreta.png";
+import softpigLogo from "@/assets/testimonials/softpig.png";
+import compelLogo from "@/assets/testimonials/compel.jpg";
 
 // Import company logos if available
 import atrioLogo from "@/assets/testimonials/atrio.png";
@@ -84,6 +89,61 @@ export const homeTestimonials = [
       name: "Eduardo Marques",
       role: "Gerente de TI no Grupo Green - Automóveis",
       avatar: greenAutomoveisPhoto,
+    },
+  },
+  {
+    companyLogo: redemaqLogo,
+    companyName: "Redemaq",
+    headline: "Como a Redemaq ganhou tranquilidade e confiança com a MDS Cloud",
+    quote: "Temos mais tranquilidade e confiança com o ambiente rodando na nuvem da MDS Cloud.",
+    author: {
+      name: "José Franco",
+      role: "Redemaq",
+      avatar: redemaqLogo,
+    },
+  },
+  {
+    companyLogo: mearimLogo,
+    companyName: "Mearim Autopeças",
+    headline: "Como a Mearim Autopeças eliminou quedas de serviço com a MDS Cloud",
+    quote: "Com o uso da Cloud da MDS, hoje não temos quedas de serviços e o atendimento é rápido e preciso.",
+    author: {
+      name: "Orlando Brito",
+      role: "Mearim Autopeças",
+      avatar: mearimLogo,
+    },
+  },
+  {
+    companyLogo: andretaLogo,
+    companyName: "Grupo Andreta",
+    headline: "Como o Grupo Andreta ganhou segurança e continuidade operacional na nuvem",
+    quote: "Desde a migração para a cloud, percebemos mais segurança e continuidade na nossa operação. O ambiente em nuvem atende com eficiência nossas demandas, garantindo performance e disponibilidade.",
+    author: {
+      name: "Peterson Grandisoli",
+      role: "Gerente de TI no Grupo Andreta",
+      avatar: andretaLogo,
+    },
+  },
+  {
+    companyLogo: softpigLogo,
+    companyName: "SoftPig",
+    headline: "Como a SoftPig mantém aplicações críticas estáveis com a MDS Cloud",
+    quote: "O ambiente é estável e suporta com eficiência nossas aplicações críticas.",
+    author: {
+      name: "Jenivaldo Queiroz",
+      role: "Gerente de TI na SoftPig",
+      avatar: softpigLogo,
+    },
+  },
+  {
+    companyLogo: compelLogo,
+    companyName: "Compel",
+    headline: "Como a Compel conquistou performance e confiabilidade com a MDS Cloud",
+    quote: "A adoção da nuvem e suporte MDS trouxe ganhos importantes em performance e confiabilidade. Um servidor em nuvem é mais seguro, tem escala e, se precisar de um recovery, é muito mais rápido — a produção não fica muito tempo parada.",
+    author: {
+      name: "Denival Silva",
+      role: "Analista de TI na Compel",
+      avatar: compelLogo,
     },
   },
   {
