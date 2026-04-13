@@ -6,6 +6,7 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useI18n } from "@/lib/i18n";
 
 // Import logos
 import andreta from '@/assets/cases/automotivo/andreta.png';
@@ -65,32 +66,34 @@ const partners = [
 ];
 
 export default function AutomotivoSolutions() {
+  const { t } = useI18n();
+
   const benefits = [
-    'Sistemas de gestão de concessionárias sempre disponíveis',
-    'Backup automatizado de dados de vendas e serviços',
-    'Integração com sistemas DMS e ERPs automotivos',
-    'Alta performance para picos de demanda',
-    'Conformidade com LGPD para dados de clientes',
-    'Suporte 24x7 para sistemas críticos',
-    'Ambientes de contingência para campanhas',
-    'Monitoramento proativo de performance',
+    t("auto.ben.1"),
+    t("auto.ben.2"),
+    t("auto.ben.3"),
+    t("auto.ben.4"),
+    t("auto.ben.5"),
+    t("auto.ben.6"),
+    t("auto.ben.7"),
+    t("auto.ben.8"),
   ];
 
   const useCases = [
     {
       icon: Car,
-      title: 'Sistemas DMS',
-      description: 'Ambientes otimizados para sistemas de gestão de concessionárias com alta disponibilidade',
+      title: t("auto.systems.title"),
+      description: t("auto.systems.desc"),
     },
     {
       icon: Database,
-      title: 'Bancos de Dados',
-      description: 'Gestão especializada de bancos de dados para sistemas críticos de vendas e serviços',
+      title: t("common.db.label"),
+      description: t("auto.db.desc"),
     },
     {
       icon: Cloud,
-      title: 'Backup em Nuvem',
-      description: 'Proteção completa de dados de vendas, clientes e transações',
+      title: t("common.backup.cloud"),
+      description: t("auto.backup.desc"),
     }
   ];
 
@@ -107,29 +110,21 @@ export default function AutomotivoSolutions() {
         <div className="relative z-10 min-h-screen">
           {/* Hero Section */}
           <section className="relative py-20 lg:py-32 overflow-hidden">
-            {/* Background Image */}
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
               style={{ backgroundImage: `url(${backgroundAutomotivo})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
             <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
-            {/* Animated orbs */}
-            <motion.div 
+            <motion.div
               layout={false}
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.2, 0.4, 0.2]
-              }}
+              animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
               transition={{ duration: 8, repeat: Infinity }}
               className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"
             ></motion.div>
-            <motion.div 
+            <motion.div
               layout={false}
-              animate={{ 
-                scale: [1, 1.3, 1],
-                opacity: [0.15, 0.35, 0.15]
-              }}
+              animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.35, 0.15] }}
               transition={{ duration: 10, repeat: Infinity, delay: 1 }}
               className="absolute bottom-20 left-20 w-96 h-96 bg-accent/10 rounded-full blur-[120px] pointer-events-none"
             ></motion.div>
@@ -145,48 +140,48 @@ export default function AutomotivoSolutions() {
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                       <Car className="h-4 w-4 mr-2 inline" />
-                      Soluções para Automotivo
+                      {t("auto.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                   >
-                    Infraestrutura Cloud para o Setor Automotivo
+                    {t("auto.hero.title")}
                   </motion.h1>
-                  
+
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Soluções especializadas para concessionárias, grupos automotivos e indústria. Infraestrutura de alta performance, disponibilidade 24x7 e suporte especializado para sistemas críticos de gestão automotiva.
+                    {t("auto.hero.subtitle")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Phone className="mr-2 h-5 w-5" />
-                        Falar com Especialista
+                        {t("common.talk.expert")}
                       </a>
                     </Button>
                     <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Calendar className="mr-2 h-5 w-5" />
-                        Solicitar POC de 30 dias
+                        {t("common.request.poc30")}
                       </a>
                     </Button>
                   </motion.div>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Tier III</span>
+                      <span>{t("common.badge.tier3")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>99.8% Uptime</span>
+                      <span>{t("common.badge.uptime")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Suporte 24x7</span>
+                      <span>{t("common.badge.support247")}</span>
                     </div>
                   </motion.div>
                 </motion.div>
@@ -198,7 +193,6 @@ export default function AutomotivoSolutions() {
                   transition={{ duration: 0.8 }}
                   className="hidden lg:block relative"
                 >
-                  {/* 3D Server Stack Visualization */}
                   <div className="relative">
                     <div className="space-y-4">
                       {[1, 2, 3, 4].map((item, index) => (
@@ -251,7 +245,6 @@ export default function AutomotivoSolutions() {
                       ))}
                     </div>
 
-                    {/* Floating stats */}
                     <motion.div
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Infinity }}
@@ -287,13 +280,13 @@ export default function AutomotivoSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <motion.h2 
+                <motion.h2
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground"
                 >
-                  Nossos parceiros do setor Automotivo
+                  {t("auto.partners.title")}
                 </motion.h2>
-                <motion.div 
+                <motion.div
                   variants={fadeInUp}
                   className="w-24 h-1 bg-accent mx-auto mb-6"
                 ></motion.div>
@@ -306,7 +299,7 @@ export default function AutomotivoSolutions() {
                 variants={staggerContainer}
                 className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6"
               >
-                {partners.map((partner, index) => (
+                {partners.map((partner) => (
                   <motion.div
                     key={partner.name}
                     variants={fadeInUp}
@@ -337,17 +330,17 @@ export default function AutomotivoSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <motion.h2 
+                <motion.h2
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground"
                 >
-                  Soluções Especializadas
+                  {t("common.spec.title")}
                 </motion.h2>
-                <motion.p 
+                <motion.p
                   variants={fadeInUp}
                   className="text-lg text-muted-foreground max-w-2xl mx-auto"
                 >
-                  Infraestrutura otimizada para as necessidades específicas do setor automotivo
+                  {t("auto.solutions.subtitle")}
                 </motion.p>
               </motion.div>
 
@@ -387,11 +380,11 @@ export default function AutomotivoSolutions() {
                 variants={fadeInUp}
                 className="text-center mb-16"
               >
-                <motion.h2 
+                <motion.h2
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground"
                 >
-                  Benefícios para o Setor Automotivo
+                  {t("auto.benefits.title")}
                 </motion.h2>
               </motion.div>
 
@@ -426,22 +419,22 @@ export default function AutomotivoSolutions() {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-6 text-foreground">
-                  Pronto para transformar a infraestrutura do seu negócio automotivo?
+                  {t("auto.cta.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Fale com nossos especialistas e descubra como podemos ajudar sua concessionária ou grupo automotivo a alcançar novos patamares de performance e disponibilidade.
+                  {t("auto.cta.desc")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Phone className="mr-2 h-5 w-5" />
-                      Falar com Especialista
+                      {t("common.talk.expert")}
                     </a>
                   </Button>
                   <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Calendar className="mr-2 h-5 w-5" />
-                      Solicitar POC de 30 dias
+                      {t("common.request.poc30")}
                     </a>
                   </Button>
                 </div>

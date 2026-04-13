@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import cloudHeroImage from "@/assets/cloud-hero.png";
+import { useI18n } from "@/lib/i18n";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -38,6 +39,8 @@ const staggerContainer = {
 };
 
 const DbaTime = () => {
+  const { t } = useI18n();
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -48,7 +51,7 @@ const DbaTime = () => {
 
       <div className="relative z-10">
         <main className="min-h-screen overflow-x-hidden">
-          {/* Hero — background cloud-hero.png */}
+          {/* Hero */}
           <section className="relative py-24 lg:py-32 overflow-hidden min-h-[85vh] flex flex-col">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -93,13 +96,13 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-foreground mb-6 leading-tight"
                 >
-                  Tuning e administração de bancos de dados
+                  {t("dba.hero.title")}
                 </motion.h1>
                 <motion.p
                   variants={fadeInUp}
                   className="text-lg text-muted-foreground mb-8 max-w-2xl leading-relaxed"
                 >
-                  Serviços avançados de administração, performance, otimização e segurança de bancos de dados. Acompanhamos desde a arquitetura até o tuning contínuo, prevenindo falhas e maximizando eficiência.
+                  {t("dba.hero.subtitle")}
                 </motion.p>
                 <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
                   <Button
@@ -112,7 +115,7 @@ const DbaTime = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Falar com Especialista
+                      {t("common.talk.expert")}
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>
@@ -127,7 +130,7 @@ const DbaTime = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Solicitar Avaliação
+                      {t("common.request.eval")}
                     </a>
                   </Button>
                 </motion.div>
@@ -135,7 +138,7 @@ const DbaTime = () => {
             </div>
           </section>
 
-          {/* Seção Cloud + DBA — mesmo background do hero (cloud-hero.png) */}
+          {/* Cloud + DBA */}
           <section className="relative py-20 lg:py-28 overflow-hidden">
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -157,41 +160,37 @@ const DbaTime = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               >
-                {/* Coluna esquerda — texto completo */}
                 <div className="space-y-6">
                   <motion.h2
                     variants={fadeInUp}
                     className="text-3xl lg:text-4xl font-display font-bold text-white"
                   >
-                    CLOUD com DBA Time
+                    {t("dba.cloud.title")}
                   </motion.h2>
                   <motion.div variants={fadeInUp}>
                     <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/40 gap-2 px-3 py-1.5">
                       <Lightbulb className="h-4 w-4" />
-                      Infraestrutura + Banco de Dados Integrados
+                      {t("dba.cloud.badge")}
                     </Badge>
                   </motion.div>
-                  <motion.p
-                    variants={fadeInUp}
-                    className="text-gray-300 leading-relaxed"
-                  >
-                    Arquitetura pensada de ponta a ponta para ambientes críticos.
+                  <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed">
+                    {t("dba.cloud.p1")}
                   </motion.p>
                   <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed">
-                    Cloud não resolve sozinho. Banco de dados também não. Na MDS Cloud, infraestrutura e banco de dados são projetados em conjunto desde o primeiro desenho do ambiente.
+                    {t("dba.cloud.p2")}
                   </motion.p>
                   <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed">
-                    O Cloud Builder é estruturado considerando carga transacional, latência, IOPS, padrões de acesso e comportamento do banco de dados.
+                    {t("dba.cloud.p3")}
                   </motion.p>
                   <motion.p variants={fadeInUp} className="text-white font-semibold">
-                    Isso significa:
+                    {t("dba.cloud.means")}
                   </motion.p>
                   <motion.ul variants={fadeInUp} className="space-y-2 text-gray-300">
                     {[
-                      "Storage dimensionado para o tipo de workload",
-                      "Rede otimizada para baixa latência",
-                      "Virtualização ajustada para o perfil da aplicação",
-                      "Tuning contínuo alinhado à infraestrutura",
+                      t("dba.cloud.item1"),
+                      t("dba.cloud.item2"),
+                      t("dba.cloud.item3"),
+                      t("dba.cloud.item4"),
                     ].map((item) => (
                       <li key={item} className="flex items-center gap-2">
                         <Check className="h-5 w-5 text-primary shrink-0" />
@@ -200,16 +199,14 @@ const DbaTime = () => {
                     ))}
                   </motion.ul>
                   <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed">
-                    Enquanto muitos provedores entregam apenas a máquina virtual, nós entregamos o ecossistema completo.
+                    {t("dba.cloud.p4")}
                   </motion.p>
                 </div>
 
-                {/* Coluna direita — diagrama Cloud Builder + DBA Time (estilo print 1: badges verticais + arcos) */}
                 <motion.div
                   variants={fadeInUp}
                   className="flex flex-col items-center justify-center min-h-[320px] relative"
                 >
-                  {/* Arcos em forma de oval (laranja à esquerda, azul à direita) */}
                   <svg
                     className="absolute inset-0 w-full h-full pointer-events-none"
                     viewBox="0 0 240 280"
@@ -237,7 +234,6 @@ const DbaTime = () => {
                         </feMerge>
                       </filter>
                     </defs>
-                    {/* Metade esquerda do oval — laranja (curva contínua, não reta) */}
                     <path
                       d="M 118 42 C 50 42, 22 95, 32 140 C 22 185, 50 238, 118 238"
                       stroke="rgb(249, 115, 22)"
@@ -247,7 +243,6 @@ const DbaTime = () => {
                       opacity="0.9"
                       filter="url(#glow-orange)"
                     />
-                    {/* Metade direita do oval — azul (curva contínua, não reta) */}
                     <path
                       d="M 122 42 C 190 42, 218 95, 208 140 C 218 185, 190 238, 122 238"
                       stroke="rgb(59, 130, 246)"
@@ -260,7 +255,6 @@ const DbaTime = () => {
                   </svg>
 
                   <div className="relative z-10 flex flex-col items-center gap-3">
-                    {/* Badge Cloud Builder (topo) */}
                     <div
                       className="flex items-center gap-3 rounded-xl border border-white/20 bg-slate-800/90 px-5 py-3 backdrop-blur-sm"
                       style={{
@@ -271,7 +265,6 @@ const DbaTime = () => {
                       <span className="text-white font-semibold text-lg">Cloud Builder</span>
                     </div>
 
-                    {/* Círculo central com + */}
                     <div
                       className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-primary/50 bg-slate-800/90 text-primary text-2xl font-bold"
                       style={{
@@ -281,7 +274,6 @@ const DbaTime = () => {
                       +
                     </div>
 
-                    {/* Badge DBA Time (base) */}
                     <div
                       className="flex items-center gap-3 rounded-xl border border-white/20 bg-slate-800/90 px-5 py-3 backdrop-blur-sm"
                       style={{
@@ -297,7 +289,7 @@ const DbaTime = () => {
             </div>
           </section>
 
-          {/* Bloco Modelo de Atuação */}
+          {/* Modelo de Atuação */}
           <section className="py-20 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -310,30 +302,14 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-10"
                 >
-                  Modelo de Atuação
+                  {t("dba.model.title")}
                 </motion.h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
-                    {
-                      title: "Preventivo",
-                      desc: "Monitoramento e otimização contínua para evitar problemas.",
-                      Icon: Shield,
-                    },
-                    {
-                      title: "Corretivo",
-                      desc: "Resposta rápida e resolução de incidentes e degradação.",
-                      Icon: Wrench,
-                    },
-                    {
-                      title: "Evolutivo",
-                      desc: "Evolução de esquemas, índices e arquitetura do banco.",
-                      Icon: Activity,
-                    },
-                    {
-                      title: "Projeto",
-                      desc: "Migrações, alta disponibilidade e projetos sob demanda.",
-                      Icon: Target,
-                    },
+                    { title: t("dba.model.prev.title"), desc: t("dba.model.prev.desc"), Icon: Shield },
+                    { title: t("dba.model.corr.title"), desc: t("dba.model.corr.desc"), Icon: Wrench },
+                    { title: t("dba.model.evol.title"), desc: t("dba.model.evol.desc"), Icon: Activity },
+                    { title: t("dba.model.proj.title"), desc: t("dba.model.proj.desc"), Icon: Target },
                   ].map((item) => (
                     <motion.div key={item.title} variants={fadeInUp}>
                       <Card className="h-full border border-border hover:border-primary/30 transition-colors">
@@ -352,7 +328,7 @@ const DbaTime = () => {
             </div>
           </section>
 
-          {/* Bloco Especialidades */}
+          {/* Especialidades */}
           <section className="py-20 relative bg-muted/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -365,14 +341,14 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-10"
                 >
-                  Especialidades
+                  {t("dba.specialties.title")}
                 </motion.h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
-                    { name: "Oracle", desc: "Suporte completo para Oracle Database com otimização avançada" },
-                    { name: "SQL Server", desc: "Administração especializada em Microsoft SQL Server" },
-                    { name: "PostgreSQL", desc: "Gestão e otimização de ambientes PostgreSQL" },
-                    { name: "MySQL", desc: "Suporte completo para MySQL e MariaDB" },
+                    { name: "Oracle", desc: t("db.oracle.desc") },
+                    { name: "SQL Server", desc: t("db.sqlserver.desc") },
+                    { name: "PostgreSQL", desc: t("db.postgres.desc") },
+                    { name: "MySQL", desc: t("db.mysql.desc") },
                   ].map((item) => (
                     <motion.div
                       key={item.name}
@@ -389,7 +365,7 @@ const DbaTime = () => {
             </div>
           </section>
 
-          {/* Bloco Tipos de Serviços */}
+          {/* Tipos de Serviços */}
           <section className="py-20 relative">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -402,16 +378,16 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-10"
                 >
-                  Tipos de Serviços
+                  {t("dba.services.title")}
                 </motion.h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {[
-                    { title: "Tuning", Icon: Zap },
-                    { title: "Análise de performance", Icon: BarChart3 },
-                    { title: "Migração", Icon: RefreshCw },
-                    { title: "Alta disponibilidade", Icon: Shield },
-                    { title: "Disaster Recovery", Icon: HardDrive },
-                    { title: "Auditoria", Icon: FileSearch },
+                    { title: t("dba.svc.tuning"), Icon: Zap },
+                    { title: t("dba.svc.perf"), Icon: BarChart3 },
+                    { title: t("dba.svc.migration"), Icon: RefreshCw },
+                    { title: t("dba.svc.ha"), Icon: Shield },
+                    { title: t("dba.svc.dr"), Icon: HardDrive },
+                    { title: t("dba.svc.audit"), Icon: FileSearch },
                   ].map((item) => (
                     <motion.div
                       key={item.title}
@@ -429,7 +405,7 @@ const DbaTime = () => {
             </div>
           </section>
 
-          {/* Bloco Problemas que Resolvemos */}
+          {/* Problemas que Resolvemos */}
           <section className="py-20 relative bg-muted/30">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
@@ -442,18 +418,18 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-6"
                 >
-                  Problemas que Resolvemos
+                  {t("dba.problems.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-muted-foreground mb-8 max-w-2xl">
-                  Nossa equipe atua na raiz dos problemas de performance e estabilidade de banco de dados.
+                  {t("dba.problems.desc")}
                 </motion.p>
                 <div className="flex flex-wrap gap-3">
                   {[
-                    "Banco lento",
-                    "Deadlocks",
-                    "CPU alta",
-                    "Queries mal indexadas",
-                    "Plano de execução incorreto",
+                    t("dba.prob.slow"),
+                    t("dba.prob.deadlock"),
+                    t("dba.prob.cpu"),
+                    t("dba.prob.index"),
+                    t("dba.prob.plan"),
                   ].map((item) => (
                     <motion.span
                       key={item}
@@ -483,10 +459,10 @@ const DbaTime = () => {
                   variants={fadeInUp}
                   className="text-2xl lg:text-3xl font-display font-bold text-foreground mb-4"
                 >
-                  Infraestrutura e Banco de Dados trabalhando juntos
+                  {t("dba.cta.title")}
                 </motion.h2>
                 <motion.p variants={fadeInUp} className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                  Conte com o Cloud Builder e o DBA Time integrados para ambientes críticos. Fale com nossos especialistas.
+                  {t("dba.cta.desc")}
                 </motion.p>
                 <motion.div variants={fadeInUp}>
                   <Button
@@ -499,7 +475,7 @@ const DbaTime = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Falar com Especialista
+                      {t("common.talk.expert")}
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>
