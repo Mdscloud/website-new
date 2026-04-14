@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ParallaxScrollSecond } from "@/components/ui/parallax-scroll";
-import equipeImage from "@/assets/about/equipe.jpg";
+import equipeImage from "@/assets/about/quem-somos.jpeg";
 import backgroundTemporario from "@/assets/background-temporario.png";
 import diegoImage from "@/assets/socios/diego.jpeg";
 import gustavoImage from "@/assets/socios/gustavo.jpeg";

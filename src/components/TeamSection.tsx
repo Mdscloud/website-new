@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useI18n } from "@/lib/i18n";
-import teamOffice1 from "@/assets/team-office-1.jpg";
+import teamOffice1 from "@/assets/home-quem-somos.jpeg";
 
 export function TeamSection() {
   const { t } = useI18n();
