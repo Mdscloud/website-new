@@ -17,10 +17,7 @@ import felipeImage from "@/assets/socios/felipe.jpeg";
 // Importar todas as imagens da pasta equipe
 import equipe1 from "@/assets/about/equipe/equipe1.jpg";
 import equipe2 from "@/assets/about/equipe/equipe2.jpg";
-import equipe3 from "@/assets/about/equipe/equipe3.jpg";
 import equipe4 from "@/assets/about/equipe/equipe4.jpg";
-import equipe5 from "@/assets/about/equipe/equipe5.jpg";
-import equipe6 from "@/assets/about/equipe/equipe6.jpg";
 import equipe7 from "@/assets/about/equipe/equipe7.jpg";
 import equipe8 from "@/assets/about/equipe/equipe8.jpg";
 import equipe9 from "@/assets/about/equipe/equipe9.jpg";
@@ -53,7 +50,7 @@ const QuemSomos = () => {
 
   // Array com todas as imagens da equipe
   const equipeImages = [
-    equipe1, equipe2, equipe3, equipe4, equipe5, equipe6,
+    equipe1, equipe2, equipe4,
     equipe7, equipe8, equipe9, equipe10, equipe11, equipe12,
     equipe13, equipe14, equipe15, equipe16, equipe17
   ];
