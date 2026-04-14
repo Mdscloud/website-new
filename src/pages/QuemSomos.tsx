@@ -272,7 +272,6 @@ const QuemSomos = () => {
                       src={equipeImage} 
                       alt="Equipe MDS Cloud" 
                       className="w-full h-auto object-cover"
-                      style={{ transform: 'scaleX(-1)' }}
                     />
                     {/* Decorative gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent pointer-events-none"></div>
