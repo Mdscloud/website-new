@@ -11,8 +11,10 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import backgroundTecnologias from "@/assets/background-tecnologias.png";
+import { useI18n } from "@/lib/i18n";
 
 const Index = () => {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -90,13 +92,13 @@ const Index = () => {
               className="mx-auto mb-4 max-w-2xl text-center"
             >
               <Badge className="mb-4 bg-white/10 text-white border-white/20">
-                Tecnologias
+                {t("index.tech.badge")}
               </Badge>
               <h2 className="mb-4 font-display text-3xl font-bold text-white md:text-4xl">
-                Infraestrutura construída com tecnologias líderes de mercado
+                {t("index.tech.title")}
               </h2>
               <p className="text-lg text-white/80">
-                Parceiros e plataformas utilizadas para garantir performance, segurança e operação contínua em ambientes
+                {t("index.tech.desc")}
               </p>
             </motion.div>
             <TechnologiesCarousel />

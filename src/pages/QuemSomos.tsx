@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion, AnimatePresence } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
 import { Building2, Users, Award, Shield, Zap, Users2, Briefcase, TrendingUp, ArrowRight, Check, Cloud, Linkedin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,7 @@ const staggerContainer = {
 };
 
 const QuemSomos = () => {
+  const { t } = useI18n();
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   // Array com todas as imagens da equipe
@@ -58,29 +60,29 @@ const QuemSomos = () => {
   const socios = [
     {
       name: "Diego Costa",
-      title: "Sócio • Diretor de Infraestrutura",
-      bio: "Responsável pela arquitetura e evolução da infraestrutura cloud da MDS. Lidera a estratégia técnica, datacenters, redes, virtualização e alta disponibilidade, garantindo performance e estabilidade para ambientes críticos.",
+      title: t("quemsomos.socio.diego.title"),
+      bio: t("quemsomos.socio.diego.bio"),
       image: diegoImage,
       linkedin: "https://www.linkedin.com/in/diego-costa-e-silva-0a153628/"
     },
     {
       name: "Gustavo Viude",
-      title: "Sócio • Diretor Comercial",
-      bio: "Responsável pela estratégia comercial e expansão da MDS Cloud. Atua na construção de parcerias estratégicas, relacionamento com clientes e desenvolvimento de soluções alinhadas às necessidades de mercado.",
+      title: t("quemsomos.socio.gustavo.title"),
+      bio: t("quemsomos.socio.gustavo.bio"),
       image: gustavoImage,
       linkedin: "https://www.linkedin.com/in/gustavo-viude-a0188a14/"
     },
     {
       name: "Bruno Schwambach",
-      title: "Sócio • Diretor de Banco de Dados",
-      bio: "Especialista em bancos corporativos, lidera o time de DBAs da MDS. Responsável por performance, tuning, segurança e alta disponibilidade em Oracle, SQL Server, PostgreSQL e MySQL.",
+      title: t("quemsomos.socio.bruno.title"),
+      bio: t("quemsomos.socio.bruno.bio"),
       image: brunoImage,
       linkedin: "https://www.linkedin.com/in/bruno-schwambach-60794756/"
     },
     {
       name: "Felipe Melo",
-      title: "Diretor Comercial e Marketing",
-      bio: "Responsável pelo posicionamento estratégico da marca, geração de demanda e comunicação institucional da MDS Cloud, fortalecendo o ecossistema de parceiros e clientes.",
+      title: t("quemsomos.socio.felipe.title"),
+      bio: t("quemsomos.socio.felipe.bio"),
       image: felipeImage,
       linkedin: "https://www.linkedin.com/in/fbmelo/"
     }
@@ -166,7 +168,7 @@ const QuemSomos = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+1200</p>
-                  <p className="text-xs text-muted-foreground">Clientes</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.clients.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -181,7 +183,7 @@ const QuemSomos = () => {
                 <Users className="h-5 w-5 text-accent" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+5000</p>
-                  <p className="text-xs text-muted-foreground">Servidores</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.servers.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -196,19 +198,19 @@ const QuemSomos = () => {
                 <motion.div variants={fadeInUp}>
                   <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                     <Award className="h-4 w-4 mr-2 inline" />
-                    Quem Somos
+                    {t("quemsomos.hero.badge")}
                   </Badge>
                 </motion.div>
-                
-                <motion.h1 
+
+                <motion.h1
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                 >
-                  Infraestrutura própria. Alta performance. Segurança real.
+                  {t("quemsomos.hero.title")}
                 </motion.h1>
-                
+
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Há mais de 16 anos construindo infraestrutura cloud corporativa no Brasil para sistemas críticos que não podem parar.
+                  {t("quemsomos.hero.subtitle")}
                 </motion.p>
               </motion.div>
             </div>
@@ -229,28 +231,22 @@ const QuemSomos = () => {
                   <div className="flex items-center gap-3 mb-6">
                     <Building2 className="h-8 w-8 text-primary" />
                     <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
-                      Institucional
+                      {t("quemsomos.institucional.title")}
                     </h2>
                   </div>
-                  
+
                   <div className="space-y-6 text-muted-foreground leading-relaxed">
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">Quem somos</h3>
-                      <p>
-                        Somos especialistas em infraestrutura cloud corporativa com foco absoluto em sistemas críticos como ERP, CRM, PMS e bancos de dados de alta complexidade.
-                      </p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{t("quemsomos.institucional.who.title")}</h3>
+                      <p>{t("quemsomos.institucional.who.text")}</p>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">Nossa diferença</h3>
-                      <p>
-                        Diferente de provedores que revendem capacidade de grandes nuvens públicas, construímos e operamos nossa própria infraestrutura, garantindo performance, previsibilidade e controle total.
-                      </p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{t("quemsomos.institucional.diff.title")}</h3>
+                      <p>{t("quemsomos.institucional.diff.text")}</p>
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">Nosso compromisso</h3>
-                      <p>
-                        Atuamos como parceiros estratégicos de empresas que não toleram falhas, lentidão ou indisponibilidade.
-                      </p>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">{t("quemsomos.institucional.commitment.title")}</h3>
+                      <p>{t("quemsomos.institucional.commitment.text")}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -299,7 +295,7 @@ const QuemSomos = () => {
                   <Cloud className="h-7 w-7 text-primary" />
                 </div>
                 <p className="text-xl lg:text-2xl font-display font-semibold text-foreground leading-relaxed border-l-4 border-primary pl-6 py-2 text-left">
-                  Somos a nuvem feita para resolver problemas reais de negócios com expertise técnica, proximidade e foco absoluto no cliente.
+                  {t("quemsomos.destaque")}
                 </p>
               </motion.div>
             </div>
@@ -318,7 +314,7 @@ const QuemSomos = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <Briefcase className="h-8 w-8 text-primary" />
                   <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
-                    Nossa trajetória
+                    {t("quemsomos.trajectory.title")}
                   </h2>
                 </div>
               </motion.div>
@@ -333,11 +329,11 @@ const QuemSomos = () => {
                 <div className="hidden lg:block">
                   <div className="flex justify-between items-start gap-4">
                     {[
-                      { year: "2009", label: "Fundação" },
-                      { year: "2012", label: "Estruturação da primeira infraestrutura própria" },
-                      { year: "2016", label: "Consolidação em Datacenters Ascenty" },
-                      { year: "2020", label: "Expansão nacional" },
-                      { year: "2024", label: "Infraestrutura otimizada para ERP e bancos críticos" },
+                      { year: "2009", label: t("quemsomos.timeline.2009") },
+                      { year: "2012", label: t("quemsomos.timeline.2012") },
+                      { year: "2016", label: t("quemsomos.timeline.2016") },
+                      { year: "2020", label: t("quemsomos.timeline.2020") },
+                      { year: "2024", label: t("quemsomos.timeline.2024") },
                     ].map((item, index) => (
                       <motion.div
                         key={item.year}
@@ -356,11 +352,11 @@ const QuemSomos = () => {
                 {/* Mobile: timeline vertical */}
                 <div className="lg:hidden space-y-6">
                   {[
-                    { year: "2009", label: "Fundação" },
-                    { year: "2012", label: "Estruturação da primeira infraestrutura própria" },
-                    { year: "2016", label: "Consolidação em Datacenters Ascenty" },
-                    { year: "2020", label: "Expansão nacional" },
-                    { year: "2024", label: "Infraestrutura otimizada para ERP e bancos críticos" },
+                    { year: "2009", label: t("quemsomos.timeline.2009") },
+                    { year: "2012", label: t("quemsomos.timeline.2012") },
+                    { year: "2016", label: t("quemsomos.timeline.2016") },
+                    { year: "2020", label: t("quemsomos.timeline.2020") },
+                    { year: "2024", label: t("quemsomos.timeline.2024") },
                   ].map((item, index) => (
                     <motion.div
                       key={item.year}
@@ -391,7 +387,7 @@ const QuemSomos = () => {
                 className="mb-12"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-6">
-                  Por que a MDS é diferente?
+                  {t("quemsomos.why.title")}
                 </h2>
               </motion.div>
               <motion.div
@@ -402,12 +398,12 @@ const QuemSomos = () => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {[
-                  "Infraestrutura própria",
-                  "Foco em sistemas críticos",
-                  "Suporte humano 24x7",
-                  "Especialistas em Banco de Dados",
-                  "Preços previsíveis em reais",
-                  "Sem lock-in contratual",
+                  t("quemsomos.why.item.1"),
+                  t("quemsomos.why.item.2"),
+                  t("quemsomos.why.item.3"),
+                  t("quemsomos.why.item.4"),
+                  t("quemsomos.why.item.5"),
+                  t("quemsomos.why.item.6"),
                 ].map((item) => (
                   <motion.div
                     key={item}
@@ -442,7 +438,7 @@ const QuemSomos = () => {
                 className="flex flex-row flex-wrap items-center gap-3 mb-8 lg:mb-10"
               >
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-white">
-                  Liderança
+                  {t("quemsomos.leadership.title")}
                 </h2>
                 <ArrowRight className="h-8 w-8 text-white/50 shrink-0" />
               </motion.div>
@@ -524,7 +520,7 @@ const QuemSomos = () => {
               {/* Separador e Diretoria (Felipe centralizado) */}
               <div className="mt-12 lg:mt-16">
                 <p className="text-white/70 text-sm font-semibold uppercase tracking-wider text-center mb-6">
-                  Diretoria
+                  {t("quemsomos.board.label")}
                 </p>
                 <div className="flex justify-center">
                   {diretoria.map((socio) => (
@@ -612,17 +608,13 @@ const QuemSomos = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <Users2 className="h-8 w-8 text-primary" />
                   <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
-                    Nossa Equipe
+                    {t("quemsomos.team.title")}
                   </h2>
                 </div>
-                
+
                 <div className="space-y-4 text-muted-foreground leading-relaxed max-w-4xl mb-12">
-                  <p>
-                    Nossa equipe é formada por especialistas experientes em infraestrutura e DBA, com anos de experiência em sistemas críticos. Trabalhamos com profissionais que entendem a importância de manter seus sistemas sempre disponíveis e performáticos.
-                  </p>
-                  <p>
-                    Nossos especialistas estão disponíveis 24x7 para garantir que seus sistemas críticos nunca parem, oferecendo suporte humano especializado, sem chatbots ou respostas automatizadas.
-                  </p>
+                  <p>{t("quemsomos.team.p1")}</p>
+                  <p>{t("quemsomos.team.p2")}</p>
                 </div>
 
                 <motion.div
@@ -638,9 +630,9 @@ const QuemSomos = () => {
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                           <Shield className="h-6 w-6 text-primary" />
                         </div>
-                        <CardTitle className="text-foreground">Especialistas em Infraestrutura</CardTitle>
+                        <CardTitle className="text-foreground">{t("quemsomos.team.card1.title")}</CardTitle>
                         <CardDescription>
-                          Profissionais com expertise em cloud computing, virtualização e arquitetura de sistemas
+                          {t("quemsomos.team.card1.desc")}
                         </CardDescription>
                       </CardHeader>
                     </Card>
@@ -652,9 +644,9 @@ const QuemSomos = () => {
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                           <Zap className="h-6 w-6 text-primary" />
                         </div>
-                        <CardTitle className="text-foreground">DBAs Especializados</CardTitle>
+                        <CardTitle className="text-foreground">{t("quemsomos.team.card2.title")}</CardTitle>
                         <CardDescription>
-                          Time de administradores de banco de dados com conhecimento profundo em Oracle, SQL Server, PostgreSQL e MySQL
+                          {t("quemsomos.team.card2.desc")}
                         </CardDescription>
                       </CardHeader>
                     </Card>
@@ -666,9 +658,9 @@ const QuemSomos = () => {
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                           <Users className="h-6 w-6 text-primary" />
                         </div>
-                        <CardTitle className="text-foreground">Suporte 24x7</CardTitle>
+                        <CardTitle className="text-foreground">{t("quemsomos.team.card3.title")}</CardTitle>
                         <CardDescription>
-                          Equipe de plantão sempre disponível para garantir continuidade dos seus sistemas críticos
+                          {t("quemsomos.team.card3.desc")}
                         </CardDescription>
                       </CardHeader>
                     </Card>
@@ -697,21 +689,21 @@ const QuemSomos = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
-                  Conheça nossas soluções de alta performance
+                  {t("quemsomos.cta.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Fale com nossos especialistas e descubra como a MDS Cloud pode levar sua infraestrutura ao próximo nível.
+                  {t("quemsomos.cta.desc")}
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Button variant="heroShiny" size="xl" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                      Falar com especialista
+                      {t("hero.cta.primary")}
                       <ArrowRight className="h-5 w-5 ml-2 inline" />
                     </a>
                   </Button>
                   <Button variant="outline" size="xl" asChild>
                     <a href="/solucoes-cloud">
-                      Ver soluções
+                      {t("quemsomos.cta.button.secondary")}
                     </a>
                   </Button>
                 </div>

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Cloud, Database, Server, Zap, Shield, Clock, Users, ArrowRight, Check, Layers } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,6 +27,7 @@ const staggerContainer = {
 };
 
 const OQueFazemos = () => {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -80,28 +82,28 @@ const OQueFazemos = () => {
                   <motion.div variants={fadeInUp} className="flex items-center gap-2 mb-6">
                     <Badge className="bg-primary/20 text-primary border-primary/30 hover:bg-primary/30 px-4 py-2 gap-2">
                       <Cloud className="h-4 w-4" />
-                      Cloud Builder
+                      {t("oquefazemos.badge")}
                     </Badge>
                   </motion.div>
-                  <motion.h1 
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-foreground mb-6 leading-tight"
                   >
-                    Infraestrutura própria para ambientes críticos
+                    {t("oquefazemos.hero.title")}
                   </motion.h1>
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
-                    Arquitetamos e operamos nuvem corporativa de <strong className="text-foreground font-semibold">alta performance</strong> com controle total da infraestrutura, garantindo previsibilidade, <strong className="text-foreground font-semibold">segurança</strong> e desempenho superior para ERPs, CRMs e sistemas empresariais críticos.
+                    {t("oquefazemos.hero.subtitle.1")} <strong className="text-foreground font-semibold">{t("oquefazemos.hero.subtitle.bold1")}</strong> {t("oquefazemos.hero.subtitle.2")} <strong className="text-foreground font-semibold">{t("oquefazemos.hero.subtitle.bold2")}</strong> {t("oquefazemos.hero.subtitle.3")}
                   </motion.p>
                   <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
                     <Button size="lg" className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        Solicitar Arquitetura Técnica
+                        {t("oquefazemos.hero.cta.primary")}
                         <ArrowRight className="h-4 w-4" />
                       </a>
                     </Button>
                     <Button size="lg" variant="outline" className="gap-2 border-2 border-border bg-background/50 hover:bg-background/80" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
-                        Falar com Especialista
+                        {t("common.talk.expert")}
                       </a>
                     </Button>
                   </motion.div>
@@ -152,9 +154,9 @@ const OQueFazemos = () => {
                 className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-8 border-t border-border/50"
               >
                 {[
-                  { icon: Server, value: "+5000", label: "Servidores gerenciados" },
-                  { icon: Shield, value: "", label: "Controle total da infraestrutura" },
-                  { icon: Clock, value: "", label: "SLA em minutos" },
+                  { icon: Server, value: "+5000", label: t("oquefazemos.metric.servers") },
+                  { icon: Shield, value: "", label: t("oquefazemos.metric.control") },
+                  { icon: Clock, value: "", label: t("oquefazemos.metric.sla") },
                 ].map((item) => (
                   <motion.div
                     key={item.label}
@@ -187,7 +189,7 @@ const OQueFazemos = () => {
                     duration={0.7}
                   >
                     <h2 className="text-3xl lg:text-4xl font-display font-bold text-[hsl(230,60%,16%)]">
-                      Não revendemos cloud. Nós construímos.
+                      {t("oquefazemos.concept.title")}
                     </h2>
                   </TextRevealMotion>
                   <TextRevealMotion
@@ -197,7 +199,7 @@ const OQueFazemos = () => {
                     duration={0.6}
                   >
                     <p className="text-lg text-zinc-600 leading-relaxed font-body">
-                      Diferente de provedores que operam sobre grandes nuvens públicas, a MDS Cloud possui infraestrutura própria em data centers Tier III no Brasil. Isso nos permite controlar performance, latência, segurança e custos — sem dependência de terceiros.
+                      {t("oquefazemos.concept.desc")}
                     </p>
                   </TextRevealMotion>
                 </div>
@@ -211,14 +213,14 @@ const OQueFazemos = () => {
                 variants={staggerContainer}
               >
                 <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-10">
-                  Diferenciais Técnicos
+                  {t("oquefazemos.tech.title")}
                 </motion.h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   {[
-                    { title: "Infraestrutura Própria", desc: "Servidores Dell, storages SSD/NVMe e rede de alta capacidade sob gestão total da MDS.", Icon: Server },
-                    { title: "Alta Performance Real", desc: "Ambientes projetados para cargas críticas com baixa latência e alta IOPS.", Icon: Zap },
-                    { title: "Escalabilidade Inteligente", desc: "Expansão sob demanda com previsibilidade de custo.", Icon: Layers },
-                    { title: "Operação Especializada", desc: "Infraestrutura integrada ao time de DBAs e suporte técnico 24x7.", Icon: Users },
+                    { title: t("oquefazemos.tech.1.title"), desc: t("oquefazemos.tech.1.desc"), Icon: Server },
+                    { title: t("oquefazemos.tech.2.title"), desc: t("oquefazemos.tech.2.desc"), Icon: Zap },
+                    { title: t("oquefazemos.tech.3.title"), desc: t("oquefazemos.tech.3.desc"), Icon: Layers },
+                    { title: t("oquefazemos.tech.4.title"), desc: t("oquefazemos.tech.4.desc"), Icon: Users },
                   ].map((item) => (
                     <motion.div key={item.title} variants={fadeInUp}>
                       <Card className="h-full border border-border hover:border-primary/30 transition-colors">
@@ -245,15 +247,15 @@ const OQueFazemos = () => {
               >
                 <div>
                   <motion.h2 variants={fadeInUp} className="text-3xl lg:text-4xl font-display font-bold text-foreground mb-4">
-                    Ideal para
+                    {t("oquefazemos.ideal.title")}
                   </motion.h2>
                   <div className="flex flex-wrap gap-2 md:gap-3">
                     {[
-                      "ERPs de missão crítica",
-                      "CRMs corporativos",
-                      "Sistemas financeiros",
-                      "PMS hoteleiros",
-                      "Aplicações industriais",
+                      t("oquefazemos.ideal.1"),
+                      t("oquefazemos.ideal.2"),
+                      t("oquefazemos.ideal.3"),
+                      t("oquefazemos.ideal.4"),
+                      t("oquefazemos.ideal.5"),
                     ].map((item) => (
                       <motion.span
                         key={item}
@@ -273,10 +275,10 @@ const OQueFazemos = () => {
                   className="grid grid-cols-2 lg:grid-cols-4 gap-6"
                 >
                 {[
-                  { value: "+5000", label: "Servidores gerenciados", Icon: Server },
-                  { value: "+1200", label: "Clientes ativos", Icon: Users },
-                  { value: "16", label: "Anos de operação", Icon: Clock },
-                  { value: "SLA", label: "Em minuto", Icon: Shield },
+                  { value: "+5000", label: t("oquefazemos.metric.servers"), Icon: Server },
+                  { value: "+1200", label: t("oquefazemos.stats.clients"), Icon: Users },
+                  { value: "16", label: t("oquefazemos.stats.years"), Icon: Clock },
+                  { value: "SLA", label: t("oquefazemos.stats.sla"), Icon: Shield },
                 ].map((item) => (
                   <motion.div
                     key={item.label}
@@ -313,12 +315,12 @@ const OQueFazemos = () => {
                   </h2>
                 </motion.div>
                 <motion.p variants={fadeInUp} className="text-gray-300 leading-relaxed mb-8">
-                  Serviços avançados de administração, performance, otimização e segurança de bancos de dados. Tuning, migrações, alta disponibilidade e especialidades em Oracle, SQL Server, PostgreSQL e MySQL.
+                  {t("oquefazemos.dbatime.desc")}
                 </motion.p>
                 <motion.div variants={fadeInUp}>
                   <Button size="lg" className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
                     <a href="/o-que-fazemos/dba-time">
-                      Saiba mais sobre DBA Time
+                      {t("oquefazemos.dbatime.button")}
                       <ArrowRight className="h-4 w-4" />
                     </a>
                   </Button>

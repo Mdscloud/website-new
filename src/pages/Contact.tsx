@@ -9,8 +9,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const Contact = () => {
+  const { t } = useI18n();
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -26,13 +28,13 @@ const Contact = () => {
     
     // Validação: consentimento para finalidade é obrigatório
     if (!formData.consentimentoFinalidade) {
-      alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
+      alert(t("contact.alert.consent"));
       return;
     }
-    
+
     // Aqui você pode adicionar a lógica de envio do formulário
     console.log("Form submitted:", formData);
-    alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+    alert(t("contact.alert.success"));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -63,10 +65,10 @@ const Contact = () => {
               className="mx-auto max-w-3xl text-center"
             >
               <h1 className="mb-6 font-display text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
-                Entre em Contato
+                {t("contact.hero.title")}
               </h1>
               <p className="text-lg text-muted-foreground md:text-xl">
-                Descubra o suporte especializado em bancos de dados da MDS Cloud.
+                {t("contact.hero.subtitle")}
               </p>
             </motion.div>
           </div>
@@ -85,34 +87,34 @@ const Contact = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <h2 className="mb-6 font-display text-2xl font-bold text-foreground md:text-3xl">
-                    Nos diga como podemos ajudar a sua empresa!
+                    {t("contact.form.title")}
                   </h2>
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="nome">
-                          Nome <span className="text-destructive">*</span>
+                          {t("contact.form.name")} <span className="text-destructive">*</span>
                         </Label>
                         <Input
                           id="nome"
                           name="nome"
                           type="text"
                           required
-                          placeholder="Nome"
+                          placeholder={t("contact.form.name")}
                           value={formData.nome}
                           onChange={handleChange}
                         />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">
-                          E-mail <span className="text-destructive">*</span>
+                          {t("contact.form.email")} <span className="text-destructive">*</span>
                         </Label>
                         <Input
                           id="email"
                           name="email"
                           type="email"
                           required
-                          placeholder="E-mail"
+                          placeholder={t("contact.form.email")}
                           value={formData.email}
                           onChange={handleChange}
                         />
@@ -121,7 +123,7 @@ const Contact = () => {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="telefone">
-                          Telefone <span className="text-destructive">*</span>
+                          {t("contact.form.phone")} <span className="text-destructive">*</span>
                         </Label>
                         <Input
                           id="telefone"
@@ -134,23 +136,23 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="empresa">Empresa</Label>
+                        <Label htmlFor="empresa">{t("contact.form.company")}</Label>
                         <Input
                           id="empresa"
                           name="empresa"
                           type="text"
-                          placeholder="Empresa"
+                          placeholder={t("contact.form.company")}
                           value={formData.empresa}
                           onChange={handleChange}
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="mensagem">Mensagem</Label>
+                      <Label htmlFor="mensagem">{t("contact.form.message")}</Label>
                       <Textarea
                         id="mensagem"
                         name="mensagem"
-                        placeholder="Mensagem"
+                        placeholder={t("contact.form.message")}
                         rows={6}
                         value={formData.mensagem}
                         onChange={handleChange}
@@ -167,7 +169,7 @@ const Contact = () => {
                           className="mt-1"
                         />
                         <Label htmlFor="consentimentoFinalidade" className="text-sm leading-relaxed cursor-pointer">
-                          <span className="text-destructive">*</span> Compreendo e autorizo o tratamento dos dados para as finalidades informadas, pois tenho conhecimento de que a coleta é necessária para realização dos esclarecimentos solicitados relacionados aos serviços oferecidos.
+                          <span className="text-destructive">*</span> {t("contact.form.consent.purpose")}
                         </Label>
                       </div>
                       <div className="flex items-start gap-3">
@@ -178,20 +180,20 @@ const Contact = () => {
                           className="mt-1"
                         />
                         <Label htmlFor="consentimentoMarketing" className="text-sm leading-relaxed cursor-pointer">
-                          Compreendo e autorizo o tratamento dos dados para fins de recebimento de e-mails com informações relevantes sobre serviços, produtos e/ou notícias diversas sobre compliance, privacidade, segurança da informação e gestão de riscos.
+                          {t("contact.form.consent.marketing")}
                         </Label>
                       </div>
                       <p className="text-xs text-muted-foreground">
-                        Você pode retirar seu consentimento a qualquer momento. Para mais informações, consulte nossa{" "}
+                        {t("contact.form.consent.withdraw")}{" "}
                         <a href="/politicas-privacidade" className="text-primary hover:underline">
-                          Política de Privacidade
+                          {t("footer.link.privacy")}
                         </a>
                         .
                       </p>
                     </div>
 
                     <Button type="submit" size="lg" className="w-full">
-                      Falar com Especialista
+                      {t("common.talk.expert")}
                     </Button>
                   </form>
                 </motion.div>
@@ -206,7 +208,7 @@ const Contact = () => {
                 >
                   <div>
                     <h2 className="mb-6 font-display text-2xl font-bold text-foreground md:text-3xl">
-                      Informações de Contato
+                      {t("contact.info.title")}
                     </h2>
                     <div className="space-y-6">
                       <div className="flex items-start gap-4">
@@ -214,7 +216,7 @@ const Contact = () => {
                           <Phone className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h3 className="mb-1 text-lg font-semibold text-foreground">Telefone</h3>
+                          <h3 className="mb-1 text-lg font-semibold text-foreground">{t("contact.info.phone")}</h3>
                           <a
                             href="tel:+551125777899"
                             className="text-muted-foreground hover:text-primary transition-colors"
@@ -229,7 +231,7 @@ const Contact = () => {
                           <Mail className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h3 className="mb-1 text-lg font-semibold text-foreground">E-mail</h3>
+                          <h3 className="mb-1 text-lg font-semibold text-foreground">{t("contact.info.email")}</h3>
                           <a
                             href="mailto:suporte@mdscloud.com.br"
                             className="text-muted-foreground hover:text-primary transition-colors"
@@ -244,10 +246,10 @@ const Contact = () => {
                           <MapPin className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <h3 className="mb-1 text-lg font-semibold text-foreground">Localização</h3>
+                          <h3 className="mb-1 text-lg font-semibold text-foreground">{t("contact.info.location")}</h3>
                           <p className="text-muted-foreground">
                             Vinhedo, SP<br />
-                            Data Centers Tier III
+                            {t("contact.info.location.line2")}
                           </p>
                         </div>
                       </div>
@@ -256,7 +258,7 @@ const Contact = () => {
 
                   {/* Social Media */}
                   <div>
-                    <h3 className="mb-4 text-lg font-semibold text-foreground">Redes Sociais</h3>
+                    <h3 className="mb-4 text-lg font-semibold text-foreground">{t("contact.info.social")}</h3>
                     <div className="flex gap-4">
                       <a
                         href="https://linkedin.com/company/mdscloud"

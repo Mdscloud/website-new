@@ -8,6 +8,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import backgroundTemporario from "@/assets/background-temporario.png";
 import { homeTestimonials } from "@/components/NewTestimonialsSection";
 import { useRef, useState } from "react";
+import { useI18n } from "@/lib/i18n";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -112,6 +113,8 @@ function DepoimentoCard({
 }
 
 const Depoimentos = () => {
+  const { t } = useI18n();
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -189,7 +192,7 @@ const Depoimentos = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+1200</p>
-                  <p className="text-xs text-muted-foreground">Clientes</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.clients.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -204,7 +207,7 @@ const Depoimentos = () => {
                 <Users className="h-5 w-5 text-accent" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+5000</p>
-                  <p className="text-xs text-muted-foreground">Servidores</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.servers.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -219,19 +222,19 @@ const Depoimentos = () => {
                 <motion.div variants={fadeInUp}>
                   <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                     <MessageSquare className="h-4 w-4 mr-2 inline" />
-                    Depoimentos
+                    {t("depoimentos.badge")}
                   </Badge>
                 </motion.div>
-                
-                <motion.h1 
+
+                <motion.h1
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                 >
-                  O Que Nossos Clientes<br />Dizem Sobre Nós
+                  {t("depoimentos.hero.title.1")}<br />{t("depoimentos.hero.title.2")}
                 </motion.h1>
-                
+
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Conheça a experiência de empresas que confiam na MDS Cloud
+                  {t("depoimentos.hero.subtitle")}
                 </motion.p>
               </motion.div>
             </div>

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
 import { Sparkles, Shield, Zap, Users, Clock, CheckCircle2, Award, TrendingUp, Server, Building2 } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import backgroundParceiros from "@/assets/background-parceiros.png";
@@ -23,47 +24,17 @@ const staggerContainer = {
 };
 
 const ComoFazemos = () => {
+  const { t } = useI18n();
+
   const diferenciais = [
-    {
-      icon: Server,
-      title: "Infraestrutura Própria de Alta Performance",
-      description: "Rede dedicada de alta capacidade, servidores Dell de última geração e storages SSD otimizados, tudo projetado para performance superior."
-    },
-    {
-      icon: Shield,
-      title: "Alta Disponibilidade com Redundância Inteligente",
-      description: "Projetos com failover automático, replicação de dados e arquitetura resiliente, garantindo que seus sistemas continuem operando mesmo diante de falhas isoladas."
-    },
-    {
-      icon: Users,
-      title: "SLA Real e Suporte Especializado 24×7",
-      description: "Equipe humana de plantão com conhecimento profundo dos ambientes dos clientes, reduzindo tempo de resposta e acelerando resolução de incidentes."
-    },
-    {
-      icon: Zap,
-      title: "Migração Ágil e Sem Interrupções",
-      description: "Projetos de migração realizados com planejamento técnico, execução controlada e mínima interferência na rotina da empresa — muitas vezes concluídos em até 24 horas."
-    },
-    {
-      icon: Award,
-      title: "Proof of Concept (POC) de 30 Dias",
-      description: "Ambiente de teste completo, gratuito e sem compromisso, para medir performance, compatibilidade e suporte antes da contratação definitiva."
-    },
-    {
-      icon: CheckCircle2,
-      title: "Sem Carência de 1 Ano",
-      description: "Sem fidelidade, sem multas rescisórias. Flexibilidade total para seu negócio."
-    },
-    {
-      icon: TrendingUp,
-      title: "Sem Variação Cambial",
-      description: "Preços em reais, sem surpresas com dólar. Previsibilidade total de custos."
-    },
-    {
-      icon: Clock,
-      title: "SLA Medido em Minutos",
-      description: "Experiência comprovada com SLA real, não apenas promessas. Tempo de resposta medido em minutos."
-    }
+    { icon: Server, title: t("comofazemos.dif.1.title"), description: t("comofazemos.dif.1.desc") },
+    { icon: Shield, title: t("comofazemos.dif.2.title"), description: t("comofazemos.dif.2.desc") },
+    { icon: Users, title: t("comofazemos.dif.3.title"), description: t("comofazemos.dif.3.desc") },
+    { icon: Zap, title: t("comofazemos.dif.4.title"), description: t("comofazemos.dif.4.desc") },
+    { icon: Award, title: t("comofazemos.dif.5.title"), description: t("comofazemos.dif.5.desc") },
+    { icon: CheckCircle2, title: t("comofazemos.dif.6.title"), description: t("comofazemos.dif.6.desc") },
+    { icon: TrendingUp, title: t("comofazemos.dif.7.title"), description: t("comofazemos.dif.7.desc") },
+    { icon: Clock, title: t("comofazemos.dif.8.title"), description: t("comofazemos.dif.8.desc") },
   ];
 
   return (
@@ -148,7 +119,7 @@ const ComoFazemos = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+1200</p>
-                  <p className="text-xs text-muted-foreground">Clientes</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.clients.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -163,7 +134,7 @@ const ComoFazemos = () => {
                 <Server className="h-5 w-5 text-accent" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+5000</p>
-                  <p className="text-xs text-muted-foreground">Servidores</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.servers.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -178,19 +149,19 @@ const ComoFazemos = () => {
                 <motion.div variants={fadeInUp}>
                   <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                     <Sparkles className="h-4 w-4 mr-2 inline" />
-                    Como Fazemos
+                    {t("comofazemos.badge")}
                   </Badge>
                 </motion.div>
-                
-                <motion.h1 
+
+                <motion.h1
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                 >
-                  Nossa Operação é Liderada<br />por Especialistas
+                  {t("comofazemos.hero.title.1")}<br />{t("comofazemos.hero.title.2")}
                 </motion.h1>
-                
+
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Decisões técnicas e comerciais sempre alinhadas à realidade do cliente
+                  {t("comofazemos.hero.subtitle")}
                 </motion.p>
               </motion.div>
             </div>
@@ -207,15 +178,9 @@ const ComoFazemos = () => {
                 className="mb-16"
               >
                 <div className="space-y-4 text-muted-foreground leading-relaxed max-w-4xl">
-                  <p>
-                    Nossa operação é liderada por especialistas experientes nas áreas Comercial, Infraestrutura e DBA, garantindo que decisões técnicas e comerciais estejam sempre alinhadas à realidade do cliente.
-                  </p>
-                  <p>
-                    Trabalhamos com ambientes desenhados sob medida, nunca padronizados. Monitoramento contínuo e atuação proativa. Especialistas com experiência prática em sistemas supercríticos. Relacionamento próximo, com contato direto com quem resolve. SLA real, medido em minutos, não em promessas.
-                  </p>
-                  <p className="font-semibold text-foreground">
-                    Aqui, você fala com especialistas — não com scripts, robôs ou fluxos burocráticos. Nosso compromisso é simples e inegociável: performance, disponibilidade e tranquilidade operacional.
-                  </p>
+                  <p>{t("comofazemos.intro.p1")}</p>
+                  <p>{t("comofazemos.intro.p2")}</p>
+                  <p className="font-semibold text-foreground">{t("comofazemos.intro.p3")}</p>
                 </div>
               </motion.div>
             </div>
@@ -234,7 +199,7 @@ const ComoFazemos = () => {
                 <div className="flex items-center gap-3 mb-12">
                   <Award className="h-8 w-8 text-primary" />
                   <h2 className="text-3xl lg:text-4xl font-display font-bold text-foreground">
-                    Diferenciais
+                    {t("comofazemos.diferenciais.title")}
                   </h2>
                 </div>
 

@@ -4,6 +4,7 @@ import { FloatingContact } from "@/components/FloatingContact";
 import { SectionDivider } from "@/components/SectionDivider";
 import { motion } from "framer-motion";
 import { Handshake, Users, TrendingUp, Award, CheckCircle2, Phone, Mail, MessageCircle, Zap, Shield, Clock, Building2, ArrowRight, Star, Users2, Headphones } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -26,49 +27,51 @@ const staggerContainer = {
 };
 
 const Parceiros = () => {
+  const { t } = useI18n();
+
   const levels = [
     {
       level: "Level 1",
-      title: "Empresas de Software",
-      description: "Modelo comercial para empresas de software que revendem nossa solução",
+      title: t("parceiros.level.1.title"),
+      description: t("parceiros.level.1.desc"),
       features: [
-        "O Partner fecha com o cliente diretamente",
-        "Relação indireta com a MDS",
-        "Contrato: Indireto",
-        "Faturamento: Direto com o Partner",
-        "Vende direto (Compra e revende)",
-        "Suporte N2 MDS Cloud 24x7",
-        "15 Dias Free"
+        t("parceiros.level.1.f1"),
+        t("parceiros.level.1.f2"),
+        t("parceiros.level.1.f3"),
+        t("parceiros.level.1.f4"),
+        t("parceiros.level.1.f5"),
+        t("parceiros.level.1.f6"),
+        t("parceiros.level.1.f7"),
       ],
       icon: Building2,
       color: "primary"
     },
     {
       level: "Level 2",
-      title: "Consultoria",
-      description: "Modelo para consultorias que indicam leads e oportunidades",
+      title: t("parceiros.level.2.title"),
+      description: t("parceiros.level.2.desc"),
       features: [
-        "O Partner nos indica Leads & Oportunidades",
-        "Contrato: Direto com a MDS",
-        "Faturamento: Direto via MDS",
-        "Suporte N1 e 2 MDS Cloud 24x7 inclusos",
-        "30 Dias Free – Try & BUY"
+        t("parceiros.level.shared.f1"),
+        t("parceiros.level.shared.f2"),
+        t("parceiros.level.shared.f3"),
+        t("parceiros.level.shared.f4"),
+        t("parceiros.level.shared.f5"),
       ],
       icon: Users,
       color: "accent"
     },
     {
       level: "Level 3",
-      title: "Consultorias Premium",
-      description: "Modelo premium para consultorias estratégicas",
+      title: t("parceiros.level.3.title"),
+      description: t("parceiros.level.3.desc"),
       features: [
-        "O Partner nos indica Leads & Oportunidades",
-        "Contrato: Direto com a MDS",
-        "Faturamento: Direto via MDS",
-        "Suporte N1 e 2 MDS Cloud 24x7 inclusos",
-        "30 Dias Free – Try & BUY",
-        "Acompanhamento ciclo de vendas",
-        "Política de gestão de Leads & Oportunidades"
+        t("parceiros.level.shared.f1"),
+        t("parceiros.level.shared.f2"),
+        t("parceiros.level.shared.f3"),
+        t("parceiros.level.shared.f4"),
+        t("parceiros.level.shared.f5"),
+        t("parceiros.level.3.f6"),
+        t("parceiros.level.3.f7"),
       ],
       icon: Award,
       color: "primary"
@@ -76,72 +79,36 @@ const Parceiros = () => {
   ];
 
   const benefits = [
-    {
-      icon: TrendingUp,
-      title: "Aumento dos ganhos proporcionais",
-      description: "Comissões atrativas e crescimento junto com a MDS Cloud"
-    },
-    {
-      icon: Headphones,
-      title: "Suporte técnico integral",
-      description: "Suporte técnico completo para seus clientes, 24x7"
-    },
-    {
-      icon: Users2,
-      title: "Acompanhamento do ciclo de vendas",
-      description: "Apoio completo durante todo o processo de vendas"
-    },
-    {
-      icon: Zap,
-      title: "Política de gestão de Leads",
-      description: "Sistema estruturado para gestão de leads e oportunidades"
-    }
+    { icon: TrendingUp, title: t("parceiros.ben.1.title"), description: t("parceiros.ben.1.desc") },
+    { icon: Headphones, title: t("parceiros.ben.2.title"), description: t("parceiros.ben.2.desc") },
+    { icon: Users2, title: t("parceiros.ben.3.title"), description: t("parceiros.ben.3.desc") },
+    { icon: Zap, title: t("parceiros.ben.4.title"), description: t("parceiros.ben.4.desc") },
   ];
 
   const processSteps = [
-    {
-      step: "1",
-      title: "Seleção do Partner & Nível",
-      description: "Avaliamos seu perfil e definimos o nível de parceria ideal"
-    },
-    {
-      step: "2",
-      title: "Contrato",
-      description: "Assinatura do contrato de parceria"
-    },
-    {
-      step: "3",
-      title: "CRM User",
-      description: "Acesso ao nosso CRM para gestão de leads e oportunidades"
-    },
-    {
-      step: "4",
-      title: "Mapeamento das contas/território",
-      description: "Definimos o território e contas que você irá atuar"
-    },
-    {
-      step: "5",
-      title: "Atuação & Agendamentos",
-      description: "Início da atuação comercial com suporte da MDS Cloud"
-    }
+    { step: "1", title: t("parceiros.step.1.title"), description: t("parceiros.step.1.desc") },
+    { step: "2", title: t("parceiros.step.2.title"), description: t("parceiros.step.2.desc") },
+    { step: "3", title: t("parceiros.step.3.title"), description: t("parceiros.step.3.desc") },
+    { step: "4", title: t("parceiros.step.4.title"), description: t("parceiros.step.4.desc") },
+    { step: "5", title: t("parceiros.step.5.title"), description: t("parceiros.step.5.desc") },
   ];
 
   const uniquePoints = [
-    "Teste antes de contratar por 30 dias, sem custo",
-    "Contratos sem multa de recisão",
-    "Data Centers Interligados via fibra, com certificação Tier III",
-    "Atendimento via WhatsApp, Skype, E-mail, Telefone Fixo ou Celular"
+    t("parceiros.unique.1"),
+    t("parceiros.unique.2"),
+    t("parceiros.unique.3"),
+    t("parceiros.unique.4"),
   ];
 
   const policyPoints = [
-    "Mapeamento de contas",
-    "Elaboração da estratégia",
-    "6 meses de atuação na conta selecionada e aprovada",
-    "3 meses sem atividade alguma no lead ou oportunidade = retirado do lista de leads",
-    "Registro do lead do trimestre atual e próximo",
-    "Registro de oportunidades reais",
-    "Registrar o progresso da oportunidade no CRM",
-    "Comunicação clara e transparente com a MDS"
+    t("parceiros.policy.1"),
+    t("parceiros.policy.2"),
+    t("parceiros.policy.3"),
+    t("parceiros.policy.4"),
+    t("parceiros.policy.5"),
+    t("parceiros.policy.6"),
+    t("parceiros.policy.7"),
+    t("parceiros.policy.8"),
   ];
 
   return (
@@ -226,7 +193,7 @@ const Parceiros = () => {
                 <TrendingUp className="h-5 w-5 text-primary" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+1200</p>
-                  <p className="text-xs text-muted-foreground">Clientes</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.clients.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -241,7 +208,7 @@ const Parceiros = () => {
                 <Users className="h-5 w-5 text-accent" />
                 <div>
                   <p className="text-sm font-bold text-foreground">+5000</p>
-                  <p className="text-xs text-muted-foreground">Servidores</p>
+                  <p className="text-xs text-muted-foreground">{t("metrics.servers.label")}</p>
                 </div>
               </div>
             </motion.div>
@@ -256,19 +223,19 @@ const Parceiros = () => {
                 <motion.div variants={fadeInUp}>
                   <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                     <Handshake className="h-4 w-4 mr-2 inline" />
-                    Seja um Parceiro MDS Cloud
+                    {t("parceiros.hero.badge")}
                   </Badge>
                 </motion.div>
-                
-                <motion.h1 
+
+                <motion.h1
                   variants={fadeInUp}
                   className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground"
                 >
-                  Parceiros Estratégicos são a Base do Nosso Sucesso
+                  {t("parceiros.hero.title")}
                 </motion.h1>
-                
+
                 <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-                  Junte-se à nossa rede de parceiros e cresça junto com a MDS Cloud. Oferecemos suporte técnico integral, acompanhamento do ciclo de vendas e aumento dos ganhos proporcionais.
+                  {t("parceiros.hero.subtitle")}
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -285,7 +252,7 @@ const Parceiros = () => {
                           transition={{ duration: 0.5 }}
                         />
                         <Phone className="mr-2 h-5 w-5 relative z-10" />
-                        <span className="relative z-10">Falar com Comercial</span>
+                        <span className="relative z-10">{t("parceiros.hero.cta.commercial")}</span>
                       </a>
                     </Button>
                   </motion.div>
@@ -296,7 +263,7 @@ const Parceiros = () => {
                     <Button size="lg" variant="outline" className="border-2 border-accent bg-accent/20 text-accent hover:bg-accent hover:text-accent-foreground shadow-md font-semibold" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Mail className="mr-2 h-5 w-5" />
-                        Enviar Proposta
+                        {t("parceiros.hero.cta.proposal")}
                       </a>
                     </Button>
                   </motion.div>
@@ -309,11 +276,11 @@ const Parceiros = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>Comissões Atrativas</span>
+                    <span>{t("parceiros.hero.badge.commissions")}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>CRM Incluso</span>
+                    <span>{t("parceiros.hero.badge.crm")}</span>
                   </div>
                 </motion.div>
               </motion.div>
@@ -350,10 +317,10 @@ const Parceiros = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground">
-                  Benefícios de ser Parceiro MDS Cloud
+                  {t("parceiros.benefits.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Oferecemos suporte completo para que você possa focar no que faz de melhor: vender e atender seus clientes
+                  {t("parceiros.benefits.subtitle")}
                 </p>
               </motion.div>
 
@@ -414,10 +381,10 @@ const Parceiros = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4 text-white">
-                  Níveis de Parceria
+                  {t("parceiros.levels.title")}
                 </h2>
                 <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-                  Escolha o modelo de parceria que melhor se adequa ao seu negócio
+                  {t("parceiros.levels.subtitle")}
                 </p>
               </motion.div>
 
@@ -527,10 +494,10 @@ const Parceiros = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground">
-                  Processo de Parceria
+                  {t("parceiros.process.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Um processo simples e estruturado para começar sua parceria conosco
+                  {t("parceiros.process.subtitle")}
                 </p>
               </motion.div>
 
@@ -635,7 +602,7 @@ const Parceiros = () => {
                 className="mb-16"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-6 text-white text-center">
-                  Política de Parceria
+                  {t("parceiros.policy.title")}
                 </h2>
               </motion.div>
 
@@ -741,7 +708,7 @@ const Parceiros = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-4 text-foreground">
-                  O Que Nos Torna Únicos
+                  {t("parceiros.unique.title")}
                 </h2>
               </motion.div>
 
@@ -801,10 +768,10 @@ const Parceiros = () => {
                 variants={fadeInUp}
               >
                 <h2 className="text-3xl lg:text-4xl font-display font-bold mb-6 text-foreground">
-                  Pronto para se Tornar um Parceiro MDS Cloud?
+                  {t("parceiros.cta.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  Entre em contato com nosso time comercial exclusivo e descubra como podemos crescer juntos
+                  {t("parceiros.cta.desc")}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <motion.div
