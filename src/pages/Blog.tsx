@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { FileText, Calendar, User, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 
 const fadeInUp = {
@@ -78,7 +77,7 @@ const Blog = () => {
                 {blogPosts.map((post, index) => (
                   <motion.div key={post.slug} variants={fadeInUp}>
                     <Card className="h-full border border-border hover:border-primary/50 transition-all hover:shadow-lg overflow-hidden">
-                      <Link to={`/blog/${post.slug}`} className="block">
+                      <a href={post.externalUrl} target="_blank" rel="noopener noreferrer" className="block">
                         <div className="aspect-video w-full overflow-hidden bg-muted">
                           <img
                             src={post.image}
@@ -112,7 +111,7 @@ const Blog = () => {
                             Ler mais <ArrowRight className="h-4 w-4" />
                           </span>
                         </CardContent>
-                      </Link>
+                      </a>
                     </Card>
                   </motion.div>
                 ))}

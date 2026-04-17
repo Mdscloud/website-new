@@ -351,13 +351,12 @@ const PoliticasPrivacidade = () => {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="politicas-site" className="text-sm">
-                          Site da sua organização (URL) <span className="text-destructive">*</span>
+                          Site da sua organização (URL)
                         </Label>
                         <Input
                           id="politicas-site"
                           name="site"
                           type="url"
-                          required
                           placeholder="https://exemplo.com.br"
                           value={formData.site}
                           onChange={handleChange}
