@@ -11,6 +11,7 @@ import { CheckCircle2, Building2, Users, Award, Shield, Zap, Calendar, Phone, Ar
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useI18n } from "@/lib/i18n";
 
 // Animation variants
 const fadeInUp = {
@@ -44,6 +45,7 @@ const scaleIn = {
 };
 
 const About = () => {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
@@ -87,44 +89,44 @@ const About = () => {
                   <motion.div variants={fadeInUp}>
                     <Badge className="mb-6 bg-primary text-primary-foreground hover:bg-primary/90 border-0 px-4 py-2">
                       <Award className="h-4 w-4 mr-2 inline" />
-                      Sobre Nós
+                      {t("about.hero.badge")}
                     </Badge>
                   </motion.div>
-                  
-                  <motion.h1 
+
+                  <motion.h1
                     variants={fadeInUp}
                     className="text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6 text-foreground leading-tight"
                   >
-                    Mais do que um provedor de infraestrutura
+                    {t("about.hero.title")}
                   </motion.h1>
-                  
+
                   <motion.p variants={fadeInUp} className="text-lg text-muted-foreground mb-8">
-                    Somos especialistas em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos. Há mais de 16 anos construindo infraestrutura própria de alta performance.
+                    {t("about.hero.subtitle")}
                   </motion.p>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-8">
                     <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Phone className="mr-2 h-5 w-5" />
-                        Falar com Especialista
+                        {t("hero.cta.primary")}
                       </a>
                     </Button>
                     <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground" asChild>
                       <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                         <Calendar className="mr-2 h-5 w-5" />
-                        Solicitar POC de 30 dias
+                        {t("about.hero.cta.poc")}
                       </a>
                     </Button>
                   </motion.div>
-                  
+
                   <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>16+ Anos</span>
+                      <span>{t("about.hero.stat.years")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>+1500 Clientes</span>
+                      <span>{t("about.hero.stat.clients")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -152,19 +154,19 @@ const About = () => {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="text-center">
                           <div className="text-2xl font-bold text-primary mb-1">+1500</div>
-                          <div className="text-xs text-muted-foreground">Clientes</div>
+                          <div className="text-xs text-muted-foreground">{t("metrics.clients.label")}</div>
                         </div>
                         <div className="text-center">
                           <div className="text-2xl font-bold text-primary mb-1">25GB</div>
-                          <div className="text-xs text-muted-foreground">Rede</div>
+                          <div className="text-xs text-muted-foreground">{t("metrics.network.label")}</div>
                         </div>
                         <div className="text-center col-span-2">
                           <div className="text-2xl font-bold text-primary mb-1">SSD</div>
-                          <div className="text-xs text-muted-foreground">Storage Alta Performance</div>
+                          <div className="text-xs text-muted-foreground">{t("about.card.storage.hp")}</div>
                         </div>
                         <div className="text-center col-span-2">
                           <div className="text-2xl font-bold text-primary mb-1">DELL</div>
-                          <div className="text-xs text-muted-foreground">Servidores Alta Tecnologia</div>
+                          <div className="text-xs text-muted-foreground">{t("about.card.servers.tech")}</div>
                         </div>
                       </div>
                     </div>
@@ -188,13 +190,13 @@ const About = () => {
                 className="mx-auto mb-12 max-w-2xl text-center"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Tecnologias
+                  {t("index.tech.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  Tecnologias que <span className="text-gradient">utilizamos</span>
+                  {t("about.tech.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Parceiros tecnológicos e plataformas que garantem a excelência da nossa infraestrutura
+                  {t("about.tech.desc")}
                 </p>
               </motion.div>
               <TechnologiesCarousel />
@@ -212,21 +214,15 @@ const About = () => {
                   variants={fadeInLeft}
                 >
                   <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                    Nossa História
+                    {t("about.whoweare.badge")}
                   </Badge>
                   <h2 className="mb-6 font-display text-3xl font-bold text-foreground md:text-4xl">
-                    Quem Somos
+                    {t("about.whoweare.title")}
                   </h2>
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
-                    <p>
-                      A MDS Cloud é mais do que um provedor de infraestrutura — somos especialistas em nuvem corporativa brasileira com foco absoluto em sistemas empresariais críticos, como ERPs e CRMs, e na gestão de bancos de dados de alta complexidade. Atuamos como parceiros estratégicos de empresas que não toleram falhas, interrupções ou lentidão, porque entendemos que seus sistemas são o coração operacional dos seus negócios.
-                    </p>
-                    <p>
-                      Fundada há mais de 16 anos, a MDS Cloud vem construindo, do zero, sua própria infraestrutura em nuvem sob controle total, diferente dos modelos que simplesmente revendem capacidade de grandes nuvens públicas. Essa escolha estratégica nos permite oferecer performance superior, segurança robusta, previsibilidade de custos e suporte humano especializado — tudo com excelência local.
-                    </p>
-                    <p className="font-semibold text-foreground">
-                      Somos a nuvem que foi feita para resolver problemas reais de negócios com expertise técnica, proximidade e foco absoluto no cliente.
-                    </p>
+                    <p>{t("about.whoweare.p1")}</p>
+                    <p>{t("about.whoweare.p2")}</p>
+                    <p className="font-semibold text-foreground">{t("about.whoweare.p3")}</p>
                   </div>
                 </motion.div>
 
@@ -261,13 +257,13 @@ const About = () => {
                 className="text-center mb-16"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Nossa Jornada
+                  {t("about.timeline.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  Mais de <span className="text-gradient">16 anos</span> de história
+                  {t("about.timeline.title.1")}<span className="text-gradient">{t("about.timeline.title.highlight")}</span>{t("about.timeline.title.2")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Construindo infraestrutura de alta performance desde 2008
+                  {t("about.timeline.subtitle")}
                 </p>
               </motion.div>
 
@@ -277,11 +273,11 @@ const About = () => {
 
                 <div className="space-y-12 lg:space-y-16">
                   {[
-                    { year: "2008", title: "Fundação", description: "MDS Cloud é fundada com foco em infraestrutura própria", icon: Rocket },
-                    { year: "2012", title: "Expansão", description: "Expansão para data centers Tier III em Vinhedo (SP)", icon: Server },
-                    { year: "2015", title: "Certificações", description: "Primeiras certificações ISO e compliance", icon: Award },
-                    { year: "2020", title: "+1500 Clientes", description: "Atingimos a marca de mais de 1500 empresas confiando em nós", icon: Users },
-                    { year: "2024", title: "Liderança", description: "Maior complexo de data centers da América Latina", icon: TrendingUp },
+                    { year: "2008", title: t("about.timeline.2008.title"), description: t("about.timeline.2008.desc"), icon: Rocket },
+                    { year: "2012", title: t("about.timeline.2012.title"), description: t("about.timeline.2012.desc"), icon: Server },
+                    { year: "2015", title: t("about.timeline.2015.title"), description: t("about.timeline.2015.desc"), icon: Award },
+                    { year: "2020", title: t("about.timeline.2020.title"), description: t("about.timeline.2020.desc"), icon: Users },
+                    { year: "2024", title: t("about.timeline.2024.title"), description: t("about.timeline.2024.desc"), icon: TrendingUp },
                   ].map((milestone, index) => (
                     <motion.div
                       key={index}
@@ -336,13 +332,13 @@ const About = () => {
                 className="text-center mb-16"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Nossos Serviços
+                  {t("about.services.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  O Que Fazemos
+                  {t("about.services.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Soluções completas de tecnologia voltadas para o operacional crítico das empresas
+                  {t("about.services.subtitle")}
                 </p>
               </motion.div>
 
@@ -356,26 +352,26 @@ const About = () => {
                 {[
                   {
                     icon: Zap,
-                    title: "Nuvem Corporativa de Alta Performance",
-                    description: "Infraestrutura própria, totalmente administrada, com foco em ERPs, CRMs e aplicações empresariais que exigem baixa latência, alta performance e escalabilidade sob demanda — sem surpresas de performance ou dependência de terceiros.",
+                    title: t("about.services.cloud.title"),
+                    description: t("about.services.cloud.desc"),
                     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   },
                   {
                     icon: Building2,
-                    title: "Administração de Bancos de Dados (DBA)",
-                    description: "Serviços avançados de administração, performance, otimização e segurança de bancos de dados. Acompanhamos desde a arquitetura até o tuning contínuo, prevenindo falhas e maximizando eficiência.",
+                    title: t("about.services.dba.title"),
+                    description: t("about.services.dba.desc"),
                     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   },
                   {
                     icon: Shield,
-                    title: "Segurança e Compliance Integrados",
-                    description: "Nossa infraestrutura incorpora políticas de LGPD, backup, criptografia, monitoramento e testes contínuos, com equipe dedicada à proteção e à conformidade regulatória.",
+                    title: t("about.services.security.title"),
+                    description: t("about.services.security.desc"),
                     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   },
                   {
                     icon: Users,
-                    title: "Suporte Técnico Especializado 24×7",
-                    description: "Equipe humana em tempo integral, com especialistas que conhecem seu ambiente técnico e estão prontos para resolver qualquer necessidade rapidamente — sem intermediários, sem chatbots automáticos.",
+                    title: t("about.services.support.title"),
+                    description: t("about.services.support.desc"),
                     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   },
                 ].map((service, index) => (
@@ -434,13 +430,13 @@ const About = () => {
                 className="text-center mb-16"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Certificações
+                  {t("about.certs.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  Certificações e Qualificações
+                  {t("about.certs.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Reconhecimento internacional pela qualidade e segurança dos nossos serviços
+                  {t("about.certs.subtitle")}
                 </p>
               </motion.div>
               <CertificationsCarousel />
@@ -458,13 +454,13 @@ const About = () => {
                 className="text-center mb-16"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Diferenciais
+                  {t("about.diff.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  Nossos Diferenciais
+                  {t("common.diff.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  O que torna a MDS Cloud única no mercado
+                  {t("about.diff.subtitle")}
                 </p>
               </motion.div>
 
@@ -476,36 +472,12 @@ const About = () => {
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {[
-                  {
-                    icon: Award,
-                    title: "Infraestrutura Própria de Alta Performance",
-                    description: "Rede dedicada de alta capacidade, servidores Dell de última geração e storages SSD otimizados, tudo projetado para performance superior.",
-                  },
-                  {
-                    icon: CheckCircle2,
-                    title: "Alta Disponibilidade com Redundância Inteligente",
-                    description: "Projetos com failover automático, replicação de dados e arquitetura resiliente, garantindo que seus sistemas continuem operando mesmo diante de falhas isoladas.",
-                  },
-                  {
-                    icon: Users,
-                    title: "SLA Real e Suporte Especializado 24×7",
-                    description: "Equipe humana de plantão com conhecimento profundo dos ambientes dos clientes, reduzindo tempo de resposta e acelerando resolução de incidentes.",
-                  },
-                  {
-                    icon: Zap,
-                    title: "Migração Ágil e Sem Interrupções",
-                    description: "Projetos de migração realizados com planejamento técnico, execução controlada e mínima interferência na rotina da empresa — muitas vezes concluídos em até 24 horas.",
-                  },
-                  {
-                    icon: Shield,
-                    title: "Proof of Concept (POC) de 30 Dias",
-                    description: "Ambiente de teste completo, gratuito e sem compromisso, para medir performance, compatibilidade e suporte antes da contratação definitiva.",
-                  },
-                  {
-                    icon: Globe,
-                    title: "Data Center Tier III no Brasil",
-                    description: "Presença física no maior complexo de data centers da América Latina em Vinhedo (SP), com plataforma certificada e equipamentos de alta confiabilidade.",
-                  },
+                  { icon: Award,       title: t("about.diff.1.title"), description: t("about.diff.1.desc") },
+                  { icon: CheckCircle2, title: t("about.diff.2.title"), description: t("about.diff.2.desc") },
+                  { icon: Users,       title: t("about.diff.3.title"), description: t("about.diff.3.desc") },
+                  { icon: Zap,         title: t("about.diff.4.title"), description: t("about.diff.4.desc") },
+                  { icon: Shield,      title: t("about.diff.5.title"), description: t("about.diff.5.desc") },
+                  { icon: Globe,       title: t("about.diff.6.title"), description: t("about.diff.6.desc") },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -543,13 +515,13 @@ const About = () => {
                 className="text-center mb-16"
               >
                 <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-                  Nossa Infraestrutura
+                  {t("about.gallery.badge")}
                 </Badge>
                 <h2 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
-                  Conheça a MDS Cloud
+                  {t("about.gallery.title")}
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Data centers, equipe e infraestrutura de alta performance
+                  {t("about.gallery.subtitle")}
                 </p>
               </motion.div>
 
@@ -561,36 +533,12 @@ const About = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {[
-                  { 
-                    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Data Center Tier III",
-                    description: "Maior complexo da América Latina"
-                  },
-                  { 
-                    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Equipe Especializada",
-                    description: "Profissionais dedicados 24x7"
-                  },
-                  { 
-                    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Infraestrutura Moderna",
-                    description: "Tecnologia de ponta"
-                  },
-                  { 
-                    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Segurança Enterprise",
-                    description: "Múltiplas camadas de proteção"
-                  },
-                  { 
-                    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Monitoramento 24x7",
-                    description: "Acompanhamento contínuo"
-                  },
-                  { 
-                    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-                    title: "Suporte Humanizado",
-                    description: "Atendimento personalizado"
-                  },
+                  { image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.1.title"), description: t("about.gallery.1.desc") },
+                  { image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.2.title"), description: t("about.gallery.2.desc") },
+                  { image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.3.title"), description: t("about.gallery.3.desc") },
+                  { image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.4.title"), description: t("about.gallery.4.desc") },
+                  { image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.5.title"), description: t("about.gallery.5.desc") },
+                  { image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: t("about.gallery.6.title"), description: t("about.gallery.6.desc") },
                 ].map((item, index) => (
                   <motion.div
                     key={index}
@@ -653,21 +601,21 @@ const About = () => {
                   className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full mb-8 shadow-lg"
                 >
                   <Gift className="h-5 w-5" />
-                  <span className="font-semibold">Oferta Especial</span>
+                  <span className="font-semibold">{t("about.cta.badge")}</span>
                 </motion.div>
-                
+
                 <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-                  Pronto para transformar sua infraestrutura?
+                  {t("about.cta.title")}
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8">
-                  Experimente por 30 dias sem custo. Veja na prática como a MDS Cloud pode transformar a infraestrutura da sua empresa.
+                  {t("common.poc.subtitle")}
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="heroShiny" size="lg" className="px-8 py-6 text-base gap-2" asChild>
                     <a href="https://wa.me/5511991664976" target="_blank" rel="noopener noreferrer">
                       <Zap className="h-5 w-5" />
-                      Solicitar POC de até 30 dias
+                      {t("common.hero.cta")}
                     </a>
                   </Button>
                 </div>
