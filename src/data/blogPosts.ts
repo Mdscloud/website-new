@@ -1,6 +1,8 @@
 import imgCloudHoteis from "@/assets/artigo1.jpg";
 import imgInfraestruturaErp from "@/assets/artigo2.jpg";
 import imgHotelariaDigital from "@/assets/artigo3.jpg";
+import imgInfraestruturaAgro from "@/assets/infraestrutura-robusta.webp";
+import imgCloudHotelaria from "@/assets/cloud-de-alta-performance.jpg";
 
 export type BodyBlock =
   | { type: "paragraph"; content: string }
@@ -25,6 +27,133 @@ export interface BlogPostData {
 }
 
 export const blogPosts: BlogPostData[] = [
+  {
+    slug: "cloud-alta-performance-impulsiona-hotelaria",
+    title: "Cloud de alta performance impulsiona hotelaria",
+    excerpt:
+      "Com o avanço da digitalização e a crescente dependência de PMS, ERPs e integrações com canais de venda, a infraestrutura de tecnologia assume papel estratégico na hotelaria — e a MDS Cloud lidera esse movimento com cloud própria, suporte especializado e foco em missão crítica.",
+    date: "7 Abr 2026",
+    author: "Redação Hotelier News",
+    category: "Hotelaria",
+    image: imgCloudHotelaria,
+    externalUrl: "https://hoteliernews.com.br/cloud-de-alta-performance-impulsiona-hotelaria/",
+    source: "Hotelier News",
+    body: [
+      {
+        type: "paragraph",
+        content:
+          "Em meio ao avanço da digitalização na hotelaria e ao aumento da dependência de sistemas como PMS, ERPs e integrações com canais de venda, a infraestrutura de tecnologia tem ganhado papel cada vez mais estratégico para a operação dos empreendimentos.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Nesse cenário, a MDS Cloud Solutions, empresa brasileira especializada em cloud corporativa de alta performance, tem ampliado sua atuação no setor hoteleiro ao oferecer ambientes dedicados para aplicações críticas, com foco em desempenho, estabilidade e segurança.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A crescente complexidade das operações, aliada ao volume de dados e à necessidade de disponibilidade contínua, tem impulsionado a busca por fornecedores mais especializados, capazes de atender às demandas específicas do segmento.",
+      },
+      {
+        type: "quote",
+        content:
+          "Hoje, qualquer instabilidade em sistemas impacta diretamente a operação do hotel e a experiência do hóspede. Por isso, a infraestrutura precisa acompanhar esse nível de criticidade.",
+      },
+      { type: "heading", content: "Demanda por performance e previsibilidade" },
+      {
+        type: "paragraph",
+        content:
+          "Segundo a empresa, hotéis e redes têm buscado ambientes com maior previsibilidade de desempenho, especialmente em sistemas que concentram reservas, gestão operacional e integrações com terceiros. A proposta da MDS Cloud envolve infraestrutura própria com alta capacidade de processamento, baixa latência e suporte especializado, incluindo atuação direta em banco de dados para otimizações contínuas.",
+      },
+      { type: "heading", content: "Crescimento apoiado em parcerias" },
+      {
+        type: "paragraph",
+        content:
+          "Outro movimento observado pela empresa é a aproximação com desenvolvedores de PMS, ERPs e integradores do setor, formando um ecossistema que permite entregar soluções mais aderentes às necessidades da hotelaria. Essa estratégia acompanha uma tendência do mercado, que tem priorizado parceiros com conhecimento específico do segmento e capacidade de suportar ambientes de missão crítica.",
+      },
+      { type: "heading", content: "Infraestrutura como elemento estratégico" },
+      {
+        type: "paragraph",
+        content:
+          "Com a tecnologia cada vez mais integrada à experiência do hóspede e à eficiência operacional, a infraestrutura deixou de ser apenas um suporte técnico e passou a ocupar posição estratégica dentro das operações hoteleiras. Nesse contexto, a MDS Cloud aposta em uma abordagem consultiva, auxiliando empresas na construção de ambientes mais eficientes, seguros e preparados para o crescimento, alinhados às exigências atuais do setor.",
+      },
+    ],
+  },
+  {
+    slug: "infraestrutura-agro-digital",
+    title: "Infraestrutura robusta se torna peça chave para a eficiência do agro digital",
+    excerpt:
+      "Com mais de 40% da base de clientes no agronegócio, a MDS Cloud acompanha de perto como lentidão, instabilidade e falhas em sistemas críticos afetam a rotina das empresas do setor — e como uma nuvem robusta faz a diferença na operação.",
+    date: "14 Abr 2026",
+    author: "Caio Coutinho",
+    category: "Agronegócio",
+    image: imgInfraestruturaAgro,
+    externalUrl:
+      "https://campoenegocios.com/infraestrutura-robusta-se-torna-peca-chave-para-a-eficiencia-do-agro-digital/",
+    source: "Campo & Negócios",
+    body: [
+      {
+        type: "paragraph",
+        content:
+          "A digitalização do agronegócio brasileiro trouxe ganhos importantes em produtividade, controle e capacidade de gestão. Ao mesmo tempo, elevou a dependência de sistemas críticos para a rotina das empresas do setor. ERPs, plataformas de gestão, bancos de dados e integrações entre áreas operacionais passaram a ocupar uma função central em operações que exigem velocidade, estabilidade e disponibilidade contínua.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Nesse contexto, a infraestrutura tecnológica deixou de ser apenas retaguarda e passou a influenciar diretamente o desempenho do negócio. Lentidão em sistemas, falhas, instabilidades e demora no suporte técnico podem comprometer desde processos internos até o atendimento ao cliente, afetando produtividade, faturamento e tomada de decisão.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "É essa realidade que a MDS Cloud acompanha de perto. Empresa brasileira especializada em nuvem corporativa de alta performance, a companhia construiu uma atuação fortemente ligada ao agronegócio ao longo de seus 14 anos de mercado. Hoje, mais de 40% da base de clientes da empresa pertence ao setor.",
+      },
+      {
+        type: "quote",
+        content:
+          "Temos uma vivência muito concreta nesse mercado. O agro representa mais de 40% da nossa base de clientes, e isso nos deu uma experiência profunda sobre as dores reais do setor. Ao longo desses 14 anos, acompanhamos de perto como lentidão, instabilidade e falhas em sistemas críticos afetam a rotina das empresas e comprometem a eficiência da operação.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A experiência da empresa indica que um dos pontos mais sensíveis está na sustentação de sistemas ERP e aplicações corporativas. No agro, esses ambientes concentram processos administrativos, financeiros, comerciais e operacionais. Quando não respondem com rapidez ou estabilidade, o impacto se espalha por diferentes áreas.",
+      },
+      {
+        type: "quote",
+        content:
+          "Temos uma expertise muito forte com sistemas ERP. E, na prática, isso significa entender que performance não é detalhe técnico. Tempo de resposta, estabilidade e disponibilidade interferem diretamente na produtividade da equipe, na fluidez dos processos e no nível de serviço entregue ao cliente.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "A MDS Cloud aponta que muitos dos problemas enfrentados por empresas do agro têm origem em ambientes mal dimensionados ou em estruturas com pouco controle sobre desempenho e suporte. Entre os efeitos mais comuns estão instabilidades em horários de pico, baixa previsibilidade de performance, falhas em banco de dados e demora na resposta em situações críticas.",
+      },
+      {
+        type: "quote",
+        content:
+          "Quando há falha, lentidão ou indisponibilidade, o reflexo não fica restrito ao TI. Ele chega no atendimento, na operação, no comercial e na relação com o cliente. Em muitos casos, o maior prejuízo não é só a falha em si, mas a incapacidade de responder rápido e de atuar com profundidade técnica.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Para a empresa, esse é um ponto em que seu modelo operacional faz diferença. A MDS Cloud atua com cloud própria e equipe própria, mantendo controle direto sobre a infraestrutura e maior proximidade com o ambiente do cliente. Na avaliação do executivo, isso se traduz em mais agilidade e assertividade, especialmente em operações que não podem depender de suportes distantes ou de estruturas genéricas.",
+      },
+      {
+        type: "quote",
+        content:
+          "Ser uma empresa brasileira, com cloud própria e equipe própria, nos permite atuar com mais responsabilidade sobre o ambiente e com muito mais rapidez na resposta. Para o agro, isso é decisivo, porque estamos falando de empresas que precisam de continuidade, previsibilidade e segurança para operar.",
+      },
+      {
+        type: "paragraph",
+        content:
+          "Com a ampliação do uso de tecnologia no campo e nas cadeias ligadas ao agronegócio, a tendência é que a infraestrutura ganhe ainda mais relevância. Para a MDS Cloud, a discussão já não está apenas em migrar sistemas para a nuvem, mas em garantir que essa nuvem seja capaz de sustentar aplicações críticas com desempenho consistente.",
+      },
+      {
+        type: "quote",
+        content:
+          "O agro está cada vez mais digital e mais dependente de sistemas. Isso exige uma infraestrutura à altura da operação. Nosso trabalho é garantir uma base robusta, com alta performance, suporte próximo e capacidade real de sustentar ambientes críticos sem comprometer a operação do cliente.",
+      },
+    ],
+  },
   {
     slug: "infraestrutura-cloud-critica-hoteis",
     title: "Por que a infraestrutura de cloud se tornou crítica para os hotéis",
