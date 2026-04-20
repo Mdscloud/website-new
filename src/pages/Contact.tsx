@@ -23,18 +23,47 @@ const Contact = () => {
     consentimentoMarketing: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validação: consentimento para finalidade é obrigatório
+
     if (!formData.consentimentoFinalidade) {
       alert(t("contact.alert.consent"));
       return;
     }
 
-    // Aqui você pode adicionar a lógica de envio do formulário
-    console.log("Form submitted:", formData);
-    alert(t("contact.alert.success"));
+    setSending(true);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          tipo: "contato",
+          nome: formData.nome,
+          email: formData.email,
+          telefone: formData.telefone,
+          empresa: formData.empresa,
+          mensagem: formData.mensagem,
+        }),
+      });
+
+      if (!res.ok) throw new Error();
+      alert(t("contact.alert.success"));
+      setFormData({
+        nome: "",
+        email: "",
+        telefone: "",
+        empresa: "",
+        mensagem: "",
+        consentimentoFinalidade: false,
+        consentimentoMarketing: false,
+      });
+    } catch {
+      alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -192,8 +221,8 @@ const Contact = () => {
                       </p>
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full">
-                      {t("common.talk.expert")}
+                    <Button type="submit" size="lg" className="w-full" disabled={sending}>
+                      {sending ? "Enviando..." : t("common.talk.expert")}
                     </Button>
                   </form>
                 </motion.div>

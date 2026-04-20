@@ -94,17 +94,41 @@ const PoliticasPrivacidade = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.consentimentoFinalidade) {
       alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
       return;
     }
-    
-    // Aqui você pode adicionar a lógica de envio do formulário
-    console.log("Form submitted:", formData);
-    alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+
+    setSending(true);
+    try {
+      const payload = {
+        tipo: "privacidade",
+        nome: formData.nome,
+        email: formData.email,
+        telefone: formData.telefone,
+        empresa: formData.empresa,
+        solicitacoes: formData.solicitacoes.join(", "),
+        mensagem: formData.descricao,
+      };
+
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error();
+      alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+    } catch {
+      alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -459,8 +483,8 @@ const PoliticasPrivacidade = () => {
                           </Label>
                         </div>
                       </div>
-                      <Button type="submit" size="sm" className="w-full">
-                        Enviar
+                      <Button type="submit" size="sm" className="w-full" disabled={sending}>
+                        {sending ? "Enviando..." : "Enviar"}
                       </Button>
                     </form>
                   </motion.div>
