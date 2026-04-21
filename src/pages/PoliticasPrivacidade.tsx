@@ -122,15 +122,25 @@ const PoliticasPrivacidade = () => {
         mensagem: formData.descricao,
       };
 
+      console.log("[MDS Debug] Payload enviado:", JSON.stringify(payload, null, 2));
+
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error();
+      console.log("[MDS Debug] Status da resposta:", res.status);
+
+      if (!res.ok) {
+        const errorBody = await res.text();
+        console.error("[MDS Debug] Corpo do erro:", errorBody);
+        throw new Error(errorBody);
+      }
+
       alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
-    } catch {
+    } catch (err) {
+      console.error("[MDS Debug] Erro capturado:", err);
       alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
     } finally {
       setSending(false);
