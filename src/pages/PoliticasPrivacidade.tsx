@@ -37,6 +37,7 @@ const PoliticasPrivacidade = () => {
     cargo: "",
     site: "",
     email: "",
+    telefone: "",
     descricao: "",
     solicitacoes: [] as string[],
     anexo: null as File | null,
@@ -98,6 +99,11 @@ const PoliticasPrivacidade = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.nome || !formData.email) {
+      alert("Por favor, preencha seu nome e e-mail antes de enviar.");
+      return;
+    }
 
     if (!formData.consentimentoFinalidade) {
       alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
