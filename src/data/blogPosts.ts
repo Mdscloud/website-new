@@ -1,7 +1,7 @@
 import imgCloudHoteis from "@/assets/artigo1.jpg";
 import imgInfraestruturaErp from "@/assets/artigo2.jpg";
 import imgHotelariaDigital from "@/assets/artigo3.jpg";
-import imgInfraestruturaAgro from "@/assets/socios/gustavo.jpeg";
+import imgInfraestruturaAgro from "@/assets/infraestrutura-robusta.webp";
 import imgCloudHotelaria from "@/assets/cloud-de-alta-performance.jpg";
 
 export type BodyBlock =
