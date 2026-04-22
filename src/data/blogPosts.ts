@@ -1,7 +1,7 @@
 import imgCloudHoteis from "@/assets/artigo1.jpg";
 import imgInfraestruturaErp from "@/assets/artigo2.jpg";
 import imgHotelariaDigital from "@/assets/artigo3.jpg";
-import imgInfraestruturaAgro from "@/assets/infraestrutura-robusta.webp";
+import imgInfraestruturaAgro from "@/assets/socios/gustavo.jpeg";
 import imgCloudHotelaria from "@/assets/cloud-de-alta-performance.jpg";
 
 export type BodyBlock =
@@ -88,6 +88,7 @@ export const blogPosts: BlogPostData[] = [
     author: "Caio Coutinho",
     category: "Agronegócio",
     image: imgInfraestruturaAgro,
+    imagePosition: "top",
     externalUrl:
       "https://campoenegocios.com/infraestrutura-robusta-se-torna-peca-chave-para-a-eficiencia-do-agro-digital/",
     source: "Campo & Negócios",
