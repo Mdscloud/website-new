@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
-import { Shield, Building2, Users, Award, TrendingUp } from "lucide-react";
+import { Shield, Building2, Users, Award, TrendingUp, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -96,20 +96,23 @@ const PoliticasPrivacidade = () => {
   };
 
   const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.nome || !formData.email) {
-      alert("Por favor, preencha seu nome e e-mail antes de enviar.");
+      setFormError("Por favor, preencha seu nome e e-mail antes de enviar.");
       return;
     }
 
     if (!formData.consentimentoFinalidade) {
-      alert("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
+      setFormError("Por favor, aceite o consentimento para tratamento de dados para as finalidades informadas.");
       return;
     }
 
+    setFormError(null);
     setSending(true);
     try {
       const payload = {
@@ -133,9 +136,9 @@ const PoliticasPrivacidade = () => {
         throw new Error(errorBody);
       }
 
-      alert("Solicitação enviada com sucesso! Entraremos em contato em breve.");
+      setSubmitted(true);
     } catch (err) {
-      alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
+      setFormError("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
     } finally {
       setSending(false);
     }
@@ -326,14 +329,49 @@ const PoliticasPrivacidade = () => {
                     variants={fadeInUp}
                     className="p-6 bg-card border border-border rounded-xl"
                   >
-                    <h2 className="text-xl font-display font-bold text-foreground mb-4">
-                      Entre em Contato
-                    </h2>
-                    <p className="text-sm text-muted-foreground mb-6">
-                      Utilize o formulário abaixo para exercer seus direitos previstos na LGPD
-                    </p>
+                    {submitted ? (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4 }}
+                        className="flex flex-col items-center justify-center py-10 text-center"
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+                          className="relative w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mb-6"
+                        >
+                          <div className="absolute inset-0 rounded-full bg-primary/10 animate-ping" />
+                          <CheckCircle2 className="w-9 h-9 text-primary relative z-10" />
+                        </motion.div>
+                        <motion.h3
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.25 }}
+                          className="text-xl font-bold text-foreground mb-2"
+                        >
+                          Solicitação enviada!
+                        </motion.h3>
+                        <motion.p
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.35 }}
+                          className="text-sm text-muted-foreground max-w-xs"
+                        >
+                          Recebemos sua solicitação e entraremos em contato em breve.
+                        </motion.p>
+                      </motion.div>
+                    ) : (
+                      <>
+                        <h2 className="text-xl font-display font-bold text-foreground mb-4">
+                          Entre em Contato
+                        </h2>
+                        <p className="text-sm text-muted-foreground mb-6">
+                          Utilize o formulário abaixo para exercer seus direitos previstos na LGPD
+                        </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="politicas-nome" className="text-sm">
                           Seu nome <span className="text-destructive">*</span>
@@ -493,10 +531,21 @@ const PoliticasPrivacidade = () => {
                           </Label>
                         </div>
                       </div>
-                      <Button type="submit" size="sm" className="w-full" disabled={sending}>
-                        {sending ? "Enviando..." : "Enviar"}
-                      </Button>
-                    </form>
+                          {formError && (
+                            <motion.p
+                              initial={{ opacity: 0, y: -4 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-lg px-3 py-2 text-center"
+                            >
+                              {formError}
+                            </motion.p>
+                          )}
+                          <Button type="submit" size="sm" className="w-full" disabled={sending}>
+                            {sending ? "Enviando..." : "Enviar"}
+                          </Button>
+                        </form>
+                      </>
+                    )}
                   </motion.div>
 
                 {/* Conteúdo */}

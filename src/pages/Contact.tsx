@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingContact } from "@/components/FloatingContact";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Instagram, Facebook, MessageCircle, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -24,15 +24,18 @@ const Contact = () => {
   });
 
   const [sending, setSending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.consentimentoFinalidade) {
-      alert(t("contact.alert.consent"));
+      setFormError(t("contact.alert.consent"));
       return;
     }
 
+    setFormError(null);
     setSending(true);
     try {
       const res = await fetch("/.netlify/functions/send-email", {
@@ -49,18 +52,9 @@ const Contact = () => {
       });
 
       if (!res.ok) throw new Error();
-      alert(t("contact.alert.success"));
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        empresa: "",
-        mensagem: "",
-        consentimentoFinalidade: false,
-        consentimentoMarketing: false,
-      });
+      setSubmitted(true);
     } catch {
-      alert("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
+      setFormError("Erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.");
     } finally {
       setSending(false);
     }
@@ -115,10 +109,45 @@ const Contact = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <h2 className="mb-6 font-display text-2xl font-bold text-foreground md:text-3xl">
-                    {t("contact.form.title")}
-                  </h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitted ? (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4 }}
+                      className="flex flex-col items-center justify-center py-16 text-center"
+                    >
+                      <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.1 }}
+                        className="relative w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mb-6"
+                      >
+                        <div className="absolute inset-0 rounded-full bg-primary/10 animate-ping" />
+                        <CheckCircle2 className="w-9 h-9 text-primary relative z-10" />
+                      </motion.div>
+                      <motion.h3
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.25 }}
+                        className="text-2xl font-bold text-foreground mb-3"
+                      >
+                        Mensagem enviada!
+                      </motion.h3>
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.35 }}
+                        className="text-muted-foreground max-w-sm"
+                      >
+                        Nossa equipe entrará em contato em breve.
+                      </motion.p>
+                    </motion.div>
+                  ) : (
+                    <>
+                      <h2 className="mb-6 font-display text-2xl font-bold text-foreground md:text-3xl">
+                        {t("contact.form.title")}
+                      </h2>
+                      <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="nome">
@@ -221,10 +250,21 @@ const Contact = () => {
                       </p>
                     </div>
 
-                    <Button type="submit" size="lg" className="w-full" disabled={sending}>
-                      {sending ? "Enviando..." : t("common.talk.expert")}
-                    </Button>
-                  </form>
+                        {formError && (
+                          <motion.p
+                            initial={{ opacity: 0, y: -4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded-lg px-4 py-3 text-center"
+                          >
+                            {formError}
+                          </motion.p>
+                        )}
+                        <Button type="submit" size="lg" className="w-full" disabled={sending}>
+                          {sending ? "Enviando..." : t("common.talk.expert")}
+                        </Button>
+                      </form>
+                    </>
+                  )}
                 </motion.div>
 
                 {/* Contact Info */}
