@@ -6,12 +6,6 @@
   directory = "netlify/functions"
 
 [[redirects]]
-  from = "/api/send-email"
-  to = "/.netlify/functions/send-email"
-  status = 200
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

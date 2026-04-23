@@ -10,6 +10,11 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     proxy: {
       "/api": "http://localhost:3001",
+      "/.netlify/functions/send-email": {
+        target: "http://localhost:3001",
+        changeOrigin: true,
+        rewrite: () => "/api/send-email",
+      },
     },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
