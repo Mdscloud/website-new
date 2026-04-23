@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useI18n } from "@/lib/i18n";
 
 const Contact = () => {
@@ -26,6 +26,13 @@ const Contact = () => {
   const [sending, setSending] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const formCardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (submitted) {
+      formCardRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [submitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,6 +111,7 @@ const Contact = () => {
               <div className="grid gap-12 lg:grid-cols-2">
                 {/* Contact Form */}
                 <motion.div
+                  ref={formCardRef}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
