@@ -102,7 +102,11 @@ const PoliticasPrivacidade = () => {
 
   useEffect(() => {
     if (submitted) {
-      formCardRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      const el = formCardRef.current;
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 120;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
     }
   }, [submitted]);
 
