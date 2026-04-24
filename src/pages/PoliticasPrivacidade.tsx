@@ -129,9 +129,11 @@ const PoliticasPrivacidade = () => {
       const payload = {
         tipo: "privacidade",
         nome: formData.nome,
-        email: formData.email,
-        telefone: formData.telefone,
+        sobrenome: formData.sobrenome,
         empresa: formData.empresa,
+        cargo: formData.cargo,
+        site: formData.site,
+        email: formData.email,
         solicitacoes: formData.solicitacoes.join(", "),
         mensagem: formData.descricao,
       };

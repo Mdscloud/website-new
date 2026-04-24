@@ -23,7 +23,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: "Body inválido" }) };
   }
 
-  const { tipo, nome, email, telefone, empresa, mensagem, solicitacoes } = body;
+  const { tipo, nome, sobrenome, email, telefone, empresa, cargo, site, mensagem, solicitacoes } = body;
 
   if (!nome || !email) {
     return { statusCode: 400, body: JSON.stringify({ error: "Nome e e-mail são obrigatórios" }) };
@@ -35,10 +35,12 @@ exports.handler = async (event) => {
       : `[MDS Cloud] Novo contato via site — ${nome}`;
 
   const linhas = [
-    ["Nome", nome],
+    ["Nome", sobrenome ? `${nome} ${sobrenome}` : nome],
     ["E-mail", email],
     telefone && ["Telefone", telefone],
     empresa && ["Empresa", empresa],
+    cargo && ["Cargo", cargo],
+    site && ["Site", site],
     solicitacoes && ["Solicitações", solicitacoes],
     mensagem && ["Mensagem", mensagem],
   ]
@@ -58,7 +60,7 @@ exports.handler = async (event) => {
   try {
     await transporter.sendMail({
       from: `"Site MDS Cloud" <${process.env.SMTP_USER}>`,
-      to: "rodrigo@97sites.com.br",
+      to: tipo === "privacidade" ? "privacidade@mdscloud.com.br" : "rodrigo@97sites.com.br",
       replyTo: email,
       subject: assunto,
       html,
