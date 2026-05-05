@@ -173,7 +173,7 @@ export const homeTestimonials = [
     companyLogo: otonTechLogo,
     companyName: "OtonTech Soluções",
     headline: "Como a OtonTech Soluções potencializa clientes do agronegócio com a infraestrutura MDS Cloud",
-    quote: "A parceria entre a OtonTech Soluções e a MDS Cloud tem sido fundamental para o sucesso da implantação e otimização do ERP Siagri, atendendo com excelência as empresas do ramo do agronegócio. Com a infraestrutura em nuvem da MDS Cloud, nossos clientes contam com alta performance, estabilidade, segurança e acesso rápido às informações — fatores essenciais para a continuidade das operações, especialmente em períodos de safra e alta movimentação. Essa combinação entre consultoria especializada e tecnologia em nuvem tem proporcionado maior eficiência operacional, redução de custos com infraestrutura local e mais agilidade na tomada de decisões, contribuindo diretamente para o crescimento sustentável e a competitividade das empresas do agronegócio.",
+    quote: "A parceria entre a OtonTech Soluções e a MDS Cloud é essencial para a implantação e otimização do ERP Siagri no agronegócio. A OtonTech garante consultoria especializada, alinhando o sistema às necessidades do negócio. Com a nuvem da MDS Cloud, há alta performance, segurança e acesso rápido às informações. Essa integração gera eficiência, reduz custos e agiliza decisões.",
     author: {
       name: "OtonTech Soluções",
       role: "Consultoria especializada em ERP Siagri",

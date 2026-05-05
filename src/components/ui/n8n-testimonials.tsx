@@ -94,16 +94,6 @@ export function N8nTestimonials({
     };
   }, [autoPlay, shouldPause, speed]);
 
-  // Mouse wheel scroll
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (!scrollContainerRef.current) return;
-    e.preventDefault();
-    const container = scrollContainerRef.current;
-    const maxScroll = container.scrollWidth - container.clientWidth;
-    container.scrollLeft = Math.max(0, Math.min(container.scrollLeft + e.deltaY * 0.5, maxScroll));
-    pauseWithTimer(2000);
-  };
-
   // Prev / Next buttons
   const scrollBy = (direction: 'prev' | 'next') => {
     if (!scrollContainerRef.current) return;
@@ -276,7 +266,6 @@ export function N8nTestimonials({
 
           <div
             ref={scrollContainerRef}
-            onWheel={handleWheel}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
