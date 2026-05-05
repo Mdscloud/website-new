@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
@@ -23,22 +23,40 @@ interface N8nTestimonialsProps {
   speed?: number; // pixels per second
 }
 
-export function N8nTestimonials({ 
-  testimonials, 
+const CARD_SCROLL_STEP = 412; // ~380px card + 32px gap
+
+export function N8nTestimonials({
+  testimonials,
   autoPlay = true,
-  speed = 30 // 30 pixels per second for slow scroll
+  speed = 30
 }: N8nTestimonialsProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [isPaused, setIsPaused] = useState(false); // paused by button click or touch
   const animationFrameRef = useRef<number>();
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const touchStartXRef = useRef<number>(0);
 
-  // Duplicate testimonials for seamless loop
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
+
+  // Pause and auto-resume after a delay (used by buttons and touch)
+  const pauseWithTimer = useCallback((durationMs: number) => {
+    setIsPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => setIsPaused(false), durationMs);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  const shouldPause = isHovered || isPaused;
 
   // Auto-scroll animation
   useEffect(() => {
-    if (!autoPlay || isHovered || !scrollContainerRef.current) {
+    if (!autoPlay || shouldPause || !scrollContainerRef.current) {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -46,27 +64,23 @@ export function N8nTestimonials({
     }
 
     let lastTime = performance.now();
-    
+
     const animate = (currentTime: number) => {
-      if (!scrollContainerRef.current || isHovered) return;
-      
-      const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
+      if (!scrollContainerRef.current || shouldPause) return;
+
+      const deltaTime = (currentTime - lastTime) / 1000;
       const scrollAmount = speed * deltaTime;
-      
+
       const container = scrollContainerRef.current;
-      const currentScroll = container.scrollLeft;
+      const newPosition = container.scrollLeft + scrollAmount;
       const maxScroll = container.scrollWidth - container.clientWidth;
-      const newPosition = currentScroll + scrollAmount;
-      
-      // Loop back to start when reaching the end
+
       if (newPosition >= maxScroll) {
         container.scrollLeft = 0;
-        setScrollPosition(0);
       } else {
         container.scrollLeft = newPosition;
-        setScrollPosition(newPosition);
       }
-      
+
       lastTime = currentTime;
       animationFrameRef.current = requestAnimationFrame(animate);
     };
@@ -78,47 +92,56 @@ export function N8nTestimonials({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [autoPlay, isHovered, speed]);
+  }, [autoPlay, shouldPause, speed]);
 
-  // Handle mouse wheel scroll
+  // Mouse wheel scroll
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     if (!scrollContainerRef.current) return;
-    
     e.preventDefault();
     const container = scrollContainerRef.current;
-    const scrollAmount = e.deltaY * 0.5; // Slow down scroll speed
-    const newPosition = container.scrollLeft + scrollAmount;
-    
-    // Clamp scroll position
     const maxScroll = container.scrollWidth - container.clientWidth;
-    const clampedPosition = Math.max(0, Math.min(newPosition, maxScroll));
-    
-    setScrollPosition(clampedPosition);
-    container.scrollLeft = clampedPosition;
-    
-    // Cancel auto-scroll temporarily when user scrolls
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
+    container.scrollLeft = Math.max(0, Math.min(container.scrollLeft + e.deltaY * 0.5, maxScroll));
+    pauseWithTimer(2000);
+  };
+
+  // Prev / Next buttons
+  const scrollBy = (direction: 'prev' | 'next') => {
+    if (!scrollContainerRef.current) return;
+    const delta = direction === 'next' ? CARD_SCROLL_STEP : -CARD_SCROLL_STEP;
+    scrollContainerRef.current.scrollBy({ left: delta, behavior: 'smooth' });
+    pauseWithTimer(3000);
+  };
+
+  // Touch / swipe handlers
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    setIsPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!scrollContainerRef.current) return;
+    const delta = touchStartXRef.current - e.touches[0].clientX;
+    scrollContainerRef.current.scrollLeft += delta;
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    pauseWithTimer(2000);
   };
 
   // Testimonial Card Component with mouse tracking
-  function TestimonialCard({
-    testimonial,
-  }: {
-    testimonial: Testimonial;
-  }) {
+  function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
     const cardRef = useRef<HTMLDivElement>(null);
     const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
       if (!cardRef.current) return;
-      
       const rect = cardRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      
-      setMousePosition({ x, y });
+      setMousePosition({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100,
+      });
     };
 
     return (
@@ -128,7 +151,6 @@ export function N8nTestimonials({
         className="group relative flex-shrink-0 w-[85vw] md:w-[320px] lg:w-[380px] pt-6 pb-6"
       >
         <div className="relative h-full rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/50 hover:bg-card/80 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 overflow-hidden">
-          {/* Dynamic gradient overlay that follows mouse - similar to n8n.io */}
           <div
             className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
             style={{
@@ -143,7 +165,6 @@ export function N8nTestimonials({
           />
 
           <div className="relative z-10">
-            {/* Company Logo */}
             {testimonial.companyLogo ? (
               <div className="mb-4">
                 <img
@@ -160,17 +181,14 @@ export function N8nTestimonials({
               </div>
             )}
 
-            {/* Headline */}
             <h4 className="text-lg md:text-xl font-bold text-foreground mb-3 leading-tight">
               {testimonial.headline}
             </h4>
 
-            {/* Quote */}
             <blockquote className="text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
               "{testimonial.quote}"
             </blockquote>
 
-            {/* Author Info */}
             <div className="flex items-center gap-3">
               <Avatar className="h-10 w-10 border-2 border-border/50">
                 <AvatarImage
@@ -189,7 +207,6 @@ export function N8nTestimonials({
               </div>
             </div>
 
-            {/* CTA Button (optional) */}
             {testimonial.href && (
               <div className="mt-4">
                 <Button
@@ -233,16 +250,37 @@ export function N8nTestimonials({
           </p>
         </motion.div>
 
-        {/* Testimonials Carousel - padding vertical para o hover não ser cortado; espaçamento total título→cards igual à seção Soluções (mb-16) */}
-        <div 
+        {/* Testimonials Carousel */}
+        <div
           className="relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          {/* Prev button */}
+          <button
+            onClick={() => scrollBy('prev')}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-card/90 border border-border/50 shadow-lg backdrop-blur-sm text-foreground hover:bg-card hover:border-primary/50 transition-all duration-200"
+            aria-label="Depoimento anterior"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          {/* Next button */}
+          <button
+            onClick={() => scrollBy('next')}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-card/90 border border-border/50 shadow-lg backdrop-blur-sm text-foreground hover:bg-card hover:border-primary/50 transition-all duration-200"
+            aria-label="Próximo depoimento"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
           <div
             ref={scrollContainerRef}
             onWheel={handleWheel}
-            className="flex gap-6 lg:gap-8 overflow-x-auto scrollbar-hide py-6"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="flex gap-6 lg:gap-8 overflow-x-auto scrollbar-hide py-6 px-12"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -262,7 +300,6 @@ export function N8nTestimonials({
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent" />
         </div>
       </div>
-
     </section>
   );
 }
