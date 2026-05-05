@@ -249,7 +249,7 @@ export function N8nTestimonials({
           {/* Prev button */}
           <button
             onClick={() => scrollBy('prev')}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-card/90 border border-border/50 shadow-lg backdrop-blur-sm text-foreground hover:bg-card hover:border-primary/50 transition-all duration-200"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-lg hover:bg-primary/80 transition-all duration-200"
             aria-label="Depoimento anterior"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -258,7 +258,7 @@ export function N8nTestimonials({
           {/* Next button */}
           <button
             onClick={() => scrollBy('next')}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-card/90 border border-border/50 shadow-lg backdrop-blur-sm text-foreground hover:bg-card hover:border-primary/50 transition-all duration-200"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-white shadow-lg hover:bg-primary/80 transition-all duration-200"
             aria-label="Próximo depoimento"
           >
             <ChevronRight className="h-5 w-5" />
