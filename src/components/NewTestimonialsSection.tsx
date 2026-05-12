@@ -17,6 +17,7 @@ import softpigLogo from "@/assets/testimonials/softpig.png";
 import compelLogo from "@/assets/testimonials/compel.jpg";
 import otonTechLogo from "@/assets/testimonials/otontech.png";
 import flexlifeLogo from "@/assets/testimonials/flexlife.png";
+import flexlifeAutorImg from "@/assets/testimonials/flexlife-autor.jpg";
 
 // Import company logos if available
 import atrioLogo from "@/assets/testimonials/atrio.png";
@@ -176,9 +177,9 @@ export const homeTestimonials = [
     headline: "Como a Flexlife conquistou mais performance e estabilidade com a MDS Cloud",
     quote: "A adoção da nuvem da MDS marcou um avanço para a Flexlife, com melhorias na performance do ERP, mais estabilidade e redução de falhas. Durante a implantação, o atendimento da MDS se destacou pela agilidade e suporte eficiente, reforçando uma parceria confiável.",
     author: {
-      name: "Flexlife",
-      role: "",
-      avatar: flexlifeLogo,
+      name: "Stefânia Pavini",
+      role: "Gerente Administrativo e Financeiro na Flexlife",
+      avatar: flexlifeAutorImg,
     },
   },
   {
